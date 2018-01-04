@@ -1,0 +1,2225 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "Commission SQL Source",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL2;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
+        "impersonationMode": "impersonateAccount",
+        "account": "CAHSI\\tcrowley",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "ShipTo",
+            "dataType": "int64",
+            "sourceColumn": "ShipTo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Billto",
+            "dataType": "int64",
+            "sourceColumn": "Billto",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Customer",
+            "dataType": "string",
+            "sourceColumn": "Customer",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CustomerGroup",
+            "dataType": "string",
+            "sourceColumn": "CustomerGroup",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlan",
+            "dataType": "string",
+            "sourceColumn": "SalesPlan",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlanCode",
+            "dataType": "string",
+            "sourceColumn": "SalesPlanCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlanType",
+            "dataType": "string",
+            "sourceColumn": "SalesPlanType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FieldSales",
+            "dataType": "string",
+            "sourceColumn": "FieldSales",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Branch",
+            "dataType": "string",
+            "sourceColumn": "Branch",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesDivision",
+            "dataType": "string",
+            "sourceColumn": "SalesDivision",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClass",
+            "dataType": "string",
+            "sourceColumn": "MarketClass",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CustomerStatus",
+            "dataType": "string",
+            "sourceColumn": "CustomerStatus",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesDivisionCode",
+            "dataType": "string",
+            "sourceColumn": "SalesDivisionCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClassCode",
+            "dataType": "string",
+            "sourceColumn": "MarketClassCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CommStatusCode",
+            "dataType": "string",
+            "sourceColumn": "CommStatusCode"
+          },
+          {
+            "name": "CommStatusNote",
+            "dataType": "string",
+            "sourceColumn": "CommStatusNote"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Customer",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT",
+                "  Dimension.Customer.ShipTo",
+                "  ,Dimension.Customer.Billto",
+                "  ,Dimension.Customer.Customer",
+                "  ,Dimension.Customer.CustomerGroup",
+                "  ,Dimension.Customer.SalesPlan",
+                "  ,Dimension.Customer.SalesPlanCode",
+                "  ,Dimension.Customer.SalesPlanType",
+                "  ,Dimension.Customer.FieldSales",
+                "  ,Dimension.Customer.Branch",
+                "  ,Dimension.Customer.SalesDivision",
+                "  ,Dimension.Customer.MarketClass",
+                "  ,Dimension.Customer.CustomerStatus",
+                "  ,Dimension.Customer.SalesDivisionCode",
+                "  ,Dimension.Customer.BranchCode",
+                "  ,Dimension.Customer.MarketClassCode",
+                "  ,Dimension.Customer.CommStatusCode",
+                "  ,Dimension.Customer.CommStatusNote",
+                "FROM",
+                "  Dimension.Customer"
+              ],
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "  Dimension.Customer.ShipTo",
+                  "  ,Dimension.Customer.Billto",
+                  "  ,Dimension.Customer.Customer",
+                  "  ,Dimension.Customer.CustomerGroup",
+                  "  ,Dimension.Customer.SalesPlan",
+                  "  ,Dimension.Customer.SalesPlanCode",
+                  "  ,Dimension.Customer.SalesPlanType",
+                  "  ,Dimension.Customer.FieldSales",
+                  "  ,Dimension.Customer.Branch",
+                  "  ,Dimension.Customer.SalesDivision",
+                  "  ,Dimension.Customer.MarketClass",
+                  "  ,Dimension.Customer.CustomerStatus",
+                  "  ,Dimension.Customer.SalesDivisionCode",
+                  "  ,Dimension.Customer.BranchCode",
+                  "  ,Dimension.Customer.MarketClassCode",
+                  "  ,Dimension.Customer.CommStatusCode",
+                  "  ,Dimension.Customer.CommStatusNote",
+                  "FROM",
+                  "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "  Dimension.Customer.ShipTo",
+              "  ,Dimension.Customer.Billto",
+              "  ,Dimension.Customer.Customer",
+              "  ,Dimension.Customer.CustomerGroup",
+              "  ,Dimension.Customer.SalesPlan",
+              "  ,Dimension.Customer.SalesPlanCode",
+              "  ,Dimension.Customer.SalesPlanType",
+              "  ,Dimension.Customer.FieldSales",
+              "  ,Dimension.Customer.Branch",
+              "  ,Dimension.Customer.SalesDivision",
+              "  ,Dimension.Customer.MarketClass",
+              "  ,Dimension.Customer.CustomerStatus",
+              "  ,Dimension.Customer.SalesDivisionCode",
+              "  ,Dimension.Customer.BranchCode",
+              "  ,Dimension.Customer.MarketClassCode",
+              "  ,Dimension.Customer.CommStatusCode",
+              "  ,Dimension.Customer.CommStatusNote",
+              "FROM",
+              "  Dimension.Customer"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Customer"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "  Dimension.Customer.ShipTo",
+              "  ,Dimension.Customer.Billto",
+              "  ,Dimension.Customer.Customer",
+              "  ,Dimension.Customer.CustomerGroup",
+              "  ,Dimension.Customer.SalesPlan",
+              "  ,Dimension.Customer.SalesPlanCode",
+              "  ,Dimension.Customer.SalesPlanType",
+              "  ,Dimension.Customer.FieldSales",
+              "  ,Dimension.Customer.Branch",
+              "  ,Dimension.Customer.SalesDivision",
+              "  ,Dimension.Customer.MarketClass",
+              "  ,Dimension.Customer.CustomerStatus",
+              "  ,Dimension.Customer.SalesDivisionCode",
+              "  ,Dimension.Customer.BranchCode",
+              "  ,Dimension.Customer.MarketClassCode",
+              "  ,Dimension.Customer.CommStatusCode",
+              "  ,Dimension.Customer.CommStatusNote",
+              "FROM",
+              "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Item",
+        "columns": [
+          {
+            "name": "ItemKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ItemKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Item",
+            "dataType": "string",
+            "sourceColumn": "Item",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesCategory",
+            "dataType": "string",
+            "sourceColumn": "SalesCategory",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Major",
+            "dataType": "string",
+            "sourceColumn": "Major",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SubMajor",
+            "dataType": "string",
+            "sourceColumn": "SubMajor",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Supplier",
+            "dataType": "string",
+            "sourceColumn": "Supplier",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ItemCode",
+            "dataType": "string",
+            "sourceColumn": "ItemCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ItemStatus",
+            "dataType": "string",
+            "sourceColumn": "ItemStatus",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Label",
+            "dataType": "string",
+            "sourceColumn": "Label",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Current_BasePrice",
+            "dataType": "decimal",
+            "sourceColumn": "Current_BasePrice",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "CommGroupCode",
+            "dataType": "string",
+            "sourceColumn": "CommGroupCode"
+          },
+          {
+            "name": "CommGroupNote",
+            "dataType": "string",
+            "sourceColumn": "CommGroupNote"
+          },
+          {
+            "name": "CommGroupCpsCode",
+            "dataType": "string",
+            "sourceColumn": "CommGroupCpsCode"
+          },
+          {
+            "name": "FSCDigImpBonus",
+            "dataType": "string",
+            "sourceColumn": "CustomCommGroup1Code"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Item",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT",
+                "  Dimension.Item.ItemKey",
+                "  ,Dimension.Item.Item",
+                "  ,Dimension.Item.SalesCategory",
+                "  ,Dimension.Item.Major",
+                "  ,Dimension.Item.SubMajor",
+                "  ,Dimension.Item.Supplier",
+                "  ,Dimension.Item.ItemCode",
+                "  ,Dimension.Item.ItemStatus",
+                "  ,Dimension.Item.Label",
+                "  ,Dimension.Item.CommGroupCode",
+                "  ,Dimension.Item.CommGroupNote",
+                "  ,Dimension.Item.Current_BasePrice",
+                "  ,Dimension.Item.CommGroupCpsCode",
+                "  ,Dimension.Item.CustomCommGroup1Code",
+                "FROM",
+                "  Dimension.Item"
+              ],
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "  Dimension.Item.ItemKey",
+                  "  ,Dimension.Item.Item",
+                  "  ,Dimension.Item.SalesCategory",
+                  "  ,Dimension.Item.Major",
+                  "  ,Dimension.Item.SubMajor",
+                  "  ,Dimension.Item.Supplier",
+                  "  ,Dimension.Item.ItemCode",
+                  "  ,Dimension.Item.ItemStatus",
+                  "  ,Dimension.Item.Label",
+                  "  ,Dimension.Item.CommGroupCode",
+                  "  ,Dimension.Item.CommGroupNote",
+                  "  ,Dimension.Item.Current_BasePrice",
+                  "  ,Dimension.Item.CommGroupCpsCode",
+                  "  ,Dimension.Item.CustomCommGroup1Code",
+                  "FROM",
+                  "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "  Dimension.Item.ItemKey",
+              "  ,Dimension.Item.Item",
+              "  ,Dimension.Item.SalesCategory",
+              "  ,Dimension.Item.Major",
+              "  ,Dimension.Item.SubMajor",
+              "  ,Dimension.Item.Supplier",
+              "  ,Dimension.Item.ItemCode",
+              "  ,Dimension.Item.ItemStatus",
+              "  ,Dimension.Item.Label",
+              "  ,Dimension.Item.CommGroupCode",
+              "  ,Dimension.Item.CommGroupNote",
+              "  ,Dimension.Item.Current_BasePrice",
+              "  ,Dimension.Item.CommGroupCpsCode",
+              "  ,Dimension.Item.CustomCommGroup1Code",
+              "FROM",
+              "  Dimension.Item"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Item"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "  Dimension.Item.ItemKey",
+              "  ,Dimension.Item.Item",
+              "  ,Dimension.Item.SalesCategory",
+              "  ,Dimension.Item.Major",
+              "  ,Dimension.Item.SubMajor",
+              "  ,Dimension.Item.Supplier",
+              "  ,Dimension.Item.ItemCode",
+              "  ,Dimension.Item.ItemStatus",
+              "  ,Dimension.Item.Label",
+              "  ,Dimension.Item.CommGroupCode",
+              "  ,Dimension.Item.CommGroupNote",
+              "  ,Dimension.Item.Current_BasePrice",
+              "  ,Dimension.Item.CommGroupCpsCode",
+              "  ,Dimension.Item.CustomCommGroup1Code",
+              "FROM",
+              "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Period",
+        "columns": [
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "WorkingDaysMonth",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "MonthSeq",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthSeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInQtr",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FirstMonthSeqInQtr",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FirstMonthSeqInYear",
+            "sourceProviderType": "SmallInt"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Period",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[Period].[FiscalMonth],[Dimension].[Period].[MonthName],[Dimension].[Period].[MonthNum],[Dimension].[Period].[QuarterName],[Dimension].[Period].[YearNum],[Dimension].[Period].[WorkingDaysMonth],[Dimension].[Period].[MonthSeq],[Dimension].[Period].[FirstMonthSeqInQtr],[Dimension].[Period].[FirstMonthSeqInYear] FROM [Dimension].[Period] ",
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FiscalMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>86</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>87</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthNum</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>81</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>QuarterName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>95</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>YearNum</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>73</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WorkingDaysMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>123</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthSeq</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>78</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstMonthSeqInQtr</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>125</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstMonthSeqInYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>131</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastWorkingDay</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>108</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FiscalMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthNum</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>QuarterName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>YearNum</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WorkingDaysMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthSeq</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>6</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstMonthSeqInQtr</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>7</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstMonthSeqInYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>8</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastWorkingDay</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>9</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastWorkingDay</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Period].[FiscalMonth],[Dimension].[Period].[MonthName],[Dimension].[Period].[MonthNum],[Dimension].[Period].[QuarterName],[Dimension].[Period].[YearNum],[Dimension].[Period].[WorkingDaysMonth],[Dimension].[Period].[MonthSeq],[Dimension].[Period].[FirstMonthSeqInQtr],[Dimension].[Period].[FirstMonthSeqInYear] FROM [Dimension].[Period] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Period"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>FiscalMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>86</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>87</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthNum</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>81</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>QuarterName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>95</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>YearNum</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>73</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WorkingDaysMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>123</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthSeq</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>78</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstMonthSeqInQtr</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>125</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstMonthSeqInYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>131</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastWorkingDay</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>108</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>FiscalMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthNum</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>QuarterName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>YearNum</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WorkingDaysMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthSeq</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>6</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstMonthSeqInQtr</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>7</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstMonthSeqInYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>8</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastWorkingDay</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>9</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastWorkingDay</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "columns": [
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ShipTo",
+            "dataType": "int64",
+            "sourceColumn": "ShipTo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ItemKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ItemKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FactKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FactKey"
+          },
+          {
+            "name": "FSC_SalespersonKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FSC_SalespersonKey"
+          },
+          {
+            "name": "FSC_CommGroupKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FSC_CommGroupKey"
+          },
+          {
+            "name": "ESS_SalespersonKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ESS_SalespersonKey"
+          },
+          {
+            "name": "ESS_CommGroupKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ESS_CommGroupKey"
+          },
+          {
+            "name": "SalesOrderNumber",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderNumber"
+          },
+          {
+            "name": "DocTypeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DocTypeKey"
+          },
+          {
+            "name": "LineNumber",
+            "dataType": "int64",
+            "sourceColumn": "LineNumber"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "string",
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "BillTo",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BillTo"
+          },
+          {
+            "name": "SourceKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SourceKey"
+          },
+          {
+            "name": "FreeGoodsEstInd",
+            "dataType": "int64",
+            "sourceColumn": "FreeGoodsEstInd"
+          },
+          {
+            "name": "FreeGoodsRedeemedInd",
+            "dataType": "int64",
+            "sourceColumn": "FreeGoodsRedeemedInd"
+          },
+          {
+            "name": "Quantity",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "SalesAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "SalesAmt"
+          },
+          {
+            "name": "GPAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "GPAmt"
+          },
+          {
+            "name": "FSC_CommAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "FSC_CommAmt"
+          },
+          {
+            "name": "ESS_CommAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "ESS_CommAmt"
+          },
+          {
+            "name": "FreeGoodsInvoicedInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsInvoicedInd"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SaleVendor",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
+                "                         DocTypeKey, LineNumber, DateKey, BillTo, SourceKey, FreeGoodsEstInd, FreeGoodsRedeemedInd, Quantity, SalesAmt, GPAmt, FSC_CommAmt, ESS_CommAmt, ",
+                "                         FreeGoodsInvoicedInd",
+                "FROM            Fact.Commission"
+              ],
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
+                  "                         DocTypeKey, LineNumber, DateKey, BillTo, SourceKey, FreeGoodsEstInd, FreeGoodsRedeemedInd, Quantity, SalesAmt, GPAmt, FSC_CommAmt, ESS_CommAmt, ",
+                  "                         FreeGoodsInvoicedInd",
+                  "FROM            Fact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales in Period",
+            "expression": "SUM([SalesAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GP in Period",
+            "expression": "SUM([GPAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP",
+            "expression": "CALCULATE([GP in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP",
+            "expression": "CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD GP",
+            "expression": "CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var",
+            "expression": "[MTD Sales]-[PY MTD Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP Var",
+            "expression": "[MTD GP]-[PY MTD GP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD GP",
+            "expression": "CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales Var",
+            "expression": "[YTD Sales]-[PY YTD Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP Var",
+            "expression": "[YTD GP]-[PY YTD GP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var %",
+            "expression": "[MTD Sales]/[PY MTD Sales] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "MTD GP Var %",
+            "expression": "[MTD GP]/[PY MTD GP] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "YTD Sales Var %",
+            "expression": "[YTD Sales]/[PY YTD Sales]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "YTD GP Sales Var %",
+            "expression": "[YTD GP]/[PY YTD GP] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Comm_FSC in Period",
+            "expression": "SUM([FSC_CommAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Comm_ESS in Period",
+            "expression": "SUM([ESS_CommAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm FSC",
+            "expression": "CALCULATE([Comm_FSC in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Comm FSC",
+            "expression": "CALCULATE([Comm_FSC in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm FSC Var",
+            "expression": "[MTD Comm FSC]-[PY MTD Comm FSC]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm FSC Var %",
+            "expression": "[MTD Comm FSC]/[PY MTD Comm FSC] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "YTD Comm FSC",
+            "expression": "CALCULATE([Comm_FSC in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Comm FSC",
+            "expression": "CALCULATE([Comm_FSC in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm FSC Var",
+            "expression": "[YTD Comm FSC]-[PY YTD Comm FSC]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm FSC Var %",
+            "expression": "[YTD Comm FSC]/[PY YTD Comm FSC]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "MTD Comm ESS",
+            "expression": "CALCULATE([Comm_ESS in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Comm ESS",
+            "expression": "CALCULATE([Comm_ESS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm ESS Var",
+            "expression": "[MTD Comm ESS]-[PY MTD Comm ESS]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm ESS Var %",
+            "expression": "[MTD Comm ESS]/[PY MTD Comm ESS] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "YTD Comm ESS",
+            "expression": "CALCULATE([Comm_ESS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Comm ESS",
+            "expression": "CALCULATE([Comm_ESS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm ESS Var",
+            "expression": "[YTD Comm ESS]-[PY YTD Comm ESS]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm ESS Var %",
+            "expression": "[YTD Comm ESS]/[PY YTD Comm ESS]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
+              "                         DocTypeKey, LineNumber, DateKey, BillTo, SourceKey, FreeGoodsEstInd, FreeGoodsRedeemedInd, Quantity, SalesAmt, GPAmt, FSC_CommAmt, ESS_CommAmt, ",
+              "                         FreeGoodsInvoicedInd",
+              "FROM            Fact.Commission"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SaleVendor"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Fact"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
+              "                         DocTypeKey, LineNumber, DateKey, BillTo, SourceKey, FreeGoodsEstInd, FreeGoodsRedeemedInd, Quantity, SalesAmt, GPAmt, FSC_CommAmt, ESS_CommAmt, ",
+              "                         FreeGoodsInvoicedInd",
+              "FROM            Fact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Period Select",
+        "columns": [
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "WorkingDaysMonth",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "MonthSeq",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthSeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInQtr",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FirstMonthSeqInQtr",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FirstMonthSeqInYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "LastWorkingDay",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "LastWorkingDay",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fiscal_Month_List",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
+              "dataSource": "Commission SQL Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "__first_month_current",
+            "expression": "max('Period Select'[FiscalMonth])",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_current",
+            "expression": "calculate(max('Period Select'[MonthSeq]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_in_year",
+            "expression": "calculate(max('Period Select'[FirstMonthSeqInYear]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_in_quarter",
+            "expression": "calculate(max('Period Select'[FirstMonthSeqInQtr]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Period"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Salesorder",
+        "columns": [
+          {
+            "name": "SalesOrderNumber",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderNumber",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DocType",
+            "dataType": "string",
+            "sourceColumn": "DocType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "OrderSource",
+            "dataType": "string",
+            "sourceColumn": "OrderSource",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "EnteredByCode",
+            "dataType": "string",
+            "sourceColumn": "EnteredByCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "OrderTakenByCode",
+            "dataType": "string",
+            "sourceColumn": "OrderTakenByCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "EquipmentOrderNumber",
+            "dataType": "string",
+            "sourceColumn": "EquipmentOrderNumber",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CustomerPOText1",
+            "dataType": "string",
+            "sourceColumn": "CustomerPOText1",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalesorderCommission",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [Dimension].[SalesorderCommission].* FROM [Dimension].[SalesorderCommission]",
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalesorderCommission].* FROM [Dimension].[SalesorderCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [Dimension].[SalesorderCommission].* FROM [Dimension].[SalesorderCommission]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SalesorderCommission"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalesorderCommission].* FROM [Dimension].[SalesorderCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "CommGroup_FSC",
+        "columns": [
+          {
+            "name": "CommGroupCode_FSC",
+            "dataType": "string",
+            "sourceColumn": "CommGroupCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CommGroupKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CommGroupKey"
+          },
+          {
+            "name": "CommGroup",
+            "dataType": "string",
+            "sourceColumn": "CommGroup"
+          },
+          {
+            "name": "SpecialMarketCode",
+            "dataType": "string",
+            "sourceColumn": "SpecialMarketCode"
+          },
+          {
+            "name": "SpecialMarketStatusCode",
+            "dataType": "string",
+            "sourceColumn": "SpecialMarketStatusCode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CommissionGroup",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT",
+                "  Dimension.CommissionGroup.CommGroupKey",
+                "  ,Dimension.CommissionGroup.CommGroup",
+                "  ,Dimension.CommissionGroup.CommGroupCode",
+                "  ,Dimension.CommissionGroup.SpecialMarketCode",
+                "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
+                "FROM",
+                "  Dimension.CommissionGroup"
+              ],
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "  Dimension.CommissionGroup.CommGroupKey",
+                  "  ,Dimension.CommissionGroup.CommGroup",
+                  "  ,Dimension.CommissionGroup.CommGroupCode",
+                  "  ,Dimension.CommissionGroup.SpecialMarketCode",
+                  "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
+                  "FROM",
+                  "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketStatusCode\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "  Dimension.CommissionGroup.CommGroupKey",
+              "  ,Dimension.CommissionGroup.CommGroup",
+              "  ,Dimension.CommissionGroup.CommGroupCode",
+              "  ,Dimension.CommissionGroup.SpecialMarketCode",
+              "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
+              "FROM",
+              "  Dimension.CommissionGroup"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "CommissionGroup"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "  Dimension.CommissionGroup.CommGroupKey",
+              "  ,Dimension.CommissionGroup.CommGroup",
+              "  ,Dimension.CommissionGroup.CommGroupCode",
+              "  ,Dimension.CommissionGroup.SpecialMarketCode",
+              "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
+              "FROM",
+              "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketStatusCode\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "CommGroup_ESS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupCode_ESS",
+            "dataType": "string",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupCode_FSC]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupKey",
+            "dataType": "int64",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroup]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SpecialMarketCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[SpecialMarketCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SpecialMarketStatusCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[SpecialMarketStatusCode]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CommGroup_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CommSalesperson_FSC",
+        "columns": [
+          {
+            "name": "EmployeeNumber_FSC",
+            "dataType": "int64",
+            "sourceColumn": "EmployeeNumber",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CommMasterCode",
+            "dataType": "string",
+            "sourceColumn": "CommMasterCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalespersonName",
+            "dataType": "string",
+            "sourceColumn": "SalespersonName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CommPlanCode",
+            "dataType": "string",
+            "sourceColumn": "CommPlanCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "TerritoryStart",
+            "dataType": "string",
+            "sourceColumn": "TerritoryStart",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SalespersonID",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "SalespersonID",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalespersonKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SalespersonKey",
+            "sourceProviderType": "SmallInt"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalespersonCommission",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]",
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SalespersonCommission"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "CommSalesperson_ESS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeNumber_ESS",
+            "dataType": "int64",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[EmployeeNumber_FSC]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommMasterCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommMasterCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommPlanCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommPlanCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryStart",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[TerritoryStart]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonID",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonID]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CommSalesperson_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CommSource",
+        "columns": [
+          {
+            "name": "source_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "source_key",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CommSourceCode",
+            "dataType": "string",
+            "sourceColumn": "CommSourceCode"
+          },
+          {
+            "name": "CommSource",
+            "dataType": "string",
+            "sourceColumn": "CommSource"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "source",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [comm].[source].[source_cd] as CommSourceCode,[comm].[source].[source_desc] AS CommSource,[comm].[source].[source_key] FROM [comm].[source]",
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [comm].[source].[source_cd] as CommSourceCode,[comm].[source].[source_desc] AS CommSource,[comm].[source].[source_key] FROM [comm].[source]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [comm].[source].[source_cd] as CommSourceCode,[comm].[source].[source_desc] AS CommSource,[comm].[source].[source_key] FROM [comm].[source]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "source"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "comm"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [comm].[source].[source_cd] as CommSourceCode,[comm].[source].[source_desc] AS CommSource,[comm].[source].[source_key] FROM [comm].[source]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "DocType",
+        "columns": [
+          {
+            "name": "DocType",
+            "dataType": "string",
+            "sourceColumn": "DocType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DocTypeDescr",
+            "dataType": "string",
+            "sourceColumn": "DocTypeDescr",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SourceCd",
+            "dataType": "string",
+            "sourceColumn": "SourceCd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DocTypeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DocTypeKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DocType",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT",
+                "  BRS_DocType.DocType",
+                "  ,BRS_DocType.DocTypeDescr",
+                "  ,BRS_DocType.SourceCd",
+                "  ,BRS_DocType.DocTypeKey",
+                " FROM",
+                "  BRS_DocType ",
+                "WHERE",
+                "  BRS_DocType.StatusCd = 1"
+              ],
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "  BRS_DocType.DocType",
+                  "  ,BRS_DocType.DocTypeDescr",
+                  "  ,BRS_DocType.SourceCd",
+                  "  ,BRS_DocType.DocTypeKey",
+                  " FROM",
+                  "  BRS_DocType ",
+                  "WHERE",
+                  "  BRS_DocType.StatusCd = 1</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"DocType\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"DocTypeDescr\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"SourceCd\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"StatusCd\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"DocTypeKey\" /></SelectedColumns><Filters><Filter Operator=\"=\"><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"StatusCd\" /><FilterValue>1</FilterValue></Filter></Filters></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "  BRS_DocType.DocType",
+              "  ,BRS_DocType.DocTypeDescr",
+              "  ,BRS_DocType.SourceCd",
+              "  ,BRS_DocType.DocTypeKey",
+              " FROM",
+              "  BRS_DocType ",
+              "WHERE",
+              "  BRS_DocType.StatusCd = 1"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DocType"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "  BRS_DocType.DocType",
+              "  ,BRS_DocType.DocTypeDescr",
+              "  ,BRS_DocType.SourceCd",
+              "  ,BRS_DocType.DocTypeKey",
+              " FROM",
+              "  BRS_DocType ",
+              "WHERE",
+              "  BRS_DocType.StatusCd = 1</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"DocType\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"DocTypeDescr\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"SourceCd\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"StatusCd\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"DocTypeKey\" /></SelectedColumns><Filters><Filter Operator=\"=\"><ColumnExpression ColumnOwner=\"BRS_DocType\" ColumnName=\"StatusCd\" /><FilterValue>1</FilterValue></Filter></Filters></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "97c6f6e8-5fbf-4329-8154-440eac8eecd0",
+        "fromTable": "Sales",
+        "fromColumn": "ItemKey",
+        "toTable": "Item",
+        "toColumn": "ItemKey"
+      },
+      {
+        "name": "a6ee38fc-b57c-4c27-a5c0-984af0f429a8",
+        "fromTable": "Sales",
+        "fromColumn": "ShipTo",
+        "toTable": "Customer",
+        "toColumn": "ShipTo"
+      },
+      {
+        "name": "d44baecf-b705-4535-ba67-437a692b182e",
+        "fromTable": "Sales",
+        "fromColumn": "FiscalMonth",
+        "toTable": "Period",
+        "toColumn": "FiscalMonth"
+      },
+      {
+        "name": "52a3db26-7f9f-42ef-b23a-a51a1d89d823",
+        "fromTable": "Sales",
+        "fromColumn": "SalesOrderNumber",
+        "toTable": "Salesorder",
+        "toColumn": "SalesOrderNumber"
+      },
+      {
+        "name": "6da5f4b1-7439-4814-8355-80866112fc7a",
+        "fromTable": "Sales",
+        "fromColumn": "FSC_SalespersonKey",
+        "toTable": "CommSalesperson_FSC",
+        "toColumn": "SalespersonKey"
+      },
+      {
+        "name": "f5555d54-68f3-40a2-ab4d-77a154f7e010",
+        "fromTable": "Sales",
+        "fromColumn": "ESS_SalespersonKey",
+        "toTable": "CommSalesperson_ESS",
+        "toColumn": "SalespersonKey"
+      },
+      {
+        "name": "bd9abf93-71d0-4e31-bd0d-8fa31936599e",
+        "fromTable": "Sales",
+        "fromColumn": "SourceKey",
+        "toTable": "CommSource",
+        "toColumn": "source_key"
+      },
+      {
+        "name": "000cbd98-1f4b-46f2-bd4c-cddbc44dbba0",
+        "fromTable": "Sales",
+        "fromColumn": "DocTypeKey",
+        "toTable": "DocType",
+        "toColumn": "DocTypeKey"
+      },
+      {
+        "name": "9c9c63ae-f194-49af-baab-d41d5e838786",
+        "fromTable": "Sales",
+        "fromColumn": "FSC_CommGroupKey",
+        "toTable": "CommGroup_FSC",
+        "toColumn": "CommGroupKey"
+      },
+      {
+        "name": "e3132829-bde7-4936-b74d-ab8b83ae0f9e",
+        "fromTable": "Sales",
+        "fromColumn": "ESS_CommGroupKey",
+        "toTable": "CommGroup_ESS",
+        "toColumn": "CommGroupKey"
+      }
+    ],
+    "roles": [
+      {
+        "name": "User Role",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "CAHSI\\TCrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
