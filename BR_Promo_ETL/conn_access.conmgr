@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="S__Business Reporting_zDev_US_Promo_PromoBE.accdb"
-  DTS:DTSID="{869040AD-AAD0-49DC-B0DB-82CB4662E483}"
+  DTS:ObjectName="conn_access"
+  DTS:DTSID="{AAC4AF1E-2608-4D1B-B0D4-8FE6A608C36D}"
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
