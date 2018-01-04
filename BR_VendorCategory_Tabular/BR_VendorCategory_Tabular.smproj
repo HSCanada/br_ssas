@@ -9,15 +9,15 @@
     <AssemblyName>MyAssemblyName</AssemblyName>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <OutputPath>bin\</OutputPath>
-    <Name>Vendor_Summary_Review</Name>
+    <Name>BR_VendorCategory_Tabular</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Development' ">
     <OutputPath>bin\</OutputPath>
-    <DeploymentServerName>CAHSIONNLSQL2</DeploymentServerName>
+    <DeploymentServerName>localdb</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
-    <DeploymentServerDatabase>Vendor_Summary</DeploymentServerDatabase>
-    <DeploymentServerCubeName>Model</DeploymentServerCubeName>
+    <DeploymentServerDatabase>BR_VendorCategory_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>br_vendor_category_model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
@@ -28,7 +28,7 @@
     <DeploymentServerName>localhost</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
-    <DeploymentServerDatabase>Vendor_Summary_Review</DeploymentServerDatabase>
+    <DeploymentServerDatabase>BR_VendorCategory_Tabular</DeploymentServerDatabase>
     <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
@@ -37,7 +37,7 @@
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Model_Review.bim">
+    <Compile Include="br_vendor_category_tabular.bim">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

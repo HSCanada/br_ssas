@@ -53,7 +53,7 @@
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_Commission_Tabular</DeploymentServerDatabase>
-    <DeploymentServerCubeName>comm_model</DeploymentServerCubeName>
+    <DeploymentServerCubeName>br_commission_model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>

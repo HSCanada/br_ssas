@@ -8,7 +8,7 @@
         "name": "SqlServer_cahsionnlsql2_Prod_BRSales",
         "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql2;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
-        "account": "cahsi\\jli",
+        "account": "cahsi\\tcrowley",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -1735,6 +1735,114 @@
             ]
           }
         ]
+      },
+      {
+        "name": "BRS_BusinessUnitClass",
+        "columns": [
+          {
+            "name": "GLBU_Class",
+            "dataType": "string",
+            "sourceColumn": "GLBU_Class",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassNm",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassNm",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StatusCd",
+            "dataType": "int64",
+            "sourceColumn": "StatusCd",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "GLBU_ClassUS_L1",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassUS_L1",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CorpParticipationFactor",
+            "dataType": "double",
+            "sourceColumn": "CorpParticipationFactor",
+            "sourceProviderType": "Single"
+          },
+          {
+            "name": "NoteTxt",
+            "dataType": "string",
+            "sourceColumn": "NoteTxt",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ReportingClass",
+            "dataType": "string",
+            "sourceColumn": "ReportingClass",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FreeGoodsEstInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsEstInd",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "GLBU_ClassDS_L1",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassDS_L1",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassSM_L1",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassSM_L1",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassSM_L2",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassSM_L2",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassSM_L3",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassSM_L3",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassKey",
+            "dataType": "int64",
+            "sourceColumn": "GLBU_ClassKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_BusinessUnitClass",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[BRS_BusinessUnitClass].* FROM [dbo].[BRS_BusinessUnitClass] ",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_BusinessUnitClass].* FROM [dbo].[BRS_BusinessUnitClass] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_BusinessUnitClass"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -1779,6 +1887,13 @@
         "fromColumn": "HIST_SupplierKey",
         "toTable": "Item Supplier",
         "toColumn": "SupplierKey"
+      },
+      {
+        "name": "622e766a-9b1b-4c59-8661-1a1f7c62866e",
+        "fromTable": "Sales",
+        "fromColumn": "GLBU_ClassKey",
+        "toTable": "BRS_BusinessUnitClass",
+        "toColumn": "GLBU_ClassKey"
       }
     ],
     "roles": [
@@ -1787,7 +1902,7 @@
         "modelPermission": "read",
         "members": [
           {
-            "memberName": "CAHSI\\jli",
+            "memberName": "CAHSI\\JLi",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
           }
         ]

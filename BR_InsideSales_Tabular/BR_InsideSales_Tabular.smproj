@@ -13,11 +13,11 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Development' ">
     <OutputPath>bin\</OutputPath>
-    <DeploymentServerName>CAHSIONNLSQL2</DeploymentServerName>
+    <DeploymentServerName>localdb</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
-    <DeploymentServerDatabase>TS_Scorecard_QA</DeploymentServerDatabase>
-    <DeploymentServerCubeName>Model</DeploymentServerCubeName>
+    <DeploymentServerDatabase>BR_InsideSales_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>br_inside_sales_model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
@@ -27,7 +27,7 @@
     <DeploymentServerName>localhost</DeploymentServerName>
     <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
-    <DeploymentServerDatabase>TS_Sales</DeploymentServerDatabase>
+    <DeploymentServerDatabase>BR_InsideSales_Tabular</DeploymentServerDatabase>
     <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
@@ -35,7 +35,7 @@
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="InsideSales_Model.bim">
+    <Compile Include="br_inside_sales_model.bim">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
