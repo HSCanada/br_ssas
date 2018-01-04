@@ -1,0 +1,1804 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer_cahsionnlsql2_Prod_BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql2;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
+        "impersonationMode": "impersonateAccount",
+        "account": "cahsi\\jli",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "ShipTo",
+            "dataType": "int64",
+            "sourceColumn": "ShipTo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Billto",
+            "dataType": "int64",
+            "sourceColumn": "Billto",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Customer",
+            "dataType": "string",
+            "sourceColumn": "Customer",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CustomerGroup",
+            "dataType": "string",
+            "sourceColumn": "CustomerGroup",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlan",
+            "dataType": "string",
+            "sourceColumn": "SalesPlan",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlanCode",
+            "dataType": "string",
+            "sourceColumn": "SalesPlanCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlanType",
+            "dataType": "string",
+            "sourceColumn": "SalesPlanType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FieldSales",
+            "dataType": "string",
+            "sourceColumn": "FieldSales",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Branch",
+            "dataType": "string",
+            "sourceColumn": "Branch",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FSA",
+            "dataType": "string",
+            "sourceColumn": "FSA",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Province",
+            "dataType": "string",
+            "sourceColumn": "Province",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Abc_GeoCustomer",
+            "dataType": "string",
+            "sourceColumn": "Abc_GeoCustomer",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Adjustment",
+            "dataType": "string",
+            "sourceColumn": "Adjustment",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "AdjEffectiveDate",
+            "dataType": "dateTime",
+            "sourceColumn": "AdjEffectiveDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "AdjExpiredDate",
+            "dataType": "dateTime",
+            "sourceColumn": "AdjExpiredDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "AdjUserId",
+            "dataType": "string",
+            "sourceColumn": "AdjUserId",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "AdjEnrollSource",
+            "dataType": "string",
+            "sourceColumn": "AdjEnrollSource",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "AdjPriceMethod",
+            "dataType": "string",
+            "sourceColumn": "AdjPriceMethod",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Abc_SpendCustomer",
+            "dataType": "string",
+            "sourceColumn": "Abc_SpendCustomer",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Spend_PotentialAmt",
+            "dataType": "decimal",
+            "sourceColumn": "Spend_PotentialAmt",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Spend_Display",
+            "dataType": "string",
+            "sourceColumn": "Spend_Display",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Spend_Rank",
+            "dataType": "int64",
+            "sourceColumn": "Spend_Rank",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Spend_Discount_Rate",
+            "dataType": "double",
+            "sourceColumn": "Spend_Discount_Rate",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "SalesDivision",
+            "dataType": "string",
+            "sourceColumn": "SalesDivision",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClassRollup",
+            "dataType": "string",
+            "sourceColumn": "MarketClassRollup",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClass",
+            "dataType": "string",
+            "sourceColumn": "MarketClass",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Specialty",
+            "dataType": "string",
+            "sourceColumn": "Specialty",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CustomerStatus",
+            "dataType": "string",
+            "sourceColumn": "CustomerStatus",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DCC_TrackingShipTo",
+            "dataType": "int64",
+            "sourceColumn": "DCC_TrackingShipTo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DCC_TrackingCode",
+            "dataType": "string",
+            "sourceColumn": "DCC_TrackingCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Focus",
+            "dataType": "string",
+            "sourceColumn": "Focus",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DateAccountOpened",
+            "dataType": "dateTime",
+            "sourceColumn": "DateAccountOpened",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "SalesDivisionCode",
+            "dataType": "string",
+            "sourceColumn": "SalesDivisionCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClassCode",
+            "dataType": "string",
+            "sourceColumn": "MarketClassCode",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Customer",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[Customer].* FROM [Dimension].[Customer] ",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Customer].* FROM [Dimension].[Customer] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Customer"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Item",
+        "columns": [
+          {
+            "name": "ItemKey",
+            "dataType": "int64",
+            "sourceColumn": "ItemKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Item",
+            "dataType": "string",
+            "sourceColumn": "Item",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesCategory",
+            "dataType": "string",
+            "sourceColumn": "SalesCategory",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Abc_MpcItem",
+            "dataType": "string",
+            "sourceColumn": "Abc_MpcItem",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CategoryRollup",
+            "dataType": "string",
+            "sourceColumn": "CategoryRollup",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Major",
+            "dataType": "string",
+            "sourceColumn": "Major",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SubMajor",
+            "dataType": "string",
+            "sourceColumn": "SubMajor",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Minor",
+            "dataType": "string",
+            "sourceColumn": "Minor",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Supplier",
+            "dataType": "string",
+            "sourceColumn": "Supplier",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Abc_SupplierItem",
+            "dataType": "string",
+            "sourceColumn": "Abc_SupplierItem",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SupplierFamily",
+            "dataType": "string",
+            "sourceColumn": "SupplierFamily",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "BuyingGroup",
+            "dataType": "string",
+            "sourceColumn": "BuyingGroup",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "VendorClassification",
+            "dataType": "string",
+            "sourceColumn": "VendorClassification",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "FamilySet",
+            "dataType": "string",
+            "sourceColumn": "FamilySet",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ItemCode",
+            "dataType": "string",
+            "sourceColumn": "ItemCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ItemStatus",
+            "dataType": "string",
+            "sourceColumn": "ItemStatus",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Brand",
+            "dataType": "string",
+            "sourceColumn": "Brand",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Label",
+            "dataType": "string",
+            "sourceColumn": "Label",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StockingCode",
+            "dataType": "string",
+            "sourceColumn": "StockingCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CategorySpecialist",
+            "dataType": "string",
+            "sourceColumn": "CategorySpecialist",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Current_SupplierCode",
+            "dataType": "string",
+            "sourceColumn": "Current_SupplierCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Current_CurrencyCode",
+            "dataType": "string",
+            "sourceColumn": "Current_CurrencyCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Current_SupplierCost",
+            "dataType": "decimal",
+            "sourceColumn": "Current_SupplierCost",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Current_FxMarketing",
+            "dataType": "double",
+            "sourceColumn": "Current_FxMarketing",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Current_FxFinance",
+            "dataType": "double",
+            "sourceColumn": "Current_FxFinance",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Current_FreightFactor",
+            "dataType": "double",
+            "sourceColumn": "Current_FreightFactor",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Current_BasePrice",
+            "dataType": "decimal",
+            "sourceColumn": "Current_BasePrice",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Current_LandedCostMrk",
+            "dataType": "double",
+            "sourceColumn": "Current_LandedCostMrk",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Current_PriceGM",
+            "dataType": "double",
+            "sourceColumn": "Current_PriceGM",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "CompetitiveMatchKey",
+            "dataType": "int64",
+            "sourceColumn": "CompetitiveMatchKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SupplierFamilyCode",
+            "dataType": "string",
+            "sourceColumn": "SupplierFamilyCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesCategoryCode",
+            "dataType": "string",
+            "sourceColumn": "SalesCategoryCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CategoryRollupCode",
+            "dataType": "string",
+            "sourceColumn": "CategoryRollupCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CategoryClassRollupCode",
+            "dataType": "string",
+            "sourceColumn": "CategoryClassRollupCode",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Item",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[Item].* FROM [Dimension].[Item] ",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Item].* FROM [Dimension].[Item] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Item"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Period",
+        "columns": [
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "sourceColumn": "WorkingDaysMonth",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "MonthSeq",
+            "dataType": "int64",
+            "sourceColumn": "MonthSeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInQtr",
+            "dataType": "int64",
+            "sourceColumn": "FirstMonthSeqInQtr",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInYear",
+            "dataType": "int64",
+            "sourceColumn": "FirstMonthSeqInYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "LastWorkingDay",
+            "dataType": "dateTime",
+            "sourceColumn": "LastWorkingDay",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Period",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Period"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "columns": [
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HIST_BranchKey",
+            "dataType": "int64",
+            "sourceColumn": "HIST_BranchKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HIST_MarketClassKey",
+            "dataType": "int64",
+            "sourceColumn": "HIST_MarketClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HIST_SupplierKey",
+            "dataType": "int64",
+            "sourceColumn": "HIST_SupplierKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "GLBU_ClassKey",
+            "dataType": "int64",
+            "sourceColumn": "GLBU_ClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AdjCodeKey",
+            "dataType": "int64",
+            "sourceColumn": "AdjCodeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ShipTo",
+            "dataType": "int64",
+            "sourceColumn": "ShipTo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ItemKey",
+            "dataType": "int64",
+            "sourceColumn": "ItemKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "TotalSalesAmt",
+            "dataType": "decimal",
+            "sourceColumn": "TotalSalesAmt",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "TotalGPAmt",
+            "dataType": "decimal",
+            "sourceColumn": "TotalGPAmt",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "TotalGPExclCBAmt",
+            "dataType": "decimal",
+            "sourceColumn": "TotalGPExclCBAmt",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "ExtChargebackAmt",
+            "dataType": "decimal",
+            "sourceColumn": "ExtChargebackAmt",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SaleVendor",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales in Period",
+            "expression": "SUM([TotalSalesAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GP in Period",
+            "expression": "SUM([TotalGPAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GPExclCB in Period",
+            "expression": "SUM([TotalGPExclCBAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "ExtChargeback in Period",
+            "expression": "SUM([ExtChargebackAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP",
+            "expression": "CALCULATE([GP in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD GP",
+            "expression": "CALCULATE([GP in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP",
+            "expression": "CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD GP",
+            "expression": "CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var",
+            "expression": "[MTD Sales]-[PY MTD Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP Var",
+            "expression": "[MTD GP]-[PY MTD GP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY QTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12 &&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY QTD GP",
+            "expression": "CALCULATE([GP in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12 &&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD Sales Var",
+            "expression": "[QTD Sales]-[PY QTD Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD GP Var",
+            "expression": "[QTD GP]-[PY QTD GP] ",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Sales",
+            "expression": "CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD GP",
+            "expression": "CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales Var",
+            "expression": "[YTD Sales]-[PY YTD Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP Var",
+            "expression": "[YTD GP]-[PY YTD GP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var %",
+            "expression": "[MTD Sales]/[PY MTD Sales] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "MTD GP Var %",
+            "expression": "[MTD GP]/[PY MTD GP] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "QTD Sales Var %",
+            "expression": "[QTD Sales]/[PY QTD Sales]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "QTD GP Var %",
+            "expression": "[QTD GP]/[PY QTD GP] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "YTD Sales Var %",
+            "expression": "[YTD Sales]/[PY YTD Sales]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "YTD GP Sales Var %",
+            "expression": "[YTD GP]/[PY YTD GP] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Month Prior Sales",
+            "expression": "CALCULATE([Sales in Period],filter(Period,Period[MonthSeq]=[__seq_first_month_current]-1))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Month Prior GP",
+            "expression": "CALCULATE([GP in Period],filter(Period,Period[MonthSeq]=[__seq_first_month_current]-1))"
+          },
+          {
+            "name": "Month Prior Sales Var %",
+            "expression": "[MTD Sales]/[Month Prior Sales]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Month Prior GP Var %",
+            "expression": "[MTD GP]/[Month Prior GP]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Month Prior Sales Var",
+            "expression": "[MTD Sales]-[Month Prior Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Month Prior GP Var",
+            "expression": "[MTD GP]-[Month Prior GP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Quarter Prior Sales",
+            "expression": "CALCULATE([Sales in Period],filter(all(Period),Period[MonthSeq]>=[__seq_first_month_in_quarter]-3&&period[monthseq]<=[__seq_first_month_current]-3))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Quarter Prior GP",
+            "expression": "CALCULATE([GP in Period],filter(all(Period),Period[MonthSeq]>=[__seq_first_month_in_quarter]-3&&period[monthseq]<=[__seq_first_month_current]-3))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Quarter Prior Sales Var",
+            "expression": "[QTD Sales]-[Quarter Prior Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Quarter Prior GP Var",
+            "expression": "[QTD GP]-[Quarter Prior GP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Quarter Prior Sales Var %",
+            "expression": "[QTD Sales]/[Quarter Prior Sales]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Quarter Prior GP Var %",
+            "expression": "[QTD GP]/[Quarter Prior GP]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SaleVendor"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Fact"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "Period Select",
+        "columns": [
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "sourceColumn": "WorkingDaysMonth",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "MonthSeq",
+            "dataType": "int64",
+            "sourceColumn": "MonthSeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInQtr",
+            "dataType": "int64",
+            "sourceColumn": "FirstMonthSeqInQtr",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInYear",
+            "dataType": "int64",
+            "sourceColumn": "FirstMonthSeqInYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "LastWorkingDay",
+            "dataType": "dateTime",
+            "sourceColumn": "LastWorkingDay",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fiscal_Month_List",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "__first_month_current",
+            "expression": "max('Period Select'[FiscalMonth])"
+          },
+          {
+            "name": "__seq_first_month_current",
+            "expression": "calculate(max('Period Select'[MonthSeq]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))"
+          },
+          {
+            "name": "__seq_first_month_in_year",
+            "expression": "calculate(max('Period Select'[FirstMonthSeqInYear]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))"
+          },
+          {
+            "name": "__seq_first_month_in_quarter",
+            "expression": "calculate(max('Period Select'[FirstMonthSeqInQtr]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Period"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Branch",
+        "columns": [
+          {
+            "name": "BranchKey",
+            "dataType": "int64",
+            "sourceColumn": "BranchKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "BranchName",
+            "dataType": "string",
+            "sourceColumn": "BranchName",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Branch",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[Branch].* FROM [Dimension].[Branch] ",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Branch].* FROM [Dimension].[Branch] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Branch"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Market Class",
+        "columns": [
+          {
+            "name": "MarketClassKey",
+            "dataType": "int64",
+            "sourceColumn": "MarketClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MarketClassCode",
+            "dataType": "string",
+            "sourceColumn": "MarketClassCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClassName",
+            "dataType": "string",
+            "sourceColumn": "MarketClassName",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CustomerMarketClass",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[CustomerMarketClass].* FROM [Dimension].[CustomerMarketClass] ",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[CustomerMarketClass].* FROM [Dimension].[CustomerMarketClass] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "CustomerMarketClass"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Item Supplier",
+        "columns": [
+          {
+            "name": "SupplierKey",
+            "dataType": "int64",
+            "sourceColumn": "SupplierKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SupplierCode",
+            "dataType": "string",
+            "sourceColumn": "SupplierCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SupplierName",
+            "dataType": "string",
+            "sourceColumn": "SupplierName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SupplierFamilyCode",
+            "dataType": "string",
+            "sourceColumn": "SupplierFamilyCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SupplierBuyingGroupCode",
+            "dataType": "string",
+            "sourceColumn": "SupplierBuyingGroupCode"
+          },
+          {
+            "name": "SupplierClassificationCode",
+            "dataType": "string",
+            "sourceColumn": "SupplierClassificationCode"
+          },
+          {
+            "name": "SupplierFamilyName",
+            "dataType": "string",
+            "sourceColumn": "SupplierFamilyName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ItemSupplier",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Dimension].[ItemSupplier].* FROM [Dimension].[ItemSupplier] ",
+              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierKey</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>106</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>115</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>118</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierFamilyCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>153</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierBuyingGroupCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>195</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierClassificationCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>190</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierFamilyName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>156</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierKey</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierFamilyCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierBuyingGroupCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierClassificationCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierFamilyName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>6</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierBuyingGroupCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierClassificationCode</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SupplierFamilyName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[ItemSupplier].* FROM [Dimension].[ItemSupplier] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "ItemSupplier"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierKey</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>106</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>115</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>118</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierFamilyCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>153</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierBuyingGroupCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>195</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierClassificationCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>190</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierFamilyName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>156</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierKey</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierFamilyCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierBuyingGroupCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierClassificationCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierFamilyName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>6</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierBuyingGroupCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierClassificationCode</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SupplierFamilyName</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "97c6f6e8-5fbf-4329-8154-440eac8eecd0",
+        "fromTable": "Sales",
+        "fromColumn": "ItemKey",
+        "toTable": "Item",
+        "toColumn": "ItemKey"
+      },
+      {
+        "name": "a6ee38fc-b57c-4c27-a5c0-984af0f429a8",
+        "fromTable": "Sales",
+        "fromColumn": "ShipTo",
+        "toTable": "Customer",
+        "toColumn": "ShipTo"
+      },
+      {
+        "name": "d44baecf-b705-4535-ba67-437a692b182e",
+        "fromTable": "Sales",
+        "fromColumn": "FiscalMonth",
+        "toTable": "Period",
+        "toColumn": "FiscalMonth"
+      },
+      {
+        "name": "e225c2c9-ea78-4ebf-9d49-0cdebba0b781",
+        "fromTable": "Sales",
+        "fromColumn": "HIST_BranchKey",
+        "toTable": "Branch",
+        "toColumn": "BranchKey"
+      },
+      {
+        "name": "dde6bc06-fc0b-4dd3-8b59-4d7e6f9fb6fa",
+        "fromTable": "Sales",
+        "fromColumn": "HIST_MarketClassKey",
+        "toTable": "Market Class",
+        "toColumn": "MarketClassKey"
+      },
+      {
+        "name": "71a6800c-275f-4fbe-b0db-bab98e3ba475",
+        "fromTable": "Sales",
+        "fromColumn": "HIST_SupplierKey",
+        "toTable": "Item Supplier",
+        "toColumn": "SupplierKey"
+      }
+    ],
+    "roles": [
+      {
+        "name": "User Role",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "CAHSI\\jli",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
