@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_pricing"
   DTS:PackageType="5"
-  DTS:VersionBuild="147"
-  DTS:VersionGUID="{1F6BEA25-2287-4146-AA7D-D2AFD3F3C6D4}">
+  DTS:VersionBuild="165"
+  DTS:VersionGUID="{ACAC1E18-6379-489F-BCCE-80DCD275DE1E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -238,12 +238,6 @@
                           externalMetadataColumnId="Package\seq_F0005_user_defined_codes\dft_load_stage\F0005_user_defined_codes.Inputs[OLE DB Destination Input].ExternalColumns[DRPID__program_id]"
                           lineageId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRPID__program_id]" />
                         <inputColumn
-                          refId="Package\seq_F0005_user_defined_codes\dft_load_stage\F0005_user_defined_codes.Inputs[OLE DB Destination Input].Columns[DRUPMJ_date_updated]"
-                          cachedDataType="dbDate"
-                          cachedName="DRUPMJ_date_updated"
-                          externalMetadataColumnId="Package\seq_F0005_user_defined_codes\dft_load_stage\F0005_user_defined_codes.Inputs[OLE DB Destination Input].ExternalColumns[DRUPMJ_date_updated]"
-                          lineageId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRUPMJ_date_updated]" />
-                        <inputColumn
                           refId="Package\seq_F0005_user_defined_codes\dft_load_stage\F0005_user_defined_codes.Inputs[OLE DB Destination Input].Columns[DRJOBN_work_station_id]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -258,6 +252,12 @@
                           cachedPrecision="6"
                           externalMetadataColumnId="Package\seq_F0005_user_defined_codes\dft_load_stage\F0005_user_defined_codes.Inputs[OLE DB Destination Input].ExternalColumns[DRUPMT_time_last_updated]"
                           lineageId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRUPMT_time_last_updated]" />
+                        <inputColumn
+                          refId="Package\seq_F0005_user_defined_codes\dft_load_stage\F0005_user_defined_codes.Inputs[OLE DB Destination Input].Columns[DRUPMJ_date_updated]"
+                          cachedDataType="dbDate"
+                          cachedName="DRUPMJ_date_updated"
+                          externalMetadataColumnId="Package\seq_F0005_user_defined_codes\dft_load_stage\F0005_user_defined_codes.Inputs[OLE DB Destination Input].ExternalColumns[DRUPMJ_date_updated]"
+                          lineageId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRUPMJ_date_updated]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -336,6 +336,10 @@
                           dataType="numeric"
                           name="DRUPMT_time_last_updated"
                           precision="6" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F0005_user_defined_codes\dft_load_stage\F0005_user_defined_codes.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                          dataType="i4"
+                          name="ID" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -395,7 +399,7 @@
 
 SELECT 
 
-   -- Top 5 
+-- Top 5 
     "DRSY" AS DRSY___product_code,
 	"DRRT" AS DRRT___user_defined_codes,
 	"DRKY" AS DRKY___user_defined_code,
@@ -426,16 +430,17 @@ FROM
 		DRHRDC,
 		DRUSER,
 		DRPID,
-		CASE WHEN DRUPMJ IS NOT NULL THEN DATE(DIGITS(DEC(DRUPMJ+ 1900000,7,0))) ELSE NULL END AS DRUPMJ,
+--		DRUPMJ  AS DRUPMJ,
+		CASE WHEN DRUPMJ &gt;0 THEN DATE(DIGITS(DEC(DRUPMJ+ 1900000,7,0))) ELSE NULL END AS DRUPMJ,
 		DRJOBN,
 		DRUPMT
 
 	FROM
 		ARCPCOM71.F0005
---    WHERE
---        &lt;insert custom code here&gt;
+    WHERE
+        DRUPMJ &gt; 0
 --    ORDER BY
---        &lt;insert custom code here&gt;
+--        DRUPMJ
 ')</property>
                     <property
                       dataType="System.String"
@@ -583,20 +588,11 @@ FROM
                           name="DRPID__program_id"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRUPMJ_date_updated]"
-                          dataType="dbDate"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].ExternalColumns[DRUPMJ_date_updated]"
-                          lineageId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRUPMJ_date_updated]"
-                          name="DRUPMJ_date_updated"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRJOBN_work_station_id]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].ExternalColumns[DRJOBN_work_station_id]"
                           length="10"
                           lineageId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRJOBN_work_station_id]"
@@ -611,6 +607,15 @@ FROM
                           lineageId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRUPMT_time_last_updated]"
                           name="DRUPMT_time_last_updated"
                           precision="6"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRUPMJ_date_updated]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].ExternalColumns[DRUPMJ_date_updated]"
+                          lineageId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].Columns[DRUPMJ_date_updated]"
+                          name="DRUPMJ_date_updated"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -676,10 +681,6 @@ FROM
                           length="10"
                           name="DRPID__program_id" />
                         <externalMetadataColumn
-                          refId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].ExternalColumns[DRUPMJ_date_updated]"
-                          dataType="dbDate"
-                          name="DRUPMJ_date_updated" />
-                        <externalMetadataColumn
                           refId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].ExternalColumns[DRJOBN_work_station_id]"
                           codePage="1252"
                           dataType="str"
@@ -690,6 +691,10 @@ FROM
                           dataType="numeric"
                           name="DRUPMT_time_last_updated"
                           precision="6" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150.Outputs[OLE DB Source Output].ExternalColumns[DRUPMJ_date_updated]"
+                          dataType="dbDate"
+                          name="DRUPMJ_date_updated" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -24915,7 +24920,7 @@ FROM
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="233,219"
-          Size="233,262"
+          Size="254,262"
           Id="Package\seq_F0005_user_defined_codes"
           TopLeft="5.5,5.5" />
         <NodeLayout
@@ -25046,7 +25051,7 @@ FROM
           ParentId="Package"
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1070,322"
+          PanelSize="1070,323"
           Size="1070,366"
           Id="fce4011e-2c05-408a-b6d8-8279269c6823"
           TopLeft="91.5,755.5">
