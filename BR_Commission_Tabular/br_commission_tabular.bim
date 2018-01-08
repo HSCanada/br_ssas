@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL2;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL2;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -328,9 +328,14 @@
             "sourceColumn": "CommGroupCpsCode"
           },
           {
-            "name": "FSCDigImpBonus",
+            "name": "FSC_DigImpBonus",
             "dataType": "string",
             "sourceColumn": "CustomCommGroup1Code"
+          },
+          {
+            "name": "ESS_VendorBonus",
+            "dataType": "string",
+            "sourceColumn": "CustomCommGroup2Code"
           }
         ],
         "partitions": [
@@ -354,6 +359,7 @@
                 "  ,Dimension.Item.Current_BasePrice",
                 "  ,Dimension.Item.CommGroupCpsCode",
                 "  ,Dimension.Item.CustomCommGroup1Code",
+                "  ,Dimension.Item.CustomCommGroup2Code",
                 "FROM",
                 "  Dimension.Item"
               ],
@@ -378,8 +384,9 @@
                   "  ,Dimension.Item.Current_BasePrice",
                   "  ,Dimension.Item.CommGroupCpsCode",
                   "  ,Dimension.Item.CustomCommGroup1Code",
+                  "  ,Dimension.Item.CustomCommGroup2Code",
                   "FROM",
-                  "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup2Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -404,6 +411,7 @@
               "  ,Dimension.Item.Current_BasePrice",
               "  ,Dimension.Item.CommGroupCpsCode",
               "  ,Dimension.Item.CustomCommGroup1Code",
+              "  ,Dimension.Item.CustomCommGroup2Code",
               "FROM",
               "  Dimension.Item"
             ]
@@ -434,8 +442,9 @@
               "  ,Dimension.Item.Current_BasePrice",
               "  ,Dimension.Item.CommGroupCpsCode",
               "  ,Dimension.Item.CustomCommGroup1Code",
+              "  ,Dimension.Item.CustomCommGroup2Code",
               "FROM",
-              "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup2Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -1850,7 +1859,6 @@
           {
             "name": "SalespersonID",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "SalespersonID",
             "sourceProviderType": "Char"
           },
@@ -1860,6 +1868,26 @@
             "isHidden": true,
             "sourceColumn": "SalespersonKey",
             "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CostCenter",
+            "dataType": "string",
+            "sourceColumn": "CostCenter"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode"
+          },
+          {
+            "name": "BranchName",
+            "dataType": "string",
+            "sourceColumn": "BranchName"
+          },
+          {
+            "name": "ZoneName",
+            "dataType": "string",
+            "sourceColumn": "ZoneName"
           }
         ],
         "partitions": [
@@ -1867,13 +1895,43 @@
             "name": "SalespersonCommission",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]",
+              "query": [
+                "SELECT",
+                "  Dimension.SalespersonCommission.SalespersonKey",
+                "  ,Dimension.SalespersonCommission.EmployeeNumber",
+                "  ,Dimension.SalespersonCommission.CommMasterCode",
+                "  ,Dimension.SalespersonCommission.SalespersonName",
+                "  ,Dimension.SalespersonCommission.CommPlanCode",
+                "  ,Dimension.SalespersonCommission.TerritoryStart",
+                "  ,Dimension.SalespersonCommission.SalespersonID",
+                "  ,Dimension.SalespersonCommission.CostCenter",
+                "  ,Dimension.SalespersonCommission.BranchCode",
+                "  ,Dimension.SalespersonCommission.BranchName",
+                "  ,Dimension.SalespersonCommission.ZoneName",
+                "FROM",
+                "  Dimension.SalespersonCommission"
+              ],
               "dataSource": "Commission SQL Source"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "  Dimension.SalespersonCommission.SalespersonKey",
+                  "  ,Dimension.SalespersonCommission.EmployeeNumber",
+                  "  ,Dimension.SalespersonCommission.CommMasterCode",
+                  "  ,Dimension.SalespersonCommission.SalespersonName",
+                  "  ,Dimension.SalespersonCommission.CommPlanCode",
+                  "  ,Dimension.SalespersonCommission.TerritoryStart",
+                  "  ,Dimension.SalespersonCommission.SalespersonID",
+                  "  ,Dimension.SalespersonCommission.CostCenter",
+                  "  ,Dimension.SalespersonCommission.BranchCode",
+                  "  ,Dimension.SalespersonCommission.BranchName",
+                  "  ,Dimension.SalespersonCommission.ZoneName",
+                  "FROM",
+                  "  Dimension.SalespersonCommission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"SalespersonKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"EmployeeNumber\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"CommMasterCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"SalespersonName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"CommPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"TerritoryStart\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"SalespersonID\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"CostCenter\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"BranchName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"ZoneName\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -1881,7 +1939,22 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]"
+            "value": [
+              "SELECT",
+              "  Dimension.SalespersonCommission.SalespersonKey",
+              "  ,Dimension.SalespersonCommission.EmployeeNumber",
+              "  ,Dimension.SalespersonCommission.CommMasterCode",
+              "  ,Dimension.SalespersonCommission.SalespersonName",
+              "  ,Dimension.SalespersonCommission.CommPlanCode",
+              "  ,Dimension.SalespersonCommission.TerritoryStart",
+              "  ,Dimension.SalespersonCommission.SalespersonID",
+              "  ,Dimension.SalespersonCommission.CostCenter",
+              "  ,Dimension.SalespersonCommission.BranchCode",
+              "  ,Dimension.SalespersonCommission.BranchName",
+              "  ,Dimension.SalespersonCommission.ZoneName",
+              "FROM",
+              "  Dimension.SalespersonCommission"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1893,7 +1966,22 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "  Dimension.SalespersonCommission.SalespersonKey",
+              "  ,Dimension.SalespersonCommission.EmployeeNumber",
+              "  ,Dimension.SalespersonCommission.CommMasterCode",
+              "  ,Dimension.SalespersonCommission.SalespersonName",
+              "  ,Dimension.SalespersonCommission.CommPlanCode",
+              "  ,Dimension.SalespersonCommission.TerritoryStart",
+              "  ,Dimension.SalespersonCommission.SalespersonID",
+              "  ,Dimension.SalespersonCommission.CostCenter",
+              "  ,Dimension.SalespersonCommission.BranchCode",
+              "  ,Dimension.SalespersonCommission.BranchName",
+              "  ,Dimension.SalespersonCommission.ZoneName",
+              "FROM",
+              "  Dimension.SalespersonCommission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"SalespersonKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"EmployeeNumber\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"CommMasterCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"SalespersonName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"CommPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"TerritoryStart\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"SalespersonID\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"CostCenter\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"BranchName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCommission\" ColumnName=\"ZoneName\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -1957,6 +2045,38 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CostCenter",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CostCenter]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "ZoneName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
           }
         ],
         "partitions": [
@@ -2052,6 +2172,13 @@
             "isHidden": true,
             "sourceColumn": "DocTypeKey",
             "sourceProviderType": "Integer"
+          },
+          {
+            "type": "calculated",
+            "name": "TransType",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "left([DocType],1)"
           }
         ],
         "partitions": [
