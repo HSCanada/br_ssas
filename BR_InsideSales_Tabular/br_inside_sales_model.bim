@@ -639,10 +639,8 @@
             },
             "annotations": [
               {
-                "name": "QueryEditorSerialization"
-              },
-              {
-                "name": "TableWidgetSerialization"
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_TS_Period].* \t\tFROM [dbo].[BRS_TS_Period]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -659,6 +657,10 @@
           {
             "name": "_TM_ExtProp_QueryDefinition",
             "value": "      SELECT [dbo].[BRS_TS_Period].*   FROM [dbo].[BRS_TS_Period] "
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_TS_Period].* \t\tFROM [dbo].[BRS_TS_Period]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
