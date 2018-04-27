@@ -13,7 +13,11 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Development' ">
     <OutputPath>bin\</OutputPath>
+<<<<<<< HEAD
     <DeploymentServerName>cahsionnlsql2</DeploymentServerName>
+=======
+    <DeploymentServerName>CAHSIONNLSQL2</DeploymentServerName>
+>>>>>>> 0d348feb4f9dfbf467ceb7020df2a5f84492077b
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_VendorCategory_Tabular</DeploymentServerDatabase>

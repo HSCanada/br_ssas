@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="conn_access"
+  DTS:DTSID="{AAC4AF1E-2608-4D1B-B0D4-8FE6A608C36D}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=S:\Business Reporting\zDev\US_Promo\PromoBE.accdb;Provider=Microsoft.ACE.OLEDB.12.0;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -11,11 +11,105 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_com_rebate_terr"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{4C065B25-4D18-49F7-B064-7E32D4FCA420}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{29BD45AE-80A0-4D77-875D-3A0DCE634759}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:CreationName="Microsoft.LogProviderEventLog"
+      DTS:Description="Writes log entries for events to the Event Log"
+      DTS:DTSID="{5E66C81A-D659-47D6-BD6C-A664365EE842}"
+      DTS:ObjectName="SSIS log provider for Windows Event Log">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
   <DTS:Variables />
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">2,7,OnError,13,OnPostExecute</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{5E66C81A-D659-47D6-BD6C-A664365EE842}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\seq_F55479C_rebate_by_shipto_Staging"
@@ -4622,6 +4716,791 @@ FROM
           DTS:To="Package\seq_F5553_territory_Staging\dft_load_stage" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\seq_F5554_territory_name_Staging"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{85c48f43-e7bc-42e5-a7a6-86c737c458af}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="seq_F5554_territory_name_Staging">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">2,7,OnError,13,OnPostExecute</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\seq_F5554_territory_name_Staging\dft_load_stage"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{de0c0b85-b593-4c53-a217-0ba5d56824b8}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dft_load_stage"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="F5553_territory_Staging"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Integration].[F5554_territory_name_Staging]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Connections[OleDbConnection]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GECO___company]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="GECO___company"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GECO___company]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GECO___company]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GE$GTY_group_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="GE$GTY_group_type"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GE$GTY_group_type]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$GTY_group_type]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GE$VNO_number_version]"
+                          cachedDataType="numeric"
+                          cachedName="GE$VNO_number_version"
+                          cachedPrecision="5"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GE$VNO_number_version]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$VNO_number_version]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GE$LID_level_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="GE$LID_level_id"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GE$LID_level_id]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$LID_level_id]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GE$L01_level_code_01]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="GE$L01_level_code_01"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GE$L01_level_code_01]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$L01_level_code_01]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GEDSC1_description]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="GEDSC1_description"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEDSC1_description]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEDSC1_description]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GETKBY_order_taken_by]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="GETKBY_order_taken_by"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GETKBY_order_taken_by]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GETKBY_order_taken_by]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GEUSER_user_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="GEUSER_user_id"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEUSER_user_id]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUSER_user_id]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GEPID__program_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="GEPID__program_id"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEPID__program_id]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEPID__program_id]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GEJOBN_work_station_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="GEJOBN_work_station_id"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEJOBN_work_station_id]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEJOBN_work_station_id]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GEUPMJ_date_updated]"
+                          cachedDataType="dbDate"
+                          cachedName="GEUPMJ_date_updated"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEUPMJ_date_updated]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUPMJ_date_updated]" />
+                        <inputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].Columns[GEUPMT_time_last_updated]"
+                          cachedDataType="numeric"
+                          cachedName="GEUPMT_time_last_updated"
+                          cachedPrecision="6"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEUPMT_time_last_updated]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUPMT_time_last_updated]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GECO___company]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="GECO___company" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GE$GTY_group_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="GE$GTY_group_type" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GE$VNO_number_version]"
+                          dataType="numeric"
+                          name="GE$VNO_number_version"
+                          precision="5" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GE$LID_level_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="GE$LID_level_id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GE$L01_level_code_01]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="GE$L01_level_code_01" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEDSC1_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="GEDSC1_description" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GETKBY_order_taken_by]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="GETKBY_order_taken_by" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEUSER_user_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="GEUSER_user_id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEPID__program_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="GEPID__program_id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEJOBN_work_station_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="GEJOBN_work_station_id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEUPMJ_date_updated]"
+                          dataType="dbDate"
+                          name="GEUPMJ_date_updated" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GEUPMT_time_last_updated]"
+                          dataType="numeric"
+                          name="GEUPMT_time_last_updated"
+                          precision="6" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source F5554"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--------------------------------------------------------------------------------
+-- DROP TABLE Integration.F5554_territory_name_Staging
+--------------------------------------------------------------------------------
+
+SELECT 
+--    Top 5 
+    "GECO" AS GECO___company,
+	"GE$GTY" AS GE$GTY_group_type,
+	"GE$VNO" AS GE$VNO_number_version,
+	"GE$LID" AS GE$LID_level_id,
+	"GE$L01" AS GE$L01_level_code_01,
+	"GEDSC1" AS GEDSC1_description,
+	"GETKBY" AS GETKBY_order_taken_by,
+	"GEUSER" AS GEUSER_user_id,
+	"GEPID" AS GEPID__program_id,
+	"GEJOBN" AS GEJOBN_work_station_id,
+	"GEUPMJ" AS GEUPMJ_date_updated,
+	"GEUPMT" AS GEUPMT_time_last_updated 
+
+-- INTO Integration.F5554_territory_name_Staging
+
+FROM 
+    OPENQUERY (ESYS_PROD, '
+
+	SELECT
+		GECO,
+		GE$GTY,
+		GE$VNO,
+		GE$LID,
+		GE$L01,
+		GEDSC1,
+		GETKBY,
+		GEUSER,
+		GEPID,
+		GEJOBN,
+		CASE WHEN GEUPMJ IS NOT NULL THEN DATE(DIGITS(DEC(GEUPMJ+ 1900000,7,0))) ELSE NULL END AS GEUPMJ,
+		GEUPMT
+
+	FROM
+		ARCPDTA71.F5554
+--    WHERE
+--        &lt;insert custom code here&gt;
+--    ORDER BY
+--        &lt;insert custom code here&gt;
+')
+
+GO</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Connections[OleDbConnection]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GECO___company]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GECO___company]"
+                          length="5"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GECO___company]"
+                          name="GECO___company"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$GTY_group_type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GE$GTY_group_type]"
+                          length="4"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$GTY_group_type]"
+                          name="GE$GTY_group_type"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$VNO_number_version]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GE$VNO_number_version]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$VNO_number_version]"
+                          name="GE$VNO_number_version"
+                          precision="5"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$LID_level_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GE$LID_level_id]"
+                          length="5"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$LID_level_id]"
+                          name="GE$LID_level_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$L01_level_code_01]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GE$L01_level_code_01]"
+                          length="5"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GE$L01_level_code_01]"
+                          name="GE$L01_level_code_01"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEDSC1_description]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEDSC1_description]"
+                          length="30"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEDSC1_description]"
+                          name="GEDSC1_description"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GETKBY_order_taken_by]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GETKBY_order_taken_by]"
+                          length="10"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GETKBY_order_taken_by]"
+                          name="GETKBY_order_taken_by"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUSER_user_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEUSER_user_id]"
+                          length="10"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUSER_user_id]"
+                          name="GEUSER_user_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEPID__program_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEPID__program_id]"
+                          length="10"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEPID__program_id]"
+                          name="GEPID__program_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEJOBN_work_station_id]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEJOBN_work_station_id]"
+                          length="10"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEJOBN_work_station_id]"
+                          name="GEJOBN_work_station_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUPMJ_date_updated]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEUPMJ_date_updated]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUPMJ_date_updated]"
+                          name="GEUPMJ_date_updated"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUPMT_time_last_updated]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEUPMT_time_last_updated]"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].Columns[GEUPMT_time_last_updated]"
+                          name="GEUPMT_time_last_updated"
+                          precision="6"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GECO___company]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="GECO___company" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GE$GTY_group_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="GE$GTY_group_type" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GE$VNO_number_version]"
+                          dataType="numeric"
+                          name="GE$VNO_number_version"
+                          precision="5" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GE$LID_level_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="GE$LID_level_id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GE$L01_level_code_01]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="GE$L01_level_code_01" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEDSC1_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="GEDSC1_description" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GETKBY_order_taken_by]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="GETKBY_order_taken_by" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEUSER_user_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="GEUSER_user_id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEPID__program_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="GEPID__program_id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEJOBN_work_station_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="GEJOBN_work_station_id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEUPMJ_date_updated]"
+                          dataType="dbDate"
+                          name="GEUPMJ_date_updated" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output].ExternalColumns[GEUPMT_time_last_updated]"
+                          dataType="numeric"
+                          name="GEUPMT_time_last_updated"
+                          precision="6" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GECO___company]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GECO___company]"
+                          name="GECO___company" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GE$GTY_group_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GE$GTY_group_type]"
+                          name="GE$GTY_group_type" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GE$VNO_number_version]"
+                          dataType="numeric"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GE$VNO_number_version]"
+                          name="GE$VNO_number_version"
+                          precision="5" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GE$LID_level_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GE$LID_level_id]"
+                          name="GE$LID_level_id" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GE$L01_level_code_01]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GE$L01_level_code_01]"
+                          name="GE$L01_level_code_01" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEDSC1_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEDSC1_description]"
+                          name="GEDSC1_description" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GETKBY_order_taken_by]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GETKBY_order_taken_by]"
+                          name="GETKBY_order_taken_by" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEUSER_user_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEUSER_user_id]"
+                          name="GEUSER_user_id" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEPID__program_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEPID__program_id]"
+                          name="GEPID__program_id" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEJOBN_work_station_id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEJOBN_work_station_id]"
+                          name="GEJOBN_work_station_id" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEUPMJ_date_updated]"
+                          dataType="dbDate"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEUPMJ_date_updated]"
+                          name="GEUPMJ_date_updated" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEUPMT_time_last_updated]"
+                          dataType="numeric"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[GEUPMT_time_last_updated]"
+                          name="GEUPMT_time_last_updated"
+                          precision="6" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\seq_F5554_territory_name_Staging\dft_load_stage.Paths[OLE DB Source Output]"
+                  endId="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seq_F5554_territory_name_Staging\sql_truncate_stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{05f4e4ec-c68a-4c98-b726-8aa79d918c8a}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_truncate_stage"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Integration.F5554_territory_name_Staging" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seq_F5554_territory_name_Staging.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9e8c0d56-1c4c-465b-80eb-bd8a1972820f}"
+          DTS:From="Package\seq_F5554_territory_name_Staging\sql_truncate_stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\seq_F5554_territory_name_Staging\dft_load_stage" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -4634,7 +5513,7 @@ FROM
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="151,42"
           Id="Package\seq_F55479C_rebate_by_shipto_Staging\dft_load_stage"
@@ -4709,6 +5588,43 @@ FROM
           Size="296,239"
           Id="Package\seq_F5553_territory_Staging"
           TopLeft="133,382" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\seq_F5554_territory_name_Staging\dft_load_stage"
+          TopLeft="15,107.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\seq_F5554_territory_name_Staging\sql_truncate_stage"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\seq_F5554_territory_name_Staging.PrecedenceConstraints[Constraint]"
+          TopLeft="90.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="296,196"
+          Size="296,239"
+          Id="Package\seq_F5554_territory_name_Staging"
+          TopLeft="600,182" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4716,7 +5632,7 @@ FROM
     design-time-name="Package\seq_F55479C_rebate_by_shipto_Staging\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="197,42"
           Id="Package\seq_F55479C_rebate_by_shipto_Staging\dft_load_stage\OLE DB Source F55479C"
@@ -4756,7 +5672,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4787,15 +5705,15 @@ FROM
     design-time-name="Package\seq_F5553_territory_Staging\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="195,42"
-          Id="Package\seq_F5553_territory_Staging\dft_load_stage\F5553_territory_Staging"
-          TopLeft="232,214" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="184,42"
           Id="Package\seq_F5553_territory_Staging\dft_load_stage\OLE DB Source F5553"
           TopLeft="237,64" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\seq_F5553_territory_Staging\dft_load_stage\F5553_territory_Staging"
+          TopLeft="232,214" />
         <EdgeLayout
           Id="Package\seq_F5553_territory_Staging\dft_load_stage.Paths[OLE DB Source Output]"
           TopLeft="329.25,106">
@@ -4815,7 +5733,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4836,6 +5756,67 @@ FROM
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\seq_F5553_territory_Staging\dft_load_stage\OLE DB Source F5553">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\seq_F5554_territory_name_Staging\dft_load_stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="195,42"
+          Id="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging"
+          TopLeft="232,214" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554"
+          TopLeft="237,64" />
+        <EdgeLayout
+          Id="Package\seq_F5554_territory_name_Staging\dft_load_stage.Paths[OLE DB Source Output]"
+          TopLeft="329.25,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,108"
+              Start="0,0"
+              End="0,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.35349609375,45.5390625,30.7069921875,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_F5554_territory_name_Staging\dft_load_stage\F5553_territory_Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_F5554_territory_name_Staging\dft_load_stage\OLE DB Source F5554">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
