@@ -1590,19 +1590,23 @@
         "measures": [
           {
             "name": "__first_month_current",
-            "expression": "max('Period Select'[FiscalMonth])"
+            "expression": "max('Period Select'[FiscalMonth])",
+            "isHidden": true
           },
           {
             "name": "__seq_first_month_current",
-            "expression": "calculate(max('Period Select'[MonthSeq]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))"
+            "expression": "calculate(max('Period Select'[MonthSeq]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
           },
           {
             "name": "__seq_first_month_in_year",
-            "expression": "calculate(max('Period Select'[FirstMonthSeqInYear]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))"
+            "expression": "calculate(max('Period Select'[FirstMonthSeqInYear]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
           },
           {
             "name": "__seq_first_month_in_quarter",
-            "expression": "calculate(max('Period Select'[FirstMonthSeqInQtr]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))"
+            "expression": "calculate(max('Period Select'[FirstMonthSeqInQtr]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
           }
         ],
         "annotations": [
