@@ -49,7 +49,7 @@
     <OutputPath>bin\QA\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Prod' ">
-    <DeploymentServerName>localdb</DeploymentServerName>
+    <DeploymentServerName>cahsionnlsql2</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_Commission_Tabular</DeploymentServerDatabase>
@@ -59,6 +59,7 @@
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
     <OutputPath>bin\Prod\</OutputPath>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="br_commission_tabular.bim">
