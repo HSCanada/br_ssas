@@ -8,7 +8,7 @@
         "name": "SqlServer_cahsionnlsql2_Prod_BRSales",
         "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql2;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
-        "account": "cahsi\\jli",
+        "account": "cahsi\\tcrowley",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -199,12 +199,6 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "MarketClass",
-            "dataType": "string",
-            "sourceColumn": "MarketClass",
-            "sourceProviderType": "Char"
-          },
-          {
             "name": "Segment",
             "dataType": "string",
             "sourceColumn": "Segment",
@@ -260,9 +254,15 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "MarketClassCode",
+            "name": "MarketClassCode_Current",
             "dataType": "string",
             "sourceColumn": "MarketClassCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClass_Current",
+            "dataType": "string",
+            "sourceColumn": "MarketClass",
             "sourceProviderType": "Char"
           }
         ],
@@ -1528,30 +1528,6 @@
             "sourceProviderType": "WChar"
           },
           {
-            "name": "MonthNum",
-            "dataType": "int64",
-            "sourceColumn": "MonthNum",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "QuarterName",
-            "dataType": "string",
-            "sourceColumn": "QuarterName",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "YearNum",
-            "dataType": "int64",
-            "sourceColumn": "YearNum",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "WorkingDaysMonth",
-            "dataType": "int64",
-            "sourceColumn": "WorkingDaysMonth",
-            "sourceProviderType": "SmallInt"
-          },
-          {
             "name": "MonthSeq",
             "dataType": "int64",
             "sourceColumn": "MonthSeq",
@@ -1567,6 +1543,30 @@
             "name": "FirstMonthSeqInYear",
             "dataType": "int64",
             "sourceColumn": "FirstMonthSeqInYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "sourceColumn": "WorkingDaysMonth",
             "sourceProviderType": "SmallInt"
           },
           {
@@ -2179,6 +2179,12 @@
             "sourceProviderType": "Char"
           },
           {
+            "name": "GLBU_ClassKey",
+            "dataType": "int64",
+            "sourceColumn": "GLBU_ClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
             "name": "StatusCd",
             "dataType": "int64",
             "sourceColumn": "StatusCd",
@@ -2238,12 +2244,6 @@
             "dataType": "string",
             "sourceColumn": "GLBU_ClassSM_L3",
             "sourceProviderType": "Char"
-          },
-          {
-            "name": "GLBU_ClassKey",
-            "dataType": "int64",
-            "sourceColumn": "GLBU_ClassKey",
-            "sourceProviderType": "Integer"
           }
         ],
         "partitions": [
