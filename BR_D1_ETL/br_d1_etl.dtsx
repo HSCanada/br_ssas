@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\JLi"
   DTS:DTSID="{E91CB9F9-B1A8-4469-97F6-2063FC12487B}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.0800.60"
+  DTS:LastModifiedProductVersion="14.0.3002.101"
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{FAEC21D1-559D-4B4D-973B-19F2B1D374AB}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{1E274498-3480-4C0E-8697-F40235C9D46C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2023,6 +2023,32 @@
                               name="FriendlyExpression">LEN(TRIM(Derived_DATE_RECEIVED)) == 0 ? NULL(DT_WSTR,10) : Derived_DATE_RECEIVED</property>
                           </properties>
                         </inputColumn>
+                        <inputColumn
+                          refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input].Columns[Derived_QTY_RECEIVED]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="QTY_RECEIVED"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\seq_open_order_opordrpt\dft_load_stage\Flat File Source opordrpt.Outputs[Flat File Source Output].Columns[QTY_RECEIVED]"
+                          name="Derived_QTY_RECEIVED"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[LEN]([TRIM](#{Package\seq_open_order_opordrpt\dft_load_stage\Flat File Source opordrpt.Outputs[Flat File Source Output].Columns[QTY_RECEIVED]})) == 0 ? NULL(DT_WSTR,10) : #{Package\seq_open_order_opordrpt\dft_load_stage\Flat File Source opordrpt.Outputs[Flat File Source Output].Columns[QTY_RECEIVED]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">LEN(TRIM(Derived_QTY_RECEIVED)) == 0 ? NULL(DT_WSTR,10) : Derived_QTY_RECEIVED</property>
+                          </properties>
+                        </inputColumn>
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -2054,83 +2080,6 @@
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
                           lineageId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL"
-                  componentClassID="Microsoft.DerivedColumn"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-                  name="Derived Column - Qty Received NULL"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Inputs[Derived Column Input]"
-                      description="Input to the Derived Column Transformation"
-                      name="Derived Column Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Inputs[Derived Column Input].Columns[Derived_QTY_RECEIVED]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="QTY_RECEIVED"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\seq_open_order_opordrpt\dft_load_stage\Flat File Source opordrpt.Outputs[Flat File Source Output].Columns[QTY_RECEIVED]"
-                          name="Derived_QTY_RECEIVED"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[LEN]([TRIM](#{Package\seq_open_order_opordrpt\dft_load_stage\Flat File Source opordrpt.Outputs[Flat File Source Output].Columns[QTY_RECEIVED]})) == 0 ? NULL(DT_WSTR,10) : #{Package\seq_open_order_opordrpt\dft_load_stage\Flat File Source opordrpt.Outputs[Flat File Source Output].Columns[QTY_RECEIVED]}</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">LEN(TRIM(Derived_QTY_RECEIVED)) == 0 ? NULL(DT_WSTR,10) : Derived_QTY_RECEIVED</property>
-                          </properties>
-                        </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Outputs[Derived Column Output]"
-                      description="Default Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      name="Derived Column Output"
-                      synchronousInputId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Inputs[Derived Column Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Outputs[Derived Column Error Output]"
-                      description="Error Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Derived Column Error Output"
-                      synchronousInputId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Inputs[Derived Column Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -3384,14 +3333,9 @@
               <paths>
                 <path
                   refId="Package\seq_open_order_opordrpt\dft_load_stage.Paths[Derived Column Output]"
-                  endId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Inputs[Derived Column Input]"
-                  name="Derived Column Output"
-                  startId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Output]" />
-                <path
-                  refId="Package\seq_open_order_opordrpt\dft_load_stage.Paths[Derived Column Output1]"
                   endId="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt.Inputs[OLE DB Destination Input]"
                   name="Derived Column Output"
-                  startId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL.Outputs[Derived Column Output]" />
+                  startId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\seq_open_order_opordrpt\dft_load_stage.Paths[Flat File Source Output]"
                   endId="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input]"
@@ -3410,7 +3354,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3455,6 +3399,135 @@
               version="1">
               <components>
                 <component
+                  refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column - Date Received NULL"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input].Columns[Derived_APPR_DEC]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName=" APPR_DEC"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ APPR_DEC]"
+                          name="Derived_APPR_DEC"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[LEN]([TRIM](#{Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ APPR_DEC]})) == 0 ? NULL(DT_WSTR,10) : #{Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ APPR_DEC]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">LEN(TRIM(Derived_APPR_DEC)) == 0 ? NULL(DT_WSTR,10) : Derived_APPR_DEC</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input].Columns[Derived_PART_REL]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName=" PART_REL"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ PART_REL]"
+                          name="Derived_PART_REL"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[LEN]([TRIM](#{Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ PART_REL]})) == 0 ? NULL(DT_WSTR,10) : #{Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ PART_REL]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">LEN(TRIM(Derived_PART_REL)) == 0 ? NULL(DT_WSTR,10) : Derived_PART_REL</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input].Columns[Derived_ORD_COMP]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName=" ORD_COMP"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ ORD_COMP]"
+                          name="Derived_ORD_COMP"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[LEN]([TRIM](#{Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ ORD_COMP]})) == 0 ? NULL(DT_WSTR,10) : #{Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ ORD_COMP]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">LEN(TRIM(Derived_ORD_COMP)) == 0 ? NULL(DT_WSTR,10) : Derived_ORD_COMP</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr"
                   componentClassID="Microsoft.FlatFileSource"
                   contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -3467,7 +3540,7 @@
                     <property
                       dataType="System.Boolean"
                       description="Specifies whether zero-length columns are treated as null."
-                      name="RetainNulls">true</property>
+                      name="RetainNulls">false</property>
                     <property
                       dataType="System.String"
                       description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
@@ -3490,12 +3563,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[BRANCH    ]"
                           length="10"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[BRANCH    ]"
                           name="BRANCH    "
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3512,12 +3585,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ RMA]"
                           length="4"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ RMA]"
                           name=" RMA"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3534,12 +3607,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ ST]"
                           length="3"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ ST]"
                           name=" ST"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3556,12 +3629,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ WORKORDER ]"
                           length="11"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ WORKORDER ]"
                           name=" WORKORDER "
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3578,12 +3651,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ ORD_REC ]"
                           length="9"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ ORD_REC ]"
                           name=" ORD_REC "
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3600,12 +3673,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ EST_COMP]"
                           length="9"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ EST_COMP]"
                           name=" EST_COMP"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3622,12 +3695,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ APPR_DEC]"
                           length="9"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ APPR_DEC]"
                           name=" APPR_DEC"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3644,12 +3717,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ PART_REL]"
                           length="9"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ PART_REL]"
                           name=" PART_REL"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3666,12 +3739,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ ORD_COMP]"
                           length="9"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ ORD_COMP]"
                           name=" ORD_COMP"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3688,12 +3761,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ CUST_NO ]"
                           length="9"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ CUST_NO ]"
                           name=" CUST_NO "
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3710,12 +3783,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ CUST_NAME                ]"
                           length="26"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ CUST_NAME                ]"
                           name=" CUST_NAME                "
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3732,12 +3805,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ PRIV]"
                           length="5"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ PRIV]"
                           name=" PRIV"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3754,12 +3827,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ MODEL_NUMBER    ]"
                           length="17"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ MODEL_NUMBER    ]"
                           name=" MODEL_NUMBER    "
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3776,12 +3849,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ P_CSR]"
                           length="6"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ P_CSR]"
                           name=" P_CSR"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3798,12 +3871,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ CTYP]"
                           length="5"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ CTYP]"
                           name=" CTYP"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3820,12 +3893,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ PCOD]"
                           length="5"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ PCOD]"
                           name=" PCOD"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3842,12 +3915,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ PDESC          ]"
                           length="16"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ PDESC          ]"
                           name=" PDESC          "
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3864,12 +3937,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ CCOD]"
                           length="5"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ CCOD]"
                           name=" CCOD"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3886,12 +3959,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ CDESC                 ]"
                           length="23"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ CDESC                 ]"
                           name=" CDESC                 "
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3908,12 +3981,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[ USERID]"
                           length="7"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[ USERID]"
                           name=" USERID"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -3930,12 +4003,12 @@
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
+                          errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].ExternalColumns[extra]"
                           length="3"
                           lineageId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output].Columns[extra]"
                           name="extra"
-                          truncationRowDisposition="FailComponent">
+                          truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -4457,8 +4530,13 @@
               </components>
               <paths>
                 <path
-                  refId="Package\seq_open_order_prorepr\dft_load_stage.Paths[Flat File Source Output]"
+                  refId="Package\seq_open_order_prorepr\dft_load_stage.Paths[Derived Column Output]"
                   endId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\seq_open_order_prorepr\dft_load_stage.Paths[Flat File Source Output]"
+                  endId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL.Inputs[Derived Column Input]"
                   name="Flat File Source Output"
                   startId="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr.Outputs[Flat File Source Output]" />
               </paths>
@@ -4474,7 +4552,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4557,9 +4635,9 @@
           Id="Package\seq_open_order_opordrpt"
           TopLeft="112,71" />
         <NodeLayout
-          Size="151,42"
+          Size="149,42"
           Id="Package\seq_open_order_prorepr\dft_load_stage"
-          TopLeft="83,154" />
+          TopLeft="84,154" />
         <NodeLayout
           Size="168,42"
           Id="Package\seq_open_order_prorepr\sql_truncate_stage"
@@ -4604,7 +4682,7 @@
           PanelSize="437,261"
           Size="437,304"
           Id="Package\seq_open_order_prorepr"
-          TopLeft="649,89" />
+          TopLeft="591,77" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4618,49 +4696,23 @@
           Id="Package\seq_open_order_opordrpt\dft_load_stage\Flat File Source opordrpt"
           TopLeft="65.5,5.5" />
         <NodeLayout
-          Size="256,42"
-          Id="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL"
-          TopLeft="37.5,178.5" />
-        <NodeLayout
-          Size="262,42"
+          Size="260,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Date Received NULL"
-          TopLeft="38.5,84.5" />
+          TopLeft="39.5,101.5" />
         <EdgeLayout
           Id="Package\seq_open_order_opordrpt\dft_load_stage.Paths[Flat File Source Output]"
           TopLeft="166.75,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37"
+              EndConnector="0,54"
               Start="0,0"
-              End="0,29.5">
+              End="0,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\seq_open_order_opordrpt\dft_load_stage.Paths[Derived Column Output]"
-          TopLeft="167.5,126.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52"
-              Start="0,0"
-              End="0,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5" />
+                    End="0,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4674,19 +4726,19 @@
           Id="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt"
           TopLeft="77.5,323.5" />
         <EdgeLayout
-          Id="Package\seq_open_order_opordrpt\dft_load_stage.Paths[Derived Column Output1]"
-          TopLeft="166.75,220.5">
+          Id="Package\seq_open_order_opordrpt\dft_load_stage.Paths[Derived Column Output]"
+          TopLeft="168.75,143.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,103"
+              EndConnector="0,180"
               Start="0,0"
-              End="0,95.5">
+              End="0,172.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,95.5" />
+                    End="0,172.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4700,18 +4752,16 @@
           ParentId="Package\seq_open_order_opordrpt\dft_load_stage"
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="367,420"
+          PanelSize="367,421"
           Size="367,464"
           Id="fef4428b-2fd9-4181-bdb4-723f77c19503"
           TopLeft="118.5,5.5">
           <GroupLayout.ChildrenIds>
             <s:String>Package\seq_open_order_opordrpt\dft_load_stage\Flat File Source opordrpt</s:String>
-            <s:String>Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Qty Received NULL</s:String>
             <s:String>Package\seq_open_order_opordrpt\dft_load_stage\Derived Column - Date Received NULL</s:String>
             <s:String>Package\seq_open_order_opordrpt\dft_load_stage.Paths[Flat File Source Output]</s:String>
-            <s:String>Package\seq_open_order_opordrpt\dft_load_stage.Paths[Derived Column Output]</s:String>
             <s:String>Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt</s:String>
-            <s:String>Package\seq_open_order_opordrpt\dft_load_stage.Paths[Derived Column Output1]</s:String>
+            <s:String>Package\seq_open_order_opordrpt\dft_load_stage.Paths[Derived Column Output]</s:String>
           </GroupLayout.ChildrenIds>
         </GroupLayout>
       </GraphLayout>
@@ -4734,7 +4784,7 @@
     design-time-name="Package\seq_open_order_prorepr\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
         <NodeLayout
           Size="191,42"
           Id="Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr"
@@ -4742,21 +4792,71 @@
         <NodeLayout
           Size="176,42"
           Id="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr"
-          TopLeft="77.5,323.5" />
+          TopLeft="78.5,325.5" />
+        <NodeLayout
+          Size="260,42"
+          Id="Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL"
+          TopLeft="56,140" />
         <EdgeLayout
           Id="Package\seq_open_order_prorepr\dft_load_stage.Paths[Flat File Source Output]"
-          TopLeft="163.25,47.5">
+          TopLeft="161,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,276"
+              EndConnector="25,92.5"
               Start="0,0"
-              End="0,268.5">
+              End="25,85">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,268.5" />
+                    End="0,42.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.25"
+                    Point2="0,46.25"
+                    Point3="4,46.25" />
+                  <mssgle:LineSegment
+                    End="21,46.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21,46.25"
+                    Point2="25,46.25"
+                    Point3="25,50.25" />
+                  <mssgle:LineSegment
+                    End="25,85" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seq_open_order_prorepr\dft_load_stage.Paths[Derived Column Output]"
+          TopLeft="186,182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.5,143.5"
+              Start="0,0"
+              End="-19.5,136">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,67.75"
+                    Point2="0,71.75"
+                    Point3="-4,71.75" />
+                  <mssgle:LineSegment
+                    End="-15.5,71.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.5,71.75"
+                    Point2="-19.5,71.75"
+                    Point3="-19.5,75.75" />
+                  <mssgle:LineSegment
+                    End="-19.5,136" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4777,7 +4877,9 @@
           <GroupLayout.ChildrenIds>
             <s:String>Package\seq_open_order_prorepr\dft_load_stage\Flat File Source prorepr</s:String>
             <s:String>Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr</s:String>
+            <s:String>Package\seq_open_order_prorepr\dft_load_stage\Derived Column - Date Received NULL</s:String>
             <s:String>Package\seq_open_order_prorepr\dft_load_stage.Paths[Flat File Source Output]</s:String>
+            <s:String>Package\seq_open_order_prorepr\dft_load_stage.Paths[Derived Column Output]</s:String>
           </GroupLayout.ChildrenIds>
         </GroupLayout>
       </GraphLayout>
