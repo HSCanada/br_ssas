@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="133"
-  DTS:VersionGUID="{4EA02D47-C3A0-462A-BF14-81AC74BF929D}">
+  DTS:VersionBuild="134"
+  DTS:VersionGUID="{BCFA197E-C9CB-4020-BA12-83C19F04C04A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2417,7 +2417,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3477,7 +3477,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
