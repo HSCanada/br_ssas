@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="pkg_notes"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{EB5055A5-DDF5-46EB-AB39-34FB4E6004E9}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{86C94A55-BF72-4F03-A37E-86B10A936507}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -235,6 +235,13 @@
                           cachedName="QCTRDJ_order_date"
                           externalMetadataColumnId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\F5503_canned_message_file_parameters_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QCTRDJ_order_date]"
                           lineageId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Output].Columns[QCTRDJ_order_date]" />
+                        <inputColumn
+                          refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\F5503_canned_message_file_parameters_Staging.Inputs[OLE DB Destination Input].Columns[chksum]"
+                          cachedDataType="bytes"
+                          cachedLength="8000"
+                          cachedName="chksum"
+                          externalMetadataColumnId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\F5503_canned_message_file_parameters_Staging.Inputs[OLE DB Destination Input].ExternalColumns[chksum]"
+                          lineageId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Output].Columns[chksum]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -299,6 +306,11 @@
                           refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\F5503_canned_message_file_parameters_Staging.Inputs[OLE DB Destination Input].ExternalColumns[id]"
                           dataType="i4"
                           name="id" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\F5503_canned_message_file_parameters_Staging.Inputs[OLE DB Destination Input].ExternalColumns[chksum]"
+                          dataType="bytes"
+                          length="32"
+                          name="chksum" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -364,7 +376,8 @@
 	"Q3LNGP" AS Q3LNGP_language,
 	"Q3INMG" AS Q3INMG_print_message,
 	"Q3$SNB" AS Q3$SNB_sequence_number,
-	"QCTRDJ" AS QCTRDJ_order_date 
+	"QCTRDJ" AS QCTRDJ_order_date,
+                  HASHBYTES('SHA2_256', "Q3$PMQ") AS chksum
 
 --INTO Integration.F5503_canned_message_file_parameters_Staging
 
@@ -541,6 +554,16 @@ FROM
                           lineageId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Output].Columns[QCTRDJ_order_date]"
                           name="QCTRDJ_order_date"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Output].Columns[chksum]"
+                          dataType="bytes"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Output].ExternalColumns[chksum]"
+                          length="8000"
+                          lineageId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Output].Columns[chksum]"
+                          name="chksum"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -601,6 +624,11 @@ FROM
                           refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Output].ExternalColumns[QCTRDJ_order_date]"
                           dataType="dbDate"
                           name="QCTRDJ_order_date" />
+                        <externalMetadataColumn
+                          refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Output].ExternalColumns[chksum]"
+                          dataType="bytes"
+                          length="8000"
+                          name="chksum" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -675,6 +703,12 @@ FROM
                           dataType="dbDate"
                           lineageId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Error Output].Columns[QCTRDJ_order_date]"
                           name="QCTRDJ_order_date" />
+                        <outputColumn
+                          refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Error Output].Columns[chksum]"
+                          dataType="bytes"
+                          length="8000"
+                          lineageId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Error Output].Columns[chksum]"
+                          name="chksum" />
                         <outputColumn
                           refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -794,13 +828,13 @@ FROM
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="317,42"
-          Id="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\F5503_canned_message_file_parameters_Staging"
-          TopLeft="232,214" />
-        <NodeLayout
           Size="184,42"
           Id="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503"
           TopLeft="237,64" />
+        <NodeLayout
+          Size="317,42"
+          Id="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\F5503_canned_message_file_parameters_Staging"
+          TopLeft="232,214" />
         <EdgeLayout
           Id="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage.Paths[OLE DB Source Output]"
           TopLeft="329,106">
