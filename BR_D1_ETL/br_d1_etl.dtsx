@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="251"
-  DTS:VersionGUID="{4E476D28-C332-4830-A737-3BB9C1B0F541}">
+  DTS:VersionBuild="252"
+  DTS:VersionGUID="{A28AB358-5E38-46D2-BA6C-8BA445C2DD47}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4014,7 +4014,7 @@ public class Variables
     <msb:CodeName>SC_6d098f53a57a4469afe0ac8304cd1b6c</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_6d098f53a57a4469afe0ac8304cd1b6c</msb:DisplayName>
-    <msb:ProjectId>{80FAC16C-2446-44FE-9D73-C6724875E4FB}</msb:ProjectId>
+    <msb:ProjectId>{15F6E869-A8FD-4F69-A16F-9B9801C190FE}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_6d098f53a57a4469afe0ac8304cd1b6c.csproj" />
@@ -4161,7 +4161,7 @@ namespace SC_6d098f53a57a4469afe0ac8304cd1b6c.Properties {
                         <arrayElement
                           dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAKlHKVsAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAA3jIA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDALlRKVsAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAA3jIA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAIwyAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -4240,7 +4240,7 @@ ZQAgAHMAZQB0ACAAdABvACAARgBhAGwAcwBlAC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1
 AGUAIAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUAbQBuACAAaQBuAHMAdABlAGEAZAAuAAAPSQBuAHAA
 dQB0ACAAMAAAcVMAQwBfADYAZAAwADkAOABmADUAMwBhADUANwBhADQANAA2ADkAYQBmAGUAMABh
 AGMAOAAzADAANABjAGQAMQBiADYAYwAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUA
-cgBjAGUAcwAAAAAfqW26tJ1tTqxaOx31RotFAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFZBQAC
+cgBjAGUAcwAAAAADILT1AjEZTqiDEVqhks31AAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFZBQAC
 Ag4OBSACDggICSADARI9HQgSQQMGEj0DBh0IBCABDggEIAECCAUgAgEIHAMgAAIGIAICDhFxBSAB
 HQgIBgABEnUReQQgABJ9BiACAQ4SfQi3elxWGTTgiQiJhF3NgIDMkQIGDgMGEhQDBhIYAwYSRQMG
 ElEDBhJVAwYSIAUgAQESDAMgAA4EIAEBAgkgBAEIDhI9EkEFIAEBEkUEAAASUQQAABJVBQABARJV
@@ -7252,6 +7252,43 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Id="Package\seq_inventory_whvalrpt"
           TopLeft="118.888888888889,416.666666666667" />
         <NodeLayout
+          Size="149,42"
+          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage"
+          TopLeft="69,86" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\seq_inventory_whvalrpt 5\sql_truncate_stage"
+          TopLeft="67.0000000000001,15" />
+        <EdgeLayout
+          Id="Package\seq_inventory_whvalrpt 5.PrecedenceConstraints[Constraint]"
+          TopLeft="147.25,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="281,183"
+          Size="281,226"
+          Id="Package\seq_inventory_whvalrpt 5"
+          TopLeft="505,408" />
+        <NodeLayout
           Size="151,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage"
           TopLeft="61,119" />
@@ -7325,43 +7362,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Size="326,236"
           Id="Package\seq_open_order_prorepr"
           TopLeft="504,101" />
-        <NodeLayout
-          Size="149,42"
-          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage"
-          TopLeft="69,86" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\seq_inventory_whvalrpt 5\sql_truncate_stage"
-          TopLeft="67.0000000000001,15" />
-        <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt 5.PrecedenceConstraints[Constraint]"
-          TopLeft="147.25,57">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29"
-              Start="0,0"
-              End="0,21.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="281,183"
-          Size="281,226"
-          Id="Package\seq_inventory_whvalrpt 5"
-          TopLeft="505,408" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -7486,6 +7486,151 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     </LayoutInfo>
   </TaskHost>
   <TaskHost
+    design-time-name="Package\seq_inventory_whvalrpt 5\dft_load_stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="120,42"
+          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage\whvalrpt"
+          TopLeft="190,51" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage\OLE DB Destination"
+          TopLeft="168,419" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage\Script Component"
+          TopLeft="225,269" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage\Derived Column"
+          TopLeft="146,133" />
+        <EdgeLayout
+          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage.Paths[Derived Column Output]"
+          TopLeft="223,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.5,94"
+              Start="0,0"
+              End="83.5,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43"
+                    Point2="0,47"
+                    Point3="4,47" />
+                  <mssgle:LineSegment
+                    End="79.5,47" />
+                  <mssgle:CubicBezierSegment
+                    Point1="79.5,47"
+                    Point2="83.5,47"
+                    Point3="83.5,51" />
+                  <mssgle:LineSegment
+                    End="83.5,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.75,52,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage.Paths[Output 0]"
+          TopLeft="306.5,311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-53,108"
+              Start="0,0"
+              End="-53,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50"
+                    Point2="0,54"
+                    Point3="-4,54" />
+                  <mssgle:LineSegment
+                    End="-49,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49,54"
+                    Point2="-53,54"
+                    Point3="-53,58" />
+                  <mssgle:LineSegment
+                    End="-53,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.5,59,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage.Paths[Flat File Source Output]"
+          TopLeft="250,93">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27,40"
+              Start="0,0"
+              End="-27,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="-4,20" />
+                  <mssgle:LineSegment
+                    End="-23,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23,20"
+                    Point2="-27,20"
+                    Point3="-27,24" />
+                  <mssgle:LineSegment
+                    End="-27,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-21.5,25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_inventory_whvalrpt 5\dft_load_stage\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\seq_open_order_opordrpt\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
@@ -7604,151 +7749,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\seq_inventory_whvalrpt 5\dft_load_stage">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="120,42"
-          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage\whvalrpt"
-          TopLeft="190,51" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage\OLE DB Destination"
-          TopLeft="168,419" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage\Script Component"
-          TopLeft="225,269" />
-        <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage.Paths[Output 0]"
-          TopLeft="306.5,311">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-53,108"
-              Start="0,0"
-              End="-53,100.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,50"
-                    Point2="0,54"
-                    Point3="-4,54" />
-                  <mssgle:LineSegment
-                    End="-49,54" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-49,54"
-                    Point2="-53,54"
-                    Point3="-53,58" />
-                  <mssgle:LineSegment
-                    End="-53,100.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-34.5,59,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage\Derived Column"
-          TopLeft="146,133" />
-        <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage.Paths[Flat File Source Output]"
-          TopLeft="250,93">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-27,40"
-              Start="0,0"
-              End="-27,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16"
-                    Point2="0,20"
-                    Point3="-4,20" />
-                  <mssgle:LineSegment
-                    End="-23,20" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-23,20"
-                    Point2="-27,20"
-                    Point3="-27,24" />
-                  <mssgle:LineSegment
-                    End="-27,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-21.5,25,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt 5\dft_load_stage.Paths[Derived Column Output]"
-          TopLeft="223,175">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="83.5,94"
-              Start="0,0"
-              End="83.5,86.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,43"
-                    Point2="0,47"
-                    Point3="4,47" />
-                  <mssgle:LineSegment
-                    End="79.5,47" />
-                  <mssgle:CubicBezierSegment
-                    Point1="79.5,47"
-                    Point2="83.5,47"
-                    Point3="83.5,51" />
-                  <mssgle:LineSegment
-                    End="83.5,86.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="33.75,52,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\seq_inventory_whvalrpt 5\dft_load_stage\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
