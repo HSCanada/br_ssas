@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="260"
-  DTS:VersionGUID="{10C381B0-1F71-4C44-9CF4-913D0A617106}">
+  DTS:VersionBuild="267"
+  DTS:VersionGUID="{EFFEAB08-F84F-4EEF-A828-44C626BD20D0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -394,6 +394,177 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager - whvalrpt 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2372f5e1-1ff1-45ce-b44b-29a880b9f9bf}"
+      DTS:ObjectName="Flat File Connection Manager - whvalrpt 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="RaggedRight"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000A_"
+          DTS:RowDelimiter="_x000A_"
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="S:\Business Reporting\zDev\BRS\Upload\whvalrpt.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="9"
+              DTS:MaximumWidth="9"
+              DTS:DataType="129"
+              DTS:ObjectName="Mfg"
+              DTS:DTSID="{D657745B-FD15-4101-AA0C-AF418F87EAEE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="19"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:ObjectName="MfgPartNo"
+              DTS:DTSID="{D9E704D3-F715-4BBB-BF84-56B073CE92A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="27"
+              DTS:MaximumWidth="27"
+              DTS:DataType="129"
+              DTS:ObjectName="Item_Description"
+              DTS:DTSID="{2950F37F-8D25-4CF3-9C88-61C0E0A93B42}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="10"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:ObjectName="Bin"
+              DTS:DTSID="{0D4E6079-5327-486B-84CD-13F3697071E0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="8"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:ObjectName="Part-No"
+              DTS:DTSID="{F5BE358A-6F06-4451-8004-1B54F503CC8F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="7"
+              DTS:MaximumWidth="7"
+              DTS:DataType="129"
+              DTS:ObjectName="Class"
+              DTS:DTSID="{50AB25D0-1682-4F49-AF00-A67F413D2558}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="14"
+              DTS:MaximumWidth="14"
+              DTS:DataType="129"
+              DTS:ObjectName="Tag Number"
+              DTS:DTSID="{6FD1ED84-7498-4AD0-818D-903295F487F5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="5"
+              DTS:MaximumWidth="5"
+              DTS:DataType="129"
+              DTS:ObjectName="Q_Avl"
+              DTS:DTSID="{85497991-9F6F-4019-B258-4608412E5FF7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="5"
+              DTS:MaximumWidth="5"
+              DTS:DataType="129"
+              DTS:ObjectName="Q_Alo"
+              DTS:DTSID="{CB8852AD-AF75-4705-AD8A-536A01D9B4A8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="6"
+              DTS:MaximumWidth="6"
+              DTS:DataType="129"
+              DTS:ObjectName="Q_Rsv"
+              DTS:DTSID="{AD5B0646-1F48-4C9F-B409-D92C8A577EEF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="6"
+              DTS:MaximumWidth="6"
+              DTS:DataType="129"
+              DTS:ObjectName="Q_Total"
+              DTS:DTSID="{C4490410-B334-4B0F-8271-B4D840E473F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="3"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:ObjectName="Unit_Cost"
+              DTS:DTSID="{AB83AAF7-7D76-4261-8697-74051092BA88}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="11"
+              DTS:MaximumWidth="11"
+              DTS:DataType="129"
+              DTS:ObjectName="Ave_Cost"
+              DTS:DTSID="{F8EBC89E-AAD2-476C-9578-DBE46B681F67}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="5"
+              DTS:MaximumWidth="5"
+              DTS:DataType="129"
+              DTS:ObjectName="Tag"
+              DTS:DTSID="{8A04C71D-55B6-438A-92DE-D6BEB8360856}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="11"
+              DTS:MaximumWidth="11"
+              DTS:DataType="129"
+              DTS:ObjectName="ext_avail"
+              DTS:DTSID="{10487CF6-12D9-429D-B2BA-30E6518511A9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="12"
+              DTS:MaximumWidth="12"
+              DTS:DataType="129"
+              DTS:ObjectName="ext_res"
+              DTS:DTSID="{2F3F9DD8-A5C2-4301-8D1A-D57E2B1A5D56}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="29"
+              DTS:MaximumWidth="29"
+              DTS:DataType="129"
+              DTS:ObjectName="qty_res_txt"
+              DTS:DTSID="{32345065-56E9-481D-8978-4DEC6E77C0DC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnDelimiter=""
+              DTS:ColumnWidth="11"
+              DTS:MaximumWidth="11"
+              DTS:DataType="129"
+              DTS:ObjectName="ext_total"
+              DTS:DTSID="{1F8896A4-29ED-4AEF-BFAE-522467019209}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:ObjectName="extra"
+              DTS:DTSID="{40EF89A5-C641-4403-9972-52837242C96F}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Flat File Connection Manager-openorder]"
       DTS:CreationName="FLATFILE"
       DTS:Description="eq open orders"
@@ -673,7 +844,7 @@
       DTS:refId="Package\seq_inventory_whvalrpt"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{57e75312-645d-43e1-b4a6-3f7a463fc4d3}"
+      DTS:DTSID="{57105be0-edf1-451c-91b6-0fc930273500}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
       DTS:ObjectName="seq_inventory_whvalrpt">
@@ -683,7 +854,7 @@
           DTS:refId="Package\seq_inventory_whvalrpt\dft_load_stage"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{90667127-d9c1-44a7-8b1f-983b455161f9}"
+          DTS:DTSID="{a8aea236-179f-423b-bfb8-0c5f80075aa0}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="dft_load_stage"
@@ -705,6 +876,60 @@
                       refId="Package\seq_inventory_whvalrpt\dft_load_stage\Derived Column.Inputs[Derived Column Input]"
                       description="Input to the Derived Column Transformation"
                       name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\seq_inventory_whvalrpt\dft_load_stage\Derived Column.Inputs[Derived Column Input].Columns[Derived_Unit_Cost]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="Unit_Cost"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt.Outputs[Flat File Source Output].Columns[Unit_Cost]"
+                          name="Derived_Unit_Cost"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt.Outputs[Flat File Source Output].Columns[Unit_Cost]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(Derived_Unit_Cost)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\seq_inventory_whvalrpt\dft_load_stage\Derived Column.Inputs[Derived Column Input].Columns[Derived_Tag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="Tag"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt.Outputs[Flat File Source Output].Columns[Tag]"
+                          name="Derived_Tag"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[TRIM](#{Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt.Outputs[Flat File Source Output].Columns[Tag]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">TRIM(Derived_Tag)</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
                       <externalMetadataColumns />
                     </input>
                   </inputs>
@@ -2705,7 +2930,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           DTS:refId="Package\seq_inventory_whvalrpt\sql_truncate_stage"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{be8793f0-56d4-4c24-936b-bc3b895bf82a}"
+          DTS:DTSID="{081d57ed-0994-41fd-946b-442a0ccbe8de}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
@@ -2723,7 +2948,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\seq_inventory_whvalrpt.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{3a7db976-7a8a-4e66-86b5-954c59d049f8}"
+          DTS:DTSID="{36de779a-d0fc-4910-a8c3-82c6847f09e9}"
           DTS:From="Package\seq_inventory_whvalrpt\sql_truncate_stage"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
@@ -5032,7 +5257,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           PanelSize="281,183"
           Size="281,226"
           Id="Package\seq_inventory_whvalrpt"
-          TopLeft="125,409" />
+          TopLeft="68,468" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -5292,5 +5517,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
