@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="267"
-  DTS:VersionGUID="{EFFEAB08-F84F-4EEF-A828-44C626BD20D0}">
+  DTS:VersionBuild="271"
+  DTS:VersionGUID="{FF10CC74-0BD4-475E-A18B-5A3DEFB7C3A6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1721,13 +1721,16 @@ public class ScriptMain : UserComponent
             //len = Row.MfgPartNo.Length;
             //branchCd = Row.MfgPartNo.Substring(1, len-1);
             len = Row.MfgPartNo.IndexOf("CS");
-            branchCd = Row.MfgPartNo.Substring(1, len-1);
+            branchCd = Row.MfgPartNo.Substring(1, len-1).Trim();
+            branchCd.TrimEnd('\r', '\n');
+            branchCd.TrimEnd('\n');
+            branchCd.Trim();
 
 
             /// branchCd = Row.MfgPartNo;
 
         }
-        Row.Branch = branchCd;
+        Row.Branch = (branchCd);
 
 
     }
@@ -1947,7 +1950,7 @@ public class Variables
     <msb:CodeName>SC_6d098f53a57a4469afe0ac8304cd1b6c</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_6d098f53a57a4469afe0ac8304cd1b6c</msb:DisplayName>
-    <msb:ProjectId>{386DC846-790D-4856-9314-518BEC0E05BD}</msb:ProjectId>
+    <msb:ProjectId>{B667AF5E-4DC6-4E2F-9BF8-2BC647B25C32}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_6d098f53a57a4469afe0ac8304cd1b6c.csproj" />
@@ -2094,101 +2097,101 @@ namespace SC_6d098f53a57a4469afe0ac8304cd1b6c.Properties {
                         <arrayElement
                           dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAL9CMVsAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAGjMA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAM5JMlsAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAijMA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMgyAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAADgzAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAIBMAAAAgAAAAFAAAAAIA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAkBMAAAAgAAAAFAAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD8
-MgAAAAAAAEgAAAACAAUAMCIAAOAPAAABAAAAAAAAABAyAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioTMAUARQAAAAEAABEDbwYAAAZy
-AQAAcCgSAAAKLCYDbwgAAAZyFQAAcG8TAAAKCgIDbwgAAAYXBhdZbxQAAAp9AQAABAMCewEAAARv
-CwAABipKAnIbAABwfQEAAAQCKBAAAAYqKgIDBAUoFQAACipSAnsWAAAKAnsXAAAKFpRvGAAACioi
-AhYoGQAACipSAnsWAAAKAnsXAAAKF5RvGAAACioiAhcoGQAACipSAnsWAAAKAnsXAAAKGJRvGAAA
-CiomAhgDKBoAAAoqIgIYKBkAAAoqWgMsCAIYKBsAAAoqch0AAHBzHAAACnoeAigdAAAKKh4CKB4A
-AAoqfgIoHwAACgICcxQAAAZ9AgAABAICcxUAAAZ9AwAABCqSBHK6AABwGm8gAAAKLBUCBQIDKCEA
-AAoOBHMFAAAGbxIAAAYqSisHAgNvEwAABgNvDgAABi3xKgYqOgIoIgAACgIDfQQAAAQqOgIoIgAA
-CgIDfQUAAAQqHgIoIgAACiqufgYAAAQtHnLKAABw0AcAAAIoIwAACm8kAAAKcyUAAAqABgAABH4G
-AAAEKhp+BwAABCoeAoAHAAAEKhp+CAAABCoeAigmAAAKKi5zGwAABoAIAAAEKkJTSkIBAAEAAAAA
-AAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAAAOAFAAAjfgAATAYAAJAGAAAjU3RyaW5ncwAAAADcDAAA
-PAEAACNVUwAYDgAAEAAAACNHVUlEAAAAKA4AALgBAAAjQmxvYgAAAAAAAAACAAABVxWiAQkBAAAA
-+gEzABYAAAEAAAAfAAAACAAAAAgAAAAcAAAADwAAACYAAAAQAAAAAQAAAAMAAAAJAAAADAAAAAEA
-AAAEAAAAAQAAAAAAJgMBAAAAAAAGAO0BuwQGAIECuwQGADkBqAQPAC8FAAAGAGYB7wMGANAB7wMG
-ALEB7wMGAGgC7wMGAA0C7wMGACYC7wMGAH0B7wMGAJgBzAIKAEEChgAKAHoEhgAOAGsEhgAKAEYE
-hgAKAPUFhgAGALgFpwMGABwBqAQGAIsE2wQGADoE2gMSAOwAEAMSAE0BEAMSANQAxQMGAAEBuwQG
-AOkCpwMGAAEEpwMGABsEpwMGAKcApwMGAFgApwMGAHoG7wMAAAAAAQAAAAAAAQABAAEAEAC6AwAA
-EAABAAEAAQAQAF4EAAA5AAIABQABABAA1wUAAEUAAgAQAAEAEACsBQAASQAEABQAAQAQAG0FAABJ
-AAUAFQAAABAA4gQ+BUkABgAWAAABEACcBT4FYQAIABoAAQA/AIgABgCsBYsABgBtBY8AAQDlBZMA
-AQDlBZMAEQCuA5cAEQDEAJsAEQBIAJ8AUCAAAAAAxgCfAgYAAQBYIAAAAADGAKoCBgABAGAgAAAA
-AMYAVwajAAEAsSAAAAAAhhibBAYAAgDEIAAAAACGGJsEMAACAM8gAAAAAIYIxAKpAAUA5CAAAAAA
-hghOA1IABQDtIAAAAACGCCwEqQAFAAIhAAAAAIYIgQNSAAUACyEAAAAAhgj6AqkABQAgIQAAAACG
-CAUDEAAFACohAAAAAIYIXQNSAAYAMyEAAAAAhghvA60ABgBKIQAAAACGAG4GUgAHAFIhAAAAAIYA
-vwVSAAcAWiEAAAAAhhibBAYABwB6IQAAAADGAEoGsgAHAJ8hAAAAAMYBQwajAAsAsiEAAAAAxgFX
-BqMADAC0IQAAAACGGJsEvAANAMMhAAAAAIYYmwS8AA4A0iEAAAAAgxibBAYADwDaIQAAAACTCIcE
-wgAPAAYiAAAAAJMIrADHAA8ADSIAAAAAkwi4AMwADwAVIgAAAACWCMsF0gAQABwiAAAAAIYYmwQG
-ABAAJCIAAAAAkRihBNcAEAAAAAEAcgYAAAEAgAQAAAIAdwUAAAMAVAQAAAEAtgIAAAEAtgIAAAEA
-CgAAAAIAfAAAAAMAgAQAAAQAVAQAAAEAgAQAAAEAcgYAAAEA+wUAAAEA+wUAAAEAtgIJAJsEAQAR
-AJsEBgAZAJsECgApAJsEEAAxAJsEEAA5AJsEEABBAJsEEABJAJsEEABRAJsEEABZAJsEEABhAJsE
-EABpAJsEBgCZAJsEBgC5AJsEFQDJAJsEBgCJAJ8CBgCJAKoCBgDRAIMGHwDRALwCJQDRAPACKgBx
-AJsEMABxAIAEOgBxAHcFPgB5AOYCQgBxAI8DRwBxAJ4DTABxAJYDAQDZAJsEEABxAG4GUgBxAL8F
-UgCJAJsEBgDRAKUFVgCJAIsFXQCRAJsEBgDpAGoAYwDpAHYGagChAJsEbwDBAJsEBgAuAAsA8gAu
-ABMA+wAuABsAGgEuACMAIwEuACsATAEuADMATAEuADsATAEuAEMAIwEuAEsAUgEuAFMATAEuAFsA
-aQFDAGMAswHjAGsAswHpAHMAGgEBAXsAswEJAXMAGgEbAAMAAQAHAAcACAAJAAAAyALbAAAAUgPf
-AAAAMATbAAAAhQPfAAAACQPbAAAAcwPfAAAAiwTjAAAAzADoAAAAzwXtAAIABgADAAIABwAFAAIA
-CAAHAAIACQAJAAIACgALAAEACwALAAIADAANAAEADQANAAIAFwAPAAIAGAARAAEAGQARAAIAGgAT
-AASAAAABAAAAAAAAAAAAAAAAABsAAAAEAAAAAAAAAAAAAAB2ABIAAAAAAA4AAAAAAAAAAAAAAH8A
-BQYAAAAADgAAAAAAAAAAAAAAfwAiBgAAAAAEAAAAAAAAAAAAAAB2AKcDAAAAAAAAAAABAAAA7AQA
-AAAAAAAAPE1vZHVsZT4ASW5wdXRJRABtc2NvcmxpYgBTQ182ZDA5OGY1M2E1N2E0NDY5YWZlMGFj
-ODMwNGNkMWI2YwBicmFuY2hDZABkZWZhdWx0SW5zdGFuY2UAUnVudGltZVR5cGVIYW5kbGUAR2V0
-VHlwZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5l
-AFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9u
-U2V0dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmli
-dXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0
-b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRl
-bWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0
-aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxh
-eGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmln
-aHRBdHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1i
-bHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFByZUV4ZWN1
-dGUAUG9zdEV4ZWN1dGUAdmFsdWUASW5kZXhPZgBnZXRfTWZnAFN5c3RlbS5SdW50aW1lLlZlcnNp
-b25pbmcAR2V0U3RyaW5nAFN1YnN0cmluZwBnZXRfQnJhbmNoAHNldF9CcmFuY2gAU3lzdGVtLkNv
-bXBvbmVudE1vZGVsAFNDXzZkMDk4ZjUzYTU3YTQ0NjlhZmUwYWM4MzA0Y2QxYjZjLmRsbABnZXRf
-TWZnX0lzTnVsbABnZXRfQnJhbmNoX0lzTnVsbABzZXRfQnJhbmNoX0lzTnVsbABnZXRfTWZnUGFy
-dE5vX0lzTnVsbABTZXROdWxsAHNldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRNYWlu
-AFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0
-aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24AU3RyaW5nQ29tcGFyaXNvbgBnZXRfTWZnUGFy
-dE5vAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVNYXAAT3V0cHV0TWFwAElucHV0MEJ1ZmZlcgBQaXBl
-bGluZUJ1ZmZlcgBTY3JpcHRCdWZmZXIAZ2V0X1Jlc291cmNlTWFuYWdlcgAuY3RvcgAuY2N0b3IA
-U3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVt
-LlJlc291cmNlcwBTQ182ZDA5OGY1M2E1N2E0NDY5YWZlMGFjODMwNGNkMWI2Yy5Qcm9wZXJ0aWVz
-LlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfNmQwOThmNTNhNTdhNDQ2OWFm
-ZTBhYzgzMDRjZDFiNmMuUHJvcGVydGllcwBWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBH
-ZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAEVxdWFscwBDb25uZWN0aW9ucwBPYmplY3QARW5kT2ZS
-b3dzZXQAZ2V0X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQAU2NyaXB0Q29t
-cG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNlcnZlci5Q
-aXBlbGluZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABJbnB1dDBfUHJvY2Vzc0lucHV0Um93AE5l
-eHRSb3cAZ2V0X0Fzc2VtYmx5AG9wX0VxdWFsaXR5AAAAE1cAYQByAGUAaABvAHUAcwBlAAAFQwBT
-AAABAICbSQBzAE4AdQBsAGwAIABwAHIAbwBwAGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAg
-AHMAZQB0ACAAdABvACAARgBhAGwAcwBlAC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUA
-IAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUAbQBuACAAaQBuAHMAdABlAGEAZAAuAAAPSQBuAHAAdQB0
-ACAAMAAAcVMAQwBfADYAZAAwADkAOABmADUAMwBhADUANwBhADQANAA2ADkAYQBmAGUAMABhAGMA
-OAAzADAANABjAGQAMQBiADYAYwAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBj
-AGUAcwAAfMfqohVKOEyM9RgA+gmoLAAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERWQMHAQgFAAIC
-Dg4EIAEIDgUgAg4ICAkgAwESPR0IEkEDBhI9AwYdCAQgAQ4IBCABAggFIAIBCBwDIAACBiACAg4R
-cQUgAR0ICAYAARJ1EXkEIAASfQYgAgEOEn0It3pcVhk04IkIiYRdzYCAzJECBg4DBhIUAwYSGAMG
-EkUDBhJRAwYSVQMGEiAFIAEBEgwDIAAOBCABAQIJIAQBCA4SPRJBBSABARJFBAAAElEEAAASVQUA
-AQESVQQAABIgAwAAAQMoAA4DKAACBAgAElEECAASVQQIABIgCAEACAAAAAAAHgEAAQBUAhZXcmFw
-Tm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTQ182ZDA5OGY1M2E1N2E0NDY5YWZlMGFj
-ODMwNGNkMWI2YwAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDE4AABJAQAaLk5FVEZyYW1ld29y
-ayxWZXJzaW9uPXY0LjUBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQu
-NQQBAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBt
-c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
-PWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAA
-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
+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
+3QXaABAAYCIAAAAAhhitBAYAEABoIgAAAACRGLME3wAQAAAAAQCEBgAAAQCSBAAAAgCJBQAAAwBh
+BAAAAQC+AgAAAQC+AgAAAQAKAAAAAgCEAAAAAwCSBAAABABhBAAAAQCSBAAAAQCEBgAAAQANBgAA
+AQANBgAAAQC+AgkArQQBABEArQQGABkArQQKACkArQQQADEArQQQADkArQQQAEEArQQQAEkArQQQ
+AFEArQQQAFkArQQQAGEArQQQAGkArQQGAJkArQQGALkArQQVAMkArQQGAIkApwIGAIkAsgIGANEA
+lQYfANEAxAIlANEA+AIqANEAtgMwANEASAA0AHEArQQ6AHEAkgREAHEAiQVIAHkA7gJMAHEAlwNR
+AHEApgNWAHEAngMBAOEArQQQAHEAgAZcAHEA0QVcAIkArQQGANEAtwVgAIkAnQVnAJEArQQGAPEA
+cgBtAPEAiAZ0AKEArQR6AMEArQQGAC4ACwD6AC4AEwADAS4AGwAiAS4AIwArAS4AKwBUAS4AMwBU
+AS4AOwBUAS4AQwArAS4ASwBaAS4AUwBUAS4AWwBxAUMAYwC7AeMAawC7AekAcwAiAQEBewC7AQkB
+cwAiARsAAwABAAcABwAIAAkAAADQAuMAAABaA+cAAAA9BOMAAACNA+cAAAARA+MAAAB7A+cAAACd
+BOsAAADUAPAAAADhBfUAAgAGAAMAAgAHAAUAAgAIAAcAAgAJAAkAAgAKAAsAAQALAAsAAgAMAA0A
+AQANAA0AAgAXAA8AAgAYABEAAQAZABEAAgAaABMABIAAAAEAAAAAAAAAAAAAAAAAGwAAAAQAAAAA
+AAAAAAAAAIIAEgAAAAAADgAAAAAAAAAAAAAAiwAXBgAAAAAOAAAAAAAAAAAAAACLADQGAAAAAAQA
+AAAAAAAAAAAAAIIArwMAAAAAAAAAAAEAAAD+BAAAAAAAPE1vZHVsZT4ASW5wdXRJRABtc2Nvcmxp
+YgBTQ182ZDA5OGY1M2E1N2E0NDY5YWZlMGFjODMwNGNkMWI2YwBicmFuY2hDZABUcmltRW5kAGRl
+ZmF1bHRJbnN0YW5jZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBJbnB1dE5h
+bWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRf
+Q3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARWRpdG9yQnJv
+d3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29k
+ZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBB
+c3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZy
+YW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlE
+ZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2Vt
+Ymx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0
+Q29tcG9uZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVu
+dGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQB2YWx1ZQBJ
+bmRleE9mAGdldF9NZmcAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBHZXRTdHJpbmcAU3Vic3Ry
+aW5nAGdldF9CcmFuY2gAc2V0X0JyYW5jaABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfNmQwOThm
+NTNhNTdhNDQ2OWFmZTBhYzgzMDRjZDFiNmMuZGxsAGdldF9NZmdfSXNOdWxsAGdldF9CcmFuY2hf
+SXNOdWxsAHNldF9CcmFuY2hfSXNOdWxsAGdldF9NZmdQYXJ0Tm9fSXNOdWxsAFNldE51bGwAc2V0
+X0l0ZW0AU3lzdGVtAFRyaW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJh
+dGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZhbGlkT3BlcmF0
+aW9uRXhjZXB0aW9uAFN0cmluZ0NvbXBhcmlzb24AZ2V0X01mZ1BhcnRObwBDdWx0dXJlSW5mbwBP
+dXRwdXROYW1lTWFwAE91dHB1dE1hcABDaGFyAElucHV0MEJ1ZmZlcgBQaXBlbGluZUJ1ZmZlcgBT
+Y3JpcHRCdWZmZXIAZ2V0X1Jlc291cmNlTWFuYWdlcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdu
+b3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBT
+Q182ZDA5OGY1M2E1N2E0NDY5YWZlMGFjODMwNGNkMWI2Yy5Qcm9wZXJ0aWVzLlJlc291cmNlcy5y
+ZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfNmQwOThmNTNhNTdhNDQ2OWFmZTBhYzgzMDRjZDFi
+NmMuUHJvcGVydGllcwBWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRl
+eGVzAFNldHRpbmdzAEVxdWFscwBDb25uZWN0aW9ucwBPYmplY3QARW5kT2ZSb3dzZXQAZ2V0X0Rl
+ZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQAU2NyaXB0Q29tcG9uZW50AE1pY3Jv
+c29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGluZUhvc3QA
+SW5wdXQwX1Byb2Nlc3NJbnB1dABJbnB1dDBfUHJvY2Vzc0lucHV0Um93AE5leHRSb3cAZ2V0X0Fz
+c2VtYmx5AG9wX0VxdWFsaXR5AAAAAAATVwBhAHIAZQBoAG8AdQBzAGUAAAVDAFMAAAEAgJtJAHMA
+TgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQAIAB0
+AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAgAHQA
+aABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AAA9JAG4AcAB1AHQAIAAwAABxUwBD
+AF8ANgBkADAAOQA4AGYANQAzAGEANQA3AGEANAA0ADYAOQBhAGYAZQAwAGEAYwA4ADMAMAA0AGMA
+ZAAxAGIANgBjAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAACNKek7
+whh7S4w/651fSsRyAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFZAwcBCAUAAgIODgQgAQgOBSAC
+DggIAyAADgUgAQ4dAwkgAwESPR0IEkEDBhI9AwYdCAQgAQ4IBCABAggFIAIBCBwDIAACBiACAg4R
+dQUgAR0ICAYAARJ5EX0FIAASgIEHIAIBDhKAgQi3elxWGTTgiQiJhF3NgIDMkQIGDgMGEhQDBhIY
+AwYSRQMGElEDBhJVAwYSIAUgAQESDAQgAQECCSAEAQgOEj0SQQUgAQESRQQAABJRBAAAElUFAAEB
+ElUEAAASIAMAAAEDKAAOAygAAgQIABJRBAgAElUECAASIAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5v
+bkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU0NfNmQwOThmNTNhNTdhNDQ2OWFmZTBhYzgz
+MDRjZDFiNmMAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAxOAAASQEAGi5ORVRGcmFtZXdvcmss
+VmVyc2lvbj12NC41AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjUE
+AQAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNj
+b3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1i
+NzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAA
+AAAAAAAAUEFEUEFEULQAAABgMwAAAAAAAAAAAAB6MwAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+bDMAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
@@ -2217,7 +2220,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAHDMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAjDMAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -5148,6 +5151,43 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="149,42"
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage"
+          TopLeft="69,86" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\seq_inventory_whvalrpt\sql_truncate_stage"
+          TopLeft="67.0000000000001,15" />
+        <EdgeLayout
+          Id="Package\seq_inventory_whvalrpt.PrecedenceConstraints[Constraint]"
+          TopLeft="147.25,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="281,183"
+          Size="281,226"
+          Id="Package\seq_inventory_whvalrpt"
+          TopLeft="68,468" />
+        <NodeLayout
           Size="151,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage"
           TopLeft="61,119" />
@@ -5221,28 +5261,56 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Size="326,236"
           Id="Package\seq_open_order_prorepr"
           TopLeft="504,101" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="149,42"
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage"
-          TopLeft="69,86" />
+          Size="120,42"
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt"
+          TopLeft="190,51" />
         <NodeLayout
-          Size="168,42"
-          Id="Package\seq_inventory_whvalrpt\sql_truncate_stage"
-          TopLeft="67.0000000000001,15" />
+          Size="171,42"
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage\OLE DB Destination"
+          TopLeft="168,419" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage\Derived Column"
+          TopLeft="146,133" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage\Script Component"
+          TopLeft="225,269" />
         <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt.PrecedenceConstraints[Constraint]"
-          TopLeft="147.25,57">
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Flat File Source Output]"
+          TopLeft="250,93">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29"
+              EndConnector="-27,40"
               Start="0,0"
-              End="0,21.5">
+              End="-27,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="-4,20" />
+                  <mssgle:LineSegment
+                    End="-23,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23,20"
+                    Point2="-27,20"
+                    Point3="-27,24" />
+                  <mssgle:LineSegment
+                    End="-27,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5251,16 +5319,90 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="281,183"
-          Size="281,226"
-          Id="Package\seq_inventory_whvalrpt"
-          TopLeft="68,468" />
+        <EdgeLayout
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Derived Column Output]"
+          TopLeft="223,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.5,94"
+              Start="0,0"
+              End="83.5,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43"
+                    Point2="0,47"
+                    Point3="4,47" />
+                  <mssgle:LineSegment
+                    End="79.5,47" />
+                  <mssgle:CubicBezierSegment
+                    Point1="79.5,47"
+                    Point2="83.5,47"
+                    Point3="83.5,51" />
+                  <mssgle:LineSegment
+                    End="83.5,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Output 0]"
+          TopLeft="306.5,311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-53,108"
+              Start="0,0"
+              End="-53,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50"
+                    Point2="0,54"
+                    Point3="-4,54" />
+                  <mssgle:LineSegment
+                    End="-49,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49,54"
+                    Point2="-53,54"
+                    Point3="-53,58" />
+                  <mssgle:LineSegment
+                    End="-53,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
-  </Package>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\seq_open_order_opordrpt\dft_load_stage">
     <LayoutInfo>
@@ -5380,145 +5522,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="120,42"
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt"
-          TopLeft="190,51" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage\OLE DB Destination"
-          TopLeft="168,419" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage\Script Component"
-          TopLeft="225,269" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage\Derived Column"
-          TopLeft="146,133" />
-        <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Derived Column Output]"
-          TopLeft="223,175">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="83.5,94"
-              Start="0,0"
-              End="83.5,86.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,43"
-                    Point2="0,47"
-                    Point3="4,47" />
-                  <mssgle:LineSegment
-                    End="79.5,47" />
-                  <mssgle:CubicBezierSegment
-                    Point1="79.5,47"
-                    Point2="83.5,47"
-                    Point3="83.5,51" />
-                  <mssgle:LineSegment
-                    End="83.5,86.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Output 0]"
-          TopLeft="306.5,311">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-53,108"
-              Start="0,0"
-              End="-53,100.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,50"
-                    Point2="0,54"
-                    Point3="-4,54" />
-                  <mssgle:LineSegment
-                    End="-49,54" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-49,54"
-                    Point2="-53,54"
-                    Point3="-53,58" />
-                  <mssgle:LineSegment
-                    End="-53,100.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Flat File Source Output]"
-          TopLeft="250,93">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-27,40"
-              Start="0,0"
-              End="-27,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16"
-                    Point2="0,20"
-                    Point3="-4,20" />
-                  <mssgle:LineSegment
-                    End="-23,20" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-23,20"
-                    Point2="-27,20"
-                    Point3="-27,24" />
-                  <mssgle:LineSegment
-                    End="-27,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
