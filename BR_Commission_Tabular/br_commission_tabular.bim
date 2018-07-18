@@ -921,12 +921,14 @@
           {
             "name": "FiscalMonth",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FiscalMonth",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipTo",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipTo",
             "sourceProviderType": "Integer"
           },
