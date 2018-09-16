@@ -5,8 +5,8 @@
     "culture": "en-US",
     "dataSources": [
       {
-        "name": "SqlServer_cahsionnlsql2_Prod_BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql2v;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
+        "name": "SqlServer_cahsionnlsql1_BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "cahsi\\tcrowley",
         "annotations": [
@@ -272,7 +272,7 @@
             "dataView": "full",
             "source": {
               "query": " SELECT [Dimension].[Customer].* FROM [Dimension].[Customer] ",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
           }
         ],
@@ -519,7 +519,7 @@
             "dataView": "full",
             "source": {
               "query": " SELECT [Dimension].[Item].* FROM [Dimension].[Item] ",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
           }
         ],
@@ -609,7 +609,7 @@
             "dataView": "full",
             "source": {
               "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
             "annotations": [
               {
@@ -1108,7 +1108,7 @@
             "dataView": "full",
             "source": {
               "query": "SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
             "annotations": [
               {
@@ -1583,7 +1583,7 @@
             "dataView": "full",
             "source": {
               "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
           }
         ],
@@ -1652,7 +1652,7 @@
             "dataView": "full",
             "source": {
               "query": " SELECT [Dimension].[Branch].* FROM [Dimension].[Branch] ",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
           }
         ],
@@ -1699,7 +1699,7 @@
             "dataView": "full",
             "source": {
               "query": " SELECT [Dimension].[CustomerMarketClass].* FROM [Dimension].[CustomerMarketClass] ",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
           }
         ],
@@ -1772,7 +1772,7 @@
             "dataView": "full",
             "source": {
               "query": " SELECT [Dimension].[ItemSupplier].* FROM [Dimension].[ItemSupplier] ",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
             "annotations": [
               {
@@ -2252,7 +2252,7 @@
             "dataView": "full",
             "source": {
               "query": " SELECT [dbo].[BRS_BusinessUnitClass].* FROM [dbo].[BRS_BusinessUnitClass] ",
-              "dataSource": "SqlServer_cahsionnlsql2_Prod_BRSales"
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
           }
         ],

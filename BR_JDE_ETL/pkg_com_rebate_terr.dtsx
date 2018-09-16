@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\TCrowley"
   DTS:DTSID="{42089646-F48B-44BD-AD55-303905F77C0D}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LastModifiedProductVersion="14.0.0800.60"
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_com_rebate_terr"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{4C065B25-4D18-49F7-B064-7E32D4FCA420}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{A06DD544-0DC2-4001-83E9-95D80DA99739}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -111,7 +111,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1156,12 +1156,12 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--------------------------------------------------------------------------------
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
 -- DROP TABLE Integration.F55479C_rebate_by_shipto_Staging
 --------------------------------------------------------------------------------
 
 SELECT 
---    Top 10
+ --  Top 10
     "QMAN8" AS QMAN8__billto,
 	"QMSHAN" AS QMSHAN_shipto,
 	"QMBNAD" AS QMBNAD_beneficiary,
@@ -3141,7 +3141,7 @@ FROM
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3680,7 +3680,7 @@ FROM
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--------------------------------------------------------------------------------
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
 -- DROP TABLE Integration.F5553_territory_Staging
 --------------------------------------------------------------------------------
 
@@ -4787,15 +4787,15 @@ FROM
     design-time-name="Package\seq_F5553_territory_Staging\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="195,42"
-          Id="Package\seq_F5553_territory_Staging\dft_load_stage\F5553_territory_Staging"
-          TopLeft="232,214" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="184,42"
           Id="Package\seq_F5553_territory_Staging\dft_load_stage\OLE DB Source F5553"
           TopLeft="237,64" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\seq_F5553_territory_Staging\dft_load_stage\F5553_territory_Staging"
+          TopLeft="232,214" />
         <EdgeLayout
           Id="Package\seq_F5553_territory_Staging\dft_load_stage.Paths[OLE DB Source Output]"
           TopLeft="329.25,106">
@@ -4815,7 +4815,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

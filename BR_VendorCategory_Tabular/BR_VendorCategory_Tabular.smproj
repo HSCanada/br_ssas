@@ -13,7 +13,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Development' ">
     <OutputPath>bin\</OutputPath>
-    <DeploymentServerName>cahsionnlsql2v</DeploymentServerName>
+    <DeploymentServerName>cahsionnlsql1</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_VendorCategory_Tabular</DeploymentServerDatabase>
