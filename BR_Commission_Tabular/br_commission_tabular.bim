@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -1055,6 +1055,12 @@
             "name": "FreeGoodsInvoicedInd",
             "dataType": "boolean",
             "sourceColumn": "FreeGoodsInvoicedInd"
+          },
+          {
+            "name": "FSC_SalespersonCodeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FSC_SalespersonCodeKey"
           }
         ],
         "partitions": [
@@ -1063,7 +1069,7 @@
             "dataView": "full",
             "source": {
               "query": [
-                "SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
+                "SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_SalespersonCodeKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
                 "                         DocTypeKey, LineNumber, DateKey, BillTo, SourceKey, FreeGoodsEstInd, FreeGoodsRedeemedInd, Quantity, SalesAmt, GPAmt, FSC_CommAmt, ESS_CommAmt, ",
                 "                         FreeGoodsInvoicedInd",
                 "FROM            Fact.Commission"
@@ -1074,7 +1080,7 @@
               {
                 "name": "QueryEditorSerialization",
                 "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_SalespersonCodeKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
                   "                         DocTypeKey, LineNumber, DateKey, BillTo, SourceKey, FreeGoodsEstInd, FreeGoodsRedeemedInd, Quantity, SalesAmt, GPAmt, FSC_CommAmt, ESS_CommAmt, ",
                   "                         FreeGoodsInvoicedInd",
                   "FROM            Fact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1441,7 +1447,7 @@
           {
             "name": "_TM_ExtProp_QueryDefinition",
             "value": [
-              "SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
+              "SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_SalespersonCodeKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
               "                         DocTypeKey, LineNumber, DateKey, BillTo, SourceKey, FreeGoodsEstInd, FreeGoodsRedeemedInd, Quantity, SalesAmt, GPAmt, FSC_CommAmt, ESS_CommAmt, ",
               "                         FreeGoodsInvoicedInd",
               "FROM            Fact.Commission"
@@ -1458,7 +1464,7 @@
           {
             "name": "QueryEditorSerialization",
             "value": [
-              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        FactKey, FiscalMonth, FSC_SalespersonKey, FSC_SalespersonCodeKey, FSC_CommGroupKey, ESS_SalespersonKey, ESS_CommGroupKey, ShipTo, ItemKey, SalesOrderNumber, ",
               "                         DocTypeKey, LineNumber, DateKey, BillTo, SourceKey, FreeGoodsEstInd, FreeGoodsRedeemedInd, Quantity, SalesAmt, GPAmt, FSC_CommAmt, ESS_CommAmt, ",
               "                         FreeGoodsInvoicedInd",
               "FROM            Fact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2139,6 +2145,132 @@
             ]
           }
         ]
+      },
+      {
+        "name": "CommSalespersonCode_FSC",
+        "columns": [
+          {
+            "name": "FSC_SalespersonCode",
+            "dataType": "string",
+            "sourceColumn": "FSC_SalespersonCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalespersonName",
+            "dataType": "string",
+            "sourceColumn": "SalespersonName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "FSC_SalespersonCodeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FSC_SalespersonCodeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FSCRollup",
+            "dataType": "string",
+            "sourceColumn": "FSCRollup",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "BranchName",
+            "dataType": "string",
+            "sourceColumn": "BranchName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ZoneName",
+            "dataType": "string",
+            "sourceColumn": "ZoneName",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SalespersonCodeCommission",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT",
+                "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
+                "  ,Dimension.SalespersonCodeCommission.SalespersonName",
+                "  ,Dimension.SalespersonCodeCommission.FSC_SalespersonCodeKey",
+                "  ,Dimension.SalespersonCodeCommission.FSCRollup",
+                "  ,Dimension.SalespersonCodeCommission.BranchCode",
+                "  ,Dimension.SalespersonCodeCommission.BranchName",
+                "  ,Dimension.SalespersonCodeCommission.ZoneName",
+                "FROM",
+                "  Dimension.SalespersonCodeCommission"
+              ],
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
+                  "  ,Dimension.SalespersonCodeCommission.SalespersonName",
+                  "  ,Dimension.SalespersonCodeCommission.FSC_SalespersonCodeKey",
+                  "  ,Dimension.SalespersonCodeCommission.FSCRollup",
+                  "  ,Dimension.SalespersonCodeCommission.BranchCode",
+                  "  ,Dimension.SalespersonCodeCommission.BranchName",
+                  "  ,Dimension.SalespersonCodeCommission.ZoneName",
+                  "FROM",
+                  "  Dimension.SalespersonCodeCommission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"SalespersonName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCodeKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSCRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"ZoneName\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
+              "  ,Dimension.SalespersonCodeCommission.SalespersonName",
+              "  ,Dimension.SalespersonCodeCommission.FSC_SalespersonCodeKey",
+              "  ,Dimension.SalespersonCodeCommission.FSCRollup",
+              "  ,Dimension.SalespersonCodeCommission.BranchCode",
+              "  ,Dimension.SalespersonCodeCommission.BranchName",
+              "  ,Dimension.SalespersonCodeCommission.ZoneName",
+              "FROM",
+              "  Dimension.SalespersonCodeCommission"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SalespersonCodeCommission"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
+              "  ,Dimension.SalespersonCodeCommission.SalespersonName",
+              "  ,Dimension.SalespersonCodeCommission.FSC_SalespersonCodeKey",
+              "  ,Dimension.SalespersonCodeCommission.FSCRollup",
+              "  ,Dimension.SalespersonCodeCommission.BranchCode",
+              "  ,Dimension.SalespersonCodeCommission.BranchName",
+              "  ,Dimension.SalespersonCodeCommission.ZoneName",
+              "FROM",
+              "  Dimension.SalespersonCodeCommission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"SalespersonName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCodeKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSCRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"ZoneName\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
       }
     ],
     "relationships": [
@@ -2211,6 +2343,13 @@
         "fromColumn": "ESS_CommGroupKey",
         "toTable": "CommGroup_ESS",
         "toColumn": "CommGroupKey"
+      },
+      {
+        "name": "c170f45c-3f1d-45fa-a3a9-4041f8d6cfb8",
+        "fromTable": "Sales",
+        "fromColumn": "FSC_SalespersonCodeKey",
+        "toTable": "CommSalespersonCode_FSC",
+        "toColumn": "FSC_SalespersonCodeKey"
       }
     ],
     "roles": [
