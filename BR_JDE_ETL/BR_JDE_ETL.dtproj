@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">CAHSIONNLD3092A</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0GZ0KGCF9kS3i1ZKJboqRQAAAAACAAAAAAADZgAAwAAAABAAAAABo3iBk1+R/gWASAdVCTW9AAAAAASAAACgAAAAEAAAANJLyEGFMB/A/2O/wD/teeSIAAAA4P2E4CdizfAbPeS4QuR2siEjhpy5Ad5rsXxNFQBZ1JKkOj/jdqqUskD0w0U9qfUrX9GCTYV/LoJ/hN0kudp+ipO5JmPBWANfKSVAtp8UrY42BhmkM8kfCgw8G2R1txchgZrkIc8BeBTRdS0CKdVLC6tfbAF9pSEE44A8FEQVC/t4S6F5uFxsdxQAAABHpDP9zsy5XkIrmFIuCeGndHNCSg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA00Oc2alK40aBt5tIeSWNfgAAAAACAAAAAAADZgAAwAAAABAAAAB/tpKD7Xn7NmF+i824BbCuAAAAAASAAACgAAAAEAAAAHgC2fEn4vEnZ283bMwT0mOIAAAAjaXp1u4dBV5zcM1A8ccF8UArOhbFk2iu+LDGxTLkPSdAJ7RFy7YLVEc4xgER1AnUpzowzrjf0rqLRIsMMzt5ojxaojjK3xYtY358jQcf7h377GVXUsiotPoSbBirK9sOR50q6yw2eVXzxwLKU03+u3pRarqNHvTRDJQk7xjBBdJuwWig+PiP2BQAAACRG2RKZNcnmpxMxi5GTzz4foBnfg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -52,7 +52,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">DEV_BRSales</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">BRSales</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -222,12 +222,12 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2017-09-22T02:23:24.2014772Z</Value>
+            <Value xsi:type="xsd:dateTime">2018-09-16T21:51:04.241525Z</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>{aa221702-982a-43b8-af2a-733ef60fbd55}</Id>
             <Name>Project::ConnectionString</Name>
-            <Value xsi:type="xsd:string">Data Source=CAHSIONNLSQL2;Initial Catalog=DEV_BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</Value>
+            <Value xsi:type="xsd:string">Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</Value>
           </ConfigurationSetting>
         </ParameterConfigurationValues>
       </Options>
@@ -245,12 +245,12 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2017-09-22T02:22:53.2833127Z</Value>
+            <Value xsi:type="xsd:dateTime">2018-09-16T21:51:04.241525Z</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>{aa221702-982a-43b8-af2a-733ef60fbd55}</Id>
             <Name>Project::ConnectionString</Name>
-            <Value xsi:type="xsd:string">Data Source=CAHSIONNLSQL2;Initial Catalog=BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</Value>
+            <Value xsi:type="xsd:string">Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</Value>
           </ConfigurationSetting>
         </ParameterConfigurationValues>
       </Options>

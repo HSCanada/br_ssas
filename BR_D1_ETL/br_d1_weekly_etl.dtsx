@@ -5,221 +5,27 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="CAHSIONNLD3829"
   DTS:CreatorName="CAHSI\JLi"
-  DTS:DTSID="{E91CB9F9-B1A8-4469-97F6-2063FC12487B}"
+  DTS:DTSID="{FAA0D228-3DE5-4DE3-B27D-8E9C1483F260}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.101"
+  DTS:LastModifiedProductVersion="14.0.0800.60"
   DTS:LocaleID="1033"
-  DTS:ObjectName="br_d1_etl"
+  DTS:ObjectName="br_d1_weekly_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="283"
-  DTS:VersionGUID="{69DCD457-1C92-4288-9D42-80B3AF3EFC79}">
+  DTS:VersionBuild="293"
+  DTS:VersionGUID="{231B0803-52EC-499C-B5D1-F06411AA0158}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[cahsionnlsql2.DEV_BRSales]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{63B6E586-E0B4-4821-9FFA-C3728F73652B}"
-      DTS:ObjectName="cahsionnlsql2.DEV_BRSales">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=cahsionnlsql2;Initial Catalog=DEV_BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[dest]"
+      DTS:refId="Package.ConnectionManagers[conn_dest]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{BF90ED84-6DC2-40A1-897B-A8622803513B}"
-      DTS:ObjectName="dest">
+      DTS:ObjectName="conn_dest">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[$Project::ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=CAHSIONNLSQL2;Initial Catalog=DEV_BRSales;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BR_D1_ETL-{BF90ED84-6DC2-40A1-897B-A8622803513B}CAHSIONNLSQL2.DEV_BRSales;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager - prorepr]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{28796bc1-a2d8-4917-959a-44395805a24c}"
-      DTS:ObjectName="Flat File Connection Manager - prorepr">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="RaggedRight"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowsToSkip="6"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="S:\Business Reporting\zDev\BRS\Upload\prorepr.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="11"
-              DTS:MaximumWidth="11"
-              DTS:DataType="129"
-              DTS:ObjectName="BRANCH"
-              DTS:DTSID="{BCE222B1-21A7-45DB-9D01-290F013E46F6}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="4"
-              DTS:MaximumWidth="4"
-              DTS:DataType="129"
-              DTS:ObjectName="RMA"
-              DTS:DTSID="{41DCC751-FE15-49FE-B326-C8B89995F1DF}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="3"
-              DTS:MaximumWidth="3"
-              DTS:DataType="129"
-              DTS:ObjectName="ST"
-              DTS:DTSID="{461890B9-B09C-4BD0-B3B5-CE15381B759D}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="11"
-              DTS:MaximumWidth="11"
-              DTS:DataType="129"
-              DTS:ObjectName="WORKORDER"
-              DTS:DTSID="{49668AF0-A778-463E-A9B4-B38F915B05ED}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="9"
-              DTS:DataType="133"
-              DTS:ObjectName="ORD_REC"
-              DTS:DTSID="{CA98D83D-ACED-4DE5-9E07-557DFD3ACECF}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="9"
-              DTS:DataType="133"
-              DTS:ObjectName="EST_COMP"
-              DTS:DTSID="{D047FF65-C7DB-4EBE-8522-1148BA501F31}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="9"
-              DTS:DataType="133"
-              DTS:ObjectName="APPR_DEC"
-              DTS:DTSID="{3455421E-0B28-4A5E-A2F7-FEE2C64809F7}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="9"
-              DTS:DataType="133"
-              DTS:ObjectName="PART_REL"
-              DTS:DTSID="{67428132-FF8E-494C-AABD-CF5185B6A9E0}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="9"
-              DTS:DataType="133"
-              DTS:ObjectName="ORD_COMP"
-              DTS:DTSID="{60466882-46B2-42C2-9657-7B7681ED60AE}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="9"
-              DTS:MaximumWidth="9"
-              DTS:DataType="129"
-              DTS:ObjectName="CUST_NO"
-              DTS:DTSID="{CA735C8C-34F9-463B-8128-297C0576672D}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="26"
-              DTS:MaximumWidth="26"
-              DTS:DataType="129"
-              DTS:ObjectName="CUST_NAME"
-              DTS:DTSID="{0F00EEEF-7F79-4BD0-ACF2-61BB65CE0142}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="5"
-              DTS:MaximumWidth="5"
-              DTS:DataType="129"
-              DTS:ObjectName="PRIV"
-              DTS:DTSID="{751C426A-3758-42B2-BE06-FD210F700356}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="17"
-              DTS:MaximumWidth="17"
-              DTS:DataType="129"
-              DTS:ObjectName="MODEL_NUMBER"
-              DTS:DTSID="{16281EB9-240F-482A-8E44-4FF96BA874FD}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="6"
-              DTS:MaximumWidth="6"
-              DTS:DataType="129"
-              DTS:ObjectName="P_CSR"
-              DTS:DTSID="{F59EC213-195C-4965-A8A3-307137786C6C}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="5"
-              DTS:MaximumWidth="5"
-              DTS:DataType="129"
-              DTS:ObjectName="CTYPE"
-              DTS:DTSID="{E6C1704C-43D2-4AC6-BACC-38173D60198A}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="5"
-              DTS:MaximumWidth="5"
-              DTS:DataType="129"
-              DTS:ObjectName="PCODE"
-              DTS:DTSID="{82941B76-97FA-4D86-BED3-B5D493222A33}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="16"
-              DTS:MaximumWidth="16"
-              DTS:DataType="129"
-              DTS:ObjectName="PDESC"
-              DTS:DTSID="{05741B13-6405-4C9A-B8FA-88F94C64E853}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="5"
-              DTS:MaximumWidth="5"
-              DTS:DataType="129"
-              DTS:ObjectName="CCOD"
-              DTS:DTSID="{93ED9D8A-3577-4D56-B697-2E16CCF841CE}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="23"
-              DTS:MaximumWidth="23"
-              DTS:DataType="129"
-              DTS:ObjectName="CDESC"
-              DTS:DTSID="{4989C64A-70B2-46D4-9D07-B38EE370C5A7}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="7"
-              DTS:MaximumWidth="7"
-              DTS:DataType="129"
-              DTS:ObjectName="USERID"
-              DTS:DTSID="{2783ED1D-63BA-46C0-B41A-FC255EB41186}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="500"
-              DTS:DataType="129"
-              DTS:ObjectName="extra"
-              DTS:DTSID="{6FF4FA09-CEA8-4A9A-A89C-9B30E17D01C2}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BR_D1_ETL-{BF90ED84-6DC2-40A1-897B-A8622803513B}CAHSIONNLSQL2.DEV_BRSales;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -235,7 +41,7 @@
           DTS:RowDelimiter="_x000A_"
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="S:\Business Reporting\zDev\BRS\Upload\whvalrpt.csv">
+          DTS:ConnectionString="\\cahsionnlfp04\Groups\BR\BR_Sales\Upload\whvalrpt.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -243,7 +49,7 @@
               DTS:MaximumWidth="9"
               DTS:DataType="129"
               DTS:ObjectName="Mfg"
-              DTS:DTSID="{E69D07B5-820B-43C0-9827-1C0468C54907}"
+              DTS:DTSID="{943F6EDB-3214-42C3-92EF-F578ED3C019F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -251,7 +57,7 @@
               DTS:MaximumWidth="19"
               DTS:DataType="129"
               DTS:ObjectName="MfgPartNo"
-              DTS:DTSID="{B0AA6317-A75C-4AD4-834F-C56F172A18B5}"
+              DTS:DTSID="{2B68D945-12BA-42FA-9C01-76296CD873DB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -259,7 +65,7 @@
               DTS:MaximumWidth="27"
               DTS:DataType="129"
               DTS:ObjectName="Item_Description"
-              DTS:DTSID="{68C21656-71A0-44AC-AE49-D34FCCE7C20F}"
+              DTS:DTSID="{7FF489F4-24C3-4E9D-97F1-90C8DB81FA58}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -267,7 +73,7 @@
               DTS:MaximumWidth="10"
               DTS:DataType="129"
               DTS:ObjectName="Bin"
-              DTS:DTSID="{89CE5FA1-142B-487F-A9D3-C7B59B00B708}"
+              DTS:DTSID="{EB886AE2-9B80-4E9A-A256-90C321E10F6B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -275,7 +81,7 @@
               DTS:MaximumWidth="8"
               DTS:DataType="129"
               DTS:ObjectName="Part-No"
-              DTS:DTSID="{E8D32EDD-12FF-4DBA-8149-00639E24B9F7}"
+              DTS:DTSID="{73C143A3-899B-405C-8A2D-9A817B17E7CB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -283,7 +89,7 @@
               DTS:MaximumWidth="7"
               DTS:DataType="129"
               DTS:ObjectName="Class"
-              DTS:DTSID="{F2B5CBF7-3346-4564-BB67-02572BA753E0}"
+              DTS:DTSID="{8AB33731-18C3-466E-A161-0D6BB9E34E78}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -291,7 +97,7 @@
               DTS:MaximumWidth="14"
               DTS:DataType="129"
               DTS:ObjectName="Tag Number"
-              DTS:DTSID="{43FE123A-C67A-40E6-8490-8E698DA1B1A7}"
+              DTS:DTSID="{DD5EE23D-190C-4E0F-ACB9-06851B142041}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -299,7 +105,7 @@
               DTS:MaximumWidth="5"
               DTS:DataType="129"
               DTS:ObjectName="Q_Avl"
-              DTS:DTSID="{5044E84E-7D45-44EB-84B7-F4C439030EE5}"
+              DTS:DTSID="{0DDF088E-4AD9-4466-B3CE-958C6C561584}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -307,7 +113,7 @@
               DTS:MaximumWidth="5"
               DTS:DataType="129"
               DTS:ObjectName="Q_Alo"
-              DTS:DTSID="{22922216-083E-4336-B761-A49B53AD6AF8}"
+              DTS:DTSID="{1BCE5DA9-671E-48D5-8C5C-1EC21E2226D4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -315,7 +121,7 @@
               DTS:MaximumWidth="6"
               DTS:DataType="129"
               DTS:ObjectName="Q_Rsv"
-              DTS:DTSID="{AE3ED521-3583-4357-B800-12526B4F999B}"
+              DTS:DTSID="{9FF65380-F868-4648-B221-6352C5491AB1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -323,7 +129,7 @@
               DTS:MaximumWidth="6"
               DTS:DataType="129"
               DTS:ObjectName="Q_Total"
-              DTS:DTSID="{32218F08-6B01-489D-AB00-1790333B9BA6}"
+              DTS:DTSID="{001A2D8E-7D95-45A9-B86A-299E61C4003F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -331,7 +137,7 @@
               DTS:MaximumWidth="3"
               DTS:DataType="129"
               DTS:ObjectName="Unit_Cost"
-              DTS:DTSID="{3011F509-A0A1-4F4B-A241-C9F56CCF9693}"
+              DTS:DTSID="{D45E2C23-5AE0-48DF-A5CB-65F6DA2D509B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -339,7 +145,7 @@
               DTS:MaximumWidth="11"
               DTS:DataType="129"
               DTS:ObjectName="Ave_Cost"
-              DTS:DTSID="{FEA1125C-7E8E-4934-9440-93C2797A3440}"
+              DTS:DTSID="{7191807C-156C-4BC6-8375-FB170657E764}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -347,7 +153,7 @@
               DTS:MaximumWidth="5"
               DTS:DataType="129"
               DTS:ObjectName="Tag"
-              DTS:DTSID="{B05454AE-05F2-4878-8229-3EBAAF8B9AF3}"
+              DTS:DTSID="{3433F313-6A12-4D1E-96AC-8F886F4D7551}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -355,7 +161,7 @@
               DTS:MaximumWidth="11"
               DTS:DataType="129"
               DTS:ObjectName="ext_avail"
-              DTS:DTSID="{DF72A737-CC41-4896-A759-A6CBEB2CEF66}"
+              DTS:DTSID="{3BFA9228-ABAE-48A1-90E9-052AB0ADFF3B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -363,7 +169,7 @@
               DTS:MaximumWidth="12"
               DTS:DataType="129"
               DTS:ObjectName="ext_res"
-              DTS:DTSID="{CDEBEA11-8903-4DE1-B671-AF4F0DA7484D}"
+              DTS:DTSID="{D161E8EB-9E49-47F4-81DF-F10539EB4CB0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -371,7 +177,7 @@
               DTS:MaximumWidth="29"
               DTS:DataType="129"
               DTS:ObjectName="qty_res_txt"
-              DTS:DTSID="{18ECB1F5-1ADE-4C4D-9827-FE7D565A4A17}"
+              DTS:DTSID="{68D7B5EC-9310-4451-BECE-F10CDD5CAE3A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnDelimiter=""
@@ -379,7 +185,7 @@
               DTS:MaximumWidth="11"
               DTS:DataType="129"
               DTS:ObjectName="ext_total"
-              DTS:DTSID="{3904E380-07D2-4B5C-B281-0998E118577A}"
+              DTS:DTSID="{4B74ECF3-804C-4624-81BE-28F37E853BDD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -387,178 +193,7 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:ObjectName="extra"
-              DTS:DTSID="{A00F5981-4CF6-4EC4-925A-D6DB61AED341}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager - whvalrpt 1]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{2372f5e1-1ff1-45ce-b44b-29a880b9f9bf}"
-      DTS:ObjectName="Flat File Connection Manager - whvalrpt 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="RaggedRight"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowDelimiter="_x000A_"
-          DTS:RowDelimiter="_x000A_"
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="S:\Business Reporting\zDev\BRS\Upload\whvalrpt.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="9"
-              DTS:MaximumWidth="9"
-              DTS:DataType="129"
-              DTS:ObjectName="Mfg"
-              DTS:DTSID="{D657745B-FD15-4101-AA0C-AF418F87EAEE}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="19"
-              DTS:MaximumWidth="19"
-              DTS:DataType="129"
-              DTS:ObjectName="MfgPartNo"
-              DTS:DTSID="{D9E704D3-F715-4BBB-BF84-56B073CE92A5}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="27"
-              DTS:MaximumWidth="27"
-              DTS:DataType="129"
-              DTS:ObjectName="Item_Description"
-              DTS:DTSID="{2950F37F-8D25-4CF3-9C88-61C0E0A93B42}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="10"
-              DTS:MaximumWidth="10"
-              DTS:DataType="129"
-              DTS:ObjectName="Bin"
-              DTS:DTSID="{0D4E6079-5327-486B-84CD-13F3697071E0}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="8"
-              DTS:MaximumWidth="8"
-              DTS:DataType="129"
-              DTS:ObjectName="Part-No"
-              DTS:DTSID="{F5BE358A-6F06-4451-8004-1B54F503CC8F}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="7"
-              DTS:MaximumWidth="7"
-              DTS:DataType="129"
-              DTS:ObjectName="Class"
-              DTS:DTSID="{50AB25D0-1682-4F49-AF00-A67F413D2558}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="14"
-              DTS:MaximumWidth="14"
-              DTS:DataType="129"
-              DTS:ObjectName="Tag Number"
-              DTS:DTSID="{6FD1ED84-7498-4AD0-818D-903295F487F5}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="5"
-              DTS:MaximumWidth="5"
-              DTS:DataType="129"
-              DTS:ObjectName="Q_Avl"
-              DTS:DTSID="{85497991-9F6F-4019-B258-4608412E5FF7}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="5"
-              DTS:MaximumWidth="5"
-              DTS:DataType="129"
-              DTS:ObjectName="Q_Alo"
-              DTS:DTSID="{CB8852AD-AF75-4705-AD8A-536A01D9B4A8}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="6"
-              DTS:MaximumWidth="6"
-              DTS:DataType="129"
-              DTS:ObjectName="Q_Rsv"
-              DTS:DTSID="{AD5B0646-1F48-4C9F-B409-D92C8A577EEF}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="6"
-              DTS:MaximumWidth="6"
-              DTS:DataType="129"
-              DTS:ObjectName="Q_Total"
-              DTS:DTSID="{C4490410-B334-4B0F-8271-B4D840E473F3}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="3"
-              DTS:MaximumWidth="3"
-              DTS:DataType="129"
-              DTS:ObjectName="Unit_Cost"
-              DTS:DTSID="{AB83AAF7-7D76-4261-8697-74051092BA88}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="11"
-              DTS:MaximumWidth="11"
-              DTS:DataType="129"
-              DTS:ObjectName="Ave_Cost"
-              DTS:DTSID="{F8EBC89E-AAD2-476C-9578-DBE46B681F67}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="5"
-              DTS:MaximumWidth="5"
-              DTS:DataType="129"
-              DTS:ObjectName="Tag"
-              DTS:DTSID="{8A04C71D-55B6-438A-92DE-D6BEB8360856}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="11"
-              DTS:MaximumWidth="11"
-              DTS:DataType="129"
-              DTS:ObjectName="ext_avail"
-              DTS:DTSID="{10487CF6-12D9-429D-B2BA-30E6518511A9}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="12"
-              DTS:MaximumWidth="12"
-              DTS:DataType="129"
-              DTS:ObjectName="ext_res"
-              DTS:DTSID="{2F3F9DD8-A5C2-4301-8D1A-D57E2B1A5D56}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="29"
-              DTS:MaximumWidth="29"
-              DTS:DataType="129"
-              DTS:ObjectName="qty_res_txt"
-              DTS:DTSID="{32345065-56E9-481D-8978-4DEC6E77C0DC}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnDelimiter=""
-              DTS:ColumnWidth="11"
-              DTS:MaximumWidth="11"
-              DTS:DataType="129"
-              DTS:ObjectName="ext_total"
-              DTS:DTSID="{1F8896A4-29ED-4AEF-BFAE-522467019209}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000A_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:ObjectName="extra"
-              DTS:DTSID="{40EF89A5-C641-4403-9972-52837242C96F}"
+              DTS:DTSID="{F35F701C-CCA1-4C23-8B88-4C819C4222B6}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -580,7 +215,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="S:\Business Reporting\zDev\BRS\BR_Sales\Upload\opordrpt.csv">
+          DTS:ConnectionString="\\cahsionnlfp04\Groups\BR\BR_Sales\Upload\opordrpt.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -589,7 +224,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="BRANCH"
-              DTS:DTSID="{6E5391DA-6B89-4FF8-90DB-E59DBC1BDCD4}"
+              DTS:DTSID="{2A9B563F-946B-447A-BD77-BDD5B039FB66}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -598,7 +233,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ORDER_STATUS"
-              DTS:DTSID="{D5394821-4480-4FF1-923E-5A4B135E634F}"
+              DTS:DTSID="{CD76D1DA-0ED8-4CEE-ACD5-AF8717FCACA3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -607,7 +242,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ETS#"
-              DTS:DTSID="{B78F0425-02ED-40AF-9A6F-419B12EB8505}"
+              DTS:DTSID="{A3EB9257-AA23-4D7D-8454-A000CE684470}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -616,7 +251,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="WORK_ORDER_NUMBER"
-              DTS:DTSID="{E58AE5AB-F722-41F0-9AA6-7855C4B4EFD9}"
+              DTS:DTSID="{62CBEA8C-62BD-4F63-BA0E-14FF4BB65BE7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -624,7 +259,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="WORK_ORDER_DATE"
-              DTS:DTSID="{87DAFCD1-1CF7-466A-9D37-73B41739A8D7}"
+              DTS:DTSID="{9F3FBA16-D66F-4C18-B7DB-73664D2EFC05}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -632,7 +267,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="SHIPTO_JDE"
-              DTS:DTSID="{9D2484E5-2F13-40E6-8160-67AA228A5EEF}"
+              DTS:DTSID="{F5284F9C-7E77-4563-B9DA-69DC2C39AE3A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -641,7 +276,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="NAME"
-              DTS:DTSID="{751D5115-CA20-49BF-A378-64A9EF80C4C2}"
+              DTS:DTSID="{9F90F447-58BB-4455-A384-EE9B83B41EBF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -649,7 +284,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="INSTALL_DATE"
-              DTS:DTSID="{F7E96F39-40A1-4AB6-BD49-015545AD88F5}"
+              DTS:DTSID="{0A992A21-0383-4783-880C-8443B6CE6211}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -658,7 +293,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="EMPTY"
-              DTS:DTSID="{34E44EE4-1FC1-454B-9B1F-8E2C5B1F1359}"
+              DTS:DTSID="{DD48ECB6-1FBB-47E8-A4A4-98DD7972F856}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -667,7 +302,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ITEM_STATUS"
-              DTS:DTSID="{02673C6B-E198-4759-BB8D-88F31E681180}"
+              DTS:DTSID="{5C2C062D-93E6-4E83-BA01-11AB5D9E3ECF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -675,7 +310,7 @@
               DTS:DataType="16"
               DTS:TextQualified="True"
               DTS:ObjectName="LINE_NUMBER"
-              DTS:DTSID="{F9954EBA-EC90-47C2-8D6E-FF98B7864DC9}"
+              DTS:DTSID="{23048A2F-84FB-48FF-98EF-5C0BD076FE3C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -683,7 +318,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ITEM_NUMBER"
-              DTS:DTSID="{282FA3C0-FD28-4569-B200-7B93E4CC6087}"
+              DTS:DTSID="{8BBAE6BE-B169-46C0-AE67-6414DC9D6A2C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -692,7 +327,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DESCRIPTION"
-              DTS:DTSID="{810E1A00-B39F-4383-AF28-A0D0F4828429}"
+              DTS:DTSID="{3BDAD61C-7EDF-43D8-8C3C-33F522B8C1EC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -701,7 +336,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="VENDOR_CODE"
-              DTS:DTSID="{5DC206B8-8A26-4ABA-898B-B237A496BDD8}"
+              DTS:DTSID="{D81695F8-7878-4841-A585-6D21510C3DC6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -709,7 +344,7 @@
               DTS:MaximumWidth="10"
               DTS:DataType="128"
               DTS:ObjectName="CATEGORY"
-              DTS:DTSID="{81E8E341-4473-475F-A840-0CEDD9070DE4}"
+              DTS:DTSID="{37E0DAFC-88F2-4A3D-85A2-961C006ABC19}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -717,7 +352,7 @@
               DTS:DataType="16"
               DTS:TextQualified="True"
               DTS:ObjectName="QUANTITY"
-              DTS:DTSID="{81C27B6F-DA6B-479B-BA4B-CAD329C07048}"
+              DTS:DTSID="{34517C62-6348-4D30-A8AA-8ED1927208BE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -725,7 +360,7 @@
               DTS:DataType="16"
               DTS:TextQualified="True"
               DTS:ObjectName="QTY_RECEIVED"
-              DTS:DTSID="{CC57085B-1C6F-4613-8222-5B8CADEEBFF7}"
+              DTS:DTSID="{2A84BBA5-3882-4D21-8BE9-4DA2CB034790}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -733,7 +368,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="DATE_RECEIVED"
-              DTS:DTSID="{531DEB0B-3F45-4209-BC18-96842A3C9D7B}"
+              DTS:DTSID="{E69AF3EF-AE3D-4732-9220-508528A40E23}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -741,7 +376,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="PRICE"
-              DTS:DTSID="{B1023852-77BA-456B-B4E0-AD591B41EAD6}"
+              DTS:DTSID="{642AA6CF-7AA3-4C61-AEC7-077F8CCF55C2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -749,7 +384,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="COST"
-              DTS:DTSID="{AD456FCE-BE72-4558-B5BA-7C9A4BC92434}"
+              DTS:DTSID="{D2F1D035-7BA0-4D53-BDC8-D47A3189BA0D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -757,7 +392,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="GP"
-              DTS:DTSID="{069ADDCC-9A4C-4E6F-A82A-10433351F653}"
+              DTS:DTSID="{DD47BEDA-690E-438D-9CE5-99DB3C94445C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -766,7 +401,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PO or IT"
-              DTS:DTSID="{73192971-C4B7-4A26-BEAF-152A3EE0CD72}"
+              DTS:DTSID="{B3D40725-C107-4503-B359-9D001D801D56}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -775,7 +410,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="REQ"
-              DTS:DTSID="{5FF9902A-4382-42A0-9CEA-EBB069FCC353}"
+              DTS:DTSID="{41C37B21-8449-4148-83EC-6EE2077F78C6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -784,7 +419,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="STAGING_WAREHOUSE"
-              DTS:DTSID="{9CE47F67-68A0-486A-8869-562D5E8FDAF4}"
+              DTS:DTSID="{8DF9BA5D-F3B6-4B95-8937-3E202B382280}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -793,7 +428,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ESS"
-              DTS:DTSID="{3B2CA044-D99A-4761-A72A-3480453A760B}"
+              DTS:DTSID="{B894BC03-07AB-46B3-8DD7-CFCD49DA907A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -802,7 +437,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DTS"
-              DTS:DTSID="{6CB278EA-C168-4252-87BC-FB1C2CD904CB}"
+              DTS:DTSID="{812DA59F-7AFB-48B0-BC04-7F1E9B79E800}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -811,7 +446,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PMTS    "
-              DTS:DTSID="{FE0258F7-BC9E-4EFC-BFA4-417C9B7DE788}"
+              DTS:DTSID="{2080F4C2-C2E0-41CF-BE5D-3F7A2AE0E622}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -820,7 +455,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="FSC"
-              DTS:DTSID="{DF8F622F-3629-42A8-B4A5-354BB66F953B}"
+              DTS:DTSID="{612357FE-19A4-49EE-8E4A-255921D43BA7}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1052,8 +687,8 @@
                   <connections>
                     <connection
                       refId="Package\seq_inventory_whvalrpt\dft_load_stage\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[dest]"
-                      connectionManagerRefId="Package.ConnectionManagers[dest]"
+                      connectionManagerID="Package.ConnectionManagers[conn_dest]"
+                      connectionManagerRefId="Package.ConnectionManagers[conn_dest]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2938,7 +2573,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2962,6 +2597,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       DTS:refId="Package\seq_open_order_opordrpt"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{6760CDB4-F980-43DA-AC5B-FDDC15C7E8D8}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -3041,8 +2677,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   <connections>
                     <connection
                       refId="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[dest]"
-                      connectionManagerRefId="Package.ConnectionManagers[dest]"
+                      connectionManagerID="Package.ConnectionManagers[conn_dest]"
+                      connectionManagerRefId="Package.ConnectionManagers[conn_dest]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -4052,7 +3688,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4072,2118 +3708,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           DTS:To="Package\seq_open_order_opordrpt\dft_load_stage" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\seq_open_order_prorepr"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:DelayValidation="True"
-      DTS:Description="Sequence Container"
-      DTS:DTSID="{0ab41c36-630d-4f9c-a44f-08dcf638509a}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="seq_open_order_prorepr">
-      <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\seq_open_order_prorepr\dft_load_stage"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:DelayValidation="True"
-          DTS:Description="Data Flow Task"
-          DTS:DTSID="{20483802-0373-432c-84e3-4af382d9c122}"
-          DTS:ExecutableType="Microsoft.Pipeline"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="dft_load_stage"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <pipeline
-              version="1">
-              <components>
-                <component
-                  refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column"
-                  componentClassID="Microsoft.DerivedColumn"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-                  name="Derived Column"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Inputs[Derived Column Input]"
-                      description="Input to the Derived Column Transformation"
-                      name="Derived Column Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Inputs[Derived Column Input].Columns[Derived_USERID]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="7"
-                          cachedName="USERID"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[USERID]"
-                          name="Derived_USERID"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[TRIM](#{Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[USERID]})</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">TRIM(Derived_USERID)</property>
-                          </properties>
-                        </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Outputs[Derived Column Output]"
-                      description="Default Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      name="Derived Column Output"
-                      synchronousInputId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Inputs[Derived Column Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Outputs[Derived Column Error Output]"
-                      description="Error Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Derived Column Error Output"
-                      synchronousInputId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Inputs[Derived Column Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr"
-                  componentClassID="Microsoft.OLEDBDestination"
-                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-                  description="OLE DB Destination"
-                  name="open_order_prorepr"
-                  usesDispositions="true"
-                  version="4">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[Integration].[open_order_prorepr]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">3</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepIdentity">true</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepNulls">true</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 1000</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                      name="FastLoadMaxInsertCommitSize">2147483647</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[dest]"
-                      connectionManagerRefId="Package.ConnectionManagers[dest]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input]"
-                      errorOrTruncationOperation="Insert"
-                      errorRowDisposition="IgnoreFailure"
-                      hasSideEffects="true"
-                      name="OLE DB Destination Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[MODEL_NUMBER]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="17"
-                          cachedName="MODEL_NUMBER"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[model_number]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[MODEL_NUMBER]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[WORKORDER]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="11"
-                          cachedName="WORKORDER"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[work_order_num]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[WORKORDER]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[BRANCH]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="11"
-                          cachedName="BRANCH"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[d1_branch]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[BRANCH]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[RMA]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4"
-                          cachedName="RMA"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[rma_code]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[RMA]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[ST]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="3"
-                          cachedName="ST"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[order_status]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ST]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[CUST_NO]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="9"
-                          cachedName="CUST_NO"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[shipto]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CUST_NO]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[PRIV]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="PRIV"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[priv_code]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PRIV]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[P_CSR]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="6"
-                          cachedName="P_CSR"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[est_num]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[P_CSR]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[CTYPE]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="CTYPE"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[call_type_code]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CTYPE]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[PCODE]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="PCODE"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[problem_code]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PCODE]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[PDESC]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="16"
-                          cachedName="PDESC"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[problem_descr]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PDESC]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[CCOD]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="CCOD"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[cause_code]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CCOD]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[CDESC]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="23"
-                          cachedName="CDESC"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[cause_descr]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CDESC]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[USERID]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="7"
-                          cachedName="USERID"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[d1_user_id]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[USERID]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[CUST_NAME]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="26"
-                          cachedName="CUST_NAME"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[practice_name]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CUST_NAME]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[ORD_REC]"
-                          cachedDataType="dbDate"
-                          cachedName="ORD_REC"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[order_received_date]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ORD_REC]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[EST_COMP]"
-                          cachedDataType="dbDate"
-                          cachedName="EST_COMP"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[estimate_complete_date]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[EST_COMP]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[APPR_DEC]"
-                          cachedDataType="dbDate"
-                          cachedName="APPR_DEC"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[approved_date]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[APPR_DEC]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[PART_REL]"
-                          cachedDataType="dbDate"
-                          cachedName="PART_REL"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[approved_part_release_date]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PART_REL]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].Columns[ORD_COMP]"
-                          cachedDataType="dbDate"
-                          cachedName="ORD_COMP"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[order_complete_date]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ORD_COMP]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[work_order_num]"
-                          codePage="1252"
-                          dataType="str"
-                          length="10"
-                          name="work_order_num" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[d1_branch]"
-                          codePage="1252"
-                          dataType="str"
-                          length="10"
-                          name="d1_branch" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[rma_code]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="rma_code" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[order_status]"
-                          codePage="1252"
-                          dataType="str"
-                          length="2"
-                          name="order_status" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[shipto]"
-                          dataType="i4"
-                          name="shipto" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[practice_name]"
-                          codePage="1252"
-                          dataType="str"
-                          length="40"
-                          name="practice_name" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[priv_code]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="priv_code" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[model_number]"
-                          codePage="1252"
-                          dataType="str"
-                          length="20"
-                          name="model_number" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[est_num]"
-                          codePage="1252"
-                          dataType="str"
-                          length="6"
-                          name="est_num" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[call_type_code]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="call_type_code" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[problem_code]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="problem_code" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[problem_descr]"
-                          codePage="1252"
-                          dataType="str"
-                          length="20"
-                          name="problem_descr" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[cause_code]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="cause_code" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[cause_descr]"
-                          codePage="1252"
-                          dataType="str"
-                          length="20"
-                          name="cause_descr" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[d1_user_id]"
-                          codePage="1252"
-                          dataType="str"
-                          length="10"
-                          name="d1_user_id" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[order_received_date]"
-                          dataType="wstr"
-                          length="10"
-                          name="order_received_date" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[estimate_complete_date]"
-                          dataType="wstr"
-                          length="10"
-                          name="estimate_complete_date" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[approved_date]"
-                          dataType="wstr"
-                          length="10"
-                          name="approved_date" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[approved_part_release_date]"
-                          dataType="wstr"
-                          length="10"
-                          name="approved_part_release_date" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input].ExternalColumns[order_complete_date]"
-                          dataType="wstr"
-                          length="10"
-                          name="order_complete_date" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Outputs[OLE DB Destination Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr"
-                  componentClassID="Microsoft.FlatFileSource"
-                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                  description="Flat File Source"
-                  localeId="1033"
-                  name="prorepr"
-                  usesDispositions="true"
-                  version="1">
-                  <properties>
-                    <property
-                      dataType="System.Boolean"
-                      description="Specifies whether zero-length columns are treated as null."
-                      name="RetainNulls">true</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
-                      name="FileNameColumnName"></property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Connections[FlatFileConnection]"
-                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager - prorepr]"
-                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager - prorepr]"
-                      name="FlatFileConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output]"
-                      name="Flat File Source Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[BRANCH]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[BRANCH]"
-                          length="11"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[BRANCH]"
-                          name="BRANCH"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[RMA]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[RMA]"
-                          length="4"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[RMA]"
-                          name="RMA"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ST]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[ST]"
-                          length="3"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ST]"
-                          name="ST"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[WORKORDER]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[WORKORDER]"
-                          length="11"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[WORKORDER]"
-                          name="WORKORDER"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ORD_REC]"
-                          dataType="dbDate"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[ORD_REC]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ORD_REC]"
-                          name="ORD_REC"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[EST_COMP]"
-                          dataType="dbDate"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[EST_COMP]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[EST_COMP]"
-                          name="EST_COMP"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[APPR_DEC]"
-                          dataType="dbDate"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[APPR_DEC]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[APPR_DEC]"
-                          name="APPR_DEC"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PART_REL]"
-                          dataType="dbDate"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[PART_REL]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PART_REL]"
-                          name="PART_REL"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ORD_COMP]"
-                          dataType="dbDate"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[ORD_COMP]"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[ORD_COMP]"
-                          name="ORD_COMP"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CUST_NO]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CUST_NO]"
-                          length="9"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CUST_NO]"
-                          name="CUST_NO"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PRIV]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[PRIV]"
-                          length="5"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PRIV]"
-                          name="PRIV"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[MODEL_NUMBER]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[MODEL_NUMBER]"
-                          length="17"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[MODEL_NUMBER]"
-                          name="MODEL_NUMBER"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[P_CSR]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[P_CSR]"
-                          length="6"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[P_CSR]"
-                          name="P_CSR"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CTYPE]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CTYPE]"
-                          length="5"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CTYPE]"
-                          name="CTYPE"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PCODE]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[PCODE]"
-                          length="5"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PCODE]"
-                          name="PCODE"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PDESC]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[PDESC]"
-                          length="16"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[PDESC]"
-                          name="PDESC"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CCOD]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CCOD]"
-                          length="5"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CCOD]"
-                          name="CCOD"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CDESC]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CDESC]"
-                          length="23"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CDESC]"
-                          name="CDESC"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[USERID]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[USERID]"
-                          length="7"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[USERID]"
-                          name="USERID"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[extra]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[extra]"
-                          length="500"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[extra]"
-                          name="extra"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CUST_NAME]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CUST_NAME]"
-                          length="26"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[CUST_NAME]"
-                          name="CUST_NAME"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[BRANCH]"
-                          codePage="1252"
-                          dataType="str"
-                          length="11"
-                          name="BRANCH" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[RMA]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4"
-                          name="RMA" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[ST]"
-                          codePage="1252"
-                          dataType="str"
-                          length="3"
-                          name="ST" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[WORKORDER]"
-                          codePage="1252"
-                          dataType="str"
-                          length="11"
-                          name="WORKORDER" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[ORD_REC]"
-                          dataType="dbDate"
-                          name="ORD_REC" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[EST_COMP]"
-                          dataType="dbDate"
-                          name="EST_COMP" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[APPR_DEC]"
-                          dataType="dbDate"
-                          name="APPR_DEC" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[PART_REL]"
-                          dataType="dbDate"
-                          name="PART_REL" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[ORD_COMP]"
-                          dataType="dbDate"
-                          name="ORD_COMP" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CUST_NO]"
-                          codePage="1252"
-                          dataType="str"
-                          length="9"
-                          name="CUST_NO" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[PRIV]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="PRIV" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[MODEL_NUMBER]"
-                          codePage="1252"
-                          dataType="str"
-                          length="17"
-                          name="MODEL_NUMBER" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[P_CSR]"
-                          codePage="1252"
-                          dataType="str"
-                          length="6"
-                          name="P_CSR" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CTYPE]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="CTYPE" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[PCODE]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="PCODE" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[PDESC]"
-                          codePage="1252"
-                          dataType="str"
-                          length="16"
-                          name="PDESC" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CCOD]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="CCOD" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CDESC]"
-                          codePage="1252"
-                          dataType="str"
-                          length="23"
-                          name="CDESC" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[USERID]"
-                          codePage="1252"
-                          dataType="str"
-                          length="7"
-                          name="USERID" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[extra]"
-                          codePage="1252"
-                          dataType="str"
-                          length="500"
-                          name="extra" />
-                        <externalMetadataColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].ExternalColumns[CUST_NAME]"
-                          codePage="1252"
-                          dataType="str"
-                          length="26"
-                          name="CUST_NAME" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Error Output]"
-                      isErrorOut="true"
-                      name="Flat File Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
-                          codePage="1252"
-                          dataType="text"
-                          description="Flat File Source Error Output Column"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
-                          name="Flat File Source Error Output Column" />
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\seq_open_order_prorepr\dft_load_stage\Script Component"
-                  componentClassID="Microsoft.ManagedComponentHost"
-                  contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;11"
-                  description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
-                  name="Script Component"
-                  version="11">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="Stores the source code of the component"
-                      isArray="true"
-                      name="SourceCode"
-                      state="cdata">
-                      <arrayElements
-                        arrayElementCount="30">
-                        <arrayElement
-                          dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
-*  Microsoft SQL Server Integration Services component wrapper
-*  This module defines the base class for your component
-*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
-
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-using Microsoft.SqlServer.Dts.Runtime.Wrapper;
-
-public class UserComponent: ScriptComponent
-{
-    public Connections Connections;
-    public Variables Variables;
-    public UserComponent()
-    {
-        Connections = new Connections(this);
-        Variables = new Variables(this);
-    }
-
-    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
-    {
-
-        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
-        {
-            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
-        }
-
-    }
-
-    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
-    {
-        while (Buffer.NextRow())
-        {
-            Input0_ProcessInputRow(Buffer);
-        }
-    }
-
-    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
-    {
-    }
-
-}
-
-public class Connections
-{
-    ScriptComponent ParentComponent;
-
-    public Connections(ScriptComponent Component)
-    {
-        ParentComponent = Component;
-    }
-
-}
-
-public class Variables
-{
-    ScriptComponent ParentComponent;
-
-    public Variables(ScriptComponent Component)
-    {
-        ParentComponent = Component;
-    }
-
-}
-]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-</root>]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[main.cs]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
-/* The Script Component allows you to perform virtually any operation that can be accomplished in
- * a .Net application within the context of an Integration Services data flow.
- *
- * Expand the other regions which have "Help" prefixes for examples of specific ways to use
- * Integration Services features within this script component. */
-#endregion
-
-#region Namespaces
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-using Microsoft.SqlServer.Dts.Runtime.Wrapper;
-#endregion
-
-/// <summary>
-/// This is the class to which to add your code.  Do not change the name, attributes, or parent
-/// of this class.
-/// </summary>
-[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
-public class ScriptMain : UserComponent
-{
-    #region Help:  Using Integration Services variables and parameters
-    /* To use a variable in this script, first ensure that the variable has been added to
-     * either the list contained in the ReadOnlyVariables property or the list contained in
-     * the ReadWriteVariables property of this script component, according to whether or not your
-     * code needs to write into the variable.  To do so, save this script, close this instance of
-     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
-     * Script Transformation Editor window.
-     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
-     *
-     * Example of reading from a variable or parameter:
-     *  DateTime startTime = Variables.MyStartTime;
-     *
-     * Example of writing to a variable:
-     *  Variables.myStringVariable = "new value";
-     */
-    #endregion
-
-    #region Help:  Using Integration Services Connnection Managers
-    /* Some types of connection managers can be used in this script component.  See the help topic
-     * "Working with Connection Managers Programatically" for details.
-     *
-     * To use a connection manager in this script, first ensure that the connection manager has
-     * been added to either the list of connection managers on the Connection Managers page of the
-     * script component editor.  To add the connection manager, save this script, close this instance of
-     * Visual Studio, and add the Connection Manager to the list.
-     *
-     * If the component needs to hold a connection open while processing rows, override the
-     * AcquireConnections and ReleaseConnections methods.
-     * 
-     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
-     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
-     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
-     *
-     * Example of using a File connection manager to acquire a file path:
-     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
-     *  string filePath = (string)rawConnection;
-     *
-     * Example of releasing a connection manager:
-     *  Connections.SalesDB.ReleaseConnection(rawConnection);
-     */
-    #endregion
-
-    #region Help:  Firing Integration Services Events
-    /* This script component can fire events.
-     *
-     * Example of firing an error event:
-     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
-     *
-     * Example of firing an information event:
-     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
-     *
-     * Example of firing a warning event:
-     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
-     */
-    #endregion
-
-    /// <summary>
-    /// This method is called once, before rows begin to be processed in the data flow.
-    ///
-    /// You can remove this method if you don't need to do anything here.
-    /// </summary>
-    public override void PreExecute()
-    {
-        base.PreExecute();
-        /*
-         * Add your code here
-         */
-    }
-
-    /// <summary>
-    /// This method is called after all the rows have passed through this component.
-    ///
-    /// You can delete this method if you don't need to do anything here.
-    /// </summary>
-    public override void PostExecute()
-    {
-        base.PostExecute();
-        /*
-         * Add your code here
-         */
-    }
-
-    /// <summary>
-    /// This method is called once for every row that passes through the component from Input0.
-    ///
-    /// Example of reading a value from a column in the the row:
-    ///  string zipCode = Row.ZipCode
-    ///
-    /// Example of writing a value to a column in the row:
-    ///  Row.ZipCode = zipCode
-    /// </summary>
-    /// <param name="Row">The row that is currently passing through the component</param>
-    public override void Input0_ProcessInputRow(Input0Buffer Row)
-    {
-        
-        Row.WORKORDER.TrimEnd('\r', '\n');
-        Row.WORKORDER.TrimEnd('\n');
-        Row.WORKORDER.Trim();
-
-        string ID;
-        ID=Row.DerivedUSERID.TrimEnd('\r', '\n');
-        Row.DerivedUSERID = ID;
-       // Row.DerivedUSERID.Trim();
-
-        
-
-    }
-
-}
-]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
-*  Microsoft SQL Server Integration Services buffer wrappers
-*  This module defines classes for accessing data flow buffers
-*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
-
-
-
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-
-public class Input0Buffer: ScriptBuffer
-
-{
-    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
-        : base(Buffer, BufferColumnIndexes, OutputMap)
-    {
-    }
-
-    public String DerivedUSERID
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[0]);
-        }
-        set
-        {
-            this[0] = value;
-        }
-    }
-    public bool DerivedUSERID_IsNull
-    {
-        get
-        {
-            return IsNull(0);
-        }
-        set
-        {
-            if (value)
-            {
-                SetNull(0);
-            }
-            else
-            {
-                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
-            }
-        }
-    }
-
-    public String WORKORDER
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[1]);
-        }
-        set
-        {
-            this[1] = value;
-        }
-    }
-    public bool WORKORDER_IsNull
-    {
-        get
-        {
-            return IsNull(1);
-        }
-        set
-        {
-            if (value)
-            {
-                SetNull(1);
-            }
-            else
-            {
-                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
-            }
-        }
-    }
-
-    new public bool NextRow()
-    {
-        return base.NextRow();
-    }
-
-    new public bool EndOfRowset()
-    {
-        return base.EndOfRowset();
-    }
-
-}
-]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_efa6459805264657a9334cc2c3782961.Properties.Settings.get_Default():SC_efa6459805264657a9334cc2c3782961.Properties.Sett" +
-    "ings")]
-
-namespace SC_efa6459805264657a9334cc2c3782961.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}
-]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_efa6459805264657a9334cc2c3782961.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
-    "rceManager")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_efa6459805264657a9334cc2c3782961.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
-    "fo")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_efa6459805264657a9334cc2c3782961.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
-    "):Void")]
-
-namespace SC_efa6459805264657a9334cc2c3782961.Properties {
-    
-    
-    /// <summary>
-    ///   A strongly-typed resource class, for looking up localized strings, etc.
-    /// </summary>
-    // This class was auto-generated by the StronglyTypedResourceBuilder
-    // class via a tool like ResGen or Visual Studio.
-    // To add or remove a member, edit your .ResX file then rerun ResGen
-    // with the /str option, or rebuild your VS project.
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    internal class Resources {
-        
-        private static global::System.Resources.ResourceManager resourceMan;
-        
-        private static global::System.Globalization.CultureInfo resourceCulture;
-        
-        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
-        }
-        
-        /// <summary>
-        ///   Returns the cached ResourceManager instance used by this class.
-        /// </summary>
-        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if ((resourceMan == null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_efa6459805264657a9334cc2c3782961.Properties.Resources", typeof(Resources).Assembly);
-                    resourceMan = temp;
-                }
-                return resourceMan;
-            }
-        }
-        
-        /// <summary>
-        ///   Overrides the current thread's CurrentUICulture property for all
-        ///   resource lookups using this strongly typed resource class.
-        /// </summary>
-        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
-                return resourceCulture;
-            }
-            set {
-                resourceCulture = value;
-            }
-        }
-    }
-}
-]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[Project]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
-<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
-  <msb:PropertyGroup>
-    <msb:CodeName>SC_efa6459805264657a9334cc2c3782961</msb:CodeName>
-    <msb:Language>msBuild</msb:Language>
-    <msb:DisplayName>SC_efa6459805264657a9334cc2c3782961</msb:DisplayName>
-    <msb:ProjectId>{FD8C50E9-1350-4C0B-A87C-AD5C972328E7}</msb:ProjectId>
-  </msb:PropertyGroup>
-  <msb:ItemGroup>
-    <msb:Project Include="SC_efa6459805264657a9334cc2c3782961.csproj" />
-    <msb:File Include="Properties\Resources.Designer.cs" />
-    <msb:File Include="Properties\Settings.Designer.cs" />
-    <msb:File Include="main.cs" />
-    <msb:File Include="BufferWrapper.cs" />
-    <msb:File Include="ComponentWrapper.cs" />
-    <msb:File Include="Properties\Settings.settings" />
-    <msb:File Include="Properties\AssemblyInfo.cs" />
-    <msb:File Include="Properties\Resources.resx" />
-    <msb:Breakpoint Include="f4762838901f495eb9c6eb895ae04a47">
-      <msb:FileName>main.cs</msb:FileName>
-      <msb:LineNumber>123</msb:LineNumber>
-      <msb:ColumnNumber>9</msb:ColumnNumber>
-      <msb:Enabled>True</msb:Enabled>
-      <msb:ConditionType>1</msb:ConditionType>
-      <msb:Condition>
-      </msb:Condition>
-      <msb:Language>C#</msb:Language>
-      <msb:HitCountType>1</msb:HitCountType>
-      <msb:HitCountTarget>1</msb:HitCountTarget>
-    </msb:Breakpoint>
-  </msb:ItemGroup>
-</c:Project>]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("SC_efa6459805264657a9334cc2c3782961")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SC_efa6459805264657a9334cc2c3782961")]
-[assembly: AssemblyCopyright("Copyright @  2018")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.0.0")]
-]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[SC_efa6459805264657a9334cc2c3782961.csproj]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AB818A4A-58E6-44F2-8F33-A0DFDBC15765}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SC_efa6459805264657a9334cc2c3782961</RootNamespace>
-    <AssemblyName>SC_efa6459805264657a9334cc2c3782961</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
-    <TargetFrameworkProfile></TargetFrameworkProfile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>.\bin\Debug\</OutputPath>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugSymbols>false</DebugSymbols>
-    <Optimize>true</Optimize>
-    <OutputPath>.\bin\Release\</OutputPath>
-    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.SqlServer.TxScript, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Compile Include="main.cs" />
-    <Compile Include="BufferWrapper.cs" />
-    <Compile Include="ComponentWrapper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <!-- Include the build rules for a C# project.-->
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
-        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
-        <Host Name="ScriptComponent" IconIndex="0" />
-        <ProjectClient>
-          <HostIdentifier>SSIS_SC140</HostIdentifier>
-        </ProjectClient>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-</Project>]]></arrayElement>
-                      </arrayElements>
-                    </property>
-                    <property
-                      dataType="System.String"
-                      description="Stores the binary representation of the component"
-                      isArray="true"
-                      name="BinaryCode"
-                      state="cdata">
-                      <arrayElements
-                        arrayElementCount="2">
-                        <arrayElement
-                          dataType="System.String"><![CDATA[SC_efa6459805264657a9334cc2c3782961.dll]]></arrayElement>
-                        <arrayElement
-                          dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAHmMR1sAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAFjMA
-AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMQyAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
-AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAHBMAAAAgAAAAFAAAAAIA
-AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD4
-MgAAAAAAAEgAAAACAAUASCIAAMQPAAABAAAAAAAAAAwyAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioTMAUAYwAAAAEAABEDbwoAAAYY
-jRoAAAElFh8NnSUXHwqdbxIAAAomA28KAAAGF40aAAABJRYfCp1vEgAACiYDbwoAAAZvEwAACiYD
-bwYAAAYYjRoAAAElFh8NnSUXHwqdbxIAAAoKAwZvBwAABioeAigQAAAGKioCAwQFKBQAAAoqUgJ7
-FQAACgJ7FgAAChaUbxcAAAoqJgIWAygYAAAKKiICFigZAAAKKloDLAgCFigaAAAKKnIBAABwcxsA
-AAp6UgJ7FQAACgJ7FgAACheUbxcAAAoqJgIXAygYAAAKKiICFygZAAAKKloDLAgCFygaAAAKKnIB
-AABwcxsAAAp6HgIoHAAACioeAigdAAAKKn4CKB4AAAoCAnMUAAAGfQEAAAQCAnMVAAAGfQIAAAQq
-kgRyngAAcBpvHwAACiwVAgUCAyggAAAKDgRzBQAABm8SAAAGKkorBwIDbxMAAAYDbw4AAAYt8SoG
-KjoCKCEAAAoCA30DAAAEKjoCKCEAAAoCA30EAAAEKh4CKCEAAAoqrn4FAAAELR5yrgAAcNAHAAAC
-KCIAAApvIwAACnMkAAAKgAUAAAR+BQAABCoafgYAAAQqHgKABgAABCoafgcAAAQqHgIoJQAACiou
-cxsAAAaABwAABCoAAEJTSkIBAAEAAAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAAANgFAAAjfgAA
-RAYAAKQGAAAjU3RyaW5ncwAAAADoDAAAIAEAACNVUwAIDgAAEAAAACNHVUlEAAAAGA4AAKwBAAAj
-QmxvYgAAAAAAAAACAAABVxWiAQkBAAAA+gEzABYAAAEAAAAgAAAACAAAAAcAAAAcAAAAEQAAACUA
-AAAQAAAAAQAAAAMAAAAHAAAADAAAAAEAAAAEAAAAAQAAAAAANQMBAAAAAAAGACwC2gQGAMAC2gQG
-AHgBxwQPAE4FAAAGAKUBFwQGAA8CFwQGAPABFwQGAKcCFwQGAEwCFwQGAGUCFwQGALwBFwQGANcB
-+wIKAIACxQAKAJkExQAOAIoExQAKAGAExQAKABQGxQAGANcFygMGAFsBxwQGAKoE+gQGAFQEAgQS
-ACsBHwMSAIwBHwMSABMB7QMGAEAB2gQGAHgEygMGABgDygMGACkEygMGAEMEygMGAOYAygMGAJcA
-ygMGAJkGFwQAAAAAJQAAAAAAAQABAAEAEADiAwAAEAABAAEAAQAQAH0EAAA5AAEABQABABAA9gUA
-AEUAAQAQAAEAEADLBQAASQADABQAAQAQAIwFAABJAAQAFQAAABAAAQVdBUkABQAWAAABEAC7BV0F
-YQAHABoABgDLBYMABgCMBYcAAQAEBosAAQAEBosAEQDWA48AEQADAZMAEQCHAJcAUCAAAAAAxgDe
-AgYAAQBYIAAAAADGAOkCBgABAGAgAAAAAMYAdgabAAEAzyAAAAAAhhi6BAYAAgDXIAAAAACGGLoE
-KQACAOIgAAAAAIYILgAlAAUA9yAAAAAAhghAABAABQABIQAAAACGCF0DSwAGAAohAAAAAIYIdgOh
-AAYAISEAAAAAhghaACUABwA2IQAAAACGCGgAEAAHAEAhAAAAAIYIjwNLAAgASSEAAAAAhgikA6EA
-CABgIQAAAACGAI0GSwAJAGghAAAAAIYA3gVLAAkAcCEAAAAAhhi6BAYACQCQIQAAAADGAGkGpgAJ
-ALUhAAAAAMYBYgabAA0AyCEAAAAAxgF2BpsADgDKIQAAAACGGLoEsAAPANkhAAAAAIYYugSwABAA
-6CEAAAAAgxi6BAYAEQDwIQAAAACTCKYEtgARABwiAAAAAJMI6wC7ABEAIyIAAAAAkwj3AMAAEQAr
-IgAAAACWCOoFxgASADIiAAAAAIYYugQGABIAOiIAAAAAkRjABMsAEgAAAAEAkQYAAAEAnwQAAAIA
-lgUAAAMAbgQAAAEA9QIAAAEA9QIAAAEA9QIAAAEA9QIAAAEAUgAAAAIAuwAAAAMAnwQAAAQAbgQA
-AAEAnwQAAAEAkQYAAAEAGgYAAAEAGgYAAAEA9QIJALoEAQARALoEBgAZALoECgApALoEEAAxALoE
-EAA5ALoEEABBALoEEABJALoEEABRALoEEABZALoEEABhALoEEABpALoEBgCZALoEBgC5ALoEFQDJ
-ALoEBgCJAN4CBgCJAOkCBgDZAH8AHwDZANEDJQBxALoEKQBxAJ8EMwBxAJYFNwB5ABUDOwBxAMED
-QABxALIDRgBxALkDAQDhALoEEABxAI0GSwBxAN4FSwCJALoEBgDZAMQFTwCJAKoFVgCRALoEBgDx
-AKkAXADxAJUGYwChALoEaQDBALoEBgAuAAsA5gAuABMA7wAuABsADgEuACMAFwEuACsAQAEuADMA
-QAEuADsAQAEuAEMAFwEuAEsARgEuAFMAQAEuAFsAXQFDAGMApwGpAHMADgHJAHMADgHhAHsApwHj
-AGsApwEbAAMAAQAHAAUACAAHAAAARADPAAAAegPTAAAAbADPAAAAqAPTAAAAqgTXAAAACwHcAAAA
-7gXhAAIABgADAAEABwADAAIACAAFAAEACQAFAAIACgAHAAEACwAHAAIADAAJAAEADQAJAAIAFwAL
-AAIAGAANAAEAGQANAAIAGgAPAASAAAABAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAAAAAAAABxAHYA
-AAAAAA4AAAAAAAAAAAAAAHoAJAYAAAAADgAAAAAAAAAAAAAAegBBBgAAAAAEAAAAAAAAAAAAAABx
-AMoDAAAAAAAAAAABAAAACwUAAAAAAFNDX2VmYTY0NTk4MDUyNjQ2NTdhOTMzNGNjMmMzNzgyOTYx
-ADxNb2R1bGU+AGdldF9EZXJpdmVkVVNFUklEAHNldF9EZXJpdmVkVVNFUklEAElucHV0SUQAZ2V0
-X1dPUktPUkRFUgBzZXRfV09SS09SREVSAG1zY29ybGliAFRyaW1FbmQAZGVmYXVsdEluc3RhbmNl
-AFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAElucHV0TmFtZQBNaWNyb3NvZnQu
-U3FsU2VydmVyLkR0cy5QaXBlbGluZQBUeXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291
-cmNlQ3VsdHVyZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBD
-b21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERl
-YnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVB
-dHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmli
-dXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0
-cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0
-cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRy
-eVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJp
-bGl0eUF0dHJpYnV0ZQBQcmVFeGVjdXRlAFBvc3RFeGVjdXRlAHZhbHVlAFN5c3RlbS5SdW50aW1l
-LlZlcnNpb25pbmcAR2V0U3RyaW5nAFN5c3RlbS5Db21wb25lbnRNb2RlbABTQ19lZmE2NDU5ODA1
-MjY0NjU3YTkzMzRjYzJjMzc4Mjk2MS5kbGwAZ2V0X0Rlcml2ZWRVU0VSSURfSXNOdWxsAHNldF9E
-ZXJpdmVkVVNFUklEX0lzTnVsbABnZXRfV09SS09SREVSX0lzTnVsbABzZXRfV09SS09SREVSX0lz
-TnVsbABTZXROdWxsAHNldF9JdGVtAFN5c3RlbQBUcmltAHJlc291cmNlTWFuAFNjcmlwdE1haW4A
-U3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rp
-b24ASW52YWxpZE9wZXJhdGlvbkV4Y2VwdGlvbgBTdHJpbmdDb21wYXJpc29uAEN1bHR1cmVJbmZv
-AE91dHB1dE5hbWVNYXAAT3V0cHV0TWFwAENoYXIASW5wdXQwQnVmZmVyAFBpcGVsaW5lQnVmZmVy
-AFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlh
-Z25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2Vz
-AFNDX2VmYTY0NTk4MDUyNjQ2NTdhOTMzNGNjMmMzNzgyOTYxLlByb3BlcnRpZXMuUmVzb3VyY2Vz
-LnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ19lZmE2NDU5ODA1MjY0NjU3YTkzMzRjYzJjMzc4
-Mjk2MS5Qcm9wZXJ0aWVzAFZhcmlhYmxlcwBCdWZmZXJDb2x1bW5JbmRleGVzAEdldENvbHVtbklu
-ZGV4ZXMAU2V0dGluZ3MARXF1YWxzAENvbm5lY3Rpb25zAE9iamVjdABFbmRPZlJvd3NldABnZXRf
-RGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3JpcHRDb21wb25lbnQATWlj
-cm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9z
-dABJbnB1dDBfUHJvY2Vzc0lucHV0AElucHV0MF9Qcm9jZXNzSW5wdXRSb3cATmV4dFJvdwBnZXRf
-QXNzZW1ibHkAAAAAgJtJAHMATgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0
-ACAAYgBlACAAcwBlAHQAIAB0AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYA
-YQBsAHUAZQAgAHQAbwAgAHQAaABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AAA9J
-AG4AcAB1AHQAIAAwAABxUwBDAF8AZQBmAGEANgA0ADUAOQA4ADAANQAyADYANAA2ADUANwBhADkA
-MwAzADQAYwBjADIAYwAzADcAOAAyADkANgAxAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBz
-AG8AdQByAGMAZQBzAABDnig/zXWHTL8rP/o4UtHqAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFZ
-AwcBDgUgAQ4dAwMgAA4JIAMBEj0dCBJBAwYSPQMGHQgEIAEOCAUgAgEIHAQgAQIIAyAAAgYgAgIO
-EXUFIAEdCAgGAAESeRF9BSAAEoCBByACAQ4SgIEIt3pcVhk04IkIiYRdzYCAzJEDBhIUAwYSGAMG
-EkUDBhJRAwYSVQMGEiAFIAEBEgwEIAEBAgkgBAEIDhI9EkEFIAEBEkUEAAASUQQAABJVBQABARJV
-BAAAEiADAAABAygADgMoAAIECAASUQQIABJVBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25F
-eGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDX2VmYTY0NTk4MDUyNjQ2NTdhOTMzNGNjMmMz
-NzgyOTYxAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMTgAAEkBABouTkVURnJhbWV3b3JrLFZl
-cnNpb249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC41BAEA
-AAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29y
-bGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3
-YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAA
-AAAAAFBBRFBBRFC0AAAA7DIAAAAAAAAAAAAABjMAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgy
-AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
-SAAAAFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
-AAAAvQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
-AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
-AAAAAAAAALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAA
-MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
-AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
-AABTAEMAXwBlAGYAYQA2ADQANQA5ADgAMAA1ADIANgA0ADYANQA3AGEAOQAzADMANABjAGMAMgBj
-ADMANwA4ADIAOQA2ADEAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
-MAAuADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfAGUAZgBhADYANAA1
-ADkAOAAwADUAMgA2ADQANgA1ADcAYQA5ADMAMwA0AGMAYwAyAGMAMwA3ADgAMgA5ADYAMQAuAGQA
-bABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBo
-AHQAIABAACAAIAAyADAAMQA4AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMA
-AAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AZQBm
-AGEANgA0ADUAOQA4ADAANQAyADYANAA2ADUANwBhADkAMwAzADQAYwBjADIAYwAzADcAOAAyADkA
-NgAxAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfAGUAZgBh
-ADYANAA1ADkAOAAwADUAMgA2ADQANgA1ADcAYQA5ADMAMwA0AGMAYwAyAGMAMwA3ADgAMgA5ADYA
-MQAAADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4
-AAgAAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAGDMAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
-                      </arrayElements>
-                    </property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
-                      name="VSTAProjectName"
-                      typeConverter="NOTBROWSABLE">SC_efa6459805264657a9334cc2c3782961</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the programming language used by the script."
-                      name="ScriptLanguage"
-                      typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies a comma-separated list of read-only variables."
-                      name="ReadOnlyVariables"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies a comma-separated list of read/write variables."
-                      name="ReadWriteVariables"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
-                    <property
-                      dataType="System.String"
-                      description="List of breakpoints present on the script."
-                      isArray="true"
-                      name="BreakpointCollection"
-                      typeConverter="NOTBROWSABLE">
-                      <arrayElements
-                        arrayElementCount="1">
-                        <arrayElement
-                          dataType="System.String">&lt;SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"&gt;
-&lt;SOAP-ENV:Body&gt;
-&lt;a1:ScriptBreakpointInfo id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/Microsoft.SqlServer.VSTAHosting/Microsoft.SqlServer.VSTAScriptingLib%2C%20Version%3D14.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D89845dcd8080cc91"&gt;
-&lt;Enabled&gt;true&lt;/Enabled&gt;
-&lt;File id="ref-3"&gt;main.cs&lt;/File&gt;
-&lt;FileLine&gt;123&lt;/FileLine&gt;
-&lt;FileColumn&gt;9&lt;/FileColumn&gt;
-&lt;/a1:ScriptBreakpointInfo&gt;
-&lt;/SOAP-ENV:Body&gt;
-&lt;/SOAP-ENV:Envelope&gt;
-</arrayElement>
-                      </arrayElements>
-                    </property>
-                    <property
-                      dataType="System.String"
-                      description="Checksum to match component metedata against compiled codes."
-                      name="MetadataChecksum140"
-                      typeConverter="NOTBROWSABLE">A0</property>
-                    <property
-                      dataType="System.String"
-                      name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
-                  </properties>
-                  <inputs>
-                    <input
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\Script Component.Inputs[Input 0]"
-                      hasSideEffects="true"
-                      name="Input 0">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\Script Component.Inputs[Input 0].Columns[USERID]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="7"
-                          cachedName="USERID"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[USERID]"
-                          usageType="readWrite" />
-                        <inputColumn
-                          refId="Package\seq_open_order_prorepr\dft_load_stage\Script Component.Inputs[Input 0].Columns[WORKORDER]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="11"
-                          cachedName="WORKORDER"
-                          lineageId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output].Columns[WORKORDER]"
-                          usageType="readWrite" />
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\seq_open_order_prorepr\dft_load_stage\Script Component.Outputs[Output 0]"
-                      name="Output 0"
-                      synchronousInputId="Package\seq_open_order_prorepr\dft_load_stage\Script Component.Inputs[Input 0]">
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-              </components>
-              <paths>
-                <path
-                  refId="Package\seq_open_order_prorepr\dft_load_stage.Paths[Derived Column Output]"
-                  endId="Package\seq_open_order_prorepr\dft_load_stage\Script Component.Inputs[Input 0]"
-                  name="Derived Column Output"
-                  startId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Outputs[Derived Column Output]" />
-                <path
-                  refId="Package\seq_open_order_prorepr\dft_load_stage.Paths[Flat File Source Output]"
-                  endId="Package\seq_open_order_prorepr\dft_load_stage\Derived Column.Inputs[Derived Column Input]"
-                  name="Flat File Source Output"
-                  startId="Package\seq_open_order_prorepr\dft_load_stage\prorepr.Outputs[Flat File Source Output]" />
-                <path
-                  refId="Package\seq_open_order_prorepr\dft_load_stage.Paths[Output 0]"
-                  endId="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr.Inputs[OLE DB Destination Input]"
-                  name="Output 0"
-                  startId="Package\seq_open_order_prorepr\dft_load_stage\Script Component.Outputs[Output 0]" />
-              </paths>
-            </pipeline>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\seq_open_order_prorepr\sql_truncate_stage"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{2627ac4a-df3a-4f73-b424-c65a8b287121}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="sql_truncate_stage"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{BF90ED84-6DC2-40A1-897B-A8622803513B}"
-              SQLTask:SqlStatementSource="truncate table integration.open_order_prorepr" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\seq_open_order_prorepr.PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{cca7f9ab-34fe-4153-b3fb-6162758c85dc}"
-          DTS:From="Package\seq_open_order_prorepr\sql_truncate_stage"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\seq_open_order_prorepr\dft_load_stage" />
-      </DTS:PrecedenceConstraints>
-    </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -6196,7 +3720,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="149,42"
           Id="Package\seq_inventory_whvalrpt\dft_load_stage"
@@ -6271,43 +3795,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Size="314,257"
           Id="Package\seq_open_order_opordrpt"
           TopLeft="86,98" />
-        <NodeLayout
-          Size="149,42"
-          Id="Package\seq_open_order_prorepr\dft_load_stage"
-          TopLeft="72,96" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\seq_open_order_prorepr\sql_truncate_stage"
-          TopLeft="60,13" />
-        <EdgeLayout
-          Id="Package\seq_open_order_prorepr.PrecedenceConstraints[Constraint]"
-          TopLeft="145.25,55">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41"
-              Start="0,0"
-              End="0,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="326,193"
-          Size="326,236"
-          Id="Package\seq_open_order_prorepr"
-          TopLeft="498,372" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -6315,7 +3802,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="120,42"
           Id="Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt"
@@ -6363,9 +3850,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6399,9 +3884,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6435,9 +3918,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6460,7 +3941,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\seq_open_order_opordrpt\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="181,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt"
@@ -6500,9 +3981,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6510,133 +3989,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\seq_open_order_prorepr\dft_load_stage">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="116,42"
-          Id="Package\seq_open_order_prorepr\dft_load_stage\prorepr"
-          TopLeft="262,84" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr"
-          TopLeft="295,475" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\seq_open_order_prorepr\dft_load_stage\Derived Column"
-          TopLeft="251,207" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\seq_open_order_prorepr\dft_load_stage\Script Component"
-          TopLeft="298,311" />
-        <EdgeLayout
-          Id="Package\seq_open_order_prorepr\dft_load_stage.Paths[Output 0]"
-          TopLeft="381.25,353">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,122"
-              Start="0,0"
-              End="0,114.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,114.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\seq_open_order_prorepr\dft_load_stage.Paths[Flat File Source Output]"
-          TopLeft="320,126">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8,81"
-              Start="0,0"
-              End="8,73.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.5"
-                    Point2="0,40.5"
-                    Point3="4,40.5" />
-                  <mssgle:LineSegment
-                    End="4,40.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4,40.5"
-                    Point2="8,40.5"
-                    Point3="8,44.5" />
-                  <mssgle:LineSegment
-                    End="8,73.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\seq_open_order_prorepr\dft_load_stage.Paths[Derived Column Output]"
-          TopLeft="328,249">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="51.5,62"
-              Start="0,0"
-              End="51.5,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="4,31" />
-                  <mssgle:LineSegment
-                    End="47.5,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="47.5,31"
-                    Point2="51.5,31"
-                    Point3="51.5,35" />
-                  <mssgle:LineSegment
-                    End="51.5,54.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\seq_open_order_prorepr\dft_load_stage\open_order_prorepr">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
