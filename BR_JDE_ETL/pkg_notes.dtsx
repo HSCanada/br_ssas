@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\TCrowley"
   DTS:DTSID="{9AB104CE-E9D6-4642-B2C2-E5ADDD14CEFE}"
   DTS:ExecutableType=""
-  DTS:LastModifiedProductVersion="14.0.0800.60"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
   DTS:LocaleID="4105"
   DTS:ObjectName="pkg_notes"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{86C94A55-BF72-4F03-A37E-86B10A936507}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{A12FDFA3-933A-466E-9B71-0413A3AE775F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -73,6 +73,7 @@
           DTS:refId="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
+          DTS:Disabled="True"
           DTS:DTSID="{9954ad9c-7df0-43b3-a61f-8c2c2a4e19b1}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -826,15 +827,15 @@ FROM
     design-time-name="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="184,42"
-          Id="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503"
-          TopLeft="237,64" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="317,42"
           Id="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\F5503_canned_message_file_parameters_Staging"
           TopLeft="232,214" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage\OLE DB Source F5503"
+          TopLeft="237,64" />
         <EdgeLayout
           Id="Package\seq_F5503_canned_message_file_parameters_Staging\dft_load_stage.Paths[OLE DB Source Output]"
           TopLeft="329,106">
@@ -866,7 +867,9 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
