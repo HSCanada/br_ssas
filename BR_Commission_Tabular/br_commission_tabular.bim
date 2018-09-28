@@ -1867,7 +1867,6 @@
           {
             "name": "SalespersonID",
             "dataType": "string",
-            "isHidden": true,
             "sourceColumn": "SalespersonID",
             "sourceProviderType": "Char"
           },
@@ -1877,6 +1876,11 @@
             "isHidden": true,
             "sourceColumn": "SalespersonKey",
             "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "BranchCount",
+            "dataType": "int64",
+            "sourceColumn": "BranchCount"
           }
         ],
         "partitions": [
@@ -1884,13 +1888,13 @@
             "name": "SalespersonCommission",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]",
+              "query": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount FROM [Dimension].[SalespersonCommission]",
               "dataSource": "Commission SQL Source"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -1898,7 +1902,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]"
+            "value": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount FROM [Dimension].[SalespersonCommission]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1910,7 +1914,7 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID] FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -1974,6 +1978,14 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCount",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCount]"
           }
         ],
         "partitions": [
