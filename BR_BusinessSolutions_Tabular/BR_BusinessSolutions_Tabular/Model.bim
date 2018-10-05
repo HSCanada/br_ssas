@@ -54,18 +54,21 @@
           {
             "name": "MonthSeq",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "MonthSeq",
             "sourceProviderType": "Integer"
           },
           {
             "name": "FirstMonthSeqInQtr",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FirstMonthSeqInQtr",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "FirstMonthSeqInYear",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FirstMonthSeqInYear",
             "sourceProviderType": "SmallInt"
           }
@@ -101,6 +104,7 @@
           {
             "name": "ItemKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ItemKey",
             "sourceProviderType": "Integer"
           },
@@ -2881,6 +2885,7 @@
           {
             "name": "DCC_TrackingShipTo",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "DCC_TrackingShipTo",
             "sourceProviderType": "Integer"
           }
@@ -5320,6 +5325,7 @@
           {
             "name": "FactKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FactKey",
             "sourceProviderType": "Integer"
           },
@@ -5361,13 +5367,13 @@
           {
             "name": "SalesOrderNumber",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "SalesOrderNumber",
             "sourceProviderType": "Integer"
           },
           {
             "name": "LineNumber",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "LineNumber",
             "sourceProviderType": "Integer"
           },
@@ -5381,12 +5387,14 @@
           {
             "name": "Quantity",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Quantity",
             "sourceProviderType": "Integer"
           },
           {
             "name": "SalesAmt",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "SalesAmt",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "sourceProviderType": "Currency",
@@ -5400,6 +5408,7 @@
           {
             "name": "GPAmt",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "GPAmt",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "sourceProviderType": "Currency",
@@ -5413,6 +5422,7 @@
           {
             "name": "GPAtCommCostAmt",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "GPAtCommCostAmt",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "sourceProviderType": "Currency",
@@ -5426,6 +5436,7 @@
           {
             "name": "ExtChargebackAmt",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "ExtChargebackAmt",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "sourceProviderType": "Currency",
@@ -5439,6 +5450,7 @@
           {
             "name": "ExtBaseAmt",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "ExtBaseAmt",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "sourceProviderType": "Currency",
@@ -5452,6 +5464,7 @@
           {
             "name": "DiscountAmt",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "DiscountAmt",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "sourceProviderType": "Currency",
@@ -5465,6 +5478,7 @@
           {
             "name": "DiscountLineAmt",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "DiscountLineAmt",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "sourceProviderType": "Currency",
@@ -5478,6 +5492,7 @@
           {
             "name": "DiscountOrderAmt",
             "dataType": "decimal",
+            "isHidden": true,
             "sourceColumn": "DiscountOrderAmt",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "sourceProviderType": "Currency",
@@ -6148,6 +6163,182 @@
                 ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales in Period",
+            "expression": " SUM([SalesAmt])",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GP in Period",
+            "expression": " SUM([GPAmt]) ",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales",
+            "expression": " CALCULATE([Sales in Period],filter(Period, Period[CalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP",
+            "expression": " CALCULATE([GP in Period],filter(Period, Period[CalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Sales",
+            "expression": " CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD GP",
+            "expression": " CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var",
+            "expression": " [MTD Sales]-[PY MTD Sales]",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP Var",
+            "expression": " [MTD GP]-[PY MTD GP]",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD GP",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales Var",
+            "expression": " [YTD Sales]-[PY YTD Sales]",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP Var",
+            "expression": " [YTD GP]-[PY YTD GP]",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var %",
+            "expression": " [MTD Sales]/[PY MTD Sales] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "MTD GP Var %",
+            "expression": " [MTD GP]/[PY MTD GP] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "YTD Sales Var %",
+            "expression": " [YTD Sales]/[PY YTD Sales]-1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "YTD GP Sales Var %",
+            "expression": " [YTD GP]/[PY YTD GP] -1",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
           }
         ],
         "annotations": [
@@ -6969,6 +7160,7 @@
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "Period[FirstMonthSeqInYear]"
           }
         ],
@@ -6979,6 +7171,28 @@
               "type": "calculated",
               "expression": "Period"
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "__first_month_current",
+            "expression": " max('Period Select'[CalMonth])",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_current",
+            "expression": " calculate(max('Period Select'[MonthSeq]),filter('Period Select','Period Select'[CalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_in_year",
+            "expression": " calculate(max('Period Select'[FirstMonthSeqInYear]),filter('Period Select','Period Select'[CalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_in_quarter",
+            "expression": " calculate(max('Period Select'[FirstMonthSeqInQtr]),filter('Period Select','Period Select'[CalMonth]=[__first_month_current]))",
+            "isHidden": true
           }
         ]
       }
@@ -7018,6 +7232,18 @@
         "fromColumn": "SalesOrderNumber",
         "toTable": "Salesorder",
         "toColumn": "SalesOrderNumber"
+      }
+    ],
+    "roles": [
+      {
+        "name": "User Role",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "CAHSI\\TCrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          }
+        ]
       }
     ],
     "annotations": [

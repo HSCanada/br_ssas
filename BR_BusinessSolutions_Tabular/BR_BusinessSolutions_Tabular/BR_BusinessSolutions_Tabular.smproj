@@ -12,8 +12,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Development' ">
     <OutputPath>bin\</OutputPath>
-    <DeploymentServerName>localhost</DeploymentServerName>
-    <DeploymentServerEdition>Developer</DeploymentServerEdition>
+    <DeploymentServerName>CAHSIONNLSQL1</DeploymentServerName>
+    <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_BusinessSolutions_Tabular</DeploymentServerDatabase>
     <DeploymentServerCubeName>Model</DeploymentServerCubeName>
