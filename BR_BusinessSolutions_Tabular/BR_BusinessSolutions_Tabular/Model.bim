@@ -167,6 +167,16 @@
             "name": "SalesCategoryRollup",
             "dataType": "string",
             "sourceColumn": "SalesCategoryRollup"
+          },
+          {
+            "name": "Label",
+            "dataType": "string",
+            "sourceColumn": "Label"
+          },
+          {
+            "name": "SubMajor",
+            "dataType": "string",
+            "sourceColumn": "SubMajor"
           }
         ],
         "partitions": [
@@ -174,13 +184,13 @@
             "name": "Item",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey] FROM [Dimension].[Item]",
+              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label] FROM [Dimension].[Item]",
               "dataSource": "SqlServer BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey] FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label] FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -202,7 +212,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey] FROM [Dimension].[Item]"
+            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label] FROM [Dimension].[Item]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -214,7 +224,7 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey] FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label] FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -3066,6 +3076,22 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "Item[SalesCategoryRollup]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Label",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Item[Label]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SubMajor",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Item[SubMajor]"
           }
         ],
         "partitions": [
