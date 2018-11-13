@@ -177,6 +177,18 @@
             "name": "SubMajor",
             "dataType": "string",
             "sourceColumn": "SubMajor"
+          },
+          {
+            "name": "Current_BasePrice",
+            "dataType": "double",
+            "sourceColumn": "Current_BasePrice",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           }
         ],
         "partitions": [
@@ -184,13 +196,13 @@
             "name": "Item",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label] FROM [Dimension].[Item]",
+              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice FROM [Dimension].[Item]",
               "dataSource": "SqlServer BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label] FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -212,7 +224,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label] FROM [Dimension].[Item]"
+            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice FROM [Dimension].[Item]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -224,7 +236,7 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label] FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -3092,6 +3104,14 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "Item[SubMajor]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Current_BasePrice",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Item[Current_BasePrice]"
           }
         ],
         "partitions": [
