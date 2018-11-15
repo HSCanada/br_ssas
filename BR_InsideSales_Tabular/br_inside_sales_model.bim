@@ -338,41 +338,8 @@
             "formatString": "#,0"
           },
           {
-            "name": "Sales  3M",
+            "name": "Last 3Mo Sales",
             "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3&&Period[MonthSeq]<=[__seq_first_month_current]))",
-            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Sales  6M",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-6&&Period[MonthSeq]<=[__seq_first_month_current]))",
-            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Sales 12M",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
-            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Sales 24M",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-24&&Period[MonthSeq]<=[__seq_first_month_current]))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -478,6 +445,173 @@
           {
             "name": "PY YTD GM",
             "expression": "[PY YTD GP]/[PY YTD Sales]",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Last 3Mo GP",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY Last 3Mo Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY Last 3Mo GP",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 3Mo Sales Growth",
+            "expression": " [Last 3Mo Sales]-[PY Last 3Mo Sales]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 3Mo Sales Growth%",
+            "expression": "if([PY Last 3Mo Sales]=0, blank(), [Last 3Mo Sales]/ [PY Last 3Mo Sales]-1)",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Last 3Mo GP Growth",
+            "expression": " [Last 3Mo GP]-[PY Last 3Mo GP]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 3Mo GP Growth%",
+            "expression": "if([PY Last 3Mo GP]=0, blank(), [Last 3Mo GP]/[PY Last 3Mo GP]-1)",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "WTD Sales",
+            "expression": "  CALCULATE([Sales in Period],filter(Period, Period[FirstWeekSeqInDay]=[__seq_first_week_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 6Mo Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-6&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 12Mo Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 3Mo Qty",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Last 6Mo Qty",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-6&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Last 12Mo Qty",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Last 6Mo Sales Growth",
+            "expression": " [Last 6Mo Sales]-[PY Last 6Mo Sales]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 6Mo Sales Growth%",
+            "expression": "if([PY Last 6Mo Sales]=0, blank(), [Last 6Mo Sales]/ [PY Last 6Mo Sales]-1)",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "PY Last 6Mo Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-6-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY Last 12Mo Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 12Mo Sales Growth",
+            "expression": " [Last 12Mo Sales]-[PY Last 12Mo Sales]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Last 12Mo Sales Growth%",
+            "expression": "if([PY Last 12Mo Sales]=0, blank(), [Last 12Mo Sales]/ [PY Last 12Mo Sales]-1)",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           }
         ],
@@ -611,6 +745,11 @@
             "dataType": "string",
             "isHidden": true,
             "sourceColumn": "FocusCd"
+          },
+          {
+            "name": "CreditLimit",
+            "dataType": "double",
+            "sourceColumn": "CreditLimit"
           }
         ],
         "partitions": [
@@ -641,6 +780,7 @@
                 "  ,Dimension.Customer.PotentialSpendAmount",
                 "  ,Dimension.Customer.IsrEmployeeKey",
                 " ,FocusCd",
+                " ,CreditLimit",
                 "",
                 "FROM",
                 "  Dimension.Customer"
@@ -674,6 +814,7 @@
                   "  ,Dimension.Customer.PotentialSpendAmount",
                   "  ,Dimension.Customer.IsrEmployeeKey",
                   " ,FocusCd",
+                  " ,CreditLimit",
                   "",
                   "FROM",
                   "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -724,6 +865,7 @@
               "  ,Dimension.Customer.PotentialSpendAmount",
               "  ,Dimension.Customer.IsrEmployeeKey",
               " ,FocusCd",
+              " ,CreditLimit",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -755,6 +897,7 @@
               "  ,Dimension.Customer.PotentialSpendAmount",
               "  ,Dimension.Customer.IsrEmployeeKey",
               " ,FocusCd",
+              " ,CreditLimit",
               "",
               "FROM",
               "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -849,6 +992,12 @@
             "isHidden": true,
             "sourceColumn": "FirstMonthSeqInYear",
             "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstWeekSeqInDay",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FirstWeekSeqInDay"
           }
         ],
         "partitions": [
@@ -856,9 +1005,15 @@
             "name": "Day",
             "dataView": "full",
             "source": {
-              "query": " SELECT [Dimension].[Day].* FROM [Dimension].[Day] ",
+              "query": "SELECT [Dimension].[Day].* FROM [Dimension].[Day]",
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Day].* FROM [Dimension].[Day]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
           }
         ],
         "measures": [
@@ -870,7 +1025,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Dimension].[Day].* FROM [Dimension].[Day] "
+            "value": "SELECT [Dimension].[Day].* FROM [Dimension].[Day]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -879,6 +1034,10 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Day].* FROM [Dimension].[Day]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -999,6 +1158,15 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "Period[FirstMonthSeqInYear]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "FirstWeekSeqInDay",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[FirstWeekSeqInDay]"
           }
         ],
         "partitions": [
@@ -1053,6 +1221,11 @@
           {
             "name": "__seq_last_day_current",
             "expression": " max('Period Select'[DaySeq])",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_week_current",
+            "expression": " calculate(max('Period Select'[FirstWeekSeqInDay]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
             "isHidden": true
           }
         ]
@@ -1502,6 +1675,11 @@
             "name": "Brand",
             "dataType": "string",
             "sourceColumn": "Brand"
+          },
+          {
+            "name": "Top15",
+            "dataType": "string",
+            "sourceColumn": "Top15"
           }
         ],
         "partitions": [
@@ -1509,13 +1687,13 @@
             "name": "Item",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey] FROM [Dimension].[Item]",
+              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]",
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey] FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -1523,13 +1701,14 @@
         "measures": [
           {
             "name": "Count of Item",
-            "expression": "COUNTA([ItemKey])"
+            "expression": "COUNTA([ItemKey])",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey] FROM [Dimension].[Item]"
+            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1541,7 +1720,7 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey] FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       }
