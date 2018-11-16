@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -693,12 +693,6 @@
             "sourceProviderType": "WChar"
           },
           {
-            "name": "Spend_Display",
-            "dataType": "string",
-            "sourceColumn": "Spend_Display",
-            "sourceProviderType": "WChar"
-          },
-          {
             "name": "SalesDivision",
             "dataType": "string",
             "sourceColumn": "SalesDivision",
@@ -733,6 +727,11 @@
             "name": "PrivilegesCode",
             "dataType": "string",
             "sourceColumn": "PrivilegesCode"
+          },
+          {
+            "name": "ReviewTrackingInd",
+            "dataType": "boolean",
+            "sourceColumn": "ReviewTrackingInd"
           }
         ],
         "partitions": [
@@ -740,13 +739,13 @@
             "name": "Customer",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode] FROM [Dimension].[Customer]",
+              "query": "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd FROM [Dimension].[Customer]",
               "dataSource": "SqlServer BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode] FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -754,7 +753,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode] FROM [Dimension].[Customer]"
+            "value": "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd FROM [Dimension].[Customer]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -766,7 +765,7 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode] FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -3177,6 +3176,10 @@
           {
             "memberName": "CAHSI\\TCrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
           }
         ]
       }
