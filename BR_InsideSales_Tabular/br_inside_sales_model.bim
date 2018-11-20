@@ -1680,6 +1680,13 @@
             "name": "Top15",
             "dataType": "string",
             "sourceColumn": "Top15"
+          },
+          {
+            "type": "calculated",
+            "name": "deal",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "\"Buy X get Y; TBD - URL link?\""
           }
         ],
         "partitions": [
@@ -1848,6 +1855,14 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "Item[Top15]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "deal",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Item[deal]"
           }
         ],
         "partitions": [
