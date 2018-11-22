@@ -613,6 +613,48 @@
             "name": "Last 12Mo Sales Growth%",
             "expression": "if([PY Last 12Mo Sales]=0, blank(), [Last 12Mo Sales]/ [PY Last 12Mo Sales]-1)",
             "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Last Order Qty",
+            "expression": " CALCULATE([Qty in Period],'sales'[Lastorderind]=1)",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Last Order Date",
+            "expression": " CALCULATE([Last Date in Period] ,'sales'[Lastorderind]=1)",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Last Date in Period",
+            "expression": " max('Sales'[SalesDate])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "WTD GP",
+            "expression": "  CALCULATE([gp in Period],filter(Period, Period[FirstWeekSeqInDay]=[__seq_first_week_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "WTD GM",
+            "expression": "[WTD GP]/[WTD Sales]",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "WTD Qty",
+            "expression": "  CALCULATE([Qty in Period],filter(Period, Period[FirstWeekSeqInDay]=[__seq_first_week_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           }
         ],
         "annotations": [
@@ -825,7 +867,7 @@
         ],
         "measures": [
           {
-            "name": "Count of ShipTo",
+            "name": "_Count of ShipTo",
             "expression": "COUNTA([ShipTo])",
             "formatString": "#,0"
           }
@@ -1018,7 +1060,7 @@
         ],
         "measures": [
           {
-            "name": "Count of Day",
+            "name": "_Count of Day",
             "expression": "COUNTA([SalesDate])"
           }
         ],
@@ -1707,7 +1749,7 @@
         ],
         "measures": [
           {
-            "name": "Count of Item",
+            "name": "_Count of Item",
             "expression": "COUNTA([ItemKey])",
             "formatString": "#,0"
           }
@@ -1922,7 +1964,7 @@
     ],
     "roles": [
       {
-        "name": "TS_User_Roll",
+        "name": "Inside_User_role",
         "modelPermission": "read",
         "members": [
           {
@@ -1944,6 +1986,10 @@
             "filterExpression": "'EmployeeSecurity'[LoginId]=USERNAME()"
           }
         ]
+      },
+      {
+        "name": "Inside_Admin_role",
+        "modelPermission": "administrator"
       }
     ]
   },
