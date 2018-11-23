@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1 BRSales",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Persist Security Info=false;User ID=CAHSI\\tcrowley;Integrated Security=SSPI",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Persist Security Info=false;User ID=CAHSI\\tcrowley;Integrated Security=SSPI",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -655,6 +655,17 @@
                 "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "MTD Opportunity",
+            "expression": "[Last 12Mo Sales]/12 - [MTD Sales]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           }
         ],
         "annotations": [
@@ -767,7 +778,7 @@
             "sourceColumn": "SalesChannel"
           },
           {
-            "name": "TargetSpend",
+            "name": "TargetAmount",
             "dataType": "double",
             "sourceColumn": "TargetAmount"
           },
