@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -1881,6 +1881,21 @@
             "name": "BranchCount",
             "dataType": "int64",
             "sourceColumn": "BranchCount"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode"
+          },
+          {
+            "name": "BranchName",
+            "dataType": "string",
+            "sourceColumn": "BranchName"
+          },
+          {
+            "name": "ZoneName",
+            "dataType": "string",
+            "sourceColumn": "ZoneName"
           }
         ],
         "partitions": [
@@ -1888,21 +1903,42 @@
             "name": "SalespersonCommission",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount FROM [Dimension].[SalespersonCommission]",
+              "query": [
+                "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
+                "[BranchCode], [BranchName], [ZoneName]",
+                " ",
+                "FROM [Dimension].[SalespersonCommission]"
+              ],
               "dataSource": "Commission SQL Source"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
+                  "[BranchCode], [BranchName], [ZoneName]",
+                  " ",
+                  "FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "_Count of Salesperson_FSC",
+            "expression": "COUNTA([EmployeeNumber_FSC])"
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount FROM [Dimension].[SalespersonCommission]"
+            "value": [
+              "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
+              "[BranchCode], [BranchName], [ZoneName]",
+              " ",
+              "FROM [Dimension].[SalespersonCommission]"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1914,7 +1950,12 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
+              "[BranchCode], [BranchName], [ZoneName]",
+              " ",
+              "FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -1986,6 +2027,30 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "CommSalesperson_FSC[BranchCount]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "ZoneName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
           }
         ],
         "partitions": [
@@ -2203,6 +2268,21 @@
             "dataType": "string",
             "sourceColumn": "ZoneName",
             "sourceProviderType": "Char"
+          },
+          {
+            "name": "EmployeeNumber",
+            "dataType": "int64",
+            "sourceColumn": "EmployeeNumber"
+          },
+          {
+            "name": "CommPlanCode",
+            "dataType": "string",
+            "sourceColumn": "CommPlanCode"
+          },
+          {
+            "name": "TerritoryStart",
+            "dataType": "string",
+            "sourceColumn": "TerritoryStart"
           }
         ],
         "partitions": [
@@ -2214,6 +2294,9 @@
                 "SELECT",
                 "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
                 "  ,Dimension.SalespersonCodeCommission.SalespersonName",
+                "  ,Dimension.SalespersonCodeCommission.EmployeeNumber",
+                "  ,Dimension.SalespersonCodeCommission.CommPlanCode",
+                "  ,Dimension.SalespersonCodeCommission.TerritoryStart",
                 "  ,Dimension.SalespersonCodeCommission.FSC_SalespersonCodeKey",
                 "  ,Dimension.SalespersonCodeCommission.FSCRollup",
                 "  ,Dimension.SalespersonCodeCommission.BranchCode",
@@ -2231,16 +2314,25 @@
                   "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
                   "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
                   "  ,Dimension.SalespersonCodeCommission.SalespersonName",
+                  "  ,Dimension.SalespersonCodeCommission.EmployeeNumber",
+                  "  ,Dimension.SalespersonCodeCommission.CommPlanCode",
+                  "  ,Dimension.SalespersonCodeCommission.TerritoryStart",
                   "  ,Dimension.SalespersonCodeCommission.FSC_SalespersonCodeKey",
                   "  ,Dimension.SalespersonCodeCommission.FSCRollup",
                   "  ,Dimension.SalespersonCodeCommission.BranchCode",
                   "  ,Dimension.SalespersonCodeCommission.BranchName",
                   "  ,Dimension.SalespersonCodeCommission.ZoneName",
                   "FROM",
-                  "  Dimension.SalespersonCodeCommission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"SalespersonName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCodeKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSCRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"ZoneName\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "  Dimension.SalespersonCodeCommission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"SalespersonName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"EmployeeNumber\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"CommPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"TerritoryStart\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCodeKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSCRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"ZoneName\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "_Count of SalespersonCode FSC",
+            "expression": "COUNTA([FSC_SalespersonCode])"
           }
         ],
         "annotations": [
@@ -2250,6 +2342,9 @@
               "SELECT",
               "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
               "  ,Dimension.SalespersonCodeCommission.SalespersonName",
+              "  ,Dimension.SalespersonCodeCommission.EmployeeNumber",
+              "  ,Dimension.SalespersonCodeCommission.CommPlanCode",
+              "  ,Dimension.SalespersonCodeCommission.TerritoryStart",
               "  ,Dimension.SalespersonCodeCommission.FSC_SalespersonCodeKey",
               "  ,Dimension.SalespersonCodeCommission.FSCRollup",
               "  ,Dimension.SalespersonCodeCommission.BranchCode",
@@ -2273,13 +2368,16 @@
               "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
               "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
               "  ,Dimension.SalespersonCodeCommission.SalespersonName",
+              "  ,Dimension.SalespersonCodeCommission.EmployeeNumber",
+              "  ,Dimension.SalespersonCodeCommission.CommPlanCode",
+              "  ,Dimension.SalespersonCodeCommission.TerritoryStart",
               "  ,Dimension.SalespersonCodeCommission.FSC_SalespersonCodeKey",
               "  ,Dimension.SalespersonCodeCommission.FSCRollup",
               "  ,Dimension.SalespersonCodeCommission.BranchCode",
               "  ,Dimension.SalespersonCodeCommission.BranchName",
               "  ,Dimension.SalespersonCodeCommission.ZoneName",
               "FROM",
-              "  Dimension.SalespersonCodeCommission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"SalespersonName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCodeKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSCRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"ZoneName\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "  Dimension.SalespersonCodeCommission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"SalespersonName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"EmployeeNumber\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"CommPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"TerritoryStart\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSC_SalespersonCodeKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"FSCRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"BranchName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"SalespersonCodeCommission\" ColumnName=\"ZoneName\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -2357,7 +2455,7 @@
         "toColumn": "CommGroupKey"
       },
       {
-        "name": "c170f45c-3f1d-45fa-a3a9-4041f8d6cfb8",
+        "name": "b86a72af-7e06-491f-bf3f-edef37279c54",
         "fromTable": "Sales",
         "fromColumn": "FSC_SalespersonCodeKey",
         "toTable": "CommSalespersonCode_FSC",
@@ -2372,6 +2470,10 @@
           {
             "memberName": "CAHSI\\TCrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
           }
         ]
       }
