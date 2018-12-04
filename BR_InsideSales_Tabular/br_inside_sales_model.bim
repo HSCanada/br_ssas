@@ -95,6 +95,7 @@
           {
             "name": "LastOrderInd",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "LastOrderInd"
           },
           {
@@ -140,7 +141,7 @@
           },
           {
             "name": "MTD Sales Growth%",
-            "expression": "if([PY MTD Sales]=0, blank(), [MTD Sales]/[PY MTD Sales]-1)",
+            "expression": "DIVIDE( [MTD Sales Growth], [PY MTD Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -156,32 +157,32 @@
           },
           {
             "name": "QTD GP Growth%",
-            "expression": "if([PY QTD GP]=0,blank(),[QTD GP]-[PY QTD GP])",
+            "expression": "DIVIDE([QTD GP Growth], [PY QTD GP], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "PY QTD GM",
-            "expression": "[PY QTD GP]/[PY QTD Sales]",
+            "expression": "DIVIDE([PY QTD GP],[PY QTD Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "PY MTD GM",
-            "expression": "[PY MTD GP]/[PY MTD Sales]",
+            "expression": "DIVIDE([PY MTD GP], [PY MTD Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "YTD GM",
-            "expression": "[YTD GP]/[YTD Sales]",
+            "expression": "DIVIDE([YTD GP],[YTD Sales],BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "QTD GM",
-            "expression": "[QTD GP]/[QTD Sales]",
+            "expression": "DIVIDE([QTD GP], [QTD Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "MTD GM",
-            "expression": "[MTD GP]/[MTD Sales]",
+            "expression": "DIVIDE([MTD GP],[MTD Sales],BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -394,12 +395,12 @@
           },
           {
             "name": "QTD Sales Growth%",
-            "expression": "if([PY QTD Sales]=0, blank(), [QTD Sales]/[PY QTD Sales]-1)",
+            "expression": "DIVIDE([QTD Sales Growth], [PY QTD Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "YTD Sales Growth%",
-            "expression": "if([PY YTD Sales]=0, blank(), [YTD Sales]/[PY YTD Sales]-1)",
+            "expression": "DIVIDE( [YTD Sales Growth], [PY YTD Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -419,12 +420,12 @@
           },
           {
             "name": "MTD GP Growth%",
-            "expression": "if([PY MTD GP]=0,blank(),[MTD GP]-[PY MTD GP])",
+            "expression": "DIVIDE([MTD GP Growth],[PY MTD GP], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "YTD GP Growth%",
-            "expression": "if([PY YTD GP]=0,blank(),[YTD GP]-[PY YTD GP])",
+            "expression": "DIVIDE([YTD GP Growth], [PY YTD GP], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -444,7 +445,7 @@
           },
           {
             "name": "PY YTD GM",
-            "expression": "[PY YTD GP]/[PY YTD Sales]",
+            "expression": "DIVIDE([PY YTD GP], [PY YTD Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -493,7 +494,7 @@
           },
           {
             "name": "Last 3Mo Sales Growth%",
-            "expression": "if([PY Last 3Mo Sales]=0, blank(), [Last 3Mo Sales]/ [PY Last 3Mo Sales]-1)",
+            "expression": "DIVIDE([Last 3Mo Sales Growth],  [PY Last 3Mo Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -509,7 +510,7 @@
           },
           {
             "name": "Last 3Mo GP Growth%",
-            "expression": "if([PY Last 3Mo GP]=0, blank(), [Last 3Mo GP]/[PY Last 3Mo GP]-1)",
+            "expression": "DIVIDE( [Last 3Mo GP Growth], [PY Last 3Mo GP], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -573,7 +574,7 @@
           },
           {
             "name": "Last 6Mo Sales Growth%",
-            "expression": "if([PY Last 6Mo Sales]=0, blank(), [Last 6Mo Sales]/ [PY Last 6Mo Sales]-1)",
+            "expression": "DIVIDE([Last 6Mo Sales Growth],  [PY Last 6Mo Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -611,7 +612,7 @@
           },
           {
             "name": "Last 12Mo Sales Growth%",
-            "expression": "if([PY Last 12Mo Sales]=0, blank(), [Last 12Mo Sales]/ [PY Last 12Mo Sales]-1)",
+            "expression": "DIVIDE([Last 12Mo Sales Growth], [PY Last 12Mo Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -642,7 +643,7 @@
           },
           {
             "name": "WTD GM",
-            "expression": "[WTD GP]/[WTD Sales]",
+            "expression": "DIVIDE([WTD GP], [WTD Sales], BLANK())",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -722,11 +723,6 @@
             "sourceColumn": "Branch"
           },
           {
-            "name": "City",
-            "dataType": "string",
-            "sourceColumn": "City"
-          },
-          {
             "name": "Province",
             "dataType": "string",
             "sourceColumn": "Province"
@@ -740,11 +736,6 @@
             "name": "MarketClass",
             "dataType": "string",
             "sourceColumn": "MarketClass"
-          },
-          {
-            "name": "Segment",
-            "dataType": "string",
-            "sourceColumn": "Segment"
           },
           {
             "name": "Specialty",
@@ -783,11 +774,6 @@
             "sourceColumn": "TargetAmount"
           },
           {
-            "name": "PotentialSpend",
-            "dataType": "double",
-            "sourceColumn": "PotentialSpendAmount"
-          },
-          {
             "name": "IsrEmployeeKey",
             "dataType": "int64",
             "isHidden": true,
@@ -802,7 +788,15 @@
           {
             "name": "CreditLimit",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "CreditLimit"
+          },
+          {
+            "type": "calculated",
+            "name": "CreditRisk",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if(Customer[CreditLimit]<= 10, \"Yes\", \"No\")"
           }
         ],
         "partitions": [
@@ -1693,12 +1687,6 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "ManufPartNumber",
-            "dataType": "string",
-            "sourceColumn": "ManufPartNumber",
-            "sourceProviderType": "Char"
-          },
-          {
             "name": "Label",
             "dataType": "string",
             "sourceColumn": "Label",
@@ -1747,13 +1735,13 @@
             "name": "Item",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]",
+              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]",
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -1768,7 +1756,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]"
+            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1780,7 +1768,7 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[ManufPartNumber],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -1818,6 +1806,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "Item[CategoryRollup]"
           },
           {
@@ -1834,6 +1823,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "Item[SubMajor]"
           },
           {
@@ -1842,6 +1832,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "Item[ItemCode]"
           },
           {
@@ -1854,18 +1845,11 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "ManufPartNumber",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[ManufPartNumber]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "Label",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "Item[Label]"
           },
           {
@@ -1915,6 +1899,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "Item[deal]"
           }
         ],
