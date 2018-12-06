@@ -76,117 +76,6 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "FSA",
-            "dataType": "string",
-            "sourceColumn": "FSA",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "City",
-            "dataType": "string",
-            "sourceColumn": "City",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Region",
-            "dataType": "string",
-            "sourceColumn": "Region",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Province",
-            "dataType": "string",
-            "sourceColumn": "Province",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Country",
-            "dataType": "string",
-            "sourceColumn": "Country",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Abc_GeoCustomer",
-            "dataType": "string",
-            "sourceColumn": "Abc_GeoCustomer",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Adjustment",
-            "dataType": "string",
-            "sourceColumn": "Adjustment",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "AdjEffectiveDate",
-            "dataType": "dateTime",
-            "sourceColumn": "AdjEffectiveDate",
-            "formatString": "General Date",
-            "sourceProviderType": "DBDate"
-          },
-          {
-            "name": "AdjExpiredDate",
-            "dataType": "dateTime",
-            "sourceColumn": "AdjExpiredDate",
-            "formatString": "General Date",
-            "sourceProviderType": "DBDate"
-          },
-          {
-            "name": "AdjUserId",
-            "dataType": "string",
-            "sourceColumn": "AdjUserId",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "AdjEnrollSource",
-            "dataType": "string",
-            "sourceColumn": "AdjEnrollSource",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "AdjPriceMethod",
-            "dataType": "string",
-            "sourceColumn": "AdjPriceMethod",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Abc_SpendCustomer",
-            "dataType": "string",
-            "sourceColumn": "Abc_SpendCustomer",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Spend_PotentialAmt",
-            "dataType": "decimal",
-            "sourceColumn": "Spend_PotentialAmt",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "sourceProviderType": "Currency",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Spend_Display",
-            "dataType": "string",
-            "sourceColumn": "Spend_Display",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Spend_Rank",
-            "dataType": "int64",
-            "sourceColumn": "Spend_Rank",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "Spend_Discount_Rate",
-            "dataType": "double",
-            "sourceColumn": "Spend_Discount_Rate",
-            "sourceProviderType": "Double"
-          },
-          {
             "name": "SalesDivision",
             "dataType": "string",
             "sourceColumn": "SalesDivision",
@@ -229,12 +118,6 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "Focus",
-            "dataType": "string",
-            "sourceColumn": "Focus",
-            "sourceProviderType": "Char"
-          },
-          {
             "name": "DateAccountOpened",
             "dataType": "dateTime",
             "sourceColumn": "DateAccountOpened",
@@ -271,15 +154,96 @@
             "name": "Customer",
             "dataView": "full",
             "source": {
-              "query": " SELECT [Dimension].[Customer].* FROM [Dimension].[Customer] ",
+              "query": [
+                "SELECT",
+                "  Dimension.Customer.ShipTo",
+                "  ,Dimension.Customer.Billto",
+                "  ,Dimension.Customer.Customer",
+                "  ,Dimension.Customer.CustomerGroup",
+                "  ,Dimension.Customer.SalesPlan",
+                "  ,Dimension.Customer.SalesPlanCode",
+                "  ,Dimension.Customer.SalesPlanType",
+                "  ,Dimension.Customer.FieldSales",
+                "  ,Dimension.Customer.Branch",
+                "  ,Dimension.Customer.SalesDivision",
+                "  ,Dimension.Customer.MarketClassRollup",
+                "  ,Dimension.Customer.MarketClass",
+                "  ,Dimension.Customer.Segment",
+                "  ,Dimension.Customer.Specialty",
+                "  ,Dimension.Customer.CustomerStatus",
+                "  ,Dimension.Customer.DCC_TrackingShipTo",
+                "  ,Dimension.Customer.DCC_TrackingCode",
+                "  ,Dimension.Customer.DateAccountOpened",
+                "  ,Dimension.Customer.SalesDivisionCode",
+                "  ,Dimension.Customer.BranchCode",
+                "  ,Dimension.Customer.MarketClassCode",
+                "FROM",
+                "  Dimension.Customer"
+              ],
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "  Dimension.Customer.ShipTo",
+                  "  ,Dimension.Customer.Billto",
+                  "  ,Dimension.Customer.Customer",
+                  "  ,Dimension.Customer.CustomerGroup",
+                  "  ,Dimension.Customer.SalesPlan",
+                  "  ,Dimension.Customer.SalesPlanCode",
+                  "  ,Dimension.Customer.SalesPlanType",
+                  "  ,Dimension.Customer.FieldSales",
+                  "  ,Dimension.Customer.Branch",
+                  "  ,Dimension.Customer.SalesDivision",
+                  "  ,Dimension.Customer.MarketClassRollup",
+                  "  ,Dimension.Customer.MarketClass",
+                  "  ,Dimension.Customer.Segment",
+                  "  ,Dimension.Customer.Specialty",
+                  "  ,Dimension.Customer.CustomerStatus",
+                  "  ,Dimension.Customer.DCC_TrackingShipTo",
+                  "  ,Dimension.Customer.DCC_TrackingCode",
+                  "  ,Dimension.Customer.DateAccountOpened",
+                  "  ,Dimension.Customer.SalesDivisionCode",
+                  "  ,Dimension.Customer.BranchCode",
+                  "  ,Dimension.Customer.MarketClassCode",
+                  "FROM",
+                  "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FSA\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"City\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Region\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Province\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Country\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Abc_GeoCustomer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"PhoneNumber\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Adjustment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjEffectiveDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjExpiredDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjUserId\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjEnrollSource\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjPriceMethod\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Abc_SpendCustomer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Spend_PotentialAmt\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Spend_Display\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Spend_Rank\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Spend_Discount_Rate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Segment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Specialty\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"DCC_TrackingShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"DCC_TrackingCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"DateAccountOpened\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FscTerritoryCd\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FscStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrTerritoryCd\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FocusCd\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"DSO_ParentShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"PrivilegesCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrEmployeeKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrLoginId\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesChannel\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"TargetAmount\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"PotentialSpendAmount\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CreditLimit\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ReviewTrackingInd\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Dimension].[Customer].* FROM [Dimension].[Customer] "
+            "value": [
+              "SELECT",
+              "  Dimension.Customer.ShipTo",
+              "  ,Dimension.Customer.Billto",
+              "  ,Dimension.Customer.Customer",
+              "  ,Dimension.Customer.CustomerGroup",
+              "  ,Dimension.Customer.SalesPlan",
+              "  ,Dimension.Customer.SalesPlanCode",
+              "  ,Dimension.Customer.SalesPlanType",
+              "  ,Dimension.Customer.FieldSales",
+              "  ,Dimension.Customer.Branch",
+              "  ,Dimension.Customer.SalesDivision",
+              "  ,Dimension.Customer.MarketClassRollup",
+              "  ,Dimension.Customer.MarketClass",
+              "  ,Dimension.Customer.Segment",
+              "  ,Dimension.Customer.Specialty",
+              "  ,Dimension.Customer.CustomerStatus",
+              "  ,Dimension.Customer.DCC_TrackingShipTo",
+              "  ,Dimension.Customer.DCC_TrackingCode",
+              "  ,Dimension.Customer.DateAccountOpened",
+              "  ,Dimension.Customer.SalesDivisionCode",
+              "  ,Dimension.Customer.BranchCode",
+              "  ,Dimension.Customer.MarketClassCode",
+              "FROM",
+              "  Dimension.Customer"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -288,6 +252,35 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "  Dimension.Customer.ShipTo",
+              "  ,Dimension.Customer.Billto",
+              "  ,Dimension.Customer.Customer",
+              "  ,Dimension.Customer.CustomerGroup",
+              "  ,Dimension.Customer.SalesPlan",
+              "  ,Dimension.Customer.SalesPlanCode",
+              "  ,Dimension.Customer.SalesPlanType",
+              "  ,Dimension.Customer.FieldSales",
+              "  ,Dimension.Customer.Branch",
+              "  ,Dimension.Customer.SalesDivision",
+              "  ,Dimension.Customer.MarketClassRollup",
+              "  ,Dimension.Customer.MarketClass",
+              "  ,Dimension.Customer.Segment",
+              "  ,Dimension.Customer.Specialty",
+              "  ,Dimension.Customer.CustomerStatus",
+              "  ,Dimension.Customer.DCC_TrackingShipTo",
+              "  ,Dimension.Customer.DCC_TrackingCode",
+              "  ,Dimension.Customer.DateAccountOpened",
+              "  ,Dimension.Customer.SalesDivisionCode",
+              "  ,Dimension.Customer.BranchCode",
+              "  ,Dimension.Customer.MarketClassCode",
+              "FROM",
+              "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FSA\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"City\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Region\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Province\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Country\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Abc_GeoCustomer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"PhoneNumber\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Adjustment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjEffectiveDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjExpiredDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjUserId\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjEnrollSource\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"AdjPriceMethod\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Abc_SpendCustomer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Spend_PotentialAmt\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Spend_Display\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Spend_Rank\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Spend_Discount_Rate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Segment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Specialty\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"DCC_TrackingShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"DCC_TrackingCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"DateAccountOpened\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FscTerritoryCd\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FscStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrTerritoryCd\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FocusCd\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"DSO_ParentShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"PrivilegesCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrEmployeeKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"IsrLoginId\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesChannel\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"TargetAmount\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"PotentialSpendAmount\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CreditLimit\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ReviewTrackingInd\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
