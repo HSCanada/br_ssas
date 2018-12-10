@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -189,6 +189,16 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "Item_Competitive_Conversion_rt",
+            "dataType": "double",
+            "sourceColumn": "Item_Competitive_Conversion_rt"
+          },
+          {
+            "name": "FamilySet",
+            "dataType": "string",
+            "sourceColumn": "FamilySet"
           }
         ],
         "partitions": [
@@ -196,13 +206,13 @@
             "name": "Item",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice FROM [Dimension].[Item]",
+              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice, Item_Competitive_Conversion_rt, FamilySet FROM [Dimension].[Item]",
               "dataSource": "SqlServer BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice, Item_Competitive_Conversion_rt, FamilySet FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -224,7 +234,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice FROM [Dimension].[Item]"
+            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice, Item_Competitive_Conversion_rt, FamilySet FROM [Dimension].[Item]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -236,7 +246,7 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice, Item_Competitive_Conversion_rt, FamilySet FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -268,6 +278,11 @@
             "sourceColumn": "top15_ind",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
             "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "CategoryBrandCount",
+            "dataType": "int64",
+            "sourceColumn": "CategoryBrandCount"
           }
         ],
         "partitions": [
@@ -275,178 +290,13 @@
             "name": "ItemCategory",
             "dataView": "full",
             "source": {
-              "query": " SELECT [Dimension].[ItemCategory].[CategoryRollupKey],[Dimension].[ItemCategory].[ItemCategory],[Dimension].[ItemCategory].[CategorySharePercent],[Dimension].[ItemCategory].[top15_ind] FROM [Dimension].[ItemCategory] ",
+              "query": "SELECT [Dimension].[ItemCategory].[CategoryRollupKey],[Dimension].[ItemCategory].[ItemCategory],[Dimension].[ItemCategory].[CategorySharePercent],[Dimension].[ItemCategory].[top15_ind], CategoryBrandCount FROM [Dimension].[ItemCategory]",
               "dataSource": "SqlServer BRSales"
             },
             "annotations": [
               {
-                "name": "TableWidgetSerialization",
-                "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
-                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
-                  "  <ColumnSuggestedType />",
-                  "  <ColumnFormat />",
-                  "  <ColumnAccuracy />",
-                  "  <ColumnCurrencySymbol />",
-                  "  <ColumnPositivePattern />",
-                  "  <ColumnNegativePattern />",
-                  "  <ColumnWidths>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategoryRollupKey</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>122</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>ItemCategory</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>97</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>ItemCategoryCode</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>122</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategorySharePercent</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>140</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>top15_ind</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>78</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategoryClass</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>100</int>",
-                  "      </value>",
-                  "    </item>",
-                  "  </ColumnWidths>",
-                  "  <ColumnDisplayIndex>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategoryRollupKey</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>0</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>ItemCategory</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>1</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>ItemCategoryCode</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>2</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategorySharePercent</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>3</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>top15_ind</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>4</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategoryClass</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>5</int>",
-                  "      </value>",
-                  "    </item>",
-                  "  </ColumnDisplayIndex>",
-                  "  <ColumnFrozen />",
-                  "  <ColumnChecked>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategoryRollupKey</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>true</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>ItemCategory</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>true</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>ItemCategoryCode</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>false</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategorySharePercent</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>true</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>top15_ind</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>true</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>CategoryClass</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>false</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "  </ColumnChecked>",
-                  "  <ColumnFilter />",
-                  "  <SelectionFilter />",
-                  "  <FilterParameters />",
-                  "  <IsSortDescending>false</IsSortDescending>",
-                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
-                ]
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[ItemCategory].[CategoryRollupKey],[Dimension].[ItemCategory].[ItemCategory],[Dimension].[ItemCategory].[CategorySharePercent],[Dimension].[ItemCategory].[top15_ind], CategoryBrandCount FROM [Dimension].[ItemCategory]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -454,7 +304,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Dimension].[ItemCategory].[CategoryRollupKey],[Dimension].[ItemCategory].[ItemCategory],[Dimension].[ItemCategory].[CategorySharePercent],[Dimension].[ItemCategory].[top15_ind] FROM [Dimension].[ItemCategory] "
+            "value": "SELECT [Dimension].[ItemCategory].[CategoryRollupKey],[Dimension].[ItemCategory].[ItemCategory],[Dimension].[ItemCategory].[CategorySharePercent],[Dimension].[ItemCategory].[top15_ind], CategoryBrandCount FROM [Dimension].[ItemCategory]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -465,173 +315,8 @@
             "value": "Dimension"
           },
           {
-            "name": "TableWidgetSerialization",
-            "value": [
-              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
-              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
-              "  <ColumnSuggestedType />",
-              "  <ColumnFormat />",
-              "  <ColumnAccuracy />",
-              "  <ColumnCurrencySymbol />",
-              "  <ColumnPositivePattern />",
-              "  <ColumnNegativePattern />",
-              "  <ColumnWidths>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategoryRollupKey</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>122</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>ItemCategory</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>97</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>ItemCategoryCode</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>122</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategorySharePercent</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>140</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>top15_ind</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>78</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategoryClass</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>100</int>",
-              "      </value>",
-              "    </item>",
-              "  </ColumnWidths>",
-              "  <ColumnDisplayIndex>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategoryRollupKey</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>0</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>ItemCategory</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>1</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>ItemCategoryCode</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>2</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategorySharePercent</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>3</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>top15_ind</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>4</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategoryClass</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>5</int>",
-              "      </value>",
-              "    </item>",
-              "  </ColumnDisplayIndex>",
-              "  <ColumnFrozen />",
-              "  <ColumnChecked>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategoryRollupKey</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>true</boolean>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>ItemCategory</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>true</boolean>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>ItemCategoryCode</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>false</boolean>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategorySharePercent</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>true</boolean>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>top15_ind</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>true</boolean>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>CategoryClass</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>false</boolean>",
-              "      </value>",
-              "    </item>",
-              "  </ColumnChecked>",
-              "  <ColumnFilter />",
-              "  <SelectionFilter />",
-              "  <FilterParameters />",
-              "  <IsSortDescending>false</IsSortDescending>",
-              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
-            ]
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[ItemCategory].[CategoryRollupKey],[Dimension].[ItemCategory].[ItemCategory],[Dimension].[ItemCategory].[CategorySharePercent],[Dimension].[ItemCategory].[top15_ind], CategoryBrandCount FROM [Dimension].[ItemCategory]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -732,6 +417,21 @@
             "name": "ReviewTrackingInd",
             "dataType": "boolean",
             "sourceColumn": "ReviewTrackingInd"
+          },
+          {
+            "name": "Spend_Display",
+            "dataType": "string",
+            "sourceColumn": "Spend_Display"
+          },
+          {
+            "name": "ESTName",
+            "dataType": "string",
+            "sourceColumn": "ESTName"
+          },
+          {
+            "name": "pma_ind",
+            "dataType": "string",
+            "sourceColumn": "pma_ind"
           }
         ],
         "partitions": [
@@ -739,13 +439,19 @@
             "name": "Customer",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd FROM [Dimension].[Customer]",
+              "query": [
+                "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
+                " FROM [Dimension].[Customer]"
+              ],
               "dataSource": "SqlServer BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
+                  " FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -753,7 +459,10 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd FROM [Dimension].[Customer]"
+            "value": [
+              "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
+              " FROM [Dimension].[Customer]"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -765,7 +474,10 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
+              " FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -2056,6 +1768,11 @@
                 "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "Rolling 12mo Lines",
+            "expression": " CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
@@ -3111,6 +2828,22 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "Item[Current_BasePrice]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Item_Competitive_Conversion_rt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Item[Item_Competitive_Conversion_rt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "FamilySet",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Item[FamilySet]"
           }
         ],
         "partitions": [
