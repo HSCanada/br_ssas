@@ -270,6 +270,7 @@
             "name": "CategorySharePercent",
             "dataType": "double",
             "sourceColumn": "CategorySharePercent",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
             "sourceProviderType": "Double"
           },
           {
@@ -299,6 +300,12 @@
                 "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[ItemCategory].[CategoryRollupKey],[Dimension].[ItemCategory].[ItemCategory],[Dimension].[ItemCategory].[CategorySharePercent],[Dimension].[ItemCategory].[top15_ind], CategoryBrandCount FROM [Dimension].[ItemCategory]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "_Category Count",
+            "expression": "COUNTA([CategoryRollupKey])"
           }
         ],
         "annotations": [
@@ -454,6 +461,12 @@
                 ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "ShipTo Count",
+            "expression": "COUNTA(([ShipTo]))"
           }
         ],
         "annotations": [
