@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1 BRSales",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Persist Security Info=false;User ID=CAHSI\\tcrowley;Integrated Security=SSPI",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Persist Security Info=false;User ID=CAHSI\\tcrowley;Integrated Security=SSPI",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -132,6 +132,7 @@
             "name": "Sales in Period",
             "expression": "SUM([SalesAmt])",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -148,6 +149,7 @@
             "name": "GP in Period",
             "expression": "SUM([GPcommAmt])",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -158,7 +160,8 @@
           {
             "name": "QTD GP Growth%",
             "expression": "DIVIDE([QTD GP Growth], [PY QTD GP], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "isHidden": true
           },
           {
             "name": "PY QTD GM",
@@ -178,7 +181,8 @@
           {
             "name": "QTD GM",
             "expression": "DIVIDE([QTD GP], [QTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "isHidden": true
           },
           {
             "name": "MTD GM",
@@ -306,7 +310,8 @@
           {
             "name": "Qty in Period",
             "expression": " sum([Quantity])",
-            "formatString": "#,0"
+            "formatString": "#,0",
+            "isHidden": true
           },
           {
             "name": "MTD Qty",
@@ -336,7 +341,8 @@
           {
             "name": "QTD Qty Growth",
             "expression": " [QTD Qty]-[PY QTD Qty]",
-            "formatString": "#,0"
+            "formatString": "#,0",
+            "isHidden": true
           },
           {
             "name": "Last 3Mo Sales",
@@ -353,6 +359,7 @@
             "name": "QTD Sales",
             "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -364,6 +371,7 @@
             "name": "QTD GP",
             "expression": "  CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -386,6 +394,7 @@
             "name": "QTD Sales Growth",
             "expression": " [QTD Sales]-[PY QTD Sales]",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -396,7 +405,8 @@
           {
             "name": "QTD Sales Growth%",
             "expression": "DIVIDE([QTD Sales Growth], [PY QTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "isHidden": true
           },
           {
             "name": "YTD Sales Growth%",
@@ -405,7 +415,8 @@
           },
           {
             "name": "QTD GP Growth",
-            "expression": " [QTD GP]-[PY QTD GP]"
+            "expression": " [QTD GP]-[PY QTD GP]",
+            "isHidden": true
           },
           {
             "name": "PY QTD GP",
@@ -431,7 +442,8 @@
           {
             "name": "QTD Qty",
             "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
-            "formatString": "#,0"
+            "formatString": "#,0",
+            "isHidden": true
           },
           {
             "name": "PY QTD Qty",
@@ -623,12 +635,14 @@
           {
             "name": "Last Order Date",
             "expression": " CALCULATE([Last Date in Period] ,'sales'[Lastorderind]=1)",
-            "formatString": "#,0"
+            "formatString": "#,0",
+            "isHidden": true
           },
           {
             "name": "Last Date in Period",
             "expression": " max('Sales'[SalesDate])",
-            "formatString": "#,0"
+            "formatString": "#,0",
+            "isHidden": true
           },
           {
             "name": "WTD GP",
@@ -769,9 +783,16 @@
             "sourceColumn": "SalesChannel"
           },
           {
-            "name": "TargetAmount",
+            "name": "Sales Target Year",
             "dataType": "double",
-            "sourceColumn": "TargetAmount"
+            "sourceColumn": "TargetAmount",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" ThousandSeparator=\"True\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           },
           {
             "name": "IsrEmployeeKey",
@@ -797,6 +818,20 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": "if(Customer[CreditLimit]<= 10, \"Yes\", \"No\")"
+          },
+          {
+            "type": "calculated",
+            "name": "Sales Target Month",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "[Sales Target Year]/12",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" ThousandSeparator=\"True\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           }
         ],
         "partitions": [
@@ -1296,6 +1331,7 @@
           {
             "name": "EmployeeKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "EmployeeKey",
             "sourceProviderType": "Integer"
           },
@@ -1638,79 +1674,51 @@
         "name": "Item",
         "columns": [
           {
+            "name": "deal_code",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "deal_code"
+          },
+          {
             "name": "ItemKey",
             "dataType": "int64",
             "isHidden": true,
-            "sourceColumn": "ItemKey",
-            "sourceProviderType": "Integer"
+            "sourceColumn": "ItemKey"
           },
           {
             "name": "Item",
             "dataType": "string",
-            "sourceColumn": "Item",
-            "sourceProviderType": "Char"
+            "sourceColumn": "Item"
           },
           {
             "name": "SalesCategory",
             "dataType": "string",
-            "sourceColumn": "SalesCategory",
-            "sourceProviderType": "Char"
+            "sourceColumn": "SalesCategory"
           },
           {
             "name": "CategoryRollup",
             "dataType": "string",
-            "sourceColumn": "CategoryRollup",
-            "sourceProviderType": "WChar"
+            "sourceColumn": "CategoryRollup"
           },
           {
             "name": "Major",
             "dataType": "string",
-            "sourceColumn": "Major",
-            "sourceProviderType": "WChar"
+            "sourceColumn": "Major"
           },
           {
             "name": "SubMajor",
             "dataType": "string",
-            "sourceColumn": "SubMajor",
-            "sourceProviderType": "WChar"
+            "sourceColumn": "SubMajor"
           },
           {
             "name": "ItemCode",
             "dataType": "string",
-            "sourceColumn": "ItemCode",
-            "sourceProviderType": "Char"
+            "sourceColumn": "ItemCode"
           },
           {
             "name": "ItemStatus",
             "dataType": "string",
-            "sourceColumn": "ItemStatus",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Label",
-            "dataType": "string",
-            "sourceColumn": "Label",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Current_BasePrice",
-            "dataType": "decimal",
-            "sourceColumn": "Current_BasePrice",
-            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
-            "sourceProviderType": "Currency",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "CompetitiveMatchKey",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "CompetitiveMatchKey",
-            "sourceProviderType": "Integer"
+            "sourceColumn": "ItemStatus"
           },
           {
             "name": "Brand",
@@ -1718,16 +1726,24 @@
             "sourceColumn": "Brand"
           },
           {
+            "name": "Label",
+            "dataType": "string",
+            "sourceColumn": "Label"
+          },
+          {
+            "name": "Current_BasePrice",
+            "dataType": "double",
+            "sourceColumn": "Current_BasePrice"
+          },
+          {
             "name": "Top15",
             "dataType": "string",
             "sourceColumn": "Top15"
           },
           {
-            "type": "calculated",
-            "name": "deal",
+            "name": "SubstItem",
             "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": "\"Buy X get Y; TBD - URL link?\""
+            "sourceColumn": "SubstItem"
           }
         ],
         "partitions": [
@@ -1735,13 +1751,91 @@
             "name": "Item",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]",
+              "query": [
+                "SELECT ",
+                "--top 10",
+                "\ti.[ItemKey],",
+                "\ti.[Item],",
+                "\ti.[SalesCategory],",
+                "\ti.[CategoryRollup],",
+                "\ti.[Major],",
+                "\ti.[SubMajor],",
+                "\ti.[ItemCode],",
+                "\ti.[ItemStatus],",
+                "\ti.[Brand],",
+                "\ti.[Label],",
+                "\ti.[Current_BasePrice],",
+                "\ti.Top15,",
+                "",
+                "\tISNULL(ideal.recID, 0) deal_code,",
+                "\t",
+                "\tCASE ",
+                "\t\tWHEN isub.ItemKey = 1 ",
+                "\t\tTHEN ''",
+                "\t\tELSE isub.Item",
+                "\tEND AS SubstItem",
+                "",
+                "FROM ",
+                "\t[Dimension].[Item] i",
+                "",
+                "\tLEFT JOIN Redemptions_tbl_Items AS ideal",
+                "\tON i.ItemCode = ideal.[ItemNumber]",
+                "",
+                "\t-- add subst ...",
+                "\tINNER JOIN [Dimension].[Item] isub",
+                "\tON i.[CompetitiveMatchKey] = isub.[ItemKey]",
+                "",
+                "WHERE ",
+                "\ti.SalesCategoryCode in ('MERCH', 'SMEQU') and",
+                "--\tRecID <> 0 AND",
+                "--\tisub.itemkey <> 1 AND",
+                "\t1=1"
+              ],
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+                  "--top 10",
+                  "\ti.[ItemKey],",
+                  "\ti.[Item],",
+                  "\ti.[SalesCategory],",
+                  "\ti.[CategoryRollup],",
+                  "\ti.[Major],",
+                  "\ti.[SubMajor],",
+                  "\ti.[ItemCode],",
+                  "\ti.[ItemStatus],",
+                  "\ti.[Brand],",
+                  "\ti.[Label],",
+                  "\ti.[Current_BasePrice],",
+                  "\ti.Top15,",
+                  "",
+                  "\tISNULL(ideal.recID, 0) deal_code,",
+                  "\t",
+                  "\tCASE ",
+                  "\t\tWHEN isub.ItemKey = 1 ",
+                  "\t\tTHEN ''",
+                  "\t\tELSE isub.Item",
+                  "\tEND AS SubstItem",
+                  "",
+                  "FROM ",
+                  "\t[Dimension].[Item] i",
+                  "",
+                  "\tLEFT JOIN Redemptions_tbl_Items AS ideal",
+                  "\tON i.ItemCode = ideal.[ItemNumber]",
+                  "",
+                  "\t-- add subst ...",
+                  "\tINNER JOIN [Dimension].[Item] isub",
+                  "\tON i.[CompetitiveMatchKey] = isub.[ItemKey]",
+                  "",
+                  "WHERE ",
+                  "\ti.SalesCategoryCode in ('MERCH', 'SMEQU') and",
+                  "--\tRecID <> 0 AND",
+                  "--\tisub.itemkey <> 1 AND",
+                  "\t1=1</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -1756,7 +1850,46 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]"
+            "value": [
+              "SELECT ",
+              "--top 10",
+              "\ti.[ItemKey],",
+              "\ti.[Item],",
+              "\ti.[SalesCategory],",
+              "\ti.[CategoryRollup],",
+              "\ti.[Major],",
+              "\ti.[SubMajor],",
+              "\ti.[ItemCode],",
+              "\ti.[ItemStatus],",
+              "\ti.[Brand],",
+              "\ti.[Label],",
+              "\ti.[Current_BasePrice],",
+              "\ti.Top15,",
+              "",
+              "\tISNULL(ideal.recID, 0) deal_code,",
+              "\t",
+              "\tCASE ",
+              "\t\tWHEN isub.ItemKey = 1 ",
+              "\t\tTHEN ''",
+              "\t\tELSE isub.Item",
+              "\tEND AS SubstItem",
+              "",
+              "FROM ",
+              "\t[Dimension].[Item] i",
+              "",
+              "\tLEFT JOIN Redemptions_tbl_Items AS ideal",
+              "\tON i.ItemCode = ideal.[ItemNumber]",
+              "",
+              "\t-- add subst ...",
+              "\tINNER JOIN [Dimension].[Item] isub",
+              "\tON i.[CompetitiveMatchKey] = isub.[ItemKey]",
+              "",
+              "WHERE ",
+              "\ti.SalesCategoryCode in ('MERCH', 'SMEQU') and",
+              "--\tRecID <> 0 AND",
+              "--\tisub.itemkey <> 1 AND",
+              "\t1=1"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1768,148 +1901,129 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],[Dimension].[Item].[CategoryRollup],[Dimension].[Item].[Major],[Dimension].[Item].[SubMajor],[Dimension].[Item].[ItemCode],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[Label],[Dimension].[Item].[Current_BasePrice],[Dimension].[Item].[CompetitiveMatchKey], Top15 FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+              "--top 10",
+              "\ti.[ItemKey],",
+              "\ti.[Item],",
+              "\ti.[SalesCategory],",
+              "\ti.[CategoryRollup],",
+              "\ti.[Major],",
+              "\ti.[SubMajor],",
+              "\ti.[ItemCode],",
+              "\ti.[ItemStatus],",
+              "\ti.[Brand],",
+              "\ti.[Label],",
+              "\ti.[Current_BasePrice],",
+              "\ti.Top15,",
+              "",
+              "\tISNULL(ideal.recID, 0) deal_code,",
+              "\t",
+              "\tCASE ",
+              "\t\tWHEN isub.ItemKey = 1 ",
+              "\t\tTHEN ''",
+              "\t\tELSE isub.Item",
+              "\tEND AS SubstItem",
+              "",
+              "FROM ",
+              "\t[Dimension].[Item] i",
+              "",
+              "\tLEFT JOIN Redemptions_tbl_Items AS ideal",
+              "\tON i.ItemCode = ideal.[ItemNumber]",
+              "",
+              "\t-- add subst ...",
+              "\tINNER JOIN [Dimension].[Item] isub",
+              "\tON i.[CompetitiveMatchKey] = isub.[ItemKey]",
+              "",
+              "WHERE ",
+              "\ti.SalesCategoryCode in ('MERCH', 'SMEQU') and",
+              "--\tRecID <> 0 AND",
+              "--\tisub.itemkey <> 1 AND",
+              "\t1=1</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
       {
-        "name": "ItemCompetitive",
+        "name": "Deal",
         "columns": [
           {
-            "type": "calculatedTableColumn",
-            "name": "ItemKey",
+            "name": "deal_code",
             "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[ItemKey]"
+            "sourceColumn": "deal_code",
+            "sourceProviderType": "Integer"
           },
           {
-            "type": "calculatedTableColumn",
-            "name": "Item",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Item]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalesCategory",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[SalesCategory]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CategoryRollup",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[CategoryRollup]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Major",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Major]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SubMajor",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[SubMajor]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "ItemCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[ItemCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "ItemStatus",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[ItemStatus]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Label",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[Label]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Current_BasePrice",
-            "dataType": "decimal",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Current_BasePrice]",
-            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
-              }
-            ]
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CompetitiveMatchKey",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[CompetitiveMatchKey]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Brand",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Brand]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Top15",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[Top15]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "deal",
             "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[deal]"
+            "sourceColumn": "deal",
+            "sourceProviderType": "VarChar"
           }
         ],
         "partitions": [
           {
-            "name": "CalculatedTable 1",
+            "name": "Deal",
+            "dataView": "full",
             "source": {
-              "type": "calculated",
-              "expression": "'Item'"
-            }
+              "query": [
+                "SELECT",
+                "\tRecID deal_code,",
+                "\tCASE ",
+                "\t\tWHEN d.RecID = 0",
+                "\t\tTHEN ''",
+                "\t\tELSE LEFT('D-' + CAST(d.RecID as char(10)) + CAST(d.Buy AS VARCHAR(255)) + ' >> ' +  CAST(d.Get AS VARCHAR(255)), 255) ",
+                "\tEND AS deal",
+                "FROM            Redemptions_tbl_Main as d"
+              ],
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "\tRecID deal_code,",
+                  "\tCASE ",
+                  "\t\tWHEN d.RecID = 0",
+                  "\t\tTHEN ''",
+                  "\t\tELSE LEFT('D-' + CAST(d.RecID as char(10)) + CAST(d.Buy AS VARCHAR(255)) + ' >> ' +  CAST(d.Get AS VARCHAR(255)), 255) ",
+                  "\tEND AS deal",
+                  "FROM            Redemptions_tbl_Main as d</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "\tRecID deal_code,",
+              "\tCASE ",
+              "\t\tWHEN d.RecID = 0",
+              "\t\tTHEN ''",
+              "\t\tELSE LEFT('D-' + CAST(d.RecID as char(10)) + CAST(d.Buy AS VARCHAR(255)) + ' >> ' +  CAST(d.Get AS VARCHAR(255)), 255) ",
+              "\tEND AS deal",
+              "FROM            Redemptions_tbl_Main as d"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Deal"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "\tRecID deal_code,",
+              "\tCASE ",
+              "\t\tWHEN d.RecID = 0",
+              "\t\tTHEN ''",
+              "\t\tELSE LEFT('D-' + CAST(d.RecID as char(10)) + CAST(d.Buy AS VARCHAR(255)) + ' >> ' +  CAST(d.Get AS VARCHAR(255)), 255) ",
+              "\tEND AS deal",
+              "FROM            Redemptions_tbl_Main as d</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       }
@@ -1944,18 +2058,18 @@
         "toColumn": "FocusCd"
       },
       {
-        "name": "01ee17ba-aac7-4d7a-a1d5-199aa44aaaf3",
+        "name": "42134443-8ea4-41ee-ae12-78858501d1d6",
         "fromTable": "Sales",
         "fromColumn": "ItemKey",
         "toTable": "Item",
         "toColumn": "ItemKey"
       },
       {
-        "name": "2c335114-8707-4014-b98f-2cd4cdedf62a",
+        "name": "2df637de-b257-443a-af34-bd7f7de4ca15",
         "fromTable": "Item",
-        "fromColumn": "CompetitiveMatchKey",
-        "toTable": "ItemCompetitive",
-        "toColumn": "ItemKey"
+        "fromColumn": "deal_code",
+        "toTable": "Deal",
+        "toColumn": "deal_code"
       }
     ],
     "roles": [
@@ -1974,6 +2088,10 @@
           {
             "memberName": "CAHSI\\TCrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\JLi",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
           }
         ],
         "tablePermissions": [
