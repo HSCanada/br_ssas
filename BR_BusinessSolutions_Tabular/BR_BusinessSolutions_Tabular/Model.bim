@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -191,14 +191,39 @@
             ]
           },
           {
-            "name": "Item_Competitive_Conversion_rt",
-            "dataType": "double",
-            "sourceColumn": "Item_Competitive_Conversion_rt"
-          },
-          {
             "name": "FamilySet",
             "dataType": "string",
             "sourceColumn": "FamilySet"
+          },
+          {
+            "name": "Supplier",
+            "dataType": "string",
+            "sourceColumn": "Supplier"
+          },
+          {
+            "name": "SubstItem",
+            "dataType": "string",
+            "sourceColumn": "SubstItem"
+          },
+          {
+            "name": "SubsItemBasePrice",
+            "dataType": "double",
+            "sourceColumn": "SubsItemBasePrice"
+          },
+          {
+            "name": "SubsItem2Subs_factor",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "SubsItem2Subs_factor"
+          },
+          {
+            "type": "calculated",
+            "name": "SubseItemBaseSavingsFactor",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "DIVIDE([SubsItemBasePrice],[Current_BasePrice]*[SubsItem2Subs_factor])",
+            "formatString": "#,0.0 %;-#,0.0 %;#,0.0 %"
           }
         ],
         "partitions": [
@@ -206,13 +231,79 @@
             "name": "Item",
             "dataView": "full",
             "source": {
-              "query": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice, Item_Competitive_Conversion_rt, FamilySet FROM [Dimension].[Item]",
+              "query": [
+                "SELECT",
+                "--\tTOP 10",
+                "\ti.ItemKey,",
+                "\ti.Item,",
+                "\ti.SalesCategory,",
+                "\ti.SalesCategoryRollup,",
+                "\ti.Major,",
+                "\ti.SubMajor,",
+                "\ti.ItemCode,",
+                "\ti.Size,",
+                "\ti.Strength,",
+                "\ti.ItemStatus,",
+                "\ti.Brand,",
+                "\ti.CompetitiveMatchKey,",
+                "\ti.Label,",
+                "\ti.Current_BasePrice,",
+                "\ti.FamilySet,",
+                "\ti.Supplier,",
+                "",
+                "\tCASE ",
+                "\t\tWHEN isub.ItemKey = 1 ",
+                "\t\tTHEN ''",
+                "\t\tELSE isub.Item",
+                "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
+                "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
+                "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor",
+                "",
+                "FROM",
+                "\tDimension.Item AS i ",
+                "",
+                "\tINNER JOIN Dimension.Item AS isub ",
+                "\tON i.CompetitiveMatchKey = isub.ItemKey"
+              ],
               "dataSource": "SqlServer BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice, Item_Competitive_Conversion_rt, FamilySet FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "--\tTOP 10",
+                  "\ti.ItemKey,",
+                  "\ti.Item,",
+                  "\ti.SalesCategory,",
+                  "\ti.SalesCategoryRollup,",
+                  "\ti.Major,",
+                  "\ti.SubMajor,",
+                  "\ti.ItemCode,",
+                  "\ti.Size,",
+                  "\ti.Strength,",
+                  "\ti.ItemStatus,",
+                  "\ti.Brand,",
+                  "\ti.CompetitiveMatchKey,",
+                  "\ti.Label,",
+                  "\ti.Current_BasePrice,",
+                  "\ti.FamilySet,",
+                  "\ti.Supplier,",
+                  "",
+                  "\tCASE ",
+                  "\t\tWHEN isub.ItemKey = 1 ",
+                  "\t\tTHEN ''",
+                  "\t\tELSE isub.Item",
+                  "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
+                  "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
+                  "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor",
+                  "",
+                  "FROM",
+                  "\tDimension.Item AS i ",
+                  "",
+                  "\tINNER JOIN Dimension.Item AS isub ",
+                  "\tON i.CompetitiveMatchKey = isub.ItemKey</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -234,7 +325,40 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice, Item_Competitive_Conversion_rt, FamilySet FROM [Dimension].[Item]"
+            "value": [
+              "SELECT",
+              "--\tTOP 10",
+              "\ti.ItemKey,",
+              "\ti.Item,",
+              "\ti.SalesCategory,",
+              "\ti.SalesCategoryRollup,",
+              "\ti.Major,",
+              "\ti.SubMajor,",
+              "\ti.ItemCode,",
+              "\ti.Size,",
+              "\ti.Strength,",
+              "\ti.ItemStatus,",
+              "\ti.Brand,",
+              "\ti.CompetitiveMatchKey,",
+              "\ti.Label,",
+              "\ti.Current_BasePrice,",
+              "\ti.FamilySet,",
+              "\ti.Supplier,",
+              "",
+              "\tCASE ",
+              "\t\tWHEN isub.ItemKey = 1 ",
+              "\t\tTHEN ''",
+              "\t\tELSE isub.Item",
+              "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
+              "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
+              "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor",
+              "",
+              "FROM",
+              "\tDimension.Item AS i ",
+              "",
+              "\tINNER JOIN Dimension.Item AS isub ",
+              "\tON i.CompetitiveMatchKey = isub.ItemKey"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -246,7 +370,40 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].[ItemKey],[Dimension].[Item].[Item],[Dimension].[Item].[SalesCategory],SalesCategoryRollup,[Dimension].[Item].[Major],[Item].[SubMajor], [Dimension].[Item].[ItemCode],[Dimension].[Item].[Size],[Dimension].[Item].[Strength],[Dimension].[Item].[ItemStatus],[Dimension].[Item].[Brand],[Dimension].[Item].[CompetitiveMatchKey], [Item].[Label], Current_BasePrice, Item_Competitive_Conversion_rt, FamilySet FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "--\tTOP 10",
+              "\ti.ItemKey,",
+              "\ti.Item,",
+              "\ti.SalesCategory,",
+              "\ti.SalesCategoryRollup,",
+              "\ti.Major,",
+              "\ti.SubMajor,",
+              "\ti.ItemCode,",
+              "\ti.Size,",
+              "\ti.Strength,",
+              "\ti.ItemStatus,",
+              "\ti.Brand,",
+              "\ti.CompetitiveMatchKey,",
+              "\ti.Label,",
+              "\ti.Current_BasePrice,",
+              "\ti.FamilySet,",
+              "\ti.Supplier,",
+              "",
+              "\tCASE ",
+              "\t\tWHEN isub.ItemKey = 1 ",
+              "\t\tTHEN ''",
+              "\t\tELSE isub.Item",
+              "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
+              "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
+              "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor",
+              "",
+              "FROM",
+              "\tDimension.Item AS i ",
+              "",
+              "\tINNER JOIN Dimension.Item AS isub ",
+              "\tON i.CompetitiveMatchKey = isub.ItemKey</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -1735,17 +1892,6 @@
             ]
           },
           {
-            "name": "Rolling 24mo Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-24&&Period[MonthSeq]<=[__seq_first_month_current]))",
-            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
-              }
-            ]
-          },
-          {
             "name": "Lines in Period",
             "expression": "COUNTA([LineNumber])",
             "isHidden": true
@@ -1786,6 +1932,55 @@
             "name": "Rolling 12mo Lines",
             "expression": " CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
             "formatString": "#,0"
+          },
+          {
+            "name": "Rolling  3mo Qty",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  6mo Qty",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-6&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 12mo Qty",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  3mo Average Price",
+            "expression": "[Rolling  3mo Sales]/[Rolling  3mo Qty]"
+          },
+          {
+            "name": "Rolling  6mo Average Price",
+            "expression": "[Rolling  6mo Sales]/[Rolling  6mo Qty]"
+          },
+          {
+            "name": "Rolling 12mo Average Price",
+            "expression": "[Rolling 12mo Sales]/[Rolling 12mo Qty]"
+          },
+          {
+            "name": "Rolling 12mo Subs Average Price",
+            "expression": "[Rolling 12mo Average Price]"
           }
         ],
         "annotations": [
@@ -2724,150 +2919,6 @@
             "isHidden": true
           }
         ]
-      },
-      {
-        "name": "ItemCompetitive",
-        "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "ItemKey",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[ItemKey]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Item",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Item]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalesCategory",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[SalesCategory]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Major",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Major]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "ItemCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[ItemCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Size",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Size]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Strength",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Strength]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "ItemStatus",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[ItemStatus]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Brand",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Brand]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CompetitiveMatchKey",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "Item[CompetitiveMatchKey]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalesCategoryRollup",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[SalesCategoryRollup]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Label",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Label]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SubMajor",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[SubMajor]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Current_BasePrice",
-            "dataType": "double",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Current_BasePrice]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Item_Competitive_Conversion_rt",
-            "dataType": "double",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[Item_Competitive_Conversion_rt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "FamilySet",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "Item[FamilySet]"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "CalculatedTable 1",
-            "source": {
-              "type": "calculated",
-              "expression": "'Item'"
-            }
-          }
-        ]
       }
     ],
     "relationships": [
@@ -2905,13 +2956,6 @@
         "fromColumn": "SalesOrderNumber",
         "toTable": "Salesorder",
         "toColumn": "SalesOrderNumber"
-      },
-      {
-        "name": "96d86f7e-f967-42e0-9ce4-872e4033c595",
-        "fromTable": "Item",
-        "fromColumn": "CompetitiveMatchKey",
-        "toTable": "ItemCompetitive",
-        "toColumn": "ItemKey"
       }
     ],
     "roles": [
