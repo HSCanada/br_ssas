@@ -1440,14 +1440,6 @@
             ]
           },
           {
-            "name": "test2",
-            "expression": " CALCULATE(count([LineNumber]), ALLEXCEPT('Item','Item'[FamilySet]))"
-          },
-          {
-            "name": "test1",
-            "expression": "COUNT([LineNumber])"
-          },
-          {
             "name": "Rolling 12 Mo Freq Range",
             "expression": [
               "",
@@ -1810,6 +1802,7 @@
       },
       {
         "name": "FreqRange",
+        "isHidden": true,
         "columns": [
           {
             "type": "calculatedTableColumn",
