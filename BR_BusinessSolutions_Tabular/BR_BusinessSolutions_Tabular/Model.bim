@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -224,6 +224,19 @@
             "isHidden": true,
             "expression": "DIVIDE([SubsItemBasePrice],[Current_BasePrice])",
             "formatString": "#,0.0 %;-#,0.0 %;#,0.0 %"
+          },
+          {
+            "type": "calculated",
+            "name": "SubsItemValidInd",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if(OR([Item_Competitive_Conversion_rt]=0, [CompetitiveMatchKey] = 1) ,\"N\",\"Y\")"
+          },
+          {
+            "name": "Item_Competitive_Conversion_rt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Item_Competitive_Conversion_rt"
           }
         ],
         "partitions": [
@@ -250,6 +263,7 @@
                 "\ti.Current_BasePrice,",
                 "\ti.FamilySet,",
                 "\ti.Supplier,",
+                "\ti.Item_Competitive_Conversion_rt,",
                 "",
                 "\tCASE ",
                 "\t\tWHEN isub.ItemKey = 1 ",
@@ -289,6 +303,7 @@
                   "\ti.Current_BasePrice,",
                   "\ti.FamilySet,",
                   "\ti.Supplier,",
+                  "\ti.Item_Competitive_Conversion_rt,",
                   "",
                   "\tCASE ",
                   "\t\tWHEN isub.ItemKey = 1 ",
@@ -344,6 +359,7 @@
               "\ti.Current_BasePrice,",
               "\ti.FamilySet,",
               "\ti.Supplier,",
+              "\ti.Item_Competitive_Conversion_rt,",
               "",
               "\tCASE ",
               "\t\tWHEN isub.ItemKey = 1 ",
@@ -389,6 +405,7 @@
               "\ti.Current_BasePrice,",
               "\ti.FamilySet,",
               "\ti.Supplier,",
+              "\ti.Item_Competitive_Conversion_rt,",
               "",
               "\tCASE ",
               "\t\tWHEN isub.ItemKey = 1 ",
