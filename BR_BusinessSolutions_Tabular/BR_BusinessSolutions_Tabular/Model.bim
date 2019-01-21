@@ -153,6 +153,7 @@
           {
             "name": "Brand",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Brand",
             "sourceProviderType": "WChar"
           },
@@ -861,6 +862,12 @@
             "name": "SubsSalesAmt",
             "dataType": "double",
             "sourceColumn": "SubsSalesAmt"
+          },
+          {
+            "name": "BrandKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BrandKey"
           }
         ],
         "partitions": [
@@ -873,6 +880,7 @@
                 "\tFactKey, ",
                 "\tShipTo, ",
                 "\tItemKey, ",
+                "\tBrandKey,",
                 "\tCategoryRollupKey, ",
                 "\tCalMonth,",
                 "\tDateKey,",
@@ -904,6 +912,7 @@
                   "\tFactKey, ",
                   "\tShipTo, ",
                   "\tItemKey, ",
+                  "\tBrandKey,",
                   "\tCategoryRollupKey, ",
                   "\tCalMonth,",
                   "\tDateKey,",
@@ -1393,14 +1402,6 @@
             "expression": "[Rolling 12mo Sales]/[Rolling 12mo Qty]"
           },
           {
-            "name": "Category Brand Count - Group",
-            "expression": "1"
-          },
-          {
-            "name": "Category Brand Count - Shipto",
-            "expression": "1"
-          },
-          {
             "name": "SubsQty in Period",
             "expression": " sum([SubsQuantity])",
             "formatString": "0",
@@ -1471,8 +1472,34 @@
             ]
           },
           {
-            "name": "ItemFamilySet Count",
-            "expression": "1"
+            "name": "Rolling 12mo Item Sales Bucket",
+            "expression": [
+              " CALCULATE ( ",
+              "\tCOUNTROWS ( ",
+              "\t\tFILTER ( ",
+              "\t\t'Item', ",
+              "\t\t\tAND ( ",
+              "\t\t\t\t'Sales'[Rolling 12mo Lines] >= MIN ( FreqRange[Min Freq] ), ",
+              "\t\t\t\t'Sales'[Rolling 12mo Lines] < MAX ( FreqRange[Max Freq] ) ",
+              "\t\t\t) ",
+              "\t\t) ",
+              "\t)",
+              ") "
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Rolling 12mo Category Brand Count",
+            "expression": [
+              " CALCULATE ( ",
+              "\tCOUNTROWS ( ",
+              "\t\tFILTER ( ",
+              "\t\t\t'ItemBrand', ",
+              "\t\t\t'Sales'[Rolling 12mo Lines] >0",
+              "\t\t) ",
+              "\t) ",
+              ") "
+            ]
           }
         ],
         "annotations": [
@@ -1483,6 +1510,7 @@
               "\tFactKey, ",
               "\tShipTo, ",
               "\tItemKey, ",
+              "\tBrandKey,",
               "\tCategoryRollupKey, ",
               "\tCalMonth,",
               "\tDateKey,",
@@ -1520,6 +1548,7 @@
               "\tFactKey, ",
               "\tShipTo, ",
               "\tItemKey, ",
+              "\tBrandKey,",
               "\tCategoryRollupKey, ",
               "\tCalMonth,",
               "\tDateKey,",
@@ -1819,7 +1848,6 @@
       },
       {
         "name": "FreqRange",
-        "isHidden": true,
         "columns": [
           {
             "type": "calculatedTableColumn",
@@ -1835,6 +1863,7 @@
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "[Min Freq]"
           },
           {
@@ -1843,6 +1872,7 @@
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "[Max Freq]"
           }
         ],
@@ -1857,13 +1887,99 @@
                 "    \"Min Freq\", INTEGER,",
                 "    \"Max Freq\", INTEGER,",
                 "    {",
-                "        { \"One\", 1, 1 },",
-                "        { \"Two\", 2, 2 },",
+                "        { \"1\", 1, 2 },",
+                "        { \"2\", 2, 3 },",
                 "        { \"More\", 3, 9999999 }",
                 "    }",
                 ")"
               ]
             }
+          }
+        ]
+      },
+      {
+        "name": "ItemBrand",
+        "columns": [
+          {
+            "name": "BrandKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BrandKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "BrandCode",
+            "dataType": "string",
+            "sourceColumn": "BrandCode",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "Brand",
+            "dataType": "string",
+            "sourceColumn": "Brand",
+            "sourceProviderType": "VarChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ItemBrand",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT        ",
+                "\t--top 10 ",
+                "\tSupplierKey                AS BrandKey,",
+                "\tRTRIM(Supplier)         AS BrandCode, ",
+                "\tRTRIM(supplier_nm)   AS Brand",
+                "FROM",
+                "BRS_ItemSupplier"
+              ],
+              "dataSource": "SqlServer BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        ",
+                  "\t--top 10 ",
+                  "\tSupplierKey                AS BrandKey,",
+                  "\tRTRIM(Supplier)         AS BrandCode, ",
+                  "\tRTRIM(supplier_nm)   AS Brand",
+                  "FROM",
+                  "BRS_ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT        ",
+              "\t--top 10 ",
+              "\tSupplierKey                AS BrandKey,",
+              "\tRTRIM(Supplier)         AS BrandCode, ",
+              "\tRTRIM(supplier_nm)   AS Brand",
+              "FROM",
+              "BRS_ItemSupplier"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "ItemBrand"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        ",
+              "\t--top 10 ",
+              "\tSupplierKey                AS BrandKey,",
+              "\tRTRIM(Supplier)         AS BrandCode, ",
+              "\tRTRIM(supplier_nm)   AS Brand",
+              "FROM",
+              "BRS_ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       }
@@ -1903,6 +2019,13 @@
         "fromColumn": "SalesOrderNumber",
         "toTable": "Salesorder",
         "toColumn": "SalesOrderNumber"
+      },
+      {
+        "name": "04d769e3-7733-4278-bbf1-4bea89feeee3",
+        "fromTable": "Sales",
+        "fromColumn": "BrandKey",
+        "toTable": "ItemBrand",
+        "toColumn": "BrandKey"
       }
     ],
     "roles": [
