@@ -481,6 +481,10 @@
           {
             "name": "_Category Count",
             "expression": "COUNTA([CategoryRollupKey])"
+          },
+          {
+            "name": "Minimum of Category Brand Count - Industry",
+            "expression": "MIN([Category Brand Count - Industry])"
           }
         ],
         "annotations": [
@@ -1517,6 +1521,10 @@
               ") "
             ],
             "isHidden": true
+          },
+          {
+            "name": "test",
+            "expression": "[Rolling 12mo Category Brand Count]-'ItemCategory'[Minimum of Category Brand Count - Industry]"
           }
         ],
         "annotations": [
