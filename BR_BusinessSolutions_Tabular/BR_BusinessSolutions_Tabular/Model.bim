@@ -1500,6 +1500,23 @@
               "\t) ",
               ") "
             ]
+          },
+          {
+            "name": "Rolling 12mo Customer Sales Bucket",
+            "expression": [
+              " CALCULATE ( ",
+              "\tCOUNTROWS ( ",
+              "\t\tFILTER ( ",
+              "\t\t'Customer', ",
+              "\t\t\tAND ( ",
+              "\t\t\t\t'Sales'[Rolling 12mo Sales] >= MIN ( 'SpendRange'[Spend Min]  ), ",
+              "\t\t\t\t'Sales'[Rolling 12mo Sales] < MAX ( 'SpendRange'[Spend Max] ) ",
+              "\t\t\t) ",
+              "\t\t) ",
+              "\t)",
+              ") "
+            ],
+            "isHidden": true
           }
         ],
         "annotations": [
@@ -1979,6 +1996,85 @@
               "\tRTRIM(supplier_nm)   AS Brand",
               "FROM",
               "BRS_ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SpendRange",
+        "columns": [
+          {
+            "name": "Spend Min",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Spend Min",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "Spend Max",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Spend Max",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "Spend Range",
+            "dataType": "string",
+            "sourceColumn": "Spend Range",
+            "sourceProviderType": "VarChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "SpendRange",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT ",
+                "      [Spend_From]\t\tAS [Spend Min]",
+                "      ,[Spend_To]\t\tAS [Spend Max]",
+                "      ,[Spend_Display]  AS [Spend Range]",
+                "  FROM [BRS_Customer_Spend_Category]"
+              ],
+              "dataSource": "SqlServer BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+                  "      [Spend_From]\t\tAS [Spend Min]",
+                  "      ,[Spend_To]\t\tAS [Spend Max]",
+                  "      ,[Spend_Display]  AS [Spend Range]",
+                  "  FROM [BRS_Customer_Spend_Category]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT ",
+              "      [Spend_From]\t\tAS [Spend Min]",
+              "      ,[Spend_To]\t\tAS [Spend Max]",
+              "      ,[Spend_Display]  AS [Spend Range]",
+              "  FROM [BRS_Customer_Spend_Category]"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "SpendRange"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+              "      [Spend_From]\t\tAS [Spend Min]",
+              "      ,[Spend_To]\t\tAS [Spend Max]",
+              "      ,[Spend_Display]  AS [Spend Range]",
+              "  FROM [BRS_Customer_Spend_Category]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
