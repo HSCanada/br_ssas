@@ -625,8 +625,14 @@
             "isHidden": true
           },
           {
-            "name": "test",
-            "expression": "if([Quote YTD GM]<.32 , 1, 0)"
+            "name": "Quote YTD Sales Share",
+            "expression": "DIVIDE([Quote YTD Sales],[YTD Sales])",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Quote PY YTD Sales Share",
+            "expression": "DIVIDE([Quote PY YTD Sales],[PY YTD Sales])",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
           }
         ],
         "annotations": [
@@ -3284,8 +3290,14 @@
             "name": "DateAccountOpened",
             "dataType": "dateTime",
             "sourceColumn": "DateAccountOpened",
-            "formatString": "General Date",
-            "sourceProviderType": "DBDate"
+            "formatString": "d-MMM-yy",
+            "sourceProviderType": "DBDate",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"4105\" Group=\"LongDate\" FormatString=\"d-MMM-yy\" /></DateTimes></Format>"
+              }
+            ]
           },
           {
             "name": "SalesDivisionCode",
@@ -3298,6 +3310,30 @@
             "dataType": "string",
             "sourceColumn": "MarketClass",
             "sourceProviderType": "Char"
+          },
+          {
+            "name": "Adjustment",
+            "dataType": "string",
+            "sourceColumn": "Adjustment"
+          },
+          {
+            "name": "AdjEffectiveDate",
+            "dataType": "dateTime",
+            "sourceColumn": "AdjEffectiveDate",
+            "formatString": "d-MMM-yy",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"4105\" Group=\"LongDate\" FormatString=\"d-MMM-yy\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "NewPlanInd",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "if(Year([AdjEffectiveDate])=[__current_year], 1, 0)"
           }
         ],
         "partitions": [
@@ -3305,15 +3341,82 @@
             "name": "Customer",
             "dataView": "full",
             "source": {
-              "query": " SELECT [Dimension].[Customer_qt].* FROM [Dimension].[Customer_qt] ",
+              "query": [
+                "SELECT",
+                "  Dimension.Customer_qt.Billto",
+                "  ,Dimension.Customer_qt.ShipToPrimary",
+                "  ,Dimension.Customer_qt.Customer",
+                "  ,Dimension.Customer_qt.SalesPlan",
+                "  ,Dimension.Customer_qt.FieldSales",
+                "  ,Dimension.Customer_qt.Branch",
+                "  ,Dimension.Customer_qt.City",
+                "  ,Dimension.Customer_qt.DateAccountOpened",
+                "  ,Dimension.Customer_qt.SalesDivisionCode",
+                "  ,Dimension.Customer_qt.MarketClass",
+                "  ,Dimension.Customer_qt.Adjustment",
+                "  ,Dimension.Customer_qt.AdjEffectiveDate",
+                "  ,Dimension.Customer_qt.AdjUserId",
+                "FROM",
+                "  Dimension.Customer_qt"
+              ],
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "  Dimension.Customer_qt.Billto",
+                  "  ,Dimension.Customer_qt.ShipToPrimary",
+                  "  ,Dimension.Customer_qt.Customer",
+                  "  ,Dimension.Customer_qt.SalesPlan",
+                  "  ,Dimension.Customer_qt.FieldSales",
+                  "  ,Dimension.Customer_qt.Branch",
+                  "  ,Dimension.Customer_qt.City",
+                  "  ,Dimension.Customer_qt.DateAccountOpened",
+                  "  ,Dimension.Customer_qt.SalesDivisionCode",
+                  "  ,Dimension.Customer_qt.MarketClass",
+                  "  ,Dimension.Customer_qt.Adjustment",
+                  "  ,Dimension.Customer_qt.AdjEffectiveDate",
+                  "  ,Dimension.Customer_qt.AdjUserId",
+                  "FROM",
+                  "  Dimension.Customer_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"ShipToPrimary\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"City\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"DateAccountOpened\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Adjustment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjEffectiveDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjUserId\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Count of Billto",
+            "expression": "COUNTA([Billto])"
+          },
+          {
+            "name": "Tracked Account Ind",
+            "expression": "1 "
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Dimension].[Customer_qt].* FROM [Dimension].[Customer_qt] "
+            "value": [
+              "SELECT",
+              "  Dimension.Customer_qt.Billto",
+              "  ,Dimension.Customer_qt.ShipToPrimary",
+              "  ,Dimension.Customer_qt.Customer",
+              "  ,Dimension.Customer_qt.SalesPlan",
+              "  ,Dimension.Customer_qt.FieldSales",
+              "  ,Dimension.Customer_qt.Branch",
+              "  ,Dimension.Customer_qt.City",
+              "  ,Dimension.Customer_qt.DateAccountOpened",
+              "  ,Dimension.Customer_qt.SalesDivisionCode",
+              "  ,Dimension.Customer_qt.MarketClass",
+              "  ,Dimension.Customer_qt.Adjustment",
+              "  ,Dimension.Customer_qt.AdjEffectiveDate",
+              "  ,Dimension.Customer_qt.AdjUserId",
+              "FROM",
+              "  Dimension.Customer_qt"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -3322,6 +3425,27 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "  Dimension.Customer_qt.Billto",
+              "  ,Dimension.Customer_qt.ShipToPrimary",
+              "  ,Dimension.Customer_qt.Customer",
+              "  ,Dimension.Customer_qt.SalesPlan",
+              "  ,Dimension.Customer_qt.FieldSales",
+              "  ,Dimension.Customer_qt.Branch",
+              "  ,Dimension.Customer_qt.City",
+              "  ,Dimension.Customer_qt.DateAccountOpened",
+              "  ,Dimension.Customer_qt.SalesDivisionCode",
+              "  ,Dimension.Customer_qt.MarketClass",
+              "  ,Dimension.Customer_qt.Adjustment",
+              "  ,Dimension.Customer_qt.AdjEffectiveDate",
+              "  ,Dimension.Customer_qt.AdjUserId",
+              "FROM",
+              "  Dimension.Customer_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"ShipToPrimary\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"City\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"DateAccountOpened\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Adjustment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjEffectiveDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjUserId\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -3447,6 +3571,11 @@
           {
             "name": "__ytd_factor",
             "expression": "12/[__first_month_number]",
+            "isHidden": true
+          },
+          {
+            "name": "__current_year",
+            "expression": " calculate(max('Period Select'[YearNum]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
             "isHidden": true
           }
         ]
@@ -3575,6 +3704,10 @@
           {
             "memberName": "CAHSI\\Marco.Calabrese",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11954"
+          },
+          {
+            "memberName": "CAHSI\\GWatson",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-5503"
           }
         ]
       }
