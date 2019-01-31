@@ -1101,22 +1101,22 @@
           },
           {
             "name": "MTD Sales Var %",
-            "expression": " [MTD Sales]/[PY MTD Sales] -1",
+            "expression": " DIVIDE([MTD Sales],[PY MTD Sales]) -1",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "MTD GP Var %",
-            "expression": " [MTD GP]/[PY MTD GP] -1",
+            "expression": " DIVIDE([MTD GP],[PY MTD GP]) -1",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "YTD Sales Var %",
-            "expression": " [YTD Sales]/[PY YTD Sales]-1",
+            "expression": " DIVIDE([YTD Sales],[PY YTD Sales])-1",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "YTD GP Sales Var %",
-            "expression": " [YTD GP]/[PY YTD GP] -1",
+            "expression": " DIVIDE([YTD GP],[PY YTD GP]) -1",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -1275,22 +1275,22 @@
           },
           {
             "name": "MTD Disc%",
-            "expression": " [MTD Disc]/[MTD Ext.Base]",
+            "expression": " DIVIDE([MTD Disc],[MTD Ext.Base])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "YTD Disc%",
-            "expression": " [YTD Disc]/[YTD Ext.Base]",
+            "expression": " DIVIDE([YTD Disc],[YTD Ext.Base])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "PY MTD Disc%",
-            "expression": " [PY MTD Disc]/[PY MTD Ext.Base]",
+            "expression": " DIVIDE([PY MTD Disc],[PY MTD Ext.Base])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "PY YTD Disc%",
-            "expression": " [PY YTD Disc]/[PY YTD Ext.Base]",
+            "expression": " DIVIDE([PY YTD Disc],[PY YTD Ext.Base])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -1395,15 +1395,36 @@
           },
           {
             "name": "Rolling  3mo Average Price",
-            "expression": "[Rolling  3mo Sales]/[Rolling  3mo Qty]"
+            "expression": "DIVIDE([Rolling  3mo Sales],[Rolling  3mo Qty])",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           },
           {
             "name": "Rolling  6mo Average Price",
-            "expression": "[Rolling  6mo Sales]/[Rolling  6mo Qty]"
+            "expression": "DIVIDE([Rolling  6mo Sales],[Rolling  6mo Qty])",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           },
           {
             "name": "Rolling 12mo Average Price",
-            "expression": "[Rolling 12mo Sales]/[Rolling 12mo Qty]"
+            "expression": "DIVIDE([Rolling 12mo Sales],[Rolling 12mo Qty])",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           },
           {
             "name": "SubsQty in Period",
@@ -1441,7 +1462,7 @@
           },
           {
             "name": "Rolling 12mo Average SubsPrice",
-            "expression": "[Rolling 12mo SubsSales]/[Rolling 12mo SubsQty]",
+            "expression": "DIVIDE([Rolling 12mo SubsSales],[Rolling 12mo SubsQty])",
             "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
             "annotations": [
               {
@@ -1521,10 +1542,6 @@
               ") "
             ],
             "isHidden": true
-          },
-          {
-            "name": "test",
-            "expression": "[Rolling 12mo Category Brand Count]-'ItemCategory'[Minimum of Category Brand Count - Industry]"
           }
         ],
         "annotations": [
