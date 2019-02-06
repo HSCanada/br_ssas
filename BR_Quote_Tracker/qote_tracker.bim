@@ -1641,6 +1641,7 @@
     "roles": [
       {
         "name": "user",
+        "modelPermission": "read",
         "members": [
           {
             "memberName": "CAHSI\\TCrowley",
@@ -1651,12 +1652,12 @@
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
           },
           {
-            "memberName": "CAHSI\\Marco.Calabrese",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11954"
-          },
-          {
             "memberName": "CAHSI\\GWatson",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-5503"
+          },
+          {
+            "memberName": "CAHSI\\Marco.Calabrese",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11954"
           }
         ]
       }
