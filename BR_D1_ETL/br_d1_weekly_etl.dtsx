@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_weekly_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="295"
-  DTS:VersionGUID="{CCB5D966-1716-4C0A-B92E-3C8486EC27ED}">
+  DTS:VersionBuild="320"
+  DTS:VersionGUID="{793FCFCE-9AB3-46E3-9815-5A71234E0912}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,49 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BR_D1_ETL-{BF90ED84-6DC2-40A1-897B-A8622803513B}CAHSIONNLSQL2.DEV_BRSales;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{EDF12D69-9CF2-4F7E-A741-076974A8C964}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="4105"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\tcrowley\Desktop\err.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="302"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Flat File Source Error Output Column"
+              DTS:DTSID="{DBA2D2BC-97CB-4F15-9D6B-4FD1E1E7CB16}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorCode"
+              DTS:DTSID="{0A2989AD-DD96-404C-8BBE-642CF0E9DAEC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorColumn"
+              DTS:DTSID="{4A785212-9901-4689-AFB6-D4F578B4926C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -224,7 +267,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="BRANCH"
-              DTS:DTSID="{2A9B563F-946B-447A-BD77-BDD5B039FB66}"
+              DTS:DTSID="{739A36F2-9C4D-4432-B935-26F63A5CA086}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -233,7 +276,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ORDER_STATUS"
-              DTS:DTSID="{CD76D1DA-0ED8-4CEE-ACD5-AF8717FCACA3}"
+              DTS:DTSID="{26DB9C8E-05DA-4283-B81D-564495E21CA3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -242,7 +285,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ETS#"
-              DTS:DTSID="{A3EB9257-AA23-4D7D-8454-A000CE684470}"
+              DTS:DTSID="{626F21B3-BC51-44AC-82DC-79B2F4539437}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -251,7 +294,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="WORK_ORDER_NUMBER"
-              DTS:DTSID="{62CBEA8C-62BD-4F63-BA0E-14FF4BB65BE7}"
+              DTS:DTSID="{3F1C6E68-BA3C-4D27-8547-6DCBBD4160DF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -259,7 +302,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="WORK_ORDER_DATE"
-              DTS:DTSID="{9F3FBA16-D66F-4C18-B7DB-73664D2EFC05}"
+              DTS:DTSID="{7B3212FA-30ED-4DE4-986F-3E1D91EB34C9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -267,7 +310,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="SHIPTO_JDE"
-              DTS:DTSID="{F5284F9C-7E77-4563-B9DA-69DC2C39AE3A}"
+              DTS:DTSID="{C3F74682-32E7-4D2C-9974-B896963D3D8D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -276,7 +319,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="NAME"
-              DTS:DTSID="{9F90F447-58BB-4455-A384-EE9B83B41EBF}"
+              DTS:DTSID="{F113F562-F121-4B8D-B9F8-F86D93071D13}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -284,7 +327,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="INSTALL_DATE"
-              DTS:DTSID="{0A992A21-0383-4783-880C-8443B6CE6211}"
+              DTS:DTSID="{C574077F-4210-40E3-B83A-30FB577FD0B7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -293,7 +336,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="EMPTY"
-              DTS:DTSID="{DD48ECB6-1FBB-47E8-A4A4-98DD7972F856}"
+              DTS:DTSID="{1468C009-A6E5-44B6-9D29-427166C79367}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -302,23 +345,24 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ITEM_STATUS"
-              DTS:DTSID="{5C2C062D-93E6-4E83-BA01-11AB5D9E3ECF}"
+              DTS:DTSID="{3C393670-A856-40CC-A6A6-CAA4AF1571BE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="16"
+              DTS:DataType="19"
               DTS:TextQualified="True"
               DTS:ObjectName="LINE_NUMBER"
-              DTS:DTSID="{23048A2F-84FB-48FF-98EF-5C0BD076FE3C}"
+              DTS:DTSID="{BB975DF6-4CF7-4CB7-9754-2870532D8346}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ITEM_NUMBER"
-              DTS:DTSID="{8BBAE6BE-B169-46C0-AE67-6414DC9D6A2C}"
+              DTS:DTSID="{50600194-494B-4369-96DB-4664E9961A21}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -327,7 +371,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DESCRIPTION"
-              DTS:DTSID="{3BDAD61C-7EDF-43D8-8C3C-33F522B8C1EC}"
+              DTS:DTSID="{F137919A-16F0-4340-93C5-C1E9B8DBAED8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -336,31 +380,32 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="VENDOR_CODE"
-              DTS:DTSID="{D81695F8-7878-4841-A585-6D21510C3DC6}"
+              DTS:DTSID="{653D28E2-28AA-4573-9D90-4F37E52811DD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="10"
-              DTS:DataType="128"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
               DTS:ObjectName="CATEGORY"
-              DTS:DTSID="{37E0DAFC-88F2-4A3D-85A2-961C006ABC19}"
+              DTS:DTSID="{D55F3373-68B2-4837-A296-505D12EBA793}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="16"
+              DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="QUANTITY"
-              DTS:DTSID="{34517C62-6348-4D30-A8AA-8ED1927208BE}"
+              DTS:DTSID="{ECE8E96A-6F17-42CF-8A56-03275DF4F29F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="16"
+              DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="QTY_RECEIVED"
-              DTS:DTSID="{2A84BBA5-3882-4D21-8BE9-4DA2CB034790}"
+              DTS:DTSID="{8CDB456E-972A-4481-BA4D-AFF77CC67A88}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -368,7 +413,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="DATE_RECEIVED"
-              DTS:DTSID="{E69AF3EF-AE3D-4732-9220-508528A40E23}"
+              DTS:DTSID="{F2B99D11-BBA3-41BB-9505-366DA8B9A85E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -376,7 +421,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="PRICE"
-              DTS:DTSID="{642AA6CF-7AA3-4C61-AEC7-077F8CCF55C2}"
+              DTS:DTSID="{D353B747-FE03-4D62-B481-8BB638200E47}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -384,7 +429,7 @@
               DTS:DataType="4"
               DTS:TextQualified="True"
               DTS:ObjectName="COST"
-              DTS:DTSID="{D2F1D035-7BA0-4D53-BDC8-D47A3189BA0D}"
+              DTS:DTSID="{CB4AE2F0-27F2-4E79-8964-4488991B06C6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -392,7 +437,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="GP"
-              DTS:DTSID="{DD47BEDA-690E-438D-9CE5-99DB3C94445C}"
+              DTS:DTSID="{AD7F6FF2-213B-49F8-8F12-8FBAED220FD9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -401,7 +446,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PO or IT"
-              DTS:DTSID="{B3D40725-C107-4503-B359-9D001D801D56}"
+              DTS:DTSID="{FD40FA96-2667-4359-8B7A-8B62DA612A90}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -410,7 +455,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="REQ"
-              DTS:DTSID="{41C37B21-8449-4148-83EC-6EE2077F78C6}"
+              DTS:DTSID="{70798DE8-319D-4AA5-9779-A0992618CBA9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -419,7 +464,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="STAGING_WAREHOUSE"
-              DTS:DTSID="{8DF9BA5D-F3B6-4B95-8937-3E202B382280}"
+              DTS:DTSID="{D446B39D-72E9-4E9A-997F-5A66ED65CC4A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -428,7 +473,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ESS"
-              DTS:DTSID="{B894BC03-07AB-46B3-8DD7-CFCD49DA907A}"
+              DTS:DTSID="{1F2DEFC8-ABF2-4263-A7BF-C16031DC686B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -437,7 +482,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DTS"
-              DTS:DTSID="{812DA59F-7AFB-48B0-BC04-7F1E9B79E800}"
+              DTS:DTSID="{F399D241-E492-45C4-9F99-3396D6244327}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -446,16 +491,16 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="PMTS    "
-              DTS:DTSID="{2080F4C2-C2E0-41CF-BE5D-3F7A2AE0E622}"
+              DTS:DTSID="{C4859623-1794-4561-B204-33BB4A9717FC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="8"
+              DTS:MaximumWidth="6"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="FSC"
-              DTS:DTSID="{612357FE-19A4-49EE-8E4A-255921D43BA7}"
+              DTS:DTSID="{FAF50A47-4936-4545-B48F-3A05D5B70C20}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -479,6 +524,7 @@
       DTS:refId="Package\seq_inventory_whvalrpt"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{57105be0-edf1-451c-91b6-0fc930273500}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -2673,7 +2719,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepNulls">false</property>
+                      name="FastLoadKeepNulls">true</property>
                     <property
                       dataType="System.String"
                       description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
@@ -2763,14 +2809,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           cachedName="SHIPTO_JDE"
                           externalMetadataColumnId="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt.Inputs[OLE DB Destination Input].ExternalColumns[shipto]"
                           lineageId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].Columns[SHIPTO_JDE]" />
-                        <inputColumn
-                          refId="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt.Inputs[OLE DB Destination Input].Columns[NAME]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="35"
-                          cachedName="NAME"
-                          externalMetadataColumnId="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt.Inputs[OLE DB Destination Input].ExternalColumns[practice_name]"
-                          lineageId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].Columns[NAME]" />
                         <inputColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt.Inputs[OLE DB Destination Input].Columns[ITEM_NUMBER]"
                           cachedDataType="i4"
@@ -3016,7 +3054,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                     <property
                       dataType="System.Boolean"
                       description="Specifies whether zero-length columns are treated as null."
-                      name="RetainNulls">false</property>
+                      name="RetainNulls">true</property>
                     <property
                       dataType="System.String"
                       description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
@@ -3128,28 +3166,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           externalMetadataColumnId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[SHIPTO_JDE]"
                           lineageId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].Columns[SHIPTO_JDE]"
                           name="SHIPTO_JDE"
-                          truncationRowDisposition="IgnoreFailure">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].Columns[NAME]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="IgnoreFailure"
-                          externalMetadataColumnId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[NAME]"
-                          length="35"
-                          lineageId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].Columns[NAME]"
-                          name="NAME"
                           truncationRowDisposition="IgnoreFailure">
                           <properties>
                             <property
@@ -3551,11 +3567,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           name="ITEM_STATUS" />
                         <externalMetadataColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[LINE_NUMBER]"
-                          dataType="i1"
+                          dataType="ui4"
                           name="LINE_NUMBER" />
                         <externalMetadataColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[ITEM_NUMBER]"
-                          dataType="i4"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
                           name="ITEM_NUMBER" />
                         <externalMetadataColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[DESCRIPTION]"
@@ -3571,16 +3589,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           name="VENDOR_CODE" />
                         <externalMetadataColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[CATEGORY]"
-                          dataType="bytes"
+                          codePage="1252"
+                          dataType="str"
                           length="10"
                           name="CATEGORY" />
                         <externalMetadataColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[QUANTITY]"
-                          dataType="i1"
+                          dataType="i4"
                           name="QUANTITY" />
                         <externalMetadataColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[QTY_RECEIVED]"
-                          dataType="i1"
+                          dataType="i4"
                           name="QTY_RECEIVED" />
                         <externalMetadataColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[DATE_RECEIVED]"
@@ -3638,7 +3657,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[FSC]"
                           codePage="1252"
                           dataType="str"
-                          length="8"
+                          length="6"
                           name="FSC" />
                         <externalMetadataColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[WORK_ORDER_NUMBER]"
@@ -3811,7 +3830,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="120,42"
           Id="Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt"
@@ -3828,6 +3847,42 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Size="163,42"
           Id="Package\seq_inventory_whvalrpt\dft_load_stage\Script Component"
           TopLeft="225,269" />
+        <EdgeLayout
+          Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Output 0]"
+          TopLeft="306.5,311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-53,108"
+              Start="0,0"
+              End="-53,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50"
+                    Point2="0,54"
+                    Point3="-4,54" />
+                  <mssgle:LineSegment
+                    End="-49,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49,54"
+                    Point2="-53,54"
+                    Point3="-53,58" />
+                  <mssgle:LineSegment
+                    End="-53,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Flat File Source Output]"
           TopLeft="250,93">
@@ -3859,7 +3914,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3893,41 +3950,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\seq_inventory_whvalrpt\dft_load_stage.Paths[Output 0]"
-          TopLeft="306.5,311">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-53,108"
-              Start="0,0"
-              End="-53,100.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,50"
-                    Point2="0,54"
-                    Point3="-4,54" />
-                  <mssgle:LineSegment
-                    End="-49,54" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-49,54"
-                    Point2="-53,54"
-                    Point3="-53,58" />
-                  <mssgle:LineSegment
-                    End="-53,100.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3954,7 +3979,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <NodeLayout
           Size="181,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt"
-          TopLeft="147,212" />
+          TopLeft="86,222" />
         <NodeLayout
           Size="122,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt"
@@ -3965,26 +3990,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="35.5,115"
+              EndConnector="-25.5,125"
               Start="0,0"
-              End="35.5,107.5">
+              End="-25.5,117.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.5" />
+                    End="0,58.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,53.5"
-                    Point2="0,57.5"
-                    Point3="4,57.5" />
+                    Point1="0,58.5"
+                    Point2="0,62.5"
+                    Point3="-4,62.5" />
                   <mssgle:LineSegment
-                    End="31.5,57.5" />
+                    End="-21.5,62.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="31.5,57.5"
-                    Point2="35.5,57.5"
-                    Point3="35.5,61.5" />
+                    Point1="-21.5,62.5"
+                    Point2="-25.5,62.5"
+                    Point3="-25.5,66.5" />
                   <mssgle:LineSegment
-                    End="35.5,107.5" />
+                    End="-25.5,117.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
