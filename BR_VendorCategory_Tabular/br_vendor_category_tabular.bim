@@ -504,6 +504,81 @@
             "dataType": "string",
             "sourceColumn": "CategoryClassRollupCode",
             "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesCategoryRollup",
+            "dataType": "string",
+            "sourceColumn": "SalesCategoryRollup"
+          },
+          {
+            "name": "Top15",
+            "dataType": "string",
+            "sourceColumn": "Top15"
+          },
+          {
+            "name": "Size",
+            "dataType": "string",
+            "sourceColumn": "Size"
+          },
+          {
+            "name": "Strength",
+            "dataType": "string",
+            "sourceColumn": "Strength"
+          },
+          {
+            "name": "ManufPartNumber",
+            "dataType": "string",
+            "sourceColumn": "ManufPartNumber"
+          },
+          {
+            "name": "BrandCode",
+            "dataType": "string",
+            "sourceColumn": "BrandCode"
+          },
+          {
+            "name": "Item_Competitive_Conversion_rt",
+            "dataType": "double",
+            "sourceColumn": "Item_Competitive_Conversion_rt"
+          },
+          {
+            "name": "CommGroupCode",
+            "dataType": "string",
+            "sourceColumn": "CommGroupCode"
+          },
+          {
+            "name": "CommGroupNote",
+            "dataType": "string",
+            "sourceColumn": "CommGroupNote"
+          },
+          {
+            "name": "CommGroupCpsCode",
+            "dataType": "string",
+            "sourceColumn": "CommGroupCpsCode"
+          },
+          {
+            "name": "CustomCommGroup1Code",
+            "dataType": "string",
+            "sourceColumn": "CustomCommGroup1Code"
+          },
+          {
+            "name": "CustomCommGroup2Code",
+            "dataType": "string",
+            "sourceColumn": "CustomCommGroup2Code"
+          },
+          {
+            "name": "CustomCommGroup3Code",
+            "dataType": "string",
+            "sourceColumn": "CustomCommGroup3Code"
+          },
+          {
+            "name": "MajorCode",
+            "dataType": "string",
+            "sourceColumn": "MajorCode"
+          },
+          {
+            "name": "ClassGroup",
+            "dataType": "string",
+            "sourceColumn": "ClassGroup"
           }
         ],
         "partitions": [
@@ -511,15 +586,21 @@
             "name": "Item",
             "dataView": "full",
             "source": {
-              "query": " SELECT [Dimension].[Item].* FROM [Dimension].[Item] ",
+              "query": "SELECT [Dimension].[Item].* FROM [Dimension].[Item]",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].* FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Dimension].[Item].* FROM [Dimension].[Item] "
+            "value": "SELECT [Dimension].[Item].* FROM [Dimension].[Item]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -528,6 +609,10 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].* FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -1484,6 +1569,39 @@
             "name": "Quarter Prior GP Var %",
             "expression": "[QTD GP]/[Quarter Prior GP]-1",
             "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Rolling 12mo Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  3mo Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 18mo Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-18&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
           }
         ],
         "annotations": [
@@ -2324,6 +2442,14 @@
           {
             "memberName": "CAHSI\\JLi",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          },
+          {
+            "memberName": "CAHSI\\TCrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
           }
         ]
       }
