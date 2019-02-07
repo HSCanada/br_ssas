@@ -215,6 +215,12 @@
             ]
           }
         ],
+        "measures": [
+          {
+            "name": "Customer Count",
+            "expression": "Count([ShipTo])"
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -1597,7 +1603,19 @@
           },
           {
             "name": "Rolling 12mo Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "expression": [
+              " ",
+              "",
+              "CALCULATE(",
+              "        [Sales in Period],",
+              "        filter(",
+              "            ALL(Period), ",
+              "            Period[MonthSeq]>([__seq_first_month_current]-12) &&",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "        ) ",
+              ")",
+              ""
+            ],
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1608,7 +1626,18 @@
           },
           {
             "name": "Rolling  3mo Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "expression": [
+              " ",
+              "",
+              "CALCULATE(",
+              "        [Sales in Period],",
+              "        filter(",
+              "            ALL(Period), ",
+              "            Period[MonthSeq]>([__seq_first_month_current]-3) &&",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "        ) ",
+              ")"
+            ],
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1619,7 +1648,18 @@
           },
           {
             "name": "Rolling 18mo Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-18&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "expression": [
+              " ",
+              "",
+              "CALCULATE(",
+              "        [Sales in Period],",
+              "        filter(",
+              "            ALL(Period), ",
+              "            Period[MonthSeq]>([__seq_first_month_current]-18) &&",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "        ) ",
+              ")"
+            ],
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
