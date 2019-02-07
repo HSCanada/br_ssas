@@ -579,6 +579,24 @@
             "name": "ClassGroup",
             "dataType": "string",
             "sourceColumn": "ClassGroup"
+          },
+          {
+            "type": "calculated",
+            "name": "Wheel Segment",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "SWITCH(TRUE(), ",
+              "\t[ClassGroup]=\"MEROTH\" || [ClassGroup]=\"HANPCE\" , \"Merch Only\", ",
+              "\t[ClassGroup]=\"PARTS\" || [ClassGroup]=\"SERVIC\" , \"Services\", ",
+              "\t[ClassGroup]=\"DIGSEN\" , \"Hi Tech Equip\", ",
+              "\t[ClassGroup]=\"DTXPMS\", \"Software\", ",
+              "\t[ClassGroup]=\"D4DEQU\" , \"Digital Rest\", ",
+              "\t[ClassGroup]=\"EQUCOR\" , \"Equipment\", ",
+              "\t\"zOther\"",
+              ")",
+              ""
+            ]
           }
         ],
         "partitions": [
@@ -595,6 +613,13 @@
                 "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Item].* FROM [Dimension].[Item]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Item Count",
+            "expression": "COUNT([ItemKey])",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
