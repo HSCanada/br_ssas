@@ -238,6 +238,11 @@
             "dataType": "double",
             "isHidden": true,
             "sourceColumn": "Item_Competitive_Conversion_rt"
+          },
+          {
+            "name": "size_factor",
+            "dataType": "int64",
+            "sourceColumn": "size_factor"
           }
         ],
         "partitions": [
@@ -272,7 +277,8 @@
                 "\t\tELSE isub.Item",
                 "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
                 "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
-                "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor",
+                "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
+                "\ti.size_factor",
                 "",
                 "FROM",
                 "\tDimension.Item AS i ",
@@ -312,7 +318,8 @@
                   "\t\tELSE isub.Item",
                   "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
                   "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
-                  "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor",
+                  "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
+                  "\ti.size_factor",
                   "",
                   "FROM",
                   "\tDimension.Item AS i ",
@@ -368,7 +375,8 @@
               "\t\tELSE isub.Item",
               "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
               "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
-              "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor",
+              "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
+              "\ti.size_factor",
               "",
               "FROM",
               "\tDimension.Item AS i ",
@@ -414,7 +422,8 @@
               "\t\tELSE isub.Item",
               "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
               "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
-              "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor",
+              "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
+              "\ti.size_factor",
               "",
               "FROM",
               "\tDimension.Item AS i ",
@@ -872,6 +881,12 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "BrandKey"
+          },
+          {
+            "name": "PriceMethodKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PriceMethodKey"
           }
         ],
         "partitions": [
@@ -891,6 +906,7 @@
                 "\tSalesOrderNumber,",
                 "\tLineNumber,",
                 "\tFreeGoodsInvoicedInd,",
+                "\tPriceMethodKey,",
                 "\tQuantity,",
                 "\tSalesAmt,",
                 "\tGPAmt, ",
@@ -923,6 +939,7 @@
                   "\tSalesOrderNumber,",
                   "\tLineNumber,",
                   "\tFreeGoodsInvoicedInd,",
+                  "\tPriceMethodKey,",
                   "\tQuantity,",
                   "\tSalesAmt,",
                   "\tGPAmt, ",
@@ -1740,6 +1757,7 @@
               "\tSalesOrderNumber,",
               "\tLineNumber,",
               "\tFreeGoodsInvoicedInd,",
+              "\tPriceMethodKey,",
               "\tQuantity,",
               "\tSalesAmt,",
               "\tGPAmt, ",
@@ -1778,6 +1796,7 @@
               "\tSalesOrderNumber,",
               "\tLineNumber,",
               "\tFreeGoodsInvoicedInd,",
+              "\tPriceMethodKey,",
               "\tQuantity,",
               "\tSalesAmt,",
               "\tGPAmt, ",
@@ -2284,6 +2303,221 @@
             ]
           }
         ]
+      },
+      {
+        "name": "PriceMethod",
+        "columns": [
+          {
+            "name": "PriceMethodKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PriceMethodKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "PriceMethodDescr",
+            "dataType": "string",
+            "sourceColumn": "PriceMethodDescr",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "PriceMethodCode",
+            "dataType": "string",
+            "sourceColumn": "PriceMethodCode",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "type": "calculated",
+            "name": "InPlan",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "if([PriceMethodCode]=\"S\" || [PriceMethodCode]=\"C\", 1, 0)"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "PriceMethod",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT ",
+                "\t[PriceMethodKey]",
+                "\t,[PriceMethodDescr]",
+                "\t,[PriceMethod] as [PriceMethodCode]",
+                "FROM ",
+                "\t[BRS_PriceMethod]",
+                "WHERE",
+                "\tStatusCd  = 1"
+              ],
+              "dataSource": "SqlServer BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+                  "\t[PriceMethodKey]",
+                  "\t,[PriceMethodDescr]",
+                  "\t,[PriceMethod] as [PriceMethodCode]",
+                  "FROM ",
+                  "\t[BRS_PriceMethod]",
+                  "WHERE",
+                  "\tStatusCd  = 1</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT ",
+              "\t[PriceMethodKey]",
+              "\t,[PriceMethodDescr]",
+              "\t,[PriceMethod] as [PriceMethodCode]",
+              "FROM ",
+              "\t[BRS_PriceMethod]",
+              "WHERE",
+              "\tStatusCd  = 1"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "PriceMethod"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+              "\t[PriceMethodKey]",
+              "\t,[PriceMethodDescr]",
+              "\t,[PriceMethod] as [PriceMethodCode]",
+              "FROM ",
+              "\t[BRS_PriceMethod]",
+              "WHERE",
+              "\tStatusCd  = 1</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ItemTarget",
+        "columns": [
+          {
+            "name": "ItemKey",
+            "dataType": "int64",
+            "sourceColumn": "ItemKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Item",
+            "dataType": "string",
+            "sourceColumn": "Item",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "SubMajorProdClass",
+            "dataType": "string",
+            "sourceColumn": "SubMajorProdClass",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "Size",
+            "dataType": "string",
+            "sourceColumn": "Size",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "size_factor",
+            "dataType": "int64",
+            "sourceColumn": "size_factor",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CurrentCorporatePrice",
+            "dataType": "double",
+            "sourceColumn": "CurrentCorporatePrice"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ItemTarget",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT",
+                "\tItemKey, ",
+                "\tItem, ",
+                "\tSubMajorProdClass, ",
+                "\t[CurrentCorporatePrice],",
+                "\tSize, ",
+                "\tsize_factor",
+                "FROM",
+                "\tBRS_Item",
+                "WHERE",
+                "\tItem = '1127017'"
+              ],
+              "dataSource": "SqlServer BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "\tItemKey, ",
+                  "\tItem, ",
+                  "\tSubMajorProdClass, ",
+                  "\t[CurrentCorporatePrice],",
+                  "\tSize, ",
+                  "\tsize_factor",
+                  "FROM",
+                  "\tBRS_Item",
+                  "WHERE",
+                  "\tItem = '1127017'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "\tItemKey, ",
+              "\tItem, ",
+              "\tSubMajorProdClass, ",
+              "\t[CurrentCorporatePrice],",
+              "\tSize, ",
+              "\tsize_factor",
+              "FROM",
+              "\tBRS_Item",
+              "WHERE",
+              "\tItem = '1127017'"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "ItemTarget"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "\tItemKey, ",
+              "\tItem, ",
+              "\tSubMajorProdClass, ",
+              "\t[CurrentCorporatePrice],",
+              "\tSize, ",
+              "\tsize_factor",
+              "FROM",
+              "\tBRS_Item",
+              "WHERE",
+              "\tItem = '1127017'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
       }
     ],
     "relationships": [
@@ -2328,6 +2562,13 @@
         "fromColumn": "BrandKey",
         "toTable": "ItemBrand",
         "toColumn": "BrandKey"
+      },
+      {
+        "name": "2ade6654-0100-44d6-af16-f1e589425b37",
+        "fromTable": "Sales",
+        "fromColumn": "PriceMethodKey",
+        "toTable": "PriceMethod",
+        "toColumn": "PriceMethodKey"
       }
     ],
     "roles": [
