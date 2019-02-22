@@ -1268,7 +1268,7 @@
             "name": "NewPlanInd",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": "if(Year([AdjEffectiveDate])=[__current_year], 1, 0)"
+            "expression": "if(Year([AdjEffectiveDate])>=[__current_year], 1, 0)"
           },
           {
             "type": "calculated",
