@@ -495,7 +495,7 @@
           },
           {
             "name": "YTD Sales Var %",
-            "expression": " DIVIDE([YTD Sales],[PY YTD Sales])-1",
+            "expression": " DIVIDE([YTD Sales]-[PY YTD Sales],[PY YTD Sales])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -533,7 +533,7 @@
           },
           {
             "name": "YTD GP Sales Var %",
-            "expression": " DIVIDE([YTD GP],[PY YTD GP]) -1",
+            "expression": " DIVIDE([YTD GP]-[PY YTD GP],[PY YTD GP]) ",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -593,7 +593,7 @@
           },
           {
             "name": "Quote YTD Sales Var %",
-            "expression": " DIVIDE([Quote YTD Sales],[Quote PY YTD Sales])-1",
+            "expression": " DIVIDE([Quote YTD Sales]-[Quote PY YTD Sales],[Quote PY YTD Sales])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -643,7 +643,7 @@
           },
           {
             "name": "Quote YTD GP Sales Var %",
-            "expression": " DIVIDE([Quote YTD GP],[Quote PY YTD GP]) -1",
+            "expression": " DIVIDE([Quote YTD GP]-[Quote PY YTD GP],[Quote PY YTD GP]) ",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -745,7 +745,7 @@
           },
           {
             "name": "YTD Disc%",
-            "expression": " [YTD Disc]/[YTD Ext.Base]",
+            "expression": " DIVIDE([YTD Disc],[YTD Ext.Base])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
@@ -796,7 +796,7 @@
           },
           {
             "name": "Quote YTD Disc%",
-            "expression": " [Quote YTD Disc]/[Quote YTD Ext.Base]",
+            "expression": " DIVIDE([Quote YTD Disc],[Quote YTD Ext.Base])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           }
         ],
