@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1 BRSales",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Persist Security Info=false;User ID=CAHSI\\tcrowley;Integrated Security=SSPI",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Persist Security Info=false;User ID=CAHSI\\tcrowley;Integrated Security=SSPI",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -2092,6 +2092,66 @@
           {
             "memberName": "CAHSI\\JLi",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          },
+          {
+            "memberName": "CAHSI\\Amanda.Russell",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11317"
+          },
+          {
+            "memberName": "CAHSI\\Emilia.Bronowicki",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11418"
+          },
+          {
+            "memberName": "CAHSI\\Franca.Parente",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-4027"
+          },
+          {
+            "memberName": "CAHSI\\Grace.Brohman",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-8327"
+          },
+          {
+            "memberName": "CAHSI\\Janet.Dunphy",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11401"
+          },
+          {
+            "memberName": "CAHSI\\Lori.Bonn",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11344"
+          },
+          {
+            "memberName": "CAHSI\\Lina.Evraire",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11938"
+          },
+          {
+            "memberName": "CAHSI\\Meaghan.Collins",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-13818"
+          },
+          {
+            "memberName": "CAHSI\\Nadia.Xavier",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-6968"
+          },
+          {
+            "memberName": "CAHSI\\Kristina.Fowler",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1443"
+          },
+          {
+            "memberName": "CAHSI\\Shenila.Jaffer",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-9338"
+          },
+          {
+            "memberName": "CAHSI\\Willen.Sun",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11452"
+          },
+          {
+            "memberName": "CAHSI\\Ann.Bilodeau",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-12090"
+          },
+          {
+            "memberName": "CAHSI\\Madeleine.Khodaverdi",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-12793"
+          },
+          {
+            "memberName": "CAHSI\\Nia.Othitis",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-5731"
           }
         ],
         "tablePermissions": [
