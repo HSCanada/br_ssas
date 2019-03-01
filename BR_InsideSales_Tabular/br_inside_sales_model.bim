@@ -672,22 +672,17 @@
             ]
           },
           {
-            "name": "MTD Goal",
-            "expression": "[Last 12Mo Sales]*[Goal Growth Factor]/12 - [MTD Sales]",
-            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
-              }
-            ]
+            "name": "MTD Percent to Goal",
+            "expression": "DIVIDE( [MTD Sales], [MTD Goal])",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "Goal Growth Factor",
-            "expression": "1.1"
+            "expression": "1.1",
+            "isHidden": true
           },
           {
-            "name": "MTD Goal Total",
+            "name": "MTD Goal",
             "expression": "[Last 12Mo Sales]*[Goal Growth Factor]/12",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [

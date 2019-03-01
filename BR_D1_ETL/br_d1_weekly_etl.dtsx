@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_weekly_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="320"
-  DTS:VersionGUID="{793FCFCE-9AB3-46E3-9815-5A71234E0912}">
+  DTS:VersionBuild="323"
+  DTS:VersionGUID="{825586E9-C762-4D88-9A03-74D703A374F4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2833,7 +2833,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                           lineageId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].Columns[VENDOR_CODE]" />
                         <inputColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt.Inputs[OLE DB Destination Input].Columns[QUANTITY]"
-                          cachedDataType="i1"
+                          cachedDataType="i4"
                           cachedName="QUANTITY"
                           externalMetadataColumnId="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt.Inputs[OLE DB Destination Input].ExternalColumns[order_qty]"
                           lineageId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].Columns[QUANTITY]" />
@@ -3306,7 +3306,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                         </outputColumn>
                         <outputColumn
                           refId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].Columns[QUANTITY]"
-                          dataType="i1"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="IgnoreFailure"
                           externalMetadataColumnId="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt.Outputs[Flat File Source Output].ExternalColumns[QUANTITY]"
@@ -3708,6 +3708,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\seq_open_order_opordrpt\sql_load_prod"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{f070337b-10de-4b23-b535-dc3c9f3c0400}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_load_prod"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{BF90ED84-6DC2-40A1-897B-A8622803513B}"
+              SQLTask:SqlStatementSource="EXEC [nes].[open_order_opordrpt_proc] @bDebug=0&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\seq_open_order_opordrpt\sql_truncate_stage"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -3734,6 +3751,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\seq_open_order_opordrpt\dft_load_stage" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seq_open_order_opordrpt.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{AF274D36-3FEA-4487-ADF3-159558AAFC81}"
+          DTS:From="Package\seq_open_order_opordrpt\dft_load_stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\seq_open_order_opordrpt\sql_load_prod" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -3748,7 +3773,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="149,42"
           Id="Package\seq_inventory_whvalrpt\dft_load_stage"
@@ -3785,7 +3810,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           PanelSize="281,183"
           Size="281,226"
           Id="Package\seq_inventory_whvalrpt"
-          TopLeft="95,398" />
+          TopLeft="103,511" />
         <NodeLayout
           Size="151,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage"
@@ -3816,11 +3841,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="168,42"
+          Id="Package\seq_open_order_opordrpt\sql_load_prod"
+          TopLeft="53,201" />
+        <EdgeLayout
+          Id="Package\seq_open_order_opordrpt.PrecedenceConstraints[Constraint 1]"
+          TopLeft="136.75,161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="314,214"
-          Size="314,257"
+          PanelSize="314,297"
+          Size="314,340"
           Id="Package\seq_open_order_opordrpt"
           TopLeft="86,98" />
       </GraphLayout>
@@ -3830,7 +3881,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="120,42"
           Id="Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt"
@@ -3878,9 +3929,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3914,9 +3963,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3950,9 +3997,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3975,15 +4020,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\seq_open_order_opordrpt\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="181,42"
-          Id="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt"
-          TopLeft="86,222" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="122,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt"
           TopLeft="141,55" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt"
+          TopLeft="86,222" />
         <EdgeLayout
           Id="Package\seq_open_order_opordrpt\dft_load_stage.Paths[Flat File Source Output]"
           TopLeft="202,97">
@@ -4015,7 +4060,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
