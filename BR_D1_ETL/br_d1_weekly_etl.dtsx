@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_weekly_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="323"
-  DTS:VersionGUID="{825586E9-C762-4D88-9A03-74D703A374F4}">
+  DTS:VersionBuild="327"
+  DTS:VersionGUID="{AA7F8AED-3A53-48AB-AE05-5518488828AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,50 +25,7 @@
         DTS:Name="ConnectionString">@[$Project::ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BR_D1_ETL-{BF90ED84-6DC2-40A1-897B-A8622803513B}CAHSIONNLSQL2.DEV_BRSales;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{EDF12D69-9CF2-4F7E-A741-076974A8C964}"
-      DTS:ObjectName="Flat File Connection Manager">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="4105"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\tcrowley\Desktop\err.txt">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="302"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Flat File Source Error Output Column"
-              DTS:DTSID="{DBA2D2BC-97CB-4F15-9D6B-4FD1E1E7CB16}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="ErrorCode"
-              DTS:DTSID="{0A2989AD-DD96-404C-8BBE-642CF0E9DAEC}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="ErrorColumn"
-              DTS:DTSID="{4A785212-9901-4689-AFB6-D4F578B4926C}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BR_D1_ETL-{BF90ED84-6DC2-40A1-897B-A8622803513B}CAHSIONNLSQL2.DEV_BRSales;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -3817,6 +3774,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           TopLeft="61,119" />
         <NodeLayout
           Size="168,42"
+          Id="Package\seq_open_order_opordrpt\sql_load_prod"
+          TopLeft="53,201" />
+        <NodeLayout
+          Size="168,42"
           Id="Package\seq_open_order_opordrpt\sql_truncate_stage"
           TopLeft="51,27" />
         <EdgeLayout
@@ -3841,10 +3802,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="168,42"
-          Id="Package\seq_open_order_opordrpt\sql_load_prod"
-          TopLeft="53,201" />
         <EdgeLayout
           Id="Package\seq_open_order_opordrpt.PrecedenceConstraints[Constraint 1]"
           TopLeft="136.75,161">
@@ -3881,7 +3838,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\seq_inventory_whvalrpt\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="120,42"
           Id="Package\seq_inventory_whvalrpt\dft_load_stage\whvalrpt"
@@ -3929,7 +3886,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3963,7 +3922,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3997,7 +3958,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4020,7 +3983,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\seq_open_order_opordrpt\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="122,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt"
@@ -4060,9 +4023,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
