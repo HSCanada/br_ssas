@@ -595,10 +595,9 @@
               "SWITCH(TRUE(), ",
               "\t[ClassGroup]=\"MEROTH\" || [ClassGroup]=\"HANPCE\" , \"Merch Only\", ",
               "\t[ClassGroup]=\"PARTS\" || [ClassGroup]=\"SERVIC\" , \"Services\", ",
-              "\t[ClassGroup]=\"DIGSEN\" , \"Hi Tech Equip\", ",
               "\t[ClassGroup]=\"DTXPMS\", \"Software\", ",
               "\t[ClassGroup]=\"D4DEQU\" , \"Digital Rest\", ",
-              "\t[ClassGroup]=\"EQUCOR\" , \"Equipment\", ",
+              "\t[ClassGroup]=\"EQUCOR\" || [ClassGroup]=\"DIGSEN\" , \"Equipment\", ",
               "\t\"zOther\"",
               ")",
               ""
