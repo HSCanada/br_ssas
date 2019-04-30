@@ -1,0 +1,1928 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/23/2019 11:54:34 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CAHSIONNLD3829"
+  DTS:CreatorName="CAHSI\jli"
+  DTS:DTSID="{20AE671A-C5C5-4C72-9370-8FA54AE6F979}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.101"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Testing054"
+  DTS:PackageType="5"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{7BC22D9F-F0EF-4C8E-90B0-78ABDFE5A277}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BRSales]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{FA43AF5C-E445-402B-89C7-F917C2DB4047}"
+      DTS:ObjectName="BRSales">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Dsn=BRSales;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cahsionnlsql1.BRSales]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7C575BCE-2077-41AD-8524-D975DED16A3E}"
+      DTS:ObjectName="cahsionnlsql1.BRSales">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cahsionnlsql1;Initial Catalog=BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cahsionnlsql1.DEV_BRSales]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{04FB4B59-CD13-44A5-B0A4-E72738D847F8}"
+      DTS:ObjectName="cahsionnlsql1.DEV_BRSales">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cahsionnlsql1;Initial Catalog=DEV_BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DEV_BRSales]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{D4EAA0DC-1E89-417D-838E-69F7AB171700}"
+      DTS:ObjectName="DEV_BRSales">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Dsn=DEV_BRSales;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{869BDCA1-8196-4F76-BEA3-B0BA136A9403}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:MaxErrorCount="99999999"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\BRS_Item_HSC_054"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="BRS_Item_HSC_054"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">"dbo"."054_CAD"</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\BRS_Item_HSC_054.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DEV_BRSales]"
+                  connectionManagerRefId="Package.ConnectionManagers[DEV_BRSales]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output]"
+                  errorRowDisposition="IgnoreFailure"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="IgnoreFailure">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Item]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Item]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Item]"
+                      name="Item" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Descr&amp;Strengh]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Descr&amp;Strengh]"
+                      length="40"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Descr&amp;Strengh]"
+                      name="Descr&amp;Strengh" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[ItemDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[ItemDescription]"
+                      length="40"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[ItemDescription]"
+                      name="ItemDescription" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Size]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Size]"
+                      length="8"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Size]"
+                      name="Size" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Strength]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Strength]"
+                      length="12"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Strength]"
+                      name="Strength" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[MajorProductClass]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[MajorProductClass]"
+                      length="3"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[MajorProductClass]"
+                      name="MajorProductClass" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[ManufPartNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[ManufPartNumber]"
+                      length="15"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[ManufPartNumber]"
+                      name="ManufPartNumber" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Supplier]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Supplier]"
+                      length="6"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Supplier]"
+                      name="Supplier" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[SuplierPart]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Insert"
+                      externalMetadataColumnId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[SuplierPart]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[SuplierPart]"
+                      name="SuplierPart" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Item]"
+                      dataType="wstr"
+                      length="10"
+                      name="Item" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Descr&amp;Strengh]"
+                      dataType="wstr"
+                      length="40"
+                      name="Descr&amp;Strengh" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[ItemDescription]"
+                      dataType="wstr"
+                      length="40"
+                      name="ItemDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="8"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Strength]"
+                      dataType="wstr"
+                      length="12"
+                      name="Strength" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[MajorProductClass]"
+                      dataType="wstr"
+                      length="3"
+                      name="MajorProductClass" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[ManufPartNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="ManufPartNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[Supplier]"
+                      dataType="wstr"
+                      length="6"
+                      name="Supplier" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].ExternalColumns[SuplierPart]"
+                      dataType="wstr"
+                      length="255"
+                      name="SuplierPart" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Item]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Item]"
+                      name="Item" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Descr&amp;Strengh]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Descr&amp;Strengh]"
+                      name="Descr&amp;Strengh" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[ItemDescription]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[ItemDescription]"
+                      name="ItemDescription" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Size]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Size]"
+                      name="Size" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Strength]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Strength]"
+                      name="Strength" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[MajorProductClass]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[MajorProductClass]"
+                      name="MajorProductClass" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[ManufPartNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[ManufPartNumber]"
+                      name="ManufPartNumber" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Supplier]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[Supplier]"
+                      name="Supplier" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[SuplierPart]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Error Output].Columns[SuplierPart]"
+                      name="SuplierPart" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Item]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Item"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Item]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Item]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Item</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Descr&amp;Strengh]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Descr&amp;Strengh"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Descr&amp;Strengh]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Descr&amp;Strengh]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Descr&amp;Strengh]</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[ItemDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="ItemDescription"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ItemDescription]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ItemDescription]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ItemDescription</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Size"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Size]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Size]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Size</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Strength]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Strength"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Strength]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Strength]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Strength</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[MajorProductClass]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="MajorProductClass"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[MajorProductClass]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[MajorProductClass]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MajorProductClass</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[ManufPartNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ManufPartNumber"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ManufPartNumber]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ManufPartNumber]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ManufPartNumber</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Supplier]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Supplier"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Supplier]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Supplier]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Supplier</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[_Similarity_SuplierPart]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity_SuplierPart"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_SuplierPart]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_SuplierPart]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">_Similarity_SuplierPart</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[ItemUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ItemUSD"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ItemUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ItemUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ItemUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[DescrStrengh]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DescrStrengh"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[DescrStrengh]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[DescrStrengh]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DescrStrengh</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[SizeUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="SizeUSD"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SizeUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SizeUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SizeUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[StrengthUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="StrengthUSD"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[StrengthUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[StrengthUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">StrengthUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[ManufPartNumberUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ManufPartNumberUSD"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ManufPartNumberUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ManufPartNumberUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ManufPartNumberUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[SupplierUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="SupplierUSD"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SupplierUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SupplierUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SupplierUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[MajorProductClassUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="MajorProductClassUSD"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[MajorProductClassUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[MajorProductClassUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MajorProductClassUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[SuplierPartUSD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SuplierPartUSD"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SuplierPartUSD]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SuplierPartUSD]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SuplierPartUSD</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[_Similarity]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">_Similarity</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[_Confidence]"
+                      cachedDataType="r4"
+                      cachedName="_Confidence"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Confidence]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">_Confidence</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[_Similarity_Size]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity_Size"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_Size]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_Size]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">_Similarity_Size</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[_Similarity_Descr&amp;Strengh]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity_Descr&amp;Strengh"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_Descr&amp;Strengh]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_Descr&amp;Strengh]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[_Similarity_Descr&amp;Strengh]</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item)"
+              componentClassID="Microsoft.FuzzyLookup"
+              contactInfo="Fuzzy Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="Performs data cleaning tasks such as standardizing data, correcting data, and providing missing values.  Uses fuzzy matching to return one or more close matches from a reference table. For example, lookup customer data by address, even if your input address data does not exactly match your reference address data."
+              name="Fuzzy Match - Reference (USD_BRS_Item)"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates whether to reuse an existing fuzzy-match index table or build a new one. The new index table can be temporary, persisted, or persisted and maintained."
+                  name="MatchIndexOptions"
+                  typeConverter="tcMatchIndexOptions">2</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the maximum amount of memory (MB) that this instance of the Fuzzy Lookup transformation can use.  If 0 is given, then the transform will dynamically adjust it's memory usage based upon it's requirements and available system memory."
+                  expressionType="Notify"
+                  name="MaxMemoryUsage" />
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the fuzzy-match index table to be reused or the table name in which a newly generated fuzzy-match index table will be written."
+                  name="MatchIndexName"
+                  state="escaped">FuzzyLookupMatchIndex054</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the reference table or view against which to match incoming records."
+                  name="ReferenceTableName"
+                  state="escaped">_x005B_dbo_x005D_._x005B_054_USD_x005D_</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates whether to drop an existing fuzzy-match index table if transformation is configured to generate a new table and a table with the same name already exists."
+                  name="DropExistingMatchIndex">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Whether a copy of the reference table should be made for fuzzy match index construction and subsequent matching.  It is strongly recommended that a copy always be made, otherwise unpredictable output may result if the contents of the reference table change during package execution (or between executions if reusing a fuzzy match index).  If this property is set to false, the reference table must additionally have a clustered index built upon an integer identity column."
+                  name="CopyReferenceTable">1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the maximum number of fuzzy matches to return for an input record."
+                  name="MaxOutputMatchesPerInput">1</property>
+                <property
+                  dataType="System.Single"
+                  description="Specifies the minimum similarity score required for the match results that the transformation returns."
+                  name="MinSimilarity">0.5</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the set of white-space and punctuation characters used to separate fuzzy match fields into the words used for matching and scoring a fuzzy lookup."
+                  name="Delimiters"
+                  state="escaped">_x0020__x0009__x000D__x000A__x002C_._x003B_:-_x0022__x0027__x0026__x002F__x005C__x0040__x0021__x003F__x0028__x0029__x003C__x003E__x005B__x005D__x007B__x007D__x007C__x0023__x002A__x005E__x0025_</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the metadata of the reference table in XML format."
+                  name="ReferenceMetadataXml"
+                  state="escaped">_x003C_referenceMetadata_x003E__x003C_referenceColumns_x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Item_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_10_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_DescrStrengh_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_255_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Size_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_8_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Strength_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_12_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_MajorProductClass_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_3_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_ManufPartNumber_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_15_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_Supplier_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_6_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_SuplierPart_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_255_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C__x002F_referenceColumns_x003E__x003C__x002F_referenceMetadata_x003E__x000D__x000A_</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, each input record will be directly compared against EVERY record in the reference table.  This may produce slightly better results, but will be extremely slow unless the number of records in the reference table is very small.  Note that the entire reference table will be loaded into main memory if this option is enabled.  This option is primarily intended for debugging purposes and should be used with care."
+                  name="Exhaustive">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, Fuzzy Lookup will partially load the error-tolerant index and the reference table into main memory before execution begins.  This can greatly enhance performance if many input rows are to be processed."
+                  name="WarmCaches">true</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[cahsionnlsql1.DEV_BRSales]"
+                  connectionManagerRefId="Package.ConnectionManagers[cahsionnlsql1.DEV_BRSales]"
+                  description="Microsoft SQL Server connection and database in which the fuzzy lookup reference table is located and where the fuzzy match index table will be stored and accessed."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input]"
+                  hasSideEffects="true"
+                  name="Fuzzy Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[ItemDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="ItemDescription"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[ItemDescription]"
+                      name="ItemDescription">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Size"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Size]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped">Size</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[Strength]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Strength"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Strength]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[ManufPartNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ManufPartNumber"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[ManufPartNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[Item]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Item"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Item]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[MajorProductClass]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="MajorProductClass"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[MajorProductClass]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[Descr&amp;Strengh]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Descr&amp;Strengh"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Descr&amp;Strengh]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped">DescrStrengh</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[SuplierPart]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SuplierPart"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[SuplierPart]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped">SuplierPart</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input].Columns[Supplier]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Supplier"
+                      lineageId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Supplier]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output]"
+                  hasSideEffects="true"
+                  name="Fuzzy Lookup Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Item]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Item]"
+                      name="Item">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Item]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Descr&amp;Strengh]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Descr&amp;Strengh]"
+                      name="Descr&amp;Strengh">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Descr&amp;Strengh]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ItemDescription]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ItemDescription]"
+                      name="ItemDescription">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[ItemDescription]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Size]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Size]"
+                      name="Size">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Size]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Strength]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Strength]"
+                      name="Strength">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Strength]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[MajorProductClass]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[MajorProductClass]"
+                      name="MajorProductClass">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[MajorProductClass]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ManufPartNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ManufPartNumber]"
+                      name="ManufPartNumber">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[ManufPartNumber]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Supplier]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[Supplier]"
+                      name="Supplier">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Supplier]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_SuplierPart]"
+                      dataType="r4"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_SuplierPart]"
+                      name="_Similarity_SuplierPart">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[SuplierPart]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">3</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[DescrStrengh]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[DescrStrengh]"
+                      name="DescrStrengh">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">DescrStrengh</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SizeUSD]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SizeUSD]"
+                      name="SizeUSD">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">Size</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[StrengthUSD]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[StrengthUSD]"
+                      name="StrengthUSD">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">Strength</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ManufPartNumberUSD]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ManufPartNumberUSD]"
+                      name="ManufPartNumberUSD">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">ManufPartNumber</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SupplierUSD]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SupplierUSD]"
+                      name="SupplierUSD">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">Supplier</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[MajorProductClassUSD]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[MajorProductClassUSD]"
+                      name="MajorProductClassUSD">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">MajorProductClass</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SuplierPartUSD]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[SuplierPartUSD]"
+                      name="SuplierPartUSD">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">SuplierPart</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      dataType="r4"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      name="_Similarity">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      dataType="r4"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      name="_Confidence">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">2</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_Size]"
+                      dataType="r4"
+                      description="Column-level similarity score for fuzzy join on column &quot;Size&quot;."
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_Size]"
+                      name="_Similarity_Size">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Size]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">3</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_Descr&amp;Strengh]"
+                      dataType="r4"
+                      description="Column-level similarity score for fuzzy join on column &quot;Descr&amp;Strengh&quot;."
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[_Similarity_Descr&amp;Strengh]"
+                      name="_Similarity_Descr&amp;Strengh">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output].Columns[Descr&amp;Strengh]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">3</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ItemUSD]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output].Columns[ItemUSD]"
+                      name="ItemUSD">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">Item</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Fuzzy Lookup Output]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Fuzzy Lookup Output"
+              startId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Outputs[Fuzzy Lookup Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[ODBC Source Output]"
+              endId="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item).Inputs[Fuzzy Lookup Input]"
+              name="ODBC Source Output"
+              startId="Package\Data Flow Task\BRS_Item_HSC_054.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="279,42"
+          Id="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item)"
+          TopLeft="213,152" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Data Flow Task\BRS_Item_HSC_054"
+          TopLeft="134,65" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[ODBC Source Output]"
+          TopLeft="221,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="131.5,45"
+              Start="0,0"
+              End="131.5,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="127.5,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="127.5,22.5"
+                    Point2="131.5,22.5"
+                    Point3="131.5,26.5" />
+                  <mssgle:LineSegment
+                    End="131.5,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="57.75,27.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="321,258" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Fuzzy Lookup Output]"
+          TopLeft="352.5,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.5,64"
+              Start="0,0"
+              End="45.5,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="4,32" />
+                  <mssgle:LineSegment
+                    End="41.5,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.5,32"
+                    Point2="45.5,32"
+                    Point3="45.5,36" />
+                  <mssgle:LineSegment
+                    End="45.5,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Fuzzy Match - Reference (USD_BRS_Item)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\BRS_Item_HSC_054">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
