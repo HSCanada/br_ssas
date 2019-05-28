@@ -1,0 +1,1903 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/14/2019 5:07:51 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CAHSIONNLD3829"
+  DTS:CreatorName="CAHSI\jli"
+  DTS:DTSID="{532C8236-A245-49D7-ABE0-7C9F55A28949}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="fuzzy_t1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{FEC4F3FF-8FD1-46DC-9642-E67C690D56F8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cahsionnlsql1.sql]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4D9AA8D6-851F-44FC-A1D0-CB2F6DDB3A7D}"
+      DTS:ObjectName="cahsionnlsql1.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=cahsionnlsql1;Initial Catalog=DEV_BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear mdm_item_match_t1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{144D0C49-899D-4105-A7AD-38E9E8848CC6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear mdm_item_match_t1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4D9AA8D6-851F-44FC-A1D0-CB2F6DDB3A7D}"
+          SQLTask:SqlStatementSource="truncate table [mdm].[item_match_t1]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\fuzzy_t1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E9A60DB0-6033-48E1-9DF9-7747F1E5AEA7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="fuzzy_t1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\fuzzy_t1\fuzzy_t1"
+              componentClassID="Microsoft.FuzzyLookup"
+              contactInfo="Fuzzy Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="Performs data cleaning tasks such as standardizing data, correcting data, and providing missing values.  Uses fuzzy matching to return one or more close matches from a reference table. For example, lookup customer data by address, even if your input address data does not exactly match your reference address data."
+              name="fuzzy_t1"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates whether to reuse an existing fuzzy-match index table or build a new one. The new index table can be temporary, persisted, or persisted and maintained."
+                  name="MatchIndexOptions"
+                  typeConverter="tcMatchIndexOptions">2</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the maximum amount of memory (MB) that this instance of the Fuzzy Lookup transformation can use.  If 0 is given, then the transform will dynamically adjust it's memory usage based upon it's requirements and available system memory."
+                  expressionType="Notify"
+                  name="MaxMemoryUsage" />
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the fuzzy-match index table to be reused or the table name in which a newly generated fuzzy-match index table will be written."
+                  name="MatchIndexName"
+                  state="escaped">mdm.item_reference_20190524_idx</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the reference table or view against which to match incoming records."
+                  name="ReferenceTableName"
+                  state="escaped">_x005B_mdm_x005D_._x005B_item_reference_x005D_</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates whether to drop an existing fuzzy-match index table if transformation is configured to generate a new table and a table with the same name already exists."
+                  name="DropExistingMatchIndex">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Whether a copy of the reference table should be made for fuzzy match index construction and subsequent matching.  It is strongly recommended that a copy always be made, otherwise unpredictable output may result if the contents of the reference table change during package execution (or between executions if reusing a fuzzy match index).  If this property is set to false, the reference table must additionally have a clustered index built upon an integer identity column."
+                  name="CopyReferenceTable">1</property>
+                <property
+                  dataType="System.UInt32"
+                  description="Specifies the maximum number of fuzzy matches to return for an input record."
+                  name="MaxOutputMatchesPerInput">1</property>
+                <property
+                  dataType="System.Single"
+                  description="Specifies the minimum similarity score required for the match results that the transformation returns."
+                  name="MinSimilarity">0.1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the set of white-space and punctuation characters used to separate fuzzy match fields into the words used for matching and scoring a fuzzy lookup."
+                  name="Delimiters"
+                  state="escaped">_x0020__x0009__x000D__x000A__x002C_._x003B_:-_x0022__x0027__x0026__x002F__x005C__x0040__x0021__x003F__x0028__x0029__x003C__x003E__x005B__x005D__x007B__x007D__x007C__x0023__x002A__x005E__x0025_</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the metadata of the reference table in XML format."
+                  name="ReferenceMetadataXml"
+                  state="escaped">_x003C_referenceMetadata_x003E__x003C_referenceColumns_x003E__x003C_referenceColumn_x0020_name_x003D__x0022_item_code_usd_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_10_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_description_strength_usd_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_53_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_size_usd_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_8_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_mpc_code_usd_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_3_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_mpcs_description_usd_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_50_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_supplier_usd_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_6_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_supplier_global_usd_x0022__x0020_dataType_x003D__x0022_DT_WSTR_x0022__x0020_length_x003D__x0022_30_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_manuf_part_number_usd_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_15_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_item_create_date_usd_x0022__x0020_dataType_x003D__x0022_DT_DBDATE_x0022__x0020_length_x003D__x0022_0_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_stocking_type_usd_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_1_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_current_file_cost_usd_x0022__x0020_dataType_x003D__x0022_DT_CY_x0022__x0020_length_x003D__x0022_0_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_current_price_usd_x0022__x0020_dataType_x003D__x0022_DT_CY_x0022__x0020_length_x003D__x0022_0_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C__x002F_referenceColumns_x003E__x003C__x002F_referenceMetadata_x003E__x000D__x000A_</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, each input record will be directly compared against EVERY record in the reference table.  This may produce slightly better results, but will be extremely slow unless the number of records in the reference table is very small.  Note that the entire reference table will be loaded into main memory if this option is enabled.  This option is primarily intended for debugging purposes and should be used with care."
+                  name="Exhaustive">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, Fuzzy Lookup will partially load the error-tolerant index and the reference table into main memory before execution begins.  This can greatly enhance performance if many input rows are to be processed."
+                  name="WarmCaches">true</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fuzzy_t1\fuzzy_t1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[cahsionnlsql1.sql]"
+                  connectionManagerRefId="Package.ConnectionManagers[cahsionnlsql1.sql]"
+                  description="Microsoft SQL Server connection and database in which the fuzzy lookup reference table is located and where the fuzzy match index table will be stored and accessed."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input]"
+                  hasSideEffects="true"
+                  name="Fuzzy Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[size]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="size"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[size]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[item_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="item_code"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_code]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped">item_code_usd</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[item_create_date]"
+                      cachedDataType="dbDate"
+                      cachedName="item_create_date"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_create_date]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[mpc_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="mpc_code"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[mpc_code]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[supplier]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="supplier"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[supplier]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[current_file_cost]"
+                      cachedDataType="cy"
+                      cachedName="current_file_cost"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[current_file_cost]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[description_strength]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="53"
+                      cachedName="description_strength"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[description_strength]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped">description_strength_usd</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[manuf_part_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="manuf_part_number"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[manuf_part_number]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped">manuf_part_number_usd</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input].Columns[supplier_global]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="supplier_global"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[supplier_global]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output]"
+                  hasSideEffects="true"
+                  name="Fuzzy Lookup Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_code]"
+                      name="item_code">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_code]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[description_strength]"
+                      codePage="1252"
+                      dataType="str"
+                      length="53"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[description_strength]"
+                      name="description_strength">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[description_strength]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[size]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[size]"
+                      name="size">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[size]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[mpc_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[mpc_code]"
+                      name="mpc_code">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[mpc_code]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier]"
+                      name="supplier">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[supplier]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[manuf_part_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[manuf_part_number]"
+                      name="manuf_part_number">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[manuf_part_number]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_create_date]"
+                      dataType="dbDate"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_create_date]"
+                      name="item_create_date">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_create_date]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[current_file_cost]"
+                      dataType="cy"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[current_file_cost]"
+                      name="current_file_cost">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[current_file_cost]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_global]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_global]"
+                      name="supplier_global">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[supplier_global]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_code_usd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_code_usd]"
+                      name="item_code_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">item_code_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[description_strength_usd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="53"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[description_strength_usd]"
+                      name="description_strength_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">description_strength_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[size_usd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[size_usd]"
+                      name="size_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">size_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[mpc_code_usd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[mpc_code_usd]"
+                      name="mpc_code_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">mpc_code_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[manuf_part_number_usd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[manuf_part_number_usd]"
+                      name="manuf_part_number_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">manuf_part_number_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_create_date_usd]"
+                      dataType="dbDate"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_create_date_usd]"
+                      name="item_create_date_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">item_create_date_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[current_file_cost_usd]"
+                      dataType="cy"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[current_file_cost_usd]"
+                      name="current_file_cost_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">current_file_cost_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_usd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_usd]"
+                      name="supplier_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">supplier_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_global_usd]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_global_usd]"
+                      name="supplier_global_usd">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">supplier_global_usd</property>
+                        <property
+                          containsID="true"
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      dataType="r4"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      name="_Similarity">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      dataType="r4"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      name="_Confidence">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">2</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity_item_code]"
+                      dataType="r4"
+                      description="Column-level similarity score for fuzzy join on column &quot;item_code&quot;."
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity_item_code]"
+                      name="_Similarity_item_code">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_code]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">3</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity_description_strength]"
+                      dataType="r4"
+                      description="Column-level similarity score for fuzzy join on column &quot;description_strength&quot;."
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity_description_strength]"
+                      name="_Similarity_description_strength">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[description_strength]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">3</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity_manuf_part_number]"
+                      dataType="r4"
+                      description="Column-level similarity score for fuzzy join on column &quot;manuf_part_number&quot;."
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity_manuf_part_number]"
+                      name="_Similarity_manuf_part_number">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[manuf_part_number]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">3</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\fuzzy_t1\item_match_t1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="item_match_t1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[mdm].[item_match_t1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fuzzy_t1\item_match_t1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[cahsionnlsql1.sql]"
+                  connectionManagerRefId="Package.ConnectionManagers[cahsionnlsql1.sql]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[_Similarity]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[_Confidence]"
+                      cachedDataType="r4"
+                      cachedName="_Confidence"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Confidence]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Confidence]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[item_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="item_code"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[item_code]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_code]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[description_strength]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="53"
+                      cachedName="description_strength"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[description_strength]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[description_strength]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[size]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="size"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[size]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[size]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[size_usd]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="size_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[size_usd]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[size_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[manuf_part_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="manuf_part_number"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[manuf_part_number]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[manuf_part_number]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[mpc_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="mpc_code"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[mpc_code]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[mpc_code]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[supplier]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="supplier"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[supplier]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[item_create_date]"
+                      cachedDataType="dbDate"
+                      cachedName="item_create_date"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[item_create_date]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_create_date]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[current_file_cost]"
+                      cachedDataType="cy"
+                      cachedName="current_file_cost"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[current_file_cost]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[current_file_cost]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[supplier_global]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="supplier_global"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[supplier_global]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_global]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[item_code_usd]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="item_code_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[item_code_ref]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_code_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[description_strength_usd]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="53"
+                      cachedName="description_strength_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[description_strength_ref]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[description_strength_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[manuf_part_number_usd]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="manuf_part_number_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[manuf_part_number_ref]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[manuf_part_number_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[mpc_code_usd]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="mpc_code_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[mpc_code_ref]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[mpc_code_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[supplier_usd]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="supplier_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[supplier_ref]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[supplier_global_usd]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="supplier_global_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[supplier_global_ref]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[supplier_global_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[item_create_date_usd]"
+                      cachedDataType="dbDate"
+                      cachedName="item_create_date_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[item_create_date_ref]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[item_create_date_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[current_file_cost_usd]"
+                      cachedDataType="cy"
+                      cachedName="current_file_cost_usd"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[current_file_cost_ref]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[current_file_cost_usd]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[_Similarity_description_strength]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity_description_strength"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_DescrStrength]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity_description_strength]" />
+                    <inputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].Columns[_Similarity_manuf_part_number]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity_manuf_part_number"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_ManufPartNumber]"
+                      lineageId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output].Columns[_Similarity_manuf_part_number]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity]"
+                      dataType="r8"
+                      name="_Similarity" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Confidence]"
+                      dataType="r8"
+                      name="_Confidence" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_DescrStrength]"
+                      dataType="r8"
+                      name="_Similarity_DescrStrength" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_ManufPartNumber]"
+                      dataType="r8"
+                      name="_Similarity_ManufPartNumber" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_Size]"
+                      dataType="r8"
+                      name="_Similarity_Size" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[item_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="item_code" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[description_strength]"
+                      codePage="1252"
+                      dataType="str"
+                      length="55"
+                      name="description_strength" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[size]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="size" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[size_usd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="size_usd" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[manuf_part_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="manuf_part_number" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[mpc_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="mpc_code" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[supplier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="supplier" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[item_create_date]"
+                      dataType="dbTimeStamp"
+                      name="item_create_date" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[current_file_cost]"
+                      dataType="cy"
+                      name="current_file_cost" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[supplier_global]"
+                      dataType="wstr"
+                      length="30"
+                      name="supplier_global" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[item_code_ref]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="item_code_ref" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[description_strength_ref]"
+                      codePage="1252"
+                      dataType="str"
+                      length="55"
+                      name="description_strength_ref" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[manuf_part_number_ref]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="manuf_part_number_ref" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[mpc_code_ref]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="mpc_code_ref" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[supplier_ref]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="supplier_ref" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[supplier_global_ref]"
+                      dataType="wstr"
+                      length="30"
+                      name="supplier_global_ref" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[item_create_date_ref]"
+                      dataType="dbTimeStamp"
+                      name="item_create_date_ref" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input].ExternalColumns[current_file_cost_ref]"
+                      dataType="cy"
+                      name="current_file_cost_ref" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\fuzzy_t1\item_match_t1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fuzzy_t1\item_match_t1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_match_t1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fuzzy_t1\item_match_t1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\fuzzy_t1\item_source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="item_source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[mdm].[item_source]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\fuzzy_t1\item_source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[cahsionnlsql1.sql]"
+                  connectionManagerRefId="Package.ConnectionManagers[cahsionnlsql1.sql]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[item_code]"
+                      length="10"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_code]"
+                      name="item_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[description_strength]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[description_strength]"
+                      length="53"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[description_strength]"
+                      name="description_strength"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[size]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[size]"
+                      length="8"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[size]"
+                      name="size"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[mpc_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[mpc_code]"
+                      length="3"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[mpc_code]"
+                      name="mpc_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[mpcs_description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[mpcs_description]"
+                      length="50"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[mpcs_description]"
+                      name="mpcs_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[supplier]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[supplier]"
+                      length="6"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[supplier]"
+                      name="supplier"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[manuf_part_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[manuf_part_number]"
+                      length="15"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[manuf_part_number]"
+                      name="manuf_part_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_create_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[item_create_date]"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[item_create_date]"
+                      name="item_create_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[stocking_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[stocking_type]"
+                      length="1"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[stocking_type]"
+                      name="stocking_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[current_file_cost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[current_file_cost]"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[current_file_cost]"
+                      name="current_file_cost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[current_price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[current_price]"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[current_price]"
+                      name="current_price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[supplier_global]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[supplier_global]"
+                      length="30"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].Columns[supplier_global]"
+                      name="supplier_global"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[item_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="item_code" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[description_strength]"
+                      codePage="1252"
+                      dataType="str"
+                      length="53"
+                      name="description_strength" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[size]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="size" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[mpc_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="mpc_code" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[mpcs_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="mpcs_description" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[supplier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="supplier" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[manuf_part_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="manuf_part_number" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[item_create_date]"
+                      dataType="dbDate"
+                      name="item_create_date" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[stocking_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="stocking_type" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[current_file_cost]"
+                      dataType="cy"
+                      name="current_file_cost" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[current_price]"
+                      dataType="cy"
+                      name="current_price" />
+                    <externalMetadataColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output].ExternalColumns[supplier_global]"
+                      dataType="wstr"
+                      length="30"
+                      name="supplier_global" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[item_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[item_code]"
+                      name="item_code" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[description_strength]"
+                      codePage="1252"
+                      dataType="str"
+                      length="53"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[description_strength]"
+                      name="description_strength" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[size]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[size]"
+                      name="size" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[mpc_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[mpc_code]"
+                      name="mpc_code" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[mpcs_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[mpcs_description]"
+                      name="mpcs_description" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[supplier]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[supplier]"
+                      name="supplier" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[supplier_global]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[supplier_global]"
+                      name="supplier_global" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[manuf_part_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[manuf_part_number]"
+                      name="manuf_part_number" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[item_create_date]"
+                      dataType="dbDate"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[item_create_date]"
+                      name="item_create_date" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[stocking_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[stocking_type]"
+                      name="stocking_type" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[current_file_cost]"
+                      dataType="cy"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[current_file_cost]"
+                      name="current_file_cost" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[current_price]"
+                      dataType="cy"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[current_price]"
+                      name="current_price" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\fuzzy_t1.Paths[Fuzzy Lookup Output]"
+              endId="Package\fuzzy_t1\item_match_t1.Inputs[OLE DB Destination Input]"
+              name="Fuzzy Lookup Output"
+              startId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output]" />
+            <path
+              refId="Package\fuzzy_t1.Paths[OLE DB Source Output]"
+              endId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\fuzzy_t1\item_source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8AFF4230-6C64-4652-9E42-295BD47CB6B7}"
+      DTS:From="Package\Clear mdm_item_match_t1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\fuzzy_t1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Clear mdm_item_match_t1"
+          TopLeft="71,12" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\fuzzy_t1"
+          TopLeft="117.5,108.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="176.25,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.5"
+              Start="0,0"
+              End="0,47">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\fuzzy_t1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\fuzzy_t1\item_source"
+          TopLeft="259.5,21.5" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\fuzzy_t1\fuzzy_t1"
+          TopLeft="274,159" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\fuzzy_t1\item_match_t1"
+          TopLeft="259.5,281.5" />
+        <EdgeLayout
+          Id="Package\fuzzy_t1.Paths[OLE DB Source Output]"
+          TopLeft="331.25,63.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95.5"
+              Start="0,0"
+              End="0,88">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,88" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\fuzzy_t1.Paths[Fuzzy Lookup Output]"
+          TopLeft="334.75,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80.5"
+              Start="0,0"
+              End="0,73">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\fuzzy_t1\item_source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\fuzzy_t1\fuzzy_t1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\fuzzy_t1\item_match_t1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
