@@ -1,0 +1,312 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/29/2019 9:23:30 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CAHSIONNLD3092A"
+  DTS:CreatorName="CAHSI\TCrowley"
+  DTS:DTSID="{27C863F1-709F-473A-8983-BA62B633E5B4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="fuzzy_all"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{A8055D70-E71D-40B7-A9AA-E8BF024BF7C7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\build item match review"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{74B69F29-27D1-41E4-89A5-ED632A480A06}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="build item match review"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A4439B31-C859-4873-B2A6-ED00780E846C}"
+          SQLTask:SqlStatementSource="&#xA;-- update match_review&#xA;&#xA; truncate table mdm.item_match_review&#xA;go&#xA;&#xA;-- t4&#xA;INSERT INTO mdm.item_match_review&#xA;                         (item_code, item_code_ref, description_strength, description_strength_ref, size, size_usd, manuf_part_number, manuf_part_number_ref, mpc_code, mpc_code_ref, &#xA;                         supplier, supplier_ref, supplier_global, supplier_global_ref, item_create_date, item_create_date_ref, current_file_cost, current_file_cost_ref, _Similarity, &#xA;                         _Confidence, _Similarity_DescrStrength, _Similarity_ManufPartNumber, _Similarity_Size, match_type)&#xA;SELECT        item_code, item_code_ref, description_strength, description_strength_ref, size, size_usd, manuf_part_number, manuf_part_number_ref, mpc_code, mpc_code_ref, &#xA;                         supplier, supplier_ref, supplier_global, supplier_global_ref, item_create_date, item_create_date_ref, current_file_cost, current_file_cost_ref, _Similarity, &#xA;                         _Confidence, _Similarity_DescrStrength, _Similarity_ManufPartNumber, _Similarity_Size, 'T4' AS match_type&#xA;FROM            mdm.item_match_t4 s &#xA;WHERE        (item_code_ref &lt;&gt; '') AND NOT Exists(select * from mdm.item_match_review d where s.item_code = d.item_code and s.item_code_ref = d.item_code_ref)&#xA;go&#xA;&#xA;&#xA;-- t3&#xA;INSERT INTO mdm.item_match_review&#xA;                         (item_code, item_code_ref, description_strength, description_strength_ref, size, size_usd, manuf_part_number, manuf_part_number_ref, mpc_code, mpc_code_ref, &#xA;                         supplier, supplier_ref, supplier_global, supplier_global_ref, item_create_date, item_create_date_ref, current_file_cost, current_file_cost_ref, _Similarity, &#xA;                         _Confidence, _Similarity_DescrStrength, _Similarity_ManufPartNumber, _Similarity_Size, match_type)&#xA;SELECT        item_code, item_code_ref, description_strength, description_strength_ref, size, size_usd, manuf_part_number, manuf_part_number_ref, mpc_code, mpc_code_ref, &#xA;                         supplier, supplier_ref, supplier_global, supplier_global_ref, item_create_date, item_create_date_ref, current_file_cost, current_file_cost_ref, _Similarity, &#xA;                         _Confidence, _Similarity_DescrStrength, _Similarity_ManufPartNumber, _Similarity_Size, 'T3' AS match_type&#xA;FROM            mdm.item_match_t3 s&#xA;WHERE        (item_code_ref &lt;&gt; '') AND NOT Exists(select * from mdm.item_match_review d where s.item_code = d.item_code and s.item_code_ref = d.item_code_ref)&#xA;go&#xA;&#xA;-- t2&#xA;INSERT INTO mdm.item_match_review&#xA;                         (item_code, item_code_ref, description_strength, description_strength_ref, size, size_usd, manuf_part_number, manuf_part_number_ref, mpc_code, mpc_code_ref, &#xA;                         supplier, supplier_ref, supplier_global, supplier_global_ref, item_create_date, item_create_date_ref, current_file_cost, current_file_cost_ref, _Similarity, &#xA;                         _Confidence, _Similarity_DescrStrength, _Similarity_ManufPartNumber, _Similarity_Size, match_type)&#xA;SELECT        item_code, item_code_ref, description_strength, description_strength_ref, size, size_usd, manuf_part_number, manuf_part_number_ref, mpc_code, mpc_code_ref, &#xA;                         supplier, supplier_ref, supplier_global, supplier_global_ref, item_create_date, item_create_date_ref, current_file_cost, current_file_cost_ref, _Similarity, &#xA;                         _Confidence, _Similarity_DescrStrength, _Similarity_ManufPartNumber, _Similarity_Size, 'T2' AS match_type&#xA;FROM            mdm.item_match_t2 s&#xA;WHERE        (item_code_ref &lt;&gt; '') AND NOT Exists(select * from mdm.item_match_review d where s.item_code = d.item_code and s.item_code_ref = d.item_code_ref)&#xA;go&#xA;&#xA;-- t1&#xA;INSERT INTO mdm.item_match_review&#xA;                         (item_code, item_code_ref, description_strength, description_strength_ref, size, size_usd, manuf_part_number, manuf_part_number_ref, mpc_code, mpc_code_ref, &#xA;                         supplier, supplier_ref, supplier_global, supplier_global_ref, item_create_date, item_create_date_ref, current_file_cost, current_file_cost_ref, _Similarity, &#xA;                         _Confidence, _Similarity_DescrStrength, _Similarity_ManufPartNumber, _Similarity_Size, match_type)&#xA;SELECT        item_code, item_code_ref, description_strength, description_strength_ref, size, size_usd, manuf_part_number, manuf_part_number_ref, mpc_code, mpc_code_ref, &#xA;                         supplier, supplier_ref, supplier_global, supplier_global_ref, item_create_date, item_create_date_ref, current_file_cost, current_file_cost_ref, _Similarity, &#xA;                         _Confidence, _Similarity_DescrStrength, _Similarity_ManufPartNumber, _Similarity_Size, 'T1' AS match_type&#xA;FROM            mdm.item_match_t1 s&#xA;WHERE        (item_code_ref &lt;&gt; '') AND NOT Exists(select * from mdm.item_match_review d where s.item_code = d.item_code and s.item_code_ref = d.item_code_ref)&#xA;go&#xA;&#xA;-- no match&#xA;INSERT INTO mdm.item_match_review&#xA;                         (item_code, item_code_ref, description_strength, size, manuf_part_number, mpc_code, supplier, supplier_global, item_create_date, current_file_cost, match_type)&#xA;SELECT        item_code, '', description_strength, size, manuf_part_number, mpc_code, supplier, supplier_global, item_create_date, current_file_cost, 'NO'&#xA;FROM            mdm.item_match_t1 AS s&#xA;WHERE        NOT Exists(select * from mdm.item_match_review d where s.item_code = d.item_code)&#xA;go&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute T1"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{2A431CE4-AEEA-40D5-B2C7-ED9EE0E6D066}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute T1"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>fuzzy_t1.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute T2"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{7cb041da-bcb0-4a60-80b1-cb9b6b4dc49c}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute T2"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>fuzzy_t2.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute T3"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{6a439344-035c-4d80-8467-083770d133db}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute T3"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>fuzzy_t3.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute T4"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{c32aace6-b6c9-4faa-aace-ab1c44242ad0}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute T4"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>fuzzy_t4.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{942E6DCA-DE21-481B-99DB-88123B5DA8E7}"
+      DTS:From="Package\Execute T1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\build item match review" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0014F428-C0F9-49CB-9B40-F0DBC6A03735}"
+      DTS:From="Package\Execute T2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\build item match review" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{07D24255-693F-4431-88D0-A63F4D814AF5}"
+      DTS:From="Package\Execute T3"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\build item match review" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{728BD3F8-15F2-403A-9AD9-31D23ECC5C0B}"
+      DTS:From="Package\Execute T4"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\build item match review" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165,42"
+          Id="Package\build item match review"
+          TopLeft="321,301" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Execute T1"
+          TopLeft="51.5,94.5" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Execute T2"
+          TopLeft="234,93" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Execute T3"
+          TopLeft="414,90" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Execute T4"
+          TopLeft="596,89" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="118,136.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="238.4,164.5"
+              Start="0,0"
+              End="238.4,157">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,111.108142493639" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,111.108142493639"
+                    Point2="0,115.108142493639"
+                    Point3="4,115.108142493639" />
+                  <mssgle:LineSegment
+                    End="234.4,115.108142493639" />
+                  <mssgle:CubicBezierSegment
+                    Point1="234.4,115.108142493639"
+                    Point2="238.4,115.108142493639"
+                    Point3="238.4,119.108142493639" />
+                  <mssgle:LineSegment
+                    End="238.4,157" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="300.5,135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.3,166"
+              Start="0,0"
+              End="87.3,158.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.728064300067" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,87.728064300067"
+                    Point2="0,91.728064300067"
+                    Point3="4,91.728064300067" />
+                  <mssgle:LineSegment
+                    End="83.3,91.728064300067" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.3,91.728064300067"
+                    Point2="87.3,91.728064300067"
+                    Point3="87.3,95.728064300067" />
+                  <mssgle:LineSegment
+                    End="87.3,158.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="480.5,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.3,169"
+              Start="0,0"
+              End="-61.3,161.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,89.3858004018754" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,89.3858004018754"
+                    Point2="0,93.3858004018754"
+                    Point3="-4,93.3858004018754" />
+                  <mssgle:LineSegment
+                    End="-57.3,93.3858004018754" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.3,93.3858004018754"
+                    Point2="-61.3,93.3858004018754"
+                    Point3="-61.3,97.3858004018754" />
+                  <mssgle:LineSegment
+                    End="-61.3,161.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="662.5,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-211.9,170"
+              Start="0,0"
+              End="-211.9,162.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,114.956743002545" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,114.956743002545"
+                    Point2="0,118.956743002545"
+                    Point3="-4,118.956743002545" />
+                  <mssgle:LineSegment
+                    End="-207.9,118.956743002545" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-207.9,118.956743002545"
+                    Point2="-211.9,118.956743002545"
+                    Point3="-211.9,122.956743002545" />
+                  <mssgle:LineSegment
+                    End="-211.9,162.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

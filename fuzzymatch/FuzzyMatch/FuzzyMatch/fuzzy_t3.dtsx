@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fuzzy_t3"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{F01BDC37-C789-4602-9972-7A1BE7B54899}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{8EF16694-EFAB-48CC-B965-B8C8804D6A07}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -71,7 +71,7 @@
                   dataType="System.Int32"
                   description="Indicates whether to reuse an existing fuzzy-match index table or build a new one. The new index table can be temporary, persisted, or persisted and maintained."
                   name="MatchIndexOptions"
-                  typeConverter="tcMatchIndexOptions">2</property>
+                  typeConverter="tcMatchIndexOptions">1</property>
                 <property
                   dataType="System.Null"
                   description="Specifies the maximum amount of memory (MB) that this instance of the Fuzzy Lookup transformation can use.  If 0 is given, then the transform will dynamically adjust it's memory usage based upon it's requirements and available system memory."
@@ -133,7 +133,6 @@
               <inputs>
                 <input
                   refId="Package\fuzzy_t3\fuzzy_t3.Inputs[Fuzzy Lookup Input]"
-                  hasSideEffects="true"
                   name="Fuzzy Lookup Input">
                   <inputColumns>
                     <inputColumn
@@ -478,7 +477,6 @@
               <outputs>
                 <output
                   refId="Package\fuzzy_t3\fuzzy_t3.Outputs[Fuzzy Lookup Output]"
-                  hasSideEffects="true"
                   name="Fuzzy Lookup Output">
                   <outputColumns>
                     <outputColumn
@@ -1884,7 +1882,7 @@
     design-time-name="Package\fuzzy_t3">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\fuzzy_t3\item_match_t3"
@@ -1916,9 +1914,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-25.0951171875,38.3857421875,50.190234375,11.228515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1940,9 +1936,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-25.0951171875,30.8857421875,50.190234375,11.228515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

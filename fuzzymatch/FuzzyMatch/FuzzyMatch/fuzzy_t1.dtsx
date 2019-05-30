@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fuzzy_t1"
   DTS:PackageType="5"
-  DTS:VersionBuild="46"
-  DTS:VersionGUID="{179084AC-D1E3-4BCF-BE01-ED68B3BDEC25}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{5033BA5F-C90E-4B80-808C-5E80718181CA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -71,7 +71,7 @@
                   dataType="System.Int32"
                   description="Indicates whether to reuse an existing fuzzy-match index table or build a new one. The new index table can be temporary, persisted, or persisted and maintained."
                   name="MatchIndexOptions"
-                  typeConverter="tcMatchIndexOptions">2</property>
+                  typeConverter="tcMatchIndexOptions">1</property>
                 <property
                   dataType="System.Null"
                   description="Specifies the maximum amount of memory (MB) that this instance of the Fuzzy Lookup transformation can use.  If 0 is given, then the transform will dynamically adjust it's memory usage based upon it's requirements and available system memory."
@@ -133,7 +133,6 @@
               <inputs>
                 <input
                   refId="Package\fuzzy_t1\fuzzy_t1.Inputs[Fuzzy Lookup Input]"
-                  hasSideEffects="true"
                   name="Fuzzy Lookup Input">
                   <inputColumns>
                     <inputColumn
@@ -444,7 +443,6 @@
               <outputs>
                 <output
                   refId="Package\fuzzy_t1\fuzzy_t1.Outputs[Fuzzy Lookup Output]"
-                  hasSideEffects="true"
                   name="Fuzzy Lookup Output">
                   <outputColumns>
                     <outputColumn
