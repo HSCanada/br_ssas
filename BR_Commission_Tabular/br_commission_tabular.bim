@@ -1275,22 +1275,22 @@
           },
           {
             "name": "MTD Sales Var %",
-            "expression": "[MTD Sales]/[PY MTD Sales] -1",
+            "expression": "DIVIDE( [MTD Sales]-[PY MTD Sales],[PY MTD Sales])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "MTD GP Var %",
-            "expression": "[MTD GP]/[PY MTD GP] -1",
+            "expression": "DIVIDE( [MTD GP] - [PY MTD GP], [PY MTD GP])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "YTD Sales Var %",
-            "expression": "[YTD Sales]/[PY YTD Sales]-1",
+            "expression": "DIVIDE( [YTD Sales]-[PY YTD Sales], [PY YTD Sales])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
             "name": "YTD GP Sales Var %",
-            "expression": "[YTD GP]/[PY YTD GP] -1",
+            "expression": "DIVIDE( [YTD GP] - [PY YTD GP], [PY YTD GP])",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
