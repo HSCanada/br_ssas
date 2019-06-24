@@ -1646,7 +1646,7 @@
             ]
           },
           {
-            "name": "Rolling 18mo Sales",
+            "name": "Rolling 24mo Sales",
             "expression": [
               " ",
               "",
@@ -1654,7 +1654,7 @@
               "        [Sales in Period],",
               "        filter(",
               "            ALL(Period), ",
-              "            Period[MonthSeq]>([__seq_first_month_current]-18) &&",
+              "            Period[MonthSeq]>([__seq_first_month_current]-24) &&",
               "            Period[MonthSeq]<=[__seq_first_month_current]",
               "        ) ",
               ")"
@@ -2501,7 +2501,7 @@
     "roles": [
       {
         "name": "User Role",
-        "modelPermission": "read",
+        "modelPermission": "readRefresh",
         "members": [
           {
             "memberName": "CAHSI\\JLi",
