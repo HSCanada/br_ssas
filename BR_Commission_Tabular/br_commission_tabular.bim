@@ -2438,6 +2438,117 @@
             ]
           }
         ]
+      },
+      {
+        "name": "CommSalesperson_CCS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeNumber_ESS",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[EmployeeNumber_ESS]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommMasterCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[CommMasterCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[SalespersonName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommPlanCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[CommPlanCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryStart",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[TerritoryStart]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonID",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[SalespersonID]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[SalespersonKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCount",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[BranchCount]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[BranchCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[BranchName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "ZoneName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[ZoneName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "tracker_ind",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_ESS[tracker_ind]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CommSalesperson_ESS"
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -2517,6 +2628,13 @@
         "fromColumn": "FSC_SalespersonCodeKey",
         "toTable": "CommSalespersonCode_FSC",
         "toColumn": "FSC_SalespersonCodeKey"
+      },
+      {
+        "name": "4ce06ae1-aff8-4c12-ae58-7b8e4f0f6b50",
+        "fromTable": "Sales",
+        "fromColumn": "ESS_SalespersonKey",
+        "toTable": "CommSalesperson_CCS",
+        "toColumn": "SalespersonKey"
       }
     ],
     "roles": [
