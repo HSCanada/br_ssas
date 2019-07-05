@@ -1735,6 +1735,21 @@
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "sourceColumn": "comm_group_scorecard_cd"
+          },
+          {
+            "name": "comm_group_rollup1_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_group_rollup1_cd"
+          },
+          {
+            "name": "comm_group_rollup2_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_group_rollup2_cd"
+          },
+          {
+            "name": "comm_group_rollup3_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_group_rollup3_cd"
           }
         ],
         "partitions": [
@@ -1750,6 +1765,10 @@
                 "  ,Dimension.CommissionGroup.SpecialMarketCode",
                 "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
                 " , comm_group_scorecard_cd",
+                ",comm_group_rollup1_cd",
+                ",comm_group_rollup2_cd",
+                ",comm_group_rollup3_cd",
+                "",
                 "FROM",
                 "  Dimension.CommissionGroup"
               ],
@@ -1766,6 +1785,10 @@
                   "  ,Dimension.CommissionGroup.SpecialMarketCode",
                   "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
                   " , comm_group_scorecard_cd",
+                  ",comm_group_rollup1_cd",
+                  ",comm_group_rollup2_cd",
+                  ",comm_group_rollup3_cd",
+                  "",
                   "FROM",
                   "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketStatusCode\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -1784,6 +1807,10 @@
               "  ,Dimension.CommissionGroup.SpecialMarketCode",
               "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
               " , comm_group_scorecard_cd",
+              ",comm_group_rollup1_cd",
+              ",comm_group_rollup2_cd",
+              ",comm_group_rollup3_cd",
+              "",
               "FROM",
               "  Dimension.CommissionGroup"
             ]
@@ -1806,6 +1833,10 @@
               "  ,Dimension.CommissionGroup.SpecialMarketCode",
               "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
               " , comm_group_scorecard_cd",
+              ",comm_group_rollup1_cd",
+              ",comm_group_rollup2_cd",
+              ",comm_group_rollup3_cd",
+              "",
               "FROM",
               "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketStatusCode\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -1863,6 +1894,30 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "comm_group_rollup1_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[comm_group_rollup1_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "comm_group_rollup2_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[comm_group_rollup2_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "comm_group_rollup3_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[comm_group_rollup3_cd]"
           }
         ],
         "partitions": [
