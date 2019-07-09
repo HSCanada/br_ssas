@@ -2606,7 +2606,7 @@
         ]
       },
       {
-        "name": "Sales_DS",
+        "name": "DS_Sales",
         "isHidden": true,
         "columns": [
           {
@@ -2796,7 +2796,7 @@
         ]
       },
       {
-        "name": "Adjustment",
+        "name": "DS_Adjustment",
         "columns": [
           {
             "name": "AdjCode",
@@ -2900,7 +2900,7 @@
         ]
       },
       {
-        "name": "BusinessUnitClass",
+        "name": "DS_BusinessUnitClass",
         "columns": [
           {
             "name": "GLBU_Class",
@@ -3653,44 +3653,44 @@
       },
       {
         "name": "c4825b63-f545-43b9-85fb-43d7b6a3117e",
-        "fromTable": "Sales_DS",
+        "fromTable": "DS_Sales",
         "fromColumn": "FiscalMonth",
         "toTable": "Period",
         "toColumn": "FiscalMonth"
       },
       {
         "name": "930dfce1-42e0-474e-a5a0-012091d3b4ae",
-        "fromTable": "Sales_DS",
+        "fromTable": "DS_Sales",
         "fromColumn": "DocTypeKey",
         "toTable": "DocType",
         "toColumn": "DocTypeKey"
       },
       {
         "name": "165a2980-aaef-462b-aee5-1ec532807b61",
-        "fromTable": "Sales_DS",
+        "fromTable": "DS_Sales",
         "fromColumn": "ItemKey",
         "toTable": "Item",
         "toColumn": "ItemKey"
       },
       {
         "name": "b4a34f93-7b67-4a22-a250-482423b2d73d",
-        "fromTable": "Sales_DS",
+        "fromTable": "DS_Sales",
         "fromColumn": "ShipTo",
         "toTable": "Customer",
         "toColumn": "ShipTo"
       },
       {
         "name": "eed61ec2-ef00-45b1-af8e-4352591db684",
-        "fromTable": "Sales_DS",
+        "fromTable": "DS_Sales",
         "fromColumn": "AdjCodeKey",
-        "toTable": "Adjustment",
+        "toTable": "DS_Adjustment",
         "toColumn": "AdjCodeKey"
       },
       {
         "name": "c1932e02-d5b9-483c-a545-0c0b65c79e8e",
-        "fromTable": "Sales_DS",
+        "fromTable": "DS_Sales",
         "fromColumn": "GLBU_ClassKey",
-        "toTable": "BusinessUnitClass",
+        "toTable": "DS_BusinessUnitClass",
         "toColumn": "GLBU_ClassKey"
       }
     ],
