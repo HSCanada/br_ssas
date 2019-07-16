@@ -360,6 +360,11 @@
             "name": "PrivateLabelScopeInd",
             "dataType": "boolean",
             "sourceColumn": "PrivateLabelScopeInd"
+          },
+          {
+            "name": "Top15",
+            "dataType": "string",
+            "sourceColumn": "Top15"
           }
         ],
         "partitions": [
@@ -387,6 +392,7 @@
                 "  ,SalesCategoryRollup",
                 " ,SalesCategoryScorecard",
                 " ,PrivateLabelScopeInd",
+                ",Top15",
                 "FROM",
                 "  Dimension.Item"
               ],
@@ -415,6 +421,7 @@
                   "  ,SalesCategoryRollup",
                   " ,SalesCategoryScorecard",
                   " ,PrivateLabelScopeInd",
+                  ",Top15",
                   "FROM",
                   "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -445,6 +452,7 @@
               "  ,SalesCategoryRollup",
               " ,SalesCategoryScorecard",
               " ,PrivateLabelScopeInd",
+              ",Top15",
               "FROM",
               "  Dimension.Item"
             ]
@@ -479,6 +487,7 @@
               "  ,SalesCategoryRollup",
               " ,SalesCategoryScorecard",
               " ,PrivateLabelScopeInd",
+              ",Top15",
               "FROM",
               "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -3573,6 +3582,347 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Event_code",
+        "columns": [
+          {
+            "name": "strat_code",
+            "dataType": "string",
+            "sourceColumn": "strat_code",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "strat_description",
+            "dataType": "string",
+            "sourceColumn": "strat_description",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "strat_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "strat_key",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "tracker_code",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [strat].[tracker_code].[strat_code],[strat].[tracker_code].[strat_description],[strat].[tracker_code].[strat_key] FROM [strat].[tracker_code] ",
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>strat_code</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>82</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>strat_description</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>111</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>52</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>strat_key</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>76</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>strat_code</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>strat_description</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>strat_key</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [strat].[tracker_code].[strat_code],[strat].[tracker_code].[strat_description],[strat].[tracker_code].[strat_key] FROM [strat].[tracker_code] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "tracker_code"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "strat"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>strat_code</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>82</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>strat_description</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>111</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>note</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>52</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>strat_key</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>76</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>strat_code</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>strat_description</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>note</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>strat_key</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>note</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Event",
+        "columns": [
+          {
+            "name": "FactKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FactKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FSC_SalespersonKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FSC_SalespersonKey",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "ShipTo",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipTo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "string",
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "StratKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "StratKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "commission_strat",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [Fact].[commission_strat].* FROM [Fact].[commission_strat] ",
+              "dataSource": "Commission SQL Source"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Events in Period",
+            "expression": "COUNTA([ShipTo])",
+            "isHidden": true
+          },
+          {
+            "name": "YTD Event",
+            "expression": "CALCULATE([Events in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD Event",
+            "expression": "CALCULATE([Events in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Event  Var",
+            "expression": "[YTD Event]-[PY YTD Event]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Event Var %",
+            "expression": "DIVIDE( [YTD Event]-[PY YTD Event], [PY YTD Event])",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Fact].[commission_strat].* FROM [Fact].[commission_strat] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "commission_strat"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Fact"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -3701,6 +4051,34 @@
         "fromColumn": "GLBU_ClassKey",
         "toTable": "DS_BusinessUnitClass",
         "toColumn": "GLBU_ClassKey"
+      },
+      {
+        "name": "85428563-70bd-4692-beb4-a13bcee98bd5",
+        "fromTable": "Event",
+        "fromColumn": "StratKey",
+        "toTable": "Event_code",
+        "toColumn": "strat_key"
+      },
+      {
+        "name": "1216d968-9737-4c73-a8c0-2b6a6ffc98d7",
+        "fromTable": "Event",
+        "fromColumn": "FiscalMonth",
+        "toTable": "Period",
+        "toColumn": "FiscalMonth"
+      },
+      {
+        "name": "ea8ec565-dbea-4695-be67-d7af46c781bc",
+        "fromTable": "Event",
+        "fromColumn": "FSC_SalespersonKey",
+        "toTable": "CommSalesperson_FSC",
+        "toColumn": "SalespersonKey"
+      },
+      {
+        "name": "fbb12dde-1470-446f-955a-ae8656392db7",
+        "fromTable": "Event",
+        "fromColumn": "ShipTo",
+        "toTable": "Customer",
+        "toColumn": "ShipTo"
       }
     ],
     "roles": [
