@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">CAHSIONNLD3092A</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsocPWTYnUkSRjUJsQRHF0gAAAAACAAAAAAADZgAAwAAAABAAAAD3F2yOP0a88vw0zUHzWGe+AAAAAASAAACgAAAAEAAAADLrTOyztc8V0hAlbYzLDkOIAAAAlEOVLb+kYE8oOhqdILg6EHx+ZC/lNLWnk8QHfaxcYDsoPxNh2cVEl2WnFTvDIZtLFzCdOb94CQUd7D43AGEZ00XYu+45M1EJluf0TECtK795aayA7b7qaQS9JSk3l9F2N8le+QsE6Dh+tO1mboWeGtEgE1JkaZj8SpCFMm+N7SbYKb8nboo/yBQAAABtZRoSfxwQKyVqLjLxyLIYrjmy2g==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAx35lg5kzGUylQLH6Q07wXQAAAAACAAAAAAADZgAAwAAAABAAAACsJR8vLsUE6cGSWuNj7sH3AAAAAASAAACgAAAAEAAAABiwsgj2OIRi6AXUdFMJwmaIAAAAzyDwHBB/DZaHXoHhZpzLssFZgYtRq/dep2uy0lyXU51Sr+ZO75358FyZ8t9qi9wgbbw7I2PCfqMA0k6koRksyWTyBRxcaPSHMpb5oV0wai8rNLooMbH8aGyHoWHS9tiwUj159CTW5iQrSn0+smpRBVnHO9Q4FAnxUAqSYk1tORJYUsFc3WfzgBQAAADc0enVj9pfJ/PKzL/lqQl7DY2UUg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -121,10 +121,10 @@
                 <SSIS:Property SSIS:Name="Name">pkg_pricing</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">152</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">154</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{61D6A3D6-8673-41D6-BE80-120EF47F74BB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F36982EF-A819-4EC7-AE6A-291A1C1331E0}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -204,12 +204,12 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2018-09-16T21:51:04.241525Z</Value>
+            <Value xsi:type="xsd:dateTime">2019-07-18T20:04:13.8492421Z</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>{aa221702-982a-43b8-af2a-733ef60fbd55}</Id>
             <Name>Project::ConnectionString</Name>
-            <Value xsi:type="xsd:string">Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</Value>
+            <Value xsi:type="xsd:string">Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</Value>
           </ConfigurationSetting>
         </ParameterConfigurationValues>
       </Options>

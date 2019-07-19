@@ -125,6 +125,16 @@
             "name": "FocusCd",
             "dataType": "string",
             "sourceColumn": "FocusCd"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment"
+          },
+          {
+            "name": "Specialty",
+            "dataType": "string",
+            "sourceColumn": "Specialty"
           }
         ],
         "partitions": [
@@ -151,7 +161,10 @@
                 "  ,Dimension.Customer.MarketClassCode",
                 "  ,Dimension.Customer.CommStatusCode",
                 "  ,Dimension.Customer.CommStatusNote",
-                "  , FocusCd",
+                "  ,FocusCd",
+                "  ,Segment",
+                " ,Specialty",
+                "",
                 "FROM",
                 "  Dimension.Customer"
               ],
@@ -179,7 +192,10 @@
                   "  ,Dimension.Customer.MarketClassCode",
                   "  ,Dimension.Customer.CommStatusCode",
                   "  ,Dimension.Customer.CommStatusNote",
-                  "  , FocusCd",
+                  "  ,FocusCd",
+                  "  ,Segment",
+                  " ,Specialty",
+                  "",
                   "FROM",
                   "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -209,7 +225,10 @@
               "  ,Dimension.Customer.MarketClassCode",
               "  ,Dimension.Customer.CommStatusCode",
               "  ,Dimension.Customer.CommStatusNote",
-              "  , FocusCd",
+              "  ,FocusCd",
+              "  ,Segment",
+              " ,Specialty",
+              "",
               "FROM",
               "  Dimension.Customer"
             ]
@@ -243,7 +262,10 @@
               "  ,Dimension.Customer.MarketClassCode",
               "  ,Dimension.Customer.CommStatusCode",
               "  ,Dimension.Customer.CommStatusNote",
-              "  , FocusCd",
+              "  ,FocusCd",
+              "  ,Segment",
+              " ,Specialty",
+              "",
               "FROM",
               "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -996,7 +1018,6 @@
           {
             "name": "FactKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "FactKey"
           },
           {
@@ -1486,6 +1507,16 @@
             "name": "YTD Comm ESS Var %",
             "expression": "[YTD Comm ESS]/[PY YTD Comm ESS]-1",
             "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Qty in Period",
+            "expression": "SUM([Quantity])",
+            "isHidden": true
+          },
+          {
+            "name": "MTD Qty",
+            "expression": "CALCULATE([Qty in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
@@ -1984,6 +2015,7 @@
           {
             "name": "SalespersonID",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "SalespersonID",
             "sourceProviderType": "Char"
           },
@@ -2180,7 +2212,8 @@
             "dataType": "boolean",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[tracker_ind]"
+            "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           }
         ],
         "partitions": [
@@ -2276,6 +2309,13 @@
             "isHidden": true,
             "sourceColumn": "DocTypeKey",
             "sourceProviderType": "Integer"
+          },
+          {
+            "type": "calculated",
+            "name": "TransType",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "left([DocType],1)"
           }
         ],
         "partitions": [
@@ -2517,11 +2557,11 @@
         "columns": [
           {
             "type": "calculatedTableColumn",
-            "name": "EmployeeNumber_ESS",
+            "name": "EmployeeNumber_CCS",
             "dataType": "int64",
-            "isNameInferred": true,
+            "isNameInferred": false,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[EmployeeNumber_ESS]"
+            "sourceColumn": "CommSalesperson_FSC[EmployeeNumber_FSC]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2529,7 +2569,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[CommMasterCode]"
+            "sourceColumn": "CommSalesperson_FSC[CommMasterCode]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2537,7 +2577,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[SalespersonName]"
+            "sourceColumn": "CommSalesperson_FSC[SalespersonName]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2545,7 +2585,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[CommPlanCode]"
+            "sourceColumn": "CommSalesperson_FSC[CommPlanCode]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2553,7 +2593,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[TerritoryStart]"
+            "sourceColumn": "CommSalesperson_FSC[TerritoryStart]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2561,7 +2601,8 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[SalespersonID]"
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonID]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2569,7 +2610,8 @@
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[SalespersonKey]"
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2577,7 +2619,7 @@
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[BranchCount]"
+            "sourceColumn": "CommSalesperson_FSC[BranchCount]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2585,7 +2627,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[BranchCode]"
+            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2593,7 +2635,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[BranchName]"
+            "sourceColumn": "CommSalesperson_FSC[BranchName]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2601,7 +2643,7 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[ZoneName]"
+            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
           },
           {
             "type": "calculatedTableColumn",
@@ -2609,7 +2651,7 @@
             "dataType": "boolean",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_ESS[tracker_ind]",
+            "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           }
         ],
@@ -2618,7 +2660,7 @@
             "name": "CalculatedTable 1",
             "source": {
               "type": "calculated",
-              "expression": "CommSalesperson_ESS"
+              "expression": "CommSalesperson_FSC"
             }
           }
         ]
@@ -4004,13 +4046,6 @@
         "toColumn": "FSC_SalespersonCodeKey"
       },
       {
-        "name": "4ce06ae1-aff8-4c12-ae58-7b8e4f0f6b50",
-        "fromTable": "Sales",
-        "fromColumn": "ESS_SalespersonKey",
-        "toTable": "CommSalesperson_CCS",
-        "toColumn": "SalespersonKey"
-      },
-      {
         "name": "c4825b63-f545-43b9-85fb-43d7b6a3117e",
         "fromTable": "DS_Sales",
         "fromColumn": "FiscalMonth",
@@ -4079,6 +4114,13 @@
         "fromColumn": "ShipTo",
         "toTable": "Customer",
         "toColumn": "ShipTo"
+      },
+      {
+        "name": "ed59598a-9394-4b63-a17c-78d74e0faa29",
+        "fromTable": "Sales",
+        "fromColumn": "ESS_SalespersonKey",
+        "toTable": "CommSalesperson_CCS",
+        "toColumn": "SalespersonKey"
       }
     ],
     "roles": [
