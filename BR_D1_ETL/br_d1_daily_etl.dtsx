@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_daily_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="304"
-  DTS:VersionGUID="{94F4CF0B-98C8-4250-93A8-6ECF681755C4}">
+  DTS:VersionBuild="305"
+  DTS:VersionGUID="{0095F787-D2EE-44F9-9B1A-D9991B906904}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
