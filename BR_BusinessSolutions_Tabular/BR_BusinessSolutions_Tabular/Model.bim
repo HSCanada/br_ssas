@@ -887,6 +887,11 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "PriceMethodKey"
+          },
+          {
+            "name": "sales_order_key",
+            "dataType": "int64",
+            "sourceColumn": "sales_order_key"
           }
         ],
         "partitions": [
@@ -896,6 +901,7 @@
             "source": {
               "query": [
                 "SELECT",
+                "--\ttop 10",
                 "\tFactKey, ",
                 "\tShipTo, ",
                 "\tItemKey, ",
@@ -904,6 +910,7 @@
                 "\tCalMonth,",
                 "\tDateKey,",
                 "\tSalesOrderNumber,",
+                "\tsales_order_key,",
                 "\tLineNumber,",
                 "\tFreeGoodsInvoicedInd,",
                 "\tPriceMethodKey,",
@@ -929,6 +936,7 @@
                 "name": "QueryEditorSerialization",
                 "value": [
                   "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "--\ttop 10",
                   "\tFactKey, ",
                   "\tShipTo, ",
                   "\tItemKey, ",
@@ -937,6 +945,7 @@
                   "\tCalMonth,",
                   "\tDateKey,",
                   "\tSalesOrderNumber,",
+                  "\tsales_order_key,",
                   "\tLineNumber,",
                   "\tFreeGoodsInvoicedInd,",
                   "\tPriceMethodKey,",
@@ -1747,6 +1756,7 @@
             "name": "_TM_ExtProp_QueryDefinition",
             "value": [
               "SELECT",
+              "--\ttop 10",
               "\tFactKey, ",
               "\tShipTo, ",
               "\tItemKey, ",
@@ -1755,6 +1765,7 @@
               "\tCalMonth,",
               "\tDateKey,",
               "\tSalesOrderNumber,",
+              "\tsales_order_key,",
               "\tLineNumber,",
               "\tFreeGoodsInvoicedInd,",
               "\tPriceMethodKey,",
@@ -1786,6 +1797,7 @@
             "name": "QueryEditorSerialization",
             "value": [
               "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "--\ttop 10",
               "\tFactKey, ",
               "\tShipTo, ",
               "\tItemKey, ",
@@ -1794,6 +1806,7 @@
               "\tCalMonth,",
               "\tDateKey,",
               "\tSalesOrderNumber,",
+              "\tsales_order_key,",
               "\tLineNumber,",
               "\tFreeGoodsInvoicedInd,",
               "\tPriceMethodKey,",
@@ -1878,6 +1891,11 @@
             "name": "OrderSourceRollup",
             "dataType": "string",
             "sourceColumn": "OrderSourceRollup"
+          },
+          {
+            "name": "sales_order_key",
+            "dataType": "int64",
+            "sourceColumn": "sales_order_key"
           }
         ],
         "partitions": [
@@ -1887,16 +1905,18 @@
             "source": {
               "query": [
                 "SELECT",
-                "  Dimension.Salesorder_brs.SalesOrderNumber",
-                "  ,Dimension.Salesorder_brs.AdvancedPricingInd",
-                "  ,Dimension.Salesorder_brs.OrderSource",
-                "  ,Dimension.Salesorder_brs.OrderSourceRollup",
-                "  ,Dimension.Salesorder_brs.PromotionType",
-                "  ,Dimension.Salesorder_brs.Promotion",
-                "  ,Dimension.Salesorder_brs.PromotionConvention",
-                "  ,Dimension.Salesorder_brs.DocType",
-                "  ,Dimension.Salesorder_brs.EnteredBy",
-                "  ,Dimension.Salesorder_brs.OrderTakenBy",
+                "-- top 10",
+                "  SalesOrderNumber",
+                "  ,sales_order_key",
+                "  ,AdvancedPricingInd",
+                "  ,OrderSource",
+                "  ,OrderSourceRollup",
+                "  ,PromotionType",
+                "  ,Promotion",
+                "  ,PromotionConvention",
+                "  ,DocType",
+                "  ,EnteredBy",
+                "  ,OrderTakenBy",
                 "FROM",
                 "  Dimension.Salesorder_brs"
               ],
@@ -1907,16 +1927,18 @@
                 "name": "QueryEditorSerialization",
                 "value": [
                   "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
-                  "  Dimension.Salesorder_brs.SalesOrderNumber",
-                  "  ,Dimension.Salesorder_brs.AdvancedPricingInd",
-                  "  ,Dimension.Salesorder_brs.OrderSource",
-                  "  ,Dimension.Salesorder_brs.OrderSourceRollup",
-                  "  ,Dimension.Salesorder_brs.PromotionType",
-                  "  ,Dimension.Salesorder_brs.Promotion",
-                  "  ,Dimension.Salesorder_brs.PromotionConvention",
-                  "  ,Dimension.Salesorder_brs.DocType",
-                  "  ,Dimension.Salesorder_brs.EnteredBy",
-                  "  ,Dimension.Salesorder_brs.OrderTakenBy",
+                  "-- top 10",
+                  "  SalesOrderNumber",
+                  "  ,sales_order_key",
+                  "  ,AdvancedPricingInd",
+                  "  ,OrderSource",
+                  "  ,OrderSourceRollup",
+                  "  ,PromotionType",
+                  "  ,Promotion",
+                  "  ,PromotionConvention",
+                  "  ,DocType",
+                  "  ,EnteredBy",
+                  "  ,OrderTakenBy",
                   "FROM",
                   "  Dimension.Salesorder_brs</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"AdvancedPricingInd\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"OrderSource\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"OrderSourceRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"PromotionType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"Promotion\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"PromotionConvention\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"DocType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"EnteredBy\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"OrderTakenBy\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -1929,16 +1951,18 @@
             "name": "_TM_ExtProp_QueryDefinition",
             "value": [
               "SELECT",
-              "  Dimension.Salesorder_brs.SalesOrderNumber",
-              "  ,Dimension.Salesorder_brs.AdvancedPricingInd",
-              "  ,Dimension.Salesorder_brs.OrderSource",
-              "  ,Dimension.Salesorder_brs.OrderSourceRollup",
-              "  ,Dimension.Salesorder_brs.PromotionType",
-              "  ,Dimension.Salesorder_brs.Promotion",
-              "  ,Dimension.Salesorder_brs.PromotionConvention",
-              "  ,Dimension.Salesorder_brs.DocType",
-              "  ,Dimension.Salesorder_brs.EnteredBy",
-              "  ,Dimension.Salesorder_brs.OrderTakenBy",
+              "-- top 10",
+              "  SalesOrderNumber",
+              "  ,sales_order_key",
+              "  ,AdvancedPricingInd",
+              "  ,OrderSource",
+              "  ,OrderSourceRollup",
+              "  ,PromotionType",
+              "  ,Promotion",
+              "  ,PromotionConvention",
+              "  ,DocType",
+              "  ,EnteredBy",
+              "  ,OrderTakenBy",
               "FROM",
               "  Dimension.Salesorder_brs"
             ]
@@ -1955,16 +1979,18 @@
             "name": "QueryEditorSerialization",
             "value": [
               "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
-              "  Dimension.Salesorder_brs.SalesOrderNumber",
-              "  ,Dimension.Salesorder_brs.AdvancedPricingInd",
-              "  ,Dimension.Salesorder_brs.OrderSource",
-              "  ,Dimension.Salesorder_brs.OrderSourceRollup",
-              "  ,Dimension.Salesorder_brs.PromotionType",
-              "  ,Dimension.Salesorder_brs.Promotion",
-              "  ,Dimension.Salesorder_brs.PromotionConvention",
-              "  ,Dimension.Salesorder_brs.DocType",
-              "  ,Dimension.Salesorder_brs.EnteredBy",
-              "  ,Dimension.Salesorder_brs.OrderTakenBy",
+              "-- top 10",
+              "  SalesOrderNumber",
+              "  ,sales_order_key",
+              "  ,AdvancedPricingInd",
+              "  ,OrderSource",
+              "  ,OrderSourceRollup",
+              "  ,PromotionType",
+              "  ,Promotion",
+              "  ,PromotionConvention",
+              "  ,DocType",
+              "  ,EnteredBy",
+              "  ,OrderTakenBy",
               "FROM",
               "  Dimension.Salesorder_brs</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"AdvancedPricingInd\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"OrderSource\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"OrderSourceRollup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"PromotionType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"Promotion\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"PromotionConvention\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"DocType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"EnteredBy\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Salesorder_brs\" ColumnName=\"OrderTakenBy\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -2550,13 +2576,6 @@
         "toColumn": "CalMonth"
       },
       {
-        "name": "2956c6c1-4408-4f93-87eb-f06f6b2cf8c1",
-        "fromTable": "Sales",
-        "fromColumn": "SalesOrderNumber",
-        "toTable": "Salesorder",
-        "toColumn": "SalesOrderNumber"
-      },
-      {
         "name": "04d769e3-7733-4278-bbf1-4bea89feeee3",
         "fromTable": "Sales",
         "fromColumn": "BrandKey",
@@ -2569,6 +2588,13 @@
         "fromColumn": "PriceMethodKey",
         "toTable": "PriceMethod",
         "toColumn": "PriceMethodKey"
+      },
+      {
+        "name": "fa90cea0-7a76-4faa-aefc-ba12e79b5455",
+        "fromTable": "Sales",
+        "fromColumn": "sales_order_key",
+        "toTable": "Salesorder",
+        "toColumn": "sales_order_key"
       }
     ],
     "roles": [
@@ -2583,6 +2609,10 @@
           {
             "memberName": "CAHSI\\Gary.Winslow",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
+          },
+          {
+            "memberName": "CAHSI\\JLi",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
           }
         ]
       }
