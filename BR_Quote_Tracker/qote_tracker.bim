@@ -558,7 +558,7 @@
             ]
           },
           {
-            "name": "YTD GP Sales Var %",
+            "name": "YTD GP Var %",
             "expression": " DIVIDE([YTD GP]-[PY YTD GP],[PY YTD GP]) ",
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
@@ -2141,6 +2141,11 @@
             "name": "CustomerParent",
             "dataType": "string",
             "sourceColumn": "CustomerParent"
+          },
+          {
+            "name": "SalesplanFocusCode",
+            "dataType": "string",
+            "sourceColumn": "SalesplanFocusCode"
           }
         ],
         "partitions": [
@@ -2163,6 +2168,7 @@
                 "\t,c.DCC_TrackingShipTo AS DSO_TrackingShipTo",
                 "\t,c.DCC_TrackingCode AS DSO_TrackingCode",
                 "\t,c.SalesPlan",
+                "\t,c.SalesplanFocusCode",
                 "\t,c.CustomerGroup",
                 "\t,c.FocusCd",
                 "\t,iif(c.DCC_TrackingShipTo > 0, ",
@@ -2195,6 +2201,7 @@
                   "\t,c.DCC_TrackingShipTo AS DSO_TrackingShipTo",
                   "\t,c.DCC_TrackingCode AS DSO_TrackingCode",
                   "\t,c.SalesPlan",
+                  "\t,c.SalesplanFocusCode",
                   "\t,c.CustomerGroup",
                   "\t,c.FocusCd",
                   "\t,iif(c.DCC_TrackingShipTo > 0, ",
@@ -2229,6 +2236,7 @@
               "\t,c.DCC_TrackingShipTo AS DSO_TrackingShipTo",
               "\t,c.DCC_TrackingCode AS DSO_TrackingCode",
               "\t,c.SalesPlan",
+              "\t,c.SalesplanFocusCode",
               "\t,c.CustomerGroup",
               "\t,c.FocusCd",
               "\t,iif(c.DCC_TrackingShipTo > 0, ",
@@ -2267,6 +2275,7 @@
               "\t,c.DCC_TrackingShipTo AS DSO_TrackingShipTo",
               "\t,c.DCC_TrackingCode AS DSO_TrackingCode",
               "\t,c.SalesPlan",
+              "\t,c.SalesplanFocusCode",
               "\t,c.CustomerGroup",
               "\t,c.FocusCd",
               "\t,iif(c.DCC_TrackingShipTo > 0, ",
