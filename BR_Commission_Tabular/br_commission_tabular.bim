@@ -359,7 +359,7 @@
             "sourceColumn": "CommGroupCpsCode"
           },
           {
-            "name": "FSCDigImpBonus",
+            "name": "CommGroupHiTech",
             "dataType": "string",
             "sourceColumn": "CustomCommGroup1Code"
           },
