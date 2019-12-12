@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Integrated Security=SSPI;Persist Security Info=false",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Integrated Security=SSPI;Persist Security Info=false",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -381,6 +381,22 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "MarketClassKey"
+          },
+          {
+            "name": "CreditKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CreditKey"
+          },
+          {
+            "name": "OriginalSalesOrderNumber",
+            "dataType": "int64",
+            "sourceColumn": "OriginalSalesOrderNumber"
+          },
+          {
+            "name": "OriginalOrderLineNumber",
+            "dataType": "int64",
+            "sourceColumn": "OriginalOrderLineNumber"
           }
         ],
         "partitions": [
@@ -398,11 +414,14 @@
                 "\tPriceMethodKey,",
                 "\t[entered_by_key],",
                 "\tMarketClassKey,",
+                "\tCreditKey,",
                 "\tFiscalMonth,",
                 "\tDateKey,",
                 "\tsales_order_key,",
                 "\tSalesOrderNumber,",
                 "\tLineNumber,",
+                "\tOriginalSalesOrderNumber,",
+                "\tOriginalOrderLineNumber,",
                 "\tFreeGoodsInvoicedInd,",
                 "\tQuantity,",
                 "\tSalesAmt,",
@@ -435,11 +454,14 @@
                   "\tPriceMethodKey,",
                   "\t[entered_by_key],",
                   "\tMarketClassKey,",
+                  "\tCreditKey,",
                   "\tFiscalMonth,",
                   "\tDateKey,",
                   "\tsales_order_key,",
                   "\tSalesOrderNumber,",
                   "\tLineNumber,",
+                  "\tOriginalSalesOrderNumber,",
+                  "\tOriginalOrderLineNumber,",
                   "\tFreeGoodsInvoicedInd,",
                   "\tQuantity,",
                   "\tSalesAmt,",
@@ -1237,11 +1259,14 @@
               "\tPriceMethodKey,",
               "\t[entered_by_key],",
               "\tMarketClassKey,",
+              "\tCreditKey,",
               "\tFiscalMonth,",
               "\tDateKey,",
               "\tsales_order_key,",
               "\tSalesOrderNumber,",
               "\tLineNumber,",
+              "\tOriginalSalesOrderNumber,",
+              "\tOriginalOrderLineNumber,",
               "\tFreeGoodsInvoicedInd,",
               "\tQuantity,",
               "\tSalesAmt,",
@@ -1280,11 +1305,14 @@
               "\tPriceMethodKey,",
               "\t[entered_by_key],",
               "\tMarketClassKey,",
+              "\tCreditKey,",
               "\tFiscalMonth,",
               "\tDateKey,",
               "\tsales_order_key,",
               "\tSalesOrderNumber,",
               "\tLineNumber,",
+              "\tOriginalSalesOrderNumber,",
+              "\tOriginalOrderLineNumber,",
               "\tFreeGoodsInvoicedInd,",
               "\tQuantity,",
               "\tSalesAmt,",
@@ -3323,6 +3351,93 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Creditinfo",
+        "columns": [
+          {
+            "name": "CreditMinorReason",
+            "dataType": "string",
+            "sourceColumn": "CreditMinorReason",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CreditType",
+            "dataType": "string",
+            "sourceColumn": "CreditType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "credit_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "isUnique": true,
+            "sourceColumn": "credit_key",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Creditinfo",
+            "dataView": "full",
+            "source": {
+              "query": [
+                "SELECT",
+                "\tcredit_key,",
+                "\tRTRIM(CreditMinorReasonCode) + ' | ' + RTRIM(CreditMinorReason) as CreditMinorReason,",
+                "\tRTRIM(CreditTypeCode) + ' | ' + RTRIM(CreditType) as CreditType",
+                "FROM",
+                "\tBRS_Creditinfo"
+              ],
+              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "\tcredit_key,",
+                  "\tRTRIM(CreditMinorReasonCode) + ' | ' + RTRIM(CreditMinorReason) as CreditMinorReason,",
+                  "\tRTRIM(CreditTypeCode) + ' | ' + RTRIM(CreditType) as CreditType",
+                  "FROM",
+                  "\tBRS_Creditinfo</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "\tcredit_key,",
+              "\tRTRIM(CreditMinorReasonCode) + ' | ' + RTRIM(CreditMinorReason) as CreditMinorReason,",
+              "\tRTRIM(CreditTypeCode) + ' | ' + RTRIM(CreditType) as CreditType",
+              "FROM",
+              "\tBRS_Creditinfo"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_Creditinfo"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "\tcredit_key,",
+              "\tRTRIM(CreditMinorReasonCode) + ' | ' + RTRIM(CreditMinorReason) as CreditMinorReason,",
+              "\tRTRIM(CreditTypeCode) + ' | ' + RTRIM(CreditType) as CreditType",
+              "FROM",
+              "\tBRS_Creditinfo</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
       }
     ],
     "relationships": [
@@ -3381,6 +3496,13 @@
         "fromColumn": "MarketClassKey",
         "toTable": "MarketClass",
         "toColumn": "MarketClassKey"
+      },
+      {
+        "name": "65d78d2a-604c-4047-8a71-ad5844bb8476",
+        "fromTable": "Sales",
+        "fromColumn": "CreditKey",
+        "toTable": "Creditinfo",
+        "toColumn": "credit_key"
       }
     ],
     "roles": [
