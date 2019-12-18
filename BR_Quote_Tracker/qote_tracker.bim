@@ -1230,18 +1230,58 @@
             "formatString": "0.0 %;-0.0 %;0.0 %"
           },
           {
-            "name": "Docs in Period",
-            "expression": "DISTINCTCOUNT([SalesOrderNumber])",
+            "name": "Lines in Period",
+            "expression": "COUNTA([LineNumber])",
             "isHidden": true
           },
           {
-            "name": "Rolling 12mo Doc#",
+            "name": "YTD Lines",
+            "expression": " CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Lines",
+            "expression": "CALCULATE([Lines in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD Lines",
+            "expression": " CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Lines Var",
+            "expression": " [YTD Lines]-[PY YTD Lines]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Lines Var %",
+            "expression": " DIVIDE([YTD Lines]-[PY YTD Lines],[PY YTD Lines])",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "PY MTD Lines",
+            "expression": "CALCULATE([Lines in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Lines Var",
+            "expression": "[MTD Lines]-[PY MTD Lines]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Lines Var %",
+            "expression": "DIVIDE( [MTD Lines]-[PY MTD Lines],[PY MTD Lines])",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "Rolling 12mo Lines",
             "expression": [
               " ",
               "",
               "CALCULATE(",
               "",
-              "        [Docs in Period],",
+              "        [Lines in Period],",
               "",
               "        filter(",
               "",
@@ -1253,9 +1293,31 @@
               "",
               "        )",
               "",
-              ")"
+              ")",
+              "",
+              ""
             ],
             "formatString": "#,0"
+          },
+          {
+            "name": "QTD Lines",
+            "expression": "CALCULATE([Lines in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY QTD Lines",
+            "expression": "CALCULATE([Lines in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12 &&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "QTD Lines Var",
+            "expression": "[QTD Lines]-[PY QTD Lines]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "QTD Lines Var %",
+            "expression": "DIVIDE( [QTD Lines]-[PY QTD Lines],[PY QTD Lines])",
+            "formatString": "0.0 %;-0.0 %;0.0 %"
           }
         ],
         "annotations": [
@@ -3217,6 +3279,10 @@
           {
             "memberName": "CAHSI\\Tina.Duczmal",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1522"
+          },
+          {
+            "memberName": "CAHSI\\LMayhew",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1208"
           }
         ]
       }
