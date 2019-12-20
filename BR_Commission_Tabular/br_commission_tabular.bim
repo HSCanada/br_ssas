@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
