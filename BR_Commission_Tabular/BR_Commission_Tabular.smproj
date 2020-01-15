@@ -17,7 +17,7 @@
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_Commission_Tabular</DeploymentServerDatabase>
-    <DeploymentServerCubeName>comm_backend</DeploymentServerCubeName>
+    <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
@@ -37,7 +37,7 @@
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'QA' ">
-    <DeploymentServerName>CAHSIONNLSQL2</DeploymentServerName>
+    <DeploymentServerName>CAHSIONNLSQL1</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_Commission_Tabular</DeploymentServerDatabase>
@@ -47,13 +47,14 @@
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
     <OutputPath>bin\QA\</OutputPath>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Prod' ">
-    <DeploymentServerName>cahsionnlsql2</DeploymentServerName>
+    <DeploymentServerName>CAHSIONNLSQL1</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_Commission_Tabular</DeploymentServerDatabase>
-    <DeploymentServerCubeName>br_commission_model</DeploymentServerCubeName>
+    <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>

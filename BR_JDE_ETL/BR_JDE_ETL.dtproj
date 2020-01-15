@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">CAHSIONNLD3092A</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAlCtLsWItT0GN6A2TMWOL/AAAAAACAAAAAAADZgAAwAAAABAAAAA+bO7bs687/IPkG0Rf/OXGAAAAAASAAACgAAAAEAAAAHUikI/2JiWlFXXkSnZUYLCIAAAAfJoub0a+YYcfqj1dnCmcTGgKbb+gBlFLex0tutSATXrvOwmgdwrq3CFSS3j7G50cXmDdb3qgN78Qcz1WUhRihzFIXoTDiy8q769Fuseajihok+UpE/970ekdHrC34Am1Rj72vEJ2whaq/a3PsdHefqUkAPinFcPuS+aGOp48Vb/e8RArGtZXFBQAAABg9Qnwye4bXWmJi75XQhyCmoMTlQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAomjDTqUztkaMdWhUmbWnigAAAAACAAAAAAADZgAAwAAAABAAAAAxlj7JS/NAcPuhiMZfuQ4PAAAAAASAAACgAAAAEAAAAGTkW6fK3M8ks4aouKuPDECIAAAADqAHZ3kghHT4aXvCTTdZV0gNExMxJVUWVE+78p1iHyO5P7zm36jpn1YG2A33i271nBPugbkEIvHi/OVVWEvpXm3OHfMz3s7NBXR5xm2wuDEMiZAl0QDgiJUkLlA11Li63tSwA2jp1FkQSKeAByNoH+/3JgNaa8h0MCt9CMmj4Hz64a4SWGOA6BQAAACLggf66ug4+04G0/Rjtc8OxD0Bkg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -34,7 +34,6 @@
           <SSIS:Package SSIS:Name="pkg_hfm.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="pkg_com_trans.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="pkg_com_rebate_terr.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="pkg_com_trans_legacy.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="conn_dest.conmgr" />
@@ -262,6 +261,8 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">
+                </SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -337,10 +338,10 @@
                 <SSIS:Property SSIS:Name="Name">pkg_com_trans</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">21</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AC30623F-21BD-4014-8EEB-55E40E3A3ADE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4B9CE818-B38A-4AB0-BC11-F946704C7CC7}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -354,27 +355,10 @@
                 <SSIS:Property SSIS:Name="Name">pkg_com_rebate_terr</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">17</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4C065B25-4D18-49F7-B064-7E32D4FCA420}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="pkg_com_trans_legacy.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{0DCE1EEF-8C8C-4223-B3D9-D319AD8FC6DF}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">pkg_com_trans_legacy</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">12</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AAB9CA83-9A15-4DF1-AC2A-397A425C558F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C9F4B74C-9462-4D90-88B9-9BEE18BBA2ED}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
