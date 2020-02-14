@@ -528,7 +528,7 @@
           {
             "name": "YTD Sales Var %",
             "expression": " DIVIDE([YTD Sales]-[PY YTD Sales],[PY YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD GP",
@@ -566,17 +566,17 @@
           {
             "name": "YTD GP Var %",
             "expression": " DIVIDE([YTD GP]-[PY YTD GP],[PY YTD GP]) ",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD GM",
             "expression": " DIVIDE([YTD GP],[YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY YTD GM",
             "expression": "divide([YTD GP],[PY YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Quote Sales in Period",
@@ -626,7 +626,7 @@
           {
             "name": "Quote YTD Sales Var %",
             "expression": " DIVIDE([Quote YTD Sales]-[Quote PY YTD Sales],[Quote PY YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Quote GP in Period",
@@ -676,17 +676,17 @@
           {
             "name": "Quote YTD GP Sales Var %",
             "expression": " DIVIDE([Quote YTD GP]-[Quote PY YTD GP],[Quote PY YTD GP]) ",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Quote YTD GM",
             "expression": " DIVIDE([Quote YTD GP],[Quote YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Quote PY YTD GM",
             "expression": "divide([Quote YTD GP],[Quote PY YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Rolling 12mo Sales",
@@ -722,12 +722,12 @@
           {
             "name": "Quote YTD Sales Share",
             "expression": "DIVIDE([Quote YTD Sales],[YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Quote PY YTD Sales Share",
             "expression": "DIVIDE([Quote PY YTD Sales],[PY YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Ext.Base in Period",
@@ -778,7 +778,7 @@
           {
             "name": "YTD Disc%",
             "expression": " DIVIDE([YTD Disc],[YTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Quote Disc in Period",
@@ -829,7 +829,7 @@
           {
             "name": "Quote YTD Disc%",
             "expression": " DIVIDE([Quote YTD Disc],[Quote YTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Sales",
@@ -878,7 +878,7 @@
           {
             "name": "MTD Sales Var %",
             "expression": "DIVIDE( [MTD Sales]-[PY MTD Sales],[PY MTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY MTD GP",
@@ -905,7 +905,7 @@
           {
             "name": "MTD GP Var %",
             "expression": "DIVIDE( [MTD GP] - [PY MTD GP], [PY MTD GP])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY YTD Ext.Base",
@@ -932,7 +932,7 @@
           {
             "name": "YTD Ext.Base Var %",
             "expression": " DIVIDE([YTD Ext.Base]-[PY YTD Ext.Base],[PY YTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY MTD Ext.Base",
@@ -959,7 +959,7 @@
           {
             "name": "MTD Ext.Base Var %",
             "expression": "DIVIDE( [MTD Ext.Base]-[PY MTD Ext.Base],[PY MTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Ext.Base",
@@ -997,7 +997,7 @@
           {
             "name": "YTD Disc Var %",
             "expression": " DIVIDE([YTD Disc]-[PY YTD Disc],[PY YTD Disc])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Disc",
@@ -1035,22 +1035,22 @@
           {
             "name": "MTD Disc Var %",
             "expression": "DIVIDE( [MTD Disc]-[PY MTD Disc],[PY MTD Disc])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY YTD Disc%",
             "expression": " DIVIDE([PY YTD Disc],[PY YTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Disc%",
             "expression": " DIVIDE([MTD Disc],[MTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY MTD Disc%",
             "expression": " DIVIDE([PY MTD Disc],[PY MTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD Sales",
@@ -1088,7 +1088,7 @@
           {
             "name": "QTD Sales Var %",
             "expression": "DIVIDE( [QTD Sales]-[PY QTD Sales],[PY QTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD GP",
@@ -1126,7 +1126,7 @@
           {
             "name": "QTD GP Var %",
             "expression": "DIVIDE( [QTD GP] - [PY QTD GP], [PY QTD GP])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD Ext.Base",
@@ -1164,7 +1164,7 @@
           {
             "name": "QTD Ext.Base Var %",
             "expression": "DIVIDE( [QTD Ext.Base] - [PY QTD Ext.Base], [PY QTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD Disc",
@@ -1202,32 +1202,32 @@
           {
             "name": "QTD Disc Var %",
             "expression": "DIVIDE( [QTD Disc] - [PY QTD Disc], [PY QTD Disc])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD Disc%",
             "expression": " DIVIDE([QTD Disc],[QTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY QTD Disc%",
             "expression": " DIVIDE([PY QTD Disc],[PY QTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD Disc% Improve",
             "expression": " [PY YTD Disc%] - [YTD Disc%] ",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Disc% Improve",
             "expression": " [PY MTD Disc%] - [MTD Disc%] ",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD Disc% Improve",
             "expression": " [PY QTD Disc%] -  [QTD Disc%]",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Lines in Period",
@@ -1257,7 +1257,7 @@
           {
             "name": "YTD Lines Var %",
             "expression": " DIVIDE([YTD Lines]-[PY YTD Lines],[PY YTD Lines])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY MTD Lines",
@@ -1272,7 +1272,7 @@
           {
             "name": "MTD Lines Var %",
             "expression": "DIVIDE( [MTD Lines]-[PY MTD Lines],[PY MTD Lines])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Rolling 12mo Lines",
@@ -1317,7 +1317,7 @@
           {
             "name": "QTD Lines Var %",
             "expression": "DIVIDE( [QTD Lines]-[PY QTD Lines],[PY QTD Lines])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -1462,6 +1462,11 @@
             "name": "StrengthInd",
             "dataType": "int64",
             "sourceColumn": "StrengthInd"
+          },
+          {
+            "name": "ClassificationCode",
+            "dataType": "string",
+            "sourceColumn": "ClassificationCode"
           }
         ],
         "partitions": [
@@ -1480,7 +1485,8 @@
                 "\tStrengthInd,",
                 "\tSupplier,",
                 "\tItemCode,",
-                "\tLabel",
+                "\tLabel,",
+                "\tClassificationCode",
                 "FROM",
                 "\tDimension.Item",
                 "WHERE",
@@ -1502,7 +1508,8 @@
                   "\tStrengthInd,",
                   "\tSupplier,",
                   "\tItemCode,",
-                  "\tLabel",
+                  "\tLabel,",
+                  "\tClassificationCode",
                   "FROM",
                   "\tDimension.Item",
                   "WHERE",
@@ -1510,6 +1517,12 @@
                 ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Count of Item",
+            "expression": "COUNTA([ItemKey])"
           }
         ],
         "annotations": [
@@ -1526,7 +1539,8 @@
               "\tStrengthInd,",
               "\tSupplier,",
               "\tItemCode,",
-              "\tLabel",
+              "\tLabel,",
+              "\tClassificationCode",
               "FROM",
               "\tDimension.Item",
               "WHERE",
@@ -1554,7 +1568,8 @@
               "\tStrengthInd,",
               "\tSupplier,",
               "\tItemCode,",
-              "\tLabel",
+              "\tLabel,",
+              "\tClassificationCode",
               "FROM",
               "\tDimension.Item",
               "WHERE",
