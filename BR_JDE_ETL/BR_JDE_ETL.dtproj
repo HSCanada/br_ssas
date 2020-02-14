@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">CAHSIONNLD3092A</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAomjDTqUztkaMdWhUmbWnigAAAAACAAAAAAADZgAAwAAAABAAAAAxlj7JS/NAcPuhiMZfuQ4PAAAAAASAAACgAAAAEAAAAGTkW6fK3M8ks4aouKuPDECIAAAADqAHZ3kghHT4aXvCTTdZV0gNExMxJVUWVE+78p1iHyO5P7zm36jpn1YG2A33i271nBPugbkEIvHi/OVVWEvpXm3OHfMz3s7NBXR5xm2wuDEMiZAl0QDgiJUkLlA11Li63tSwA2jp1FkQSKeAByNoH+/3JgNaa8h0MCt9CMmj4Hz64a4SWGOA6BQAAACLggf66ug4+04G0/Rjtc8OxD0Bkg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAomjDTqUztkaMdWhUmbWnigAAAAACAAAAAAADZgAAwAAAABAAAAClLEsgr0tDkwxKgGWjcs69AAAAAASAAACgAAAAEAAAAOA5wbLxGPM8xx/YgPCFHVyIAAAAPSpYwQsY7Gi0DEZjSfskung2TY08tkbE5NS9ZUpe7h+S/z7H/yOa0pFfTGDF3GUHKtE53kRTmYiN92CNR7obFotkl4jUVUYqnSe48c87ZPS7t5zl7JiHUp0h9BXGK0pcISTySFbODsOdtjOrQR2waX7RWFiNctlYGg5fHc322eGCvR57t7MbChQAAAB96nE0MeLPXxP2MLE87kjqwo/fGw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -34,6 +34,7 @@
           <SSIS:Package SSIS:Name="pkg_hfm.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="pkg_com_trans.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="pkg_com_rebate_terr.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="pkg_order_comments.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="conn_dest.conmgr" />
@@ -304,10 +305,10 @@
                 <SSIS:Property SSIS:Name="Name">pkg_pricing</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">155</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">158</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C14C9E98-6D7C-4277-AAEE-7625A50E1036}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1E105075-7124-4F7E-90F9-0B4FEBE071BC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -366,6 +367,23 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="pkg_order_comments.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{F6DC0BE7-D39D-45FB-8831-2FEB7FA66EFA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">pkg_order_comments</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">184</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{17148C5D-CE28-4208-8A35-726A678344FC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
@@ -387,12 +405,17 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2019-07-18T20:04:13.8492421Z</Value>
+            <Value xsi:type="xsd:dateTime">2020-02-14T21:08:18.2290785Z</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>{aa221702-982a-43b8-af2a-733ef60fbd55}</Id>
             <Name>Project::ConnectionString</Name>
             <Value xsi:type="xsd:string">Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>{3f60af30-e41d-42d9-982c-907fb3ba8e55}</Id>
+            <Name>Project::Param_srcsql_F5503</Name>
+            <Value xsi:type="xsd:string">SELECT      Top 5     "Q3KCOO" AS Q3KCOO_order_number_document_company, 	"Q3DCTO" AS Q3DCTO_order_type, 	"Q3DOCO" AS Q3DOCO_salesorder_number, 	"Q3LNID" AS Q3LNID_line_number, 	"Q3$APC" AS Q3$APC_application_code, 	"Q3$PMQ" AS Q3$PMQ_program_parameter, 	"Q3LNGP" AS Q3LNGP_language, 	"Q3INMG" AS Q3INMG_print_message, 	"Q3$SNB" AS Q3$SNB_sequence_number, 	"QCTRDJ" AS QCTRDJ_order_date, 	HASHBYTES('SHA1', "Q3$PMQ") AS chksum FROM      OPENQUERY (ESYS_PROD, ' 	SELECT 		Q3KCOO, 		Q3DCTO, 		Q3DOCO, 		CAST((Q3LNID)/1000.0 AS DEC(15,3)) AS Q3LNID, 		Q3$APC, 		Q3$PMQ, 		Q3LNGP, 		Q3INMG, 		CAST((Q3$SNB)/100.0 AS DEC(15,2)) AS Q3$SNB, 		DATE(DIGITS(DEC(QCTRDJ+ 1900000,7,0))) AS QCTRDJ  	FROM 		ARCPDTA71.F5503 n, ARCPDTA71.F5501 h     WHERE 		Q3KCOO = QCKCOO AND 		Q3DCTO = QCDCTO AND 		Q3DOCO = QCDOCO AND  		Q3KCOO = ''02000'' AND 		(QCTRDJ &gt;= 120000)     ORDER BY         QCTRDJ ')</Value>
           </ConfigurationSetting>
         </ParameterConfigurationValues>
       </Options>
@@ -410,12 +433,17 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2018-09-16T21:51:04.241525Z</Value>
+            <Value xsi:type="xsd:dateTime">2020-02-14T21:23:53.2687394Z</Value>
           </ConfigurationSetting>
           <ConfigurationSetting>
             <Id>{aa221702-982a-43b8-af2a-733ef60fbd55}</Id>
             <Name>Project::ConnectionString</Name>
             <Value xsi:type="xsd:string">Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>{3f60af30-e41d-42d9-982c-907fb3ba8e55}</Id>
+            <Name>Project::Param_srcsql_F5503</Name>
+            <Value xsi:type="xsd:string">SELECT      "Q3KCOO" AS Q3KCOO_order_number_document_company, 	"Q3DCTO" AS Q3DCTO_order_type, 	"Q3DOCO" AS Q3DOCO_salesorder_number, 	"Q3LNID" AS Q3LNID_line_number, 	"Q3$APC" AS Q3$APC_application_code, 	"Q3$PMQ" AS Q3$PMQ_program_parameter, 	"Q3LNGP" AS Q3LNGP_language, 	"Q3INMG" AS Q3INMG_print_message, 	"Q3$SNB" AS Q3$SNB_sequence_number, 	"QCTRDJ" AS QCTRDJ_order_date, 	HASHBYTES('SHA1', "Q3$PMQ") AS chksum FROM      OPENQUERY (ESYS_PROD, ' 	SELECT 		Q3KCOO, 		Q3DCTO, 		Q3DOCO, 		CAST((Q3LNID)/1000.0 AS DEC(15,3)) AS Q3LNID, 		Q3$APC, 		Q3$PMQ, 		Q3LNGP, 		Q3INMG, 		CAST((Q3$SNB)/100.0 AS DEC(15,2)) AS Q3$SNB, 		DATE(DIGITS(DEC(QCTRDJ+ 1900000,7,0))) AS QCTRDJ  	FROM 		ARCPDTA71.F5503 n, ARCPDTA71.F5501 h     WHERE 		Q3KCOO = QCKCOO AND 		Q3DCTO = QCDCTO AND 		Q3DOCO = QCDOCO AND  		Q3KCOO = ''02000'' AND 		(QCTRDJ &gt;= 120000)     ORDER BY         QCTRDJ ')</Value>
           </ConfigurationSetting>
         </ParameterConfigurationValues>
       </Options>
