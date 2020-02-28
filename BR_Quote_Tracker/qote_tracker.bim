@@ -1318,6 +1318,43 @@
             "name": "QTD Lines Var %",
             "expression": "DIVIDE( [QTD Lines]-[PY QTD Lines],[PY QTD Lines])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Quantity in Period",
+            "expression": "SUM([Quantity])",
+            "isHidden": true
+          },
+          {
+            "name": "YTD Units",
+            "expression": " CALCULATE([Quantity in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD Units",
+            "expression": " CALCULATE([Quantity in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Avg Sell",
+            "expression": "DIVIDE([YTD Sales],[YTD Units])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Avg Sell",
+            "expression": "DIVIDE([PY YTD Sales],[PY YTD Units])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ],
         "annotations": [
@@ -1467,6 +1504,21 @@
             "name": "ClassificationCode",
             "dataType": "string",
             "sourceColumn": "ClassificationCode"
+          },
+          {
+            "name": "PrivateLabelScope_Item",
+            "dataType": "string",
+            "sourceColumn": "PrivateLabelScope_Item"
+          },
+          {
+            "name": "SubMajor",
+            "dataType": "string",
+            "sourceColumn": "SubMajor"
+          },
+          {
+            "name": "Minor",
+            "dataType": "string",
+            "sourceColumn": "Minor"
           }
         ],
         "partitions": [
@@ -1482,11 +1534,15 @@
                 "\tCategoryRollup,",
                 "\tTop15,",
                 "\tMajor,",
+                "\tSubMajor,",
+                "\tMinor,",
                 "\tStrengthInd,",
                 "\tSupplier,",
                 "\tItemCode,",
                 "\tLabel,",
-                "\tClassificationCode",
+                "\tClassificationCode,",
+                "\tPrivateLabelScope_Item",
+                "",
                 "FROM",
                 "\tDimension.Item",
                 "WHERE",
@@ -1505,11 +1561,15 @@
                   "\tCategoryRollup,",
                   "\tTop15,",
                   "\tMajor,",
+                  "\tSubMajor,",
+                  "\tMinor,",
                   "\tStrengthInd,",
                   "\tSupplier,",
                   "\tItemCode,",
                   "\tLabel,",
-                  "\tClassificationCode",
+                  "\tClassificationCode,",
+                  "\tPrivateLabelScope_Item",
+                  "",
                   "FROM",
                   "\tDimension.Item",
                   "WHERE",
@@ -1536,11 +1596,15 @@
               "\tCategoryRollup,",
               "\tTop15,",
               "\tMajor,",
+              "\tSubMajor,",
+              "\tMinor,",
               "\tStrengthInd,",
               "\tSupplier,",
               "\tItemCode,",
               "\tLabel,",
-              "\tClassificationCode",
+              "\tClassificationCode,",
+              "\tPrivateLabelScope_Item",
+              "",
               "FROM",
               "\tDimension.Item",
               "WHERE",
@@ -1565,11 +1629,15 @@
               "\tCategoryRollup,",
               "\tTop15,",
               "\tMajor,",
+              "\tSubMajor,",
+              "\tMinor,",
               "\tStrengthInd,",
               "\tSupplier,",
               "\tItemCode,",
               "\tLabel,",
-              "\tClassificationCode",
+              "\tClassificationCode,",
+              "\tPrivateLabelScope_Item",
+              "",
               "FROM",
               "\tDimension.Item",
               "WHERE",
@@ -2275,6 +2343,11 @@
             "name": "SalesplanFocusCode",
             "dataType": "string",
             "sourceColumn": "SalesplanFocusCode"
+          },
+          {
+            "name": "PrivateLabelScope_Cust",
+            "dataType": "string",
+            "sourceColumn": "PrivateLabelScope_Cust"
           }
         ],
         "partitions": [
@@ -2303,6 +2376,7 @@
                 "\t,iif(c.DCC_TrackingShipTo > 0, ",
                 "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
                 "\t\t'')\t\t\t\tAS CustomerParent",
+                "\t,PrivateLabelScope_Cust",
                 "",
                 "FROM",
                 "\tDimension.Customer c",
@@ -2336,6 +2410,7 @@
                   "\t,iif(c.DCC_TrackingShipTo > 0, ",
                   "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
                   "\t\t'')\t\t\t\tAS CustomerParent",
+                  "\t,PrivateLabelScope_Cust",
                   "",
                   "FROM",
                   "\tDimension.Customer c",
@@ -2371,6 +2446,7 @@
               "\t,iif(c.DCC_TrackingShipTo > 0, ",
               "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
               "\t\t'')\t\t\t\tAS CustomerParent",
+              "\t,PrivateLabelScope_Cust",
               "",
               "FROM",
               "\tDimension.Customer c",
@@ -2410,6 +2486,7 @@
               "\t,iif(c.DCC_TrackingShipTo > 0, ",
               "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
               "\t\t'')\t\t\t\tAS CustomerParent",
+              "\t,PrivateLabelScope_Cust",
               "",
               "FROM",
               "\tDimension.Customer c",
