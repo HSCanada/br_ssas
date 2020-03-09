@@ -1355,6 +1355,47 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "Private Sales in Period",
+            "expression": " CALCULATE ( [Sales in Period], 'Item'[Label] = \"P\")"
+          },
+          {
+            "name": "YTD PL Sales",
+            "expression": " CALCULATE([Private Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD PL Sales Share",
+            "expression": "DIVIDE([YTD PL Sales], [YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY YTD PL Sales",
+            "expression": " CALCULATE([Private Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD PL Sales Share",
+            "expression": "DIVIDE([PY YTD PL Sales], [PY YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD PL Sales Share Growth",
+            "expression": "[YTD PL Sales Share] - [PY YTD PL Sales Share]",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
