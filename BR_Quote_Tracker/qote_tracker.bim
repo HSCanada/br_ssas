@@ -1560,6 +1560,30 @@
             "name": "Minor",
             "dataType": "string",
             "sourceColumn": "Minor"
+          },
+          {
+            "name": "CurrentFileCost",
+            "dataType": "double",
+            "sourceColumn": "CurrentFileCost",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "CurrentCorporatePrice",
+            "dataType": "double",
+            "sourceColumn": "CurrentCorporatePrice",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ],
         "partitions": [
@@ -1568,7 +1592,7 @@
             "dataView": "full",
             "source": {
               "query": [
-                "SELECT        ",
+                "SELECT ",
                 "\tItemKey,",
                 "\tItem,",
                 "\tSalesCategory,",
@@ -1582,7 +1606,10 @@
                 "\tItemCode,",
                 "\tLabel,",
                 "\tClassificationCode,",
-                "\tPrivateLabelScope_Item",
+                "\tPrivateLabelScope_Item,",
+                "\tCurrentFileCost,",
+                "\t[CurrentCorporatePrice]",
+                "",
                 "",
                 "FROM",
                 "\tDimension.Item",
@@ -1595,7 +1622,7 @@
               {
                 "name": "QueryEditorSerialization",
                 "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        ",
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
                   "\tItemKey,",
                   "\tItem,",
                   "\tSalesCategory,",
@@ -1609,7 +1636,10 @@
                   "\tItemCode,",
                   "\tLabel,",
                   "\tClassificationCode,",
-                  "\tPrivateLabelScope_Item",
+                  "\tPrivateLabelScope_Item,",
+                  "\tCurrentFileCost,",
+                  "\t[CurrentCorporatePrice]",
+                  "",
                   "",
                   "FROM",
                   "\tDimension.Item",
@@ -1630,7 +1660,7 @@
           {
             "name": "_TM_ExtProp_QueryDefinition",
             "value": [
-              "SELECT        ",
+              "SELECT ",
               "\tItemKey,",
               "\tItem,",
               "\tSalesCategory,",
@@ -1644,7 +1674,10 @@
               "\tItemCode,",
               "\tLabel,",
               "\tClassificationCode,",
-              "\tPrivateLabelScope_Item",
+              "\tPrivateLabelScope_Item,",
+              "\tCurrentFileCost,",
+              "\t[CurrentCorporatePrice]",
+              "",
               "",
               "FROM",
               "\tDimension.Item",
@@ -1663,7 +1696,7 @@
           {
             "name": "QueryEditorSerialization",
             "value": [
-              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        ",
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
               "\tItemKey,",
               "\tItem,",
               "\tSalesCategory,",
@@ -1677,7 +1710,10 @@
               "\tItemCode,",
               "\tLabel,",
               "\tClassificationCode,",
-              "\tPrivateLabelScope_Item",
+              "\tPrivateLabelScope_Item,",
+              "\tCurrentFileCost,",
+              "\t[CurrentCorporatePrice]",
+              "",
               "",
               "FROM",
               "\tDimension.Item",
