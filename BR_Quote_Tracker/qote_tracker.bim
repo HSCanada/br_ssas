@@ -2425,6 +2425,11 @@
             "name": "PrivateLabelScope_Cust",
             "dataType": "string",
             "sourceColumn": "PrivateLabelScope_Cust"
+          },
+          {
+            "name": "FocusSmCd",
+            "dataType": "string",
+            "sourceColumn": "FocusSmCd"
           }
         ],
         "partitions": [
@@ -2450,6 +2455,7 @@
                 "\t,c.SalesplanFocusCode",
                 "\t,c.CustomerGroup",
                 "\t,c.FocusCd",
+                "\t,c.SmFocusCode FocusSmCd",
                 "\t,iif(c.DCC_TrackingShipTo > 0, ",
                 "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
                 "\t\t'')\t\t\t\tAS CustomerParent",
@@ -2484,6 +2490,7 @@
                   "\t,c.SalesplanFocusCode",
                   "\t,c.CustomerGroup",
                   "\t,c.FocusCd",
+                  "\t,c.SmFocusCode FocusSmCd",
                   "\t,iif(c.DCC_TrackingShipTo > 0, ",
                   "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
                   "\t\t'')\t\t\t\tAS CustomerParent",
@@ -2497,6 +2504,13 @@
                 ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Count of ShipTo",
+            "expression": "COUNTA([ShipTo])",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
@@ -2520,6 +2534,7 @@
               "\t,c.SalesplanFocusCode",
               "\t,c.CustomerGroup",
               "\t,c.FocusCd",
+              "\t,c.SmFocusCode FocusSmCd",
               "\t,iif(c.DCC_TrackingShipTo > 0, ",
               "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
               "\t\t'')\t\t\t\tAS CustomerParent",
@@ -2560,6 +2575,7 @@
               "\t,c.SalesplanFocusCode",
               "\t,c.CustomerGroup",
               "\t,c.FocusCd",
+              "\t,c.SmFocusCode FocusSmCd",
               "\t,iif(c.DCC_TrackingShipTo > 0, ",
               "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
               "\t\t'')\t\t\t\tAS CustomerParent",
