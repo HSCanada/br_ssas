@@ -1360,7 +1360,8 @@
           },
           {
             "name": "Private Sales in Period",
-            "expression": " CALCULATE ( [Sales in Period], 'Item'[Label] = \"P\")"
+            "expression": " CALCULATE ( [Sales in Period], 'Item'[Label] = \"P\")",
+            "isHidden": true
           },
           {
             "name": "YTD PL Sales",
@@ -1408,6 +1409,11 @@
             "name": "YTD Orders",
             "expression": " CALCULATE([Orders in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
             "formatString": "#,0"
+          },
+          {
+            "name": "Order Sales in Period",
+            "expression": " Calculate([Sales in Period],ALL(), Values(Sales[SalesOrderNumber]))",
+            "isHidden": true
           }
         ],
         "annotations": [
@@ -2103,7 +2109,6 @@
       },
       {
         "name": "SpendRange",
-        "isHidden": true,
         "columns": [
           {
             "name": "Spend Min",
@@ -2135,7 +2140,8 @@
                 "      [Spend_From]\t\tAS [Spend Min]",
                 "      ,[Spend_To]\t\tAS [Spend Max]",
                 "      ,[Spend_Display]  AS [Spend Range]",
-                "  FROM [BRS_Customer_Spend_Category]"
+                "  FROM [BRS_Customer_Spend_Category]",
+                "where Spend_Category = 'S'"
               ],
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
             },
@@ -2147,7 +2153,8 @@
                   "      [Spend_From]\t\tAS [Spend Min]",
                   "      ,[Spend_To]\t\tAS [Spend Max]",
                   "      ,[Spend_Display]  AS [Spend Range]",
-                  "  FROM [BRS_Customer_Spend_Category]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "  FROM [BRS_Customer_Spend_Category]",
+                  "where Spend_Category = 'S'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -2161,7 +2168,8 @@
               "      [Spend_From]\t\tAS [Spend Min]",
               "      ,[Spend_To]\t\tAS [Spend Max]",
               "      ,[Spend_Display]  AS [Spend Range]",
-              "  FROM [BRS_Customer_Spend_Category]"
+              "  FROM [BRS_Customer_Spend_Category]",
+              "where Spend_Category = 'S'"
             ]
           },
           {
@@ -2175,7 +2183,8 @@
               "      [Spend_From]\t\tAS [Spend Min]",
               "      ,[Spend_To]\t\tAS [Spend Max]",
               "      ,[Spend_Display]  AS [Spend Range]",
-              "  FROM [BRS_Customer_Spend_Category]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "  FROM [BRS_Customer_Spend_Category]",
+              "where Spend_Category = 'S'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -2699,48 +2708,19 @@
           },
           {
             "type": "calculated",
-            "name": "OrderSize",
-            "dataType": "decimal",
-            "isDataTypeInferred": true,
-            "expression": "[Sales in Period]",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "type": "calculated",
-            "name": "CreditBand",
+            "name": "OrderBand",
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": [
               "CALCULATE(",
-              "     VALUES(CreditBand[Band]),",
-              "     FILTER(CreditBand,",
-              "            Salesorder[OrderSize] < CreditBand[Spend_From] &&",
-              "                Salesorder[OrderSize] >= CreditBand[Spend_To]",
-              "     )",
-              "   )"
-            ],
-            "sortByColumn": "CreditBandSort"
-          },
-          {
-            "type": "calculated",
-            "name": "CreditBandSort",
-            "dataType": "int64",
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "expression": [
-              "CALCULATE(",
-              "     VALUES(CreditBand[SpendKey]),",
-              "     FILTER(CreditBand,",
-              "            Salesorder[OrderSize] < CreditBand[Spend_From] &&",
-              "                Salesorder[OrderSize] >= CreditBand[Spend_To]",
-              "     )",
-              "   )"
+              "",
+              "       VALUES (CreditBand[Band]),    ",
+              "       FILTER (",
+              "               CreditBand,    ",
+              "              abs([Order Sales in Period]) >= CreditBand[Spend_From]      &&  ",
+              "              abs([Order Sales in Period])  < CreditBand[Spend_To]",
+              "       )  ",
+              ")"
             ]
           }
         ],
@@ -3493,7 +3473,7 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE (NOT(([Spend_Category] = N' ')) OR [Spend_Category] IS NULL) ",
+              "query": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'S') ",
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
             },
             "annotations": [
@@ -3673,7 +3653,10 @@
                   "        <string>Spend_Category</string>",
                   "      </key>",
                   "      <value>",
-                  "        <FilterExpression xsi:nil=\"true\" />",
+                  "        <FilterExpression xsi:type=\"ConditionalExpression\">",
+                  "          <Operator>EqualTo</Operator>",
+                  "          <Value xsi:type=\"xsd:string\">S</Value>",
+                  "        </FilterExpression>",
                   "      </value>",
                   "    </item>",
                   "  </ColumnFilter>",
@@ -3683,12 +3666,7 @@
                   "        <string>Spend_Category</string>",
                   "      </key>",
                   "      <value>",
-                  "        <SelectionFilter>",
-                  "          <SelectionType>Deselect</SelectionType>",
-                  "          <Items>",
-                  "            <anyType xsi:type=\"xsd:string\"> </anyType>",
-                  "          </Items>",
-                  "        </SelectionFilter>",
+                  "        <SelectionFilter xsi:nil=\"true\" />",
                   "      </value>",
                   "    </item>",
                   "  </SelectionFilter>",
@@ -3713,7 +3691,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE (NOT(([Spend_Category] = N' ')) OR [Spend_Category] IS NULL) "
+            "value": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'S') "
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -3899,7 +3877,10 @@
               "        <string>Spend_Category</string>",
               "      </key>",
               "      <value>",
-              "        <FilterExpression xsi:nil=\"true\" />",
+              "        <FilterExpression xsi:type=\"ConditionalExpression\">",
+              "          <Operator>EqualTo</Operator>",
+              "          <Value xsi:type=\"xsd:string\">S</Value>",
+              "        </FilterExpression>",
               "      </value>",
               "    </item>",
               "  </ColumnFilter>",
@@ -3909,12 +3890,7 @@
               "        <string>Spend_Category</string>",
               "      </key>",
               "      <value>",
-              "        <SelectionFilter>",
-              "          <SelectionType>Deselect</SelectionType>",
-              "          <Items>",
-              "            <anyType xsi:type=\"xsd:string\"> </anyType>",
-              "          </Items>",
-              "        </SelectionFilter>",
+              "        <SelectionFilter xsi:nil=\"true\" />",
               "      </value>",
               "    </item>",
               "  </SelectionFilter>",
