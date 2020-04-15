@@ -1412,7 +1412,7 @@
           },
           {
             "name": "Order Sales in Period",
-            "expression": " Calculate([Sales in Period],ALL(), Values(Sales[SalesOrderNumber]))",
+            "expression": " Calculate([Sales in Period],ALL(Sales), Values(Sales[SalesOrderNumber]))",
             "isHidden": true
           }
         ],
@@ -2109,6 +2109,7 @@
       },
       {
         "name": "SpendRange",
+        "isHidden": true,
         "columns": [
           {
             "name": "Spend Min",
@@ -3417,6 +3418,7 @@
       },
       {
         "name": "CreditBand",
+        "isHidden": true,
         "columns": [
           {
             "name": "Spend_From",
@@ -3462,6 +3464,7 @@
           {
             "name": "SpendKey",
             "dataType": "int64",
+            "isHidden": true,
             "isUnique": true,
             "sourceColumn": "SpendKey",
             "sourceProviderType": "Integer"
@@ -3473,7 +3476,7 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'S') ",
+              "query": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'C') ",
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
             },
             "annotations": [
@@ -3655,7 +3658,7 @@
                   "      <value>",
                   "        <FilterExpression xsi:type=\"ConditionalExpression\">",
                   "          <Operator>EqualTo</Operator>",
-                  "          <Value xsi:type=\"xsd:string\">S</Value>",
+                  "          <Value xsi:type=\"xsd:string\">C</Value>",
                   "        </FilterExpression>",
                   "      </value>",
                   "    </item>",
@@ -3691,7 +3694,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'S') "
+            "value": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'C') "
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -3879,7 +3882,7 @@
               "      <value>",
               "        <FilterExpression xsi:type=\"ConditionalExpression\">",
               "          <Operator>EqualTo</Operator>",
-              "          <Value xsi:type=\"xsd:string\">S</Value>",
+              "          <Value xsi:type=\"xsd:string\">C</Value>",
               "        </FilterExpression>",
               "      </value>",
               "    </item>",
@@ -3991,44 +3994,8 @@
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
           },
           {
-            "memberName": "CAHSI\\GWatson",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-5503"
-          },
-          {
-            "memberName": "CAHSI\\Marco.Calabrese",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11954"
-          },
-          {
-            "memberName": "CAHSI\\Randeep.Bhela",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-10655"
-          },
-          {
             "memberName": "CAHSI\\JLi",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
-          },
-          {
-            "memberName": "CAHSI\\Jodee.Webb",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11457"
-          },
-          {
-            "memberName": "CAHSI\\Nia.Othitis",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-5731"
-          },
-          {
-            "memberName": "CAHSI\\Kishore.Pranjivan",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11564"
-          },
-          {
-            "memberName": "CAHSI\\Jason.Brown",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-8508"
-          },
-          {
-            "memberName": "CAHSI\\Tina.Duczmal",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1522"
-          },
-          {
-            "memberName": "CAHSI\\LMayhew",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1208"
           }
         ]
       }
