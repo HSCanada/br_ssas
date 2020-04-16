@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -142,6 +142,7 @@
             "name": "Customer",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "  Dimension.Customer.ShipTo",
@@ -399,6 +400,7 @@
             "name": "Item",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "  Dimension.Item.ItemKey",
@@ -596,6 +598,7 @@
             "name": "Period",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Dimension].[Period].[FiscalMonth],[Dimension].[Period].[MonthName],[Dimension].[Period].[MonthNum],[Dimension].[Period].[QuarterName],[Dimension].[Period].[YearNum],[Dimension].[Period].[WorkingDaysMonth],[Dimension].[Period].[MonthSeq],[Dimension].[Period].[FirstMonthSeqInQtr],[Dimension].[Period].[FirstMonthSeqInYear] FROM [Dimension].[Period] ",
               "dataSource": "Commission SQL Source"
             },
@@ -1181,6 +1184,7 @@
             "name": "SaleVendor",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "--\ttop 10",
@@ -1822,6 +1826,7 @@
             "name": "Fiscal_Month_List",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
               "dataSource": "Commission SQL Source"
             }
@@ -1915,6 +1920,7 @@
             "name": "SalesorderCommission",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": "SELECT [Dimension].[SalesorderCommission].* FROM [Dimension].[SalesorderCommission]",
               "dataSource": "Commission SQL Source"
             },
@@ -1966,34 +1972,9 @@
             "sourceColumn": "CommGroup"
           },
           {
-            "name": "SpecialMarketCode",
-            "dataType": "string",
-            "sourceColumn": "SpecialMarketCode"
-          },
-          {
-            "name": "SpecialMarketStatusCode",
-            "dataType": "string",
-            "sourceColumn": "SpecialMarketStatusCode"
-          },
-          {
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "sourceColumn": "comm_group_scorecard_cd"
-          },
-          {
-            "name": "comm_group_rollup1_cd",
-            "dataType": "string",
-            "sourceColumn": "comm_group_rollup1_cd"
-          },
-          {
-            "name": "comm_group_rollup2_cd",
-            "dataType": "string",
-            "sourceColumn": "comm_group_rollup2_cd"
-          },
-          {
-            "name": "comm_group_rollup3_cd",
-            "dataType": "string",
-            "sourceColumn": "comm_group_rollup3_cd"
           }
         ],
         "partitions": [
@@ -2001,17 +1982,13 @@
             "name": "CommissionGroup",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "  Dimension.CommissionGroup.CommGroupKey",
                 "  ,Dimension.CommissionGroup.CommGroup",
                 "  ,Dimension.CommissionGroup.CommGroupCode",
-                "  ,Dimension.CommissionGroup.SpecialMarketCode",
-                "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
                 " , comm_group_scorecard_cd",
-                ",comm_group_rollup1_cd",
-                ",comm_group_rollup2_cd",
-                ",comm_group_rollup3_cd",
                 "",
                 "FROM",
                 "  Dimension.CommissionGroup"
@@ -2026,12 +2003,7 @@
                   "  Dimension.CommissionGroup.CommGroupKey",
                   "  ,Dimension.CommissionGroup.CommGroup",
                   "  ,Dimension.CommissionGroup.CommGroupCode",
-                  "  ,Dimension.CommissionGroup.SpecialMarketCode",
-                  "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
                   " , comm_group_scorecard_cd",
-                  ",comm_group_rollup1_cd",
-                  ",comm_group_rollup2_cd",
-                  ",comm_group_rollup3_cd",
                   "",
                   "FROM",
                   "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketStatusCode\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2048,12 +2020,7 @@
               "  Dimension.CommissionGroup.CommGroupKey",
               "  ,Dimension.CommissionGroup.CommGroup",
               "  ,Dimension.CommissionGroup.CommGroupCode",
-              "  ,Dimension.CommissionGroup.SpecialMarketCode",
-              "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
               " , comm_group_scorecard_cd",
-              ",comm_group_rollup1_cd",
-              ",comm_group_rollup2_cd",
-              ",comm_group_rollup3_cd",
               "",
               "FROM",
               "  Dimension.CommissionGroup"
@@ -2074,12 +2041,7 @@
               "  Dimension.CommissionGroup.CommGroupKey",
               "  ,Dimension.CommissionGroup.CommGroup",
               "  ,Dimension.CommissionGroup.CommGroupCode",
-              "  ,Dimension.CommissionGroup.SpecialMarketCode",
-              "  ,Dimension.CommissionGroup.SpecialMarketStatusCode",
               " , comm_group_scorecard_cd",
-              ",comm_group_rollup1_cd",
-              ",comm_group_rollup2_cd",
-              ",comm_group_rollup3_cd",
               "",
               "FROM",
               "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketStatusCode\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2117,51 +2079,12 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "SpecialMarketCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[SpecialMarketCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SpecialMarketStatusCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[SpecialMarketStatusCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup1_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup1_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup2_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup2_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup3_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup3_cd]"
           }
         ],
         "partitions": [
@@ -2252,6 +2175,7 @@
             "name": "SalespersonCommission",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
                 "[BranchCode], [BranchName], [ZoneName], tracker_ind",
@@ -2452,6 +2376,7 @@
             "name": "source",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": "SELECT [comm].[source].[source_cd] as CommSourceCode,[comm].[source].[source_desc] AS CommSource,[comm].[source].[source_key] FROM [comm].[source]",
               "dataSource": "Commission SQL Source"
             },
@@ -2523,6 +2448,7 @@
             "name": "BRS_DocType",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "  BRS_DocType.DocType",
@@ -2660,6 +2586,7 @@
             "name": "SalespersonCodeCommission",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "  Dimension.SalespersonCodeCommission.FSC_SalespersonCode",
@@ -2949,6 +2876,7 @@
             "name": "Sale_recon",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "  Fact.Sale_recon.FactKey",
@@ -3094,6 +3022,7 @@
             "name": "Adjustment",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT ",
                 "[dbo].[BRS_AdjCode].[AdjCode],",
@@ -3198,6 +3127,7 @@
             "name": "BusinessUnitClass",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [dbo].[BRS_BusinessUnitClass].[GLBU_Class],[dbo].[BRS_BusinessUnitClass].[GLBU_ClassNm],[dbo].[BRS_BusinessUnitClass].[ReportingClass],[dbo].[BRS_BusinessUnitClass].[GLBU_ClassKey] FROM [dbo].[BRS_BusinessUnitClass] ",
               "dataSource": "Commission SQL Source"
             },
@@ -3858,6 +3788,7 @@
             "name": "tracker_code",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [strat].[tracker_code].[strat_code],[strat].[tracker_code].[strat_description],[strat].[tracker_code].[strat_key] FROM [strat].[tracker_code] ",
               "dataSource": "Commission SQL Source"
             },
@@ -4124,6 +4055,7 @@
             "name": "commission_strat",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Fact].[commission_strat].* FROM [Fact].[commission_strat] ",
               "dataSource": "Commission SQL Source"
             }
@@ -4437,57 +4369,12 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "SpecialMarketCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[SpecialMarketCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SpecialMarketStatusCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[SpecialMarketStatusCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup1_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup1_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup2_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup2_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup3_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup3_cd]"
           }
         ],
         "partitions": [
@@ -4530,57 +4417,12 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "SpecialMarketCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[SpecialMarketCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SpecialMarketStatusCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[SpecialMarketStatusCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup1_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup1_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup2_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup2_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_rollup3_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_rollup3_cd]"
           }
         ],
         "partitions": [
@@ -4784,7 +4626,7 @@
         "modelPermission": "read",
         "members": [
           {
-            "memberName": "CAHSI\\TCrowley",
+            "memberName": "CAHSI\\tcrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
           },
           {
@@ -4798,10 +4640,6 @@
           {
             "memberName": "CAHSI\\David.Macleod",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11196"
-          },
-          {
-            "memberName": "CAHSI\\RKruja",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-5406"
           },
           {
             "memberName": "CAHSI\\Suzanne.Gaiero",
