@@ -78,6 +78,7 @@
             "name": "CalendarMonth",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Dimension].[CalendarMonth].* FROM [Dimension].[CalendarMonth] ",
               "dataSource": "SqlServer BRSales"
             }
@@ -243,6 +244,11 @@
             "name": "size_factor",
             "dataType": "int64",
             "sourceColumn": "size_factor"
+          },
+          {
+            "name": "Top15",
+            "dataType": "string",
+            "sourceColumn": "Top15"
           }
         ],
         "partitions": [
@@ -250,6 +256,7 @@
             "name": "Item",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "--\tTOP 10",
@@ -278,7 +285,8 @@
                 "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
                 "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
                 "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
-                "\ti.size_factor",
+                "\ti.size_factor,",
+                "\ti.Top15",
                 "",
                 "FROM",
                 "\tDimension.Item AS i ",
@@ -319,7 +327,8 @@
                   "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
                   "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
                   "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
-                  "\ti.size_factor",
+                  "\ti.size_factor,",
+                  "\ti.Top15",
                   "",
                   "FROM",
                   "\tDimension.Item AS i ",
@@ -376,7 +385,8 @@
               "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
               "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
               "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
-              "\ti.size_factor",
+              "\ti.size_factor,",
+              "\ti.Top15",
               "",
               "FROM",
               "\tDimension.Item AS i ",
@@ -423,7 +433,8 @@
               "\tEND\t\t\t\t\t\t\t\t\t\tAS SubstItem,",
               "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
               "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
-              "\ti.size_factor",
+              "\ti.size_factor,",
+              "\ti.Top15",
               "",
               "FROM",
               "\tDimension.Item AS i ",
@@ -475,6 +486,7 @@
             "name": "ItemCategory",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": "SELECT [Dimension].[ItemCategory].[CategoryRollupKey],[Dimension].[ItemCategory].[ItemCategory],[Dimension].[ItemCategory].[CategorySharePercent],[Dimension].[ItemCategory].[top15_ind], CategoryBrandCount FROM [Dimension].[ItemCategory]",
               "dataSource": "SqlServer BRSales"
             },
@@ -614,11 +626,6 @@
             "sourceColumn": "ReviewTrackingInd"
           },
           {
-            "name": "Spend_Display",
-            "dataType": "string",
-            "sourceColumn": "Spend_Display"
-          },
-          {
             "name": "ESTName",
             "dataType": "string",
             "sourceColumn": "ESTName"
@@ -634,8 +641,9 @@
             "name": "Customer",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
-                "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
+                "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
                 " FROM [Dimension].[Customer]"
               ],
               "dataSource": "SqlServer BRSales"
@@ -644,7 +652,7 @@
               {
                 "name": "QueryEditorSerialization",
                 "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
                   " FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
@@ -661,7 +669,7 @@
           {
             "name": "_TM_ExtProp_QueryDefinition",
             "value": [
-              "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
+              "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
               " FROM [Dimension].[Customer]"
             ]
           },
@@ -676,7 +684,7 @@
           {
             "name": "QueryEditorSerialization",
             "value": [
-              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[Spend_Display],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
               " FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
@@ -899,6 +907,7 @@
             "name": "Sale_brs",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "--\ttop 10",
@@ -1903,6 +1912,7 @@
             "name": "Salesorder_brs",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "-- top 10",
@@ -2193,6 +2203,7 @@
             "name": "ItemBrand",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT        ",
                 "\t--top 10 ",
@@ -2280,6 +2291,7 @@
             "name": "SpendRange",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT ",
                 "      [Spend_From]\t\tAS [Spend Min]",
@@ -2365,6 +2377,7 @@
             "name": "PriceMethod",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT ",
                 "\t[PriceMethodKey]",
@@ -2471,6 +2484,7 @@
             "name": "ItemTarget",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "\tItemKey, ",
@@ -2603,7 +2617,7 @@
         "modelPermission": "read",
         "members": [
           {
-            "memberName": "CAHSI\\TCrowley",
+            "memberName": "CAHSI\\tcrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
           },
           {

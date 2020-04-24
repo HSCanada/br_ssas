@@ -115,6 +115,7 @@
           {
             "name": "BRS_TS_Cube",
             "source": {
+              "type": "query",
               "query": "Exec [Fact].Sales_isr 0",
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
@@ -847,6 +848,7 @@
           {
             "name": "Customer",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "  Dimension.Customer.ShipTo",
@@ -1096,6 +1098,7 @@
             "name": "Day",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": "SELECT [Dimension].[Day].* FROM [Dimension].[Day]",
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
@@ -1368,6 +1371,7 @@
             "name": "EmployeeSecurity",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": "SELECT [dbo].[BRS_Employee].[SamAccountName],[dbo].[BRS_Employee].[LoginId],[dbo].[BRS_Employee].[EmployeeKey],[dbo].[BRS_Employee].[IsrRollupCd] FROM [dbo].[BRS_Employee] where [BRS_Employee].[IsrRollupCd] is not null",
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
@@ -1427,6 +1431,7 @@
             "name": "CustomerFocus",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [dbo].[BRS_CustomerFocus].[FocusCd],[dbo].[BRS_CustomerFocus].[FocusDescr],[dbo].[BRS_CustomerFocus].[FocusKey] FROM [dbo].[BRS_CustomerFocus] ",
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
@@ -1772,6 +1777,7 @@
             "name": "Item",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT ",
                 "--top 10",
@@ -1986,6 +1992,7 @@
             "name": "Deal",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "\tRecID deal_code,",
@@ -2107,7 +2114,7 @@
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11129"
           },
           {
-            "memberName": "CAHSI\\TCrowley",
+            "memberName": "CAHSI\\tcrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
           },
           {
@@ -2159,10 +2166,6 @@
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-9338"
           },
           {
-            "memberName": "CAHSI\\Willen.Sun",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11452"
-          },
-          {
             "memberName": "CAHSI\\Ann.Bilodeau",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-12090"
           },
@@ -2177,6 +2180,10 @@
           {
             "memberName": "CAHSI\\GWatson",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-5503"
+          },
+          {
+            "memberName": "S-1-5-21-2722441861-2609703027-3449782368-11452",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11452"
           }
         ],
         "tablePermissions": [

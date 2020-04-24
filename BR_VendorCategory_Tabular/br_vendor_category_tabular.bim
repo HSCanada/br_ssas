@@ -154,6 +154,7 @@
             "name": "Customer",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": [
                 "SELECT",
                 "  Dimension.Customer.ShipTo",
@@ -609,6 +610,7 @@
             "name": "Item",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": "SELECT [Dimension].[Item].* FROM [Dimension].[Item]",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
@@ -716,6 +718,7 @@
             "name": "Period",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
@@ -1215,6 +1218,7 @@
             "name": "SaleVendor",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": "SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
@@ -1757,6 +1761,7 @@
             "name": "Fiscal_Month_List",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
@@ -1826,6 +1831,7 @@
             "name": "Branch",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Dimension].[Branch].* FROM [Dimension].[Branch] ",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
@@ -1873,6 +1879,7 @@
             "name": "CustomerMarketClass",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Dimension].[CustomerMarketClass].* FROM [Dimension].[CustomerMarketClass] ",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
@@ -1946,6 +1953,7 @@
             "name": "ItemSupplier",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [Dimension].[ItemSupplier].* FROM [Dimension].[ItemSupplier] ",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
@@ -2426,6 +2434,7 @@
             "name": "BRS_BusinessUnitClass",
             "dataView": "full",
             "source": {
+              "type": "query",
               "query": " SELECT [dbo].[BRS_BusinessUnitClass].* FROM [dbo].[BRS_BusinessUnitClass] ",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             }
@@ -2508,7 +2517,7 @@
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
           },
           {
-            "memberName": "CAHSI\\TCrowley",
+            "memberName": "CAHSI\\tcrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
           },
           {

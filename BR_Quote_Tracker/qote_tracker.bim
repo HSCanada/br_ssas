@@ -582,7 +582,7 @@
           },
           {
             "name": "Quote Sales in Period",
-            "expression": " CALCULATE ([Sales in Period] , 'Salesorder'[PriceMethodRollup] = \"Quote\") ",
+            "expression": " CALCULATE ([Sales in Period] , 'Salesorder'[PriceMethodRollupCode] = \"C\") ",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -632,7 +632,7 @@
           },
           {
             "name": "Quote GP in Period",
-            "expression": " CALCULATE ( [GP in Period], 'Salesorder'[PriceMethodRollup] = \"Quote\")",
+            "expression": " CALCULATE ( [GP in Period], 'Salesorder'[PriceMethodRollupCode] = \"C\")",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -784,7 +784,7 @@
           },
           {
             "name": "Quote Disc in Period",
-            "expression": " CALCULATE([Disc in Period],  'Salesorder'[PriceMethodRollup] = \"Quote\")",
+            "expression": " CALCULATE([Disc in Period],  'Salesorder'[PriceMethodRollupCode] = \"C\")",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -807,7 +807,7 @@
           },
           {
             "name": "Quote Ext.Base in Period",
-            "expression": " CALCULATE([Ext.Base in Period],  'Salesorder'[PriceMethodRollup] = \"Quote\")",
+            "expression": " CALCULATE([Ext.Base in Period],  'Salesorder'[PriceMethodRollupCode] = \"C\")",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -1004,33 +1004,33 @@
           {
             "name": "MTD Disc",
             "expression": "CALCULATE([Disc in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
           },
           {
             "name": "PY MTD Disc",
             "expression": "CALCULATE([Disc in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
           },
           {
             "name": "MTD Disc Var",
             "expression": "[MTD Disc]-[PY MTD Disc]",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
           },
@@ -1171,33 +1171,33 @@
           {
             "name": "QTD Disc",
             "expression": "CALCULATE([Disc in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
           },
           {
             "name": "PY QTD Disc",
             "expression": "CALCULATE([Disc in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12 &&Period[MonthSeq]<=[__seq_first_month_current]-12))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
           },
           {
             "name": "QTD Disc Var",
             "expression": "[QTD Disc]-[PY QTD Disc] ",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
           },
@@ -1414,6 +1414,32 @@
             "name": "Order Sales in Period",
             "expression": " Calculate([Sales in Period],ALL(Sales), Values(Sales[SalesOrderNumber]))",
             "isHidden": true
+          },
+          {
+            "name": "Rolling 12mo Sales BillTo",
+            "expression": " Calculate([Rolling 12mo Sales],ALL(Sales), Values(Sales[BillTo]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Count of BillTo Sales",
+            "expression": "DISTINCTCOUNT('sales'[BillTo])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Quote Lines in Period",
+            "expression": " CALCULATE ( [Lines in Period], 'Salesorder'[PriceMethodRollupCode] = \"C\")",
+            "isHidden": true
+          },
+          {
+            "name": "Quote YTD Lines",
+            "expression": " CALCULATE([Quote Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
@@ -1851,11 +1877,11 @@
             "isDataTypeInferred": true,
             "expression": [
               "CALCULATE ( ",
-              "\tVALUES('SpendRange'[Spend Range]),",
+              "\tVALUES('SpendBand'[Spend Range]),",
               "\t\tFILTER( ",
-              "            SpendRange, ",
-              "            'Sales'[Rolling 12mo Sales] >= 'SpendRange'[Spend Min]  && ",
-              "            'Sales'[Rolling 12mo Sales] < 'SpendRange'[Spend Max]",
+              "            SpendBand, ",
+              "           'sales' [Rolling 12mo Sales BillTo] >= 'SpendBand'[Spend Min]  && ",
+              "            'Sales'[Rolling 12mo Sales BillTo] < 'SpendBand'[Spend Max]",
               "\t\t)",
               ") "
             ]
@@ -1864,6 +1890,50 @@
             "name": "AdjUserId",
             "dataType": "string",
             "sourceColumn": "AdjUserId"
+          },
+          {
+            "name": "SalesplanType",
+            "dataType": "string",
+            "sourceColumn": "SalesplanType"
+          },
+          {
+            "type": "calculated",
+            "name": "YTD Growth Level",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "CALCULATE ( ",
+              "\tVALUES('GrowthBand'[Band]),",
+              "\t\tFILTER( ",
+              "            GrowthBand, ",
+              "           'sales' [YTD Sales Var %] >= 'GrowthBand'[Spend_From]  && ",
+              "            'Sales'[YTD Sales Var %] < 'GrowthBand'[Spend_To]",
+              "\t\t)",
+              ") "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "YTD Quote Share Level",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "CALCULATE ( ",
+              "\tVALUES('QuoteShareBand'[Band]),",
+              "\t\tFILTER( ",
+              "            QuoteShareBand, ",
+              "           'sales' [Quote YTD Sales Share] >= 'QuoteShareBand'[Spend_From]  && ",
+              "            'Sales'[Quote YTD Sales Share] < 'QuoteShareBand'[Spend_To]",
+              "\t\t)",
+              ") "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "YTD Quote Score",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "IF('Sales'[Quote YTD GM]>=0.38,IF('Sales'[Quote YTD Disc%]<0.1,\"Good\", \"Bad Disc\"), \"Bad GM\")"
           }
         ],
         "partitions": [
@@ -1887,6 +1957,7 @@
                 "  ,Dimension.Customer_qt.Adjustment",
                 "  ,Dimension.Customer_qt.AdjEffectiveDate",
                 "  ,Dimension.Customer_qt.AdjUserId",
+                " , SalesplanType",
                 "FROM",
                 "  Dimension.Customer_qt"
               ],
@@ -1910,6 +1981,7 @@
                   "  ,Dimension.Customer_qt.Adjustment",
                   "  ,Dimension.Customer_qt.AdjEffectiveDate",
                   "  ,Dimension.Customer_qt.AdjUserId",
+                  " , SalesplanType",
                   "FROM",
                   "  Dimension.Customer_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"ShipToPrimary\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"City\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"DateAccountOpened\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Adjustment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjEffectiveDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjUserId\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -1941,6 +2013,7 @@
               "  ,Dimension.Customer_qt.Adjustment",
               "  ,Dimension.Customer_qt.AdjEffectiveDate",
               "  ,Dimension.Customer_qt.AdjUserId",
+              " , SalesplanType",
               "FROM",
               "  Dimension.Customer_qt"
             ]
@@ -1970,6 +2043,7 @@
               "  ,Dimension.Customer_qt.Adjustment",
               "  ,Dimension.Customer_qt.AdjEffectiveDate",
               "  ,Dimension.Customer_qt.AdjUserId",
+              " , SalesplanType",
               "FROM",
               "  Dimension.Customer_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"ShipToPrimary\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"City\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"DateAccountOpened\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Adjustment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjEffectiveDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjUserId\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -2108,18 +2182,20 @@
         ]
       },
       {
-        "name": "SpendRange",
+        "name": "SpendBand",
         "isHidden": true,
         "columns": [
           {
             "name": "Spend Min",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "Spend Min",
             "sourceProviderType": "Decimal"
           },
           {
             "name": "Spend Max",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "Spend Max",
             "sourceProviderType": "Decimal"
           },
@@ -3911,6 +3987,148 @@
               "  <IsSortDescending>false</IsSortDescending>",
               "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
             ]
+          }
+        ]
+      },
+      {
+        "name": "GrowthBand",
+        "isHidden": true,
+        "columns": [
+          {
+            "name": "Spend_From",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Spend_From",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "Spend_To",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Spend_To",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "Band",
+            "dataType": "string",
+            "sourceColumn": "Spend_Display",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "Spend_Rank",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Spend_Rank",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "SpendKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SpendKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "GrowthBand",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'G')",
+              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'G')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'G')"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "GrowthBand"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'G')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "QuoteShareBand",
+        "isHidden": true,
+        "columns": [
+          {
+            "name": "Spend_From",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Spend_From",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "Spend_To",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Spend_To",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "Band",
+            "dataType": "string",
+            "sourceColumn": "Spend_Display",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "Spend_Rank",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Spend_Rank",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "SpendKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SpendKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "QuoteShareBand",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')",
+              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "QuoteShareBand"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       }
