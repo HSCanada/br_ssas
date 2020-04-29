@@ -79,6 +79,12 @@
             "isHidden": true,
             "sourceColumn": "FirstMonthSeqInYear",
             "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "LastWorkingDay",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "LastWorkingDay"
           }
         ],
         "partitions": [
@@ -98,6 +104,7 @@
                 "  ,Dimension.Period.MonthSeq",
                 "  ,Dimension.Period.FirstMonthSeqInQtr",
                 "  ,Dimension.Period.FirstMonthSeqInYear",
+                " , LastWorkingDay",
                 "FROM",
                 "  Dimension.Period"
               ],
@@ -117,6 +124,7 @@
                   "  ,Dimension.Period.MonthSeq",
                   "  ,Dimension.Period.FirstMonthSeqInQtr",
                   "  ,Dimension.Period.FirstMonthSeqInYear",
+                  " , LastWorkingDay",
                   "FROM",
                   "  Dimension.Period</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthNum\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"QuarterName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"YearNum\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"WorkingDaysMonth\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthSeq\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FirstMonthSeqInQtr\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FirstMonthSeqInYear\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -138,6 +146,7 @@
               "  ,Dimension.Period.MonthSeq",
               "  ,Dimension.Period.FirstMonthSeqInQtr",
               "  ,Dimension.Period.FirstMonthSeqInYear",
+              " , LastWorkingDay",
               "FROM",
               "  Dimension.Period"
             ]
@@ -163,6 +172,7 @@
               "  ,Dimension.Period.MonthSeq",
               "  ,Dimension.Period.FirstMonthSeqInQtr",
               "  ,Dimension.Period.FirstMonthSeqInYear",
+              " , LastWorkingDay",
               "FROM",
               "  Dimension.Period</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthNum\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"QuarterName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"YearNum\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"WorkingDaysMonth\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthSeq\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FirstMonthSeqInQtr\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FirstMonthSeqInYear\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -388,6 +398,12 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "CreditKey"
+          },
+          {
+            "name": "BadGMLine",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BadGMLine"
           }
         ],
         "partitions": [
@@ -421,7 +437,11 @@
                 "\tExtBaseAmt,",
                 "\tDiscountAmt,",
                 "\tDiscountLineAmt,",
-                "\tDiscountOrderAmt",
+                "\tDiscountOrderAmt,",
+                "",
+                "\t-- Bottom-up low margin",
+                "\tCASE WHEN ISNULL((GPAtCommCostAmt / NULLIF(SalesAmt,0)),0) < 0.24 THEN 1 ELSE 0 END as BadGMLine",
+                "",
                 "FROM",
                 "\tFact.Sale_qt",
                 "WHERE ",
@@ -458,7 +478,11 @@
                   "\tExtBaseAmt,",
                   "\tDiscountAmt,",
                   "\tDiscountLineAmt,",
-                  "\tDiscountOrderAmt",
+                  "\tDiscountOrderAmt,",
+                  "",
+                  "\t-- Bottom-up low margin",
+                  "\tCASE WHEN ISNULL((GPAtCommCostAmt / NULLIF(SalesAmt,0)),0) < 0.24 THEN 1 ELSE 0 END as BadGMLine",
+                  "",
                   "FROM",
                   "\tFact.Sale_qt",
                   "WHERE ",
@@ -1470,7 +1494,11 @@
               "\tExtBaseAmt,",
               "\tDiscountAmt,",
               "\tDiscountLineAmt,",
-              "\tDiscountOrderAmt",
+              "\tDiscountOrderAmt,",
+              "",
+              "\t-- Bottom-up low margin",
+              "\tCASE WHEN ISNULL((GPAtCommCostAmt / NULLIF(SalesAmt,0)),0) < 0.24 THEN 1 ELSE 0 END as BadGMLine",
+              "",
               "FROM",
               "\tFact.Sale_qt",
               "WHERE ",
@@ -1513,7 +1541,11 @@
               "\tExtBaseAmt,",
               "\tDiscountAmt,",
               "\tDiscountLineAmt,",
-              "\tDiscountOrderAmt",
+              "\tDiscountOrderAmt,",
+              "",
+              "\t-- Bottom-up low margin",
+              "\tCASE WHEN ISNULL((GPAtCommCostAmt / NULLIF(SalesAmt,0)),0) < 0.24 THEN 1 ELSE 0 END as BadGMLine",
+              "",
               "FROM",
               "\tFact.Sale_qt",
               "WHERE ",
@@ -1857,10 +1889,10 @@
           },
           {
             "type": "calculated",
-            "name": "NewPlanInd",
+            "name": "AdjEffectiveDateAgeInMonths",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": "if(Year([AdjEffectiveDate])>=[__current_year], 1, 0)"
+            "expression": "if(DATEDIFF([AdjEffectiveDate],[__current_last_working_date],MONTH)>12, 999, DATEDIFF([AdjEffectiveDate],[__current_last_working_date],MONTH))"
           },
           {
             "type": "calculated",
@@ -2132,6 +2164,15 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "Period[FirstMonthSeqInYear]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "LastWorkingDay",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[LastWorkingDay]"
           }
         ],
         "partitions": [
@@ -2177,6 +2218,12 @@
           {
             "name": "__current_year",
             "expression": " calculate(max('Period Select'[YearNum]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__current_last_working_date",
+            "expression": " (max('Period Select'[LastWorkingDay]))",
+            "formatString": "General Date",
             "isHidden": true
           }
         ]
@@ -4131,6 +4178,48 @@
             "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
+      },
+      {
+        "name": "GMBand",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "GM Segment",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[GM Segment]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "GM Flag",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[GM Flag]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                " ",
+                "DATATABLE (",
+                "    \"GM Segment\", STRING, ",
+                "    \"GM Flag\", BOOLEAN, ",
+                "    { ",
+                "        { \"Bad GM Line\", 1 }, ",
+                "        { \"Good GM Line\", 0 }",
+                "    } ",
+                ")"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -4196,6 +4285,13 @@
         "fromColumn": "CreditKey",
         "toTable": "Creditinfo",
         "toColumn": "credit_key"
+      },
+      {
+        "name": "23e88095-a22b-437b-a090-8f605576b14d",
+        "fromTable": "Sales",
+        "fromColumn": "BadGMLine",
+        "toTable": "GMBand",
+        "toColumn": "GM Flag"
       }
     ],
     "roles": [
