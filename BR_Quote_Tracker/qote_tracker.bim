@@ -606,7 +606,7 @@
           },
           {
             "name": "Quote Sales in Period",
-            "expression": " CALCULATE ([Sales in Period] , 'Salesorder'[PriceMethodRollupCode] = \"C\") ",
+            "expression": " CALCULATE ([Sales in Period] , 'PriceMethod'[PriceMethodRollupCode] = \"C\") ",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -656,7 +656,7 @@
           },
           {
             "name": "Quote GP in Period",
-            "expression": " CALCULATE ( [GP in Period], 'Salesorder'[PriceMethodRollupCode] = \"C\")",
+            "expression": " CALCULATE ( [GP in Period], 'PriceMethod'[PriceMethodRollupCode] = \"C\")",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -808,7 +808,7 @@
           },
           {
             "name": "Quote Disc in Period",
-            "expression": " CALCULATE([Disc in Period],  'Salesorder'[PriceMethodRollupCode] = \"C\")",
+            "expression": " CALCULATE([Disc in Period],  'PriceMethod'[PriceMethodRollupCode] = \"C\")",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -831,7 +831,7 @@
           },
           {
             "name": "Quote Ext.Base in Period",
-            "expression": " CALCULATE([Ext.Base in Period],  'Salesorder'[PriceMethodRollupCode] = \"C\")",
+            "expression": " CALCULATE([Ext.Base in Period],  'PriceMethod'[PriceMethodRollupCode] = \"C\")",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -1457,7 +1457,7 @@
           },
           {
             "name": "Quote Lines in Period",
-            "expression": " CALCULATE ( [Lines in Period], 'Salesorder'[PriceMethodRollupCode] = \"C\")",
+            "expression": " CALCULATE ( [Lines in Period], 'PriceMethod'[PriceMethodRollupCode] = \"C\")",
             "isHidden": true
           },
           {
@@ -2431,17 +2431,26 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "PriceMethodDescr",
-            "dataType": "string",
-            "sourceColumn": "PriceMethodDescr",
-            "sourceProviderType": "WChar"
-          },
-          {
             "name": "PriceMethodKey",
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "PriceMethodKey",
             "sourceProviderType": "Integer"
+          },
+          {
+            "name": "PriceMethodRollup",
+            "dataType": "string",
+            "sourceColumn": "PriceMethodRollup"
+          },
+          {
+            "name": "PriceMethodCode",
+            "dataType": "string",
+            "sourceColumn": "PriceMethodCode"
+          },
+          {
+            "name": "PriceMethodRollupCode",
+            "dataType": "string",
+            "sourceColumn": "PriceMethodRollupCode"
           }
         ],
         "partitions": [
@@ -2450,13 +2459,39 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": "SELECT [dbo].[BRS_PriceMethod].[PriceMethod],[dbo].[BRS_PriceMethod].[PriceMethodDescr],[dbo].[BRS_PriceMethod].[PriceMethodKey] FROM [dbo].[BRS_PriceMethod]",
+              "query": [
+                "SELECT",
+                "--\ttop 10",
+                "\tpm.[PriceMethodKey] ",
+                "\t,pm.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethod",
+                "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
+                "\t,pm.PriceMethod\t\t\t\t\t\t\t\tAS PriceMethodCode",
+                "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+                "",
+                "FROM [dbo].[BRS_PriceMethod] AS pm",
+                "",
+                "\tINNER JOIN [BRS_PriceMethod] AS pm2",
+                "\tON pm.[PriceMethodRollup] = pm2.[PriceMethod]"
+              ],
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_PriceMethod].[PriceMethod],[dbo].[BRS_PriceMethod].[PriceMethodDescr],[dbo].[BRS_PriceMethod].[PriceMethodKey] FROM [dbo].[BRS_PriceMethod]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "--\ttop 10",
+                  "\tpm.[PriceMethodKey] ",
+                  "\t,pm.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethod",
+                  "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
+                  "\t,pm.PriceMethod\t\t\t\t\t\t\t\tAS PriceMethodCode",
+                  "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+                  "",
+                  "FROM [dbo].[BRS_PriceMethod] AS pm",
+                  "",
+                  "\tINNER JOIN [BRS_PriceMethod] AS pm2",
+                  "\tON pm.[PriceMethodRollup] = pm2.[PriceMethod]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -2464,7 +2499,20 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [dbo].[BRS_PriceMethod].[PriceMethod],[dbo].[BRS_PriceMethod].[PriceMethodDescr],[dbo].[BRS_PriceMethod].[PriceMethodKey] FROM [dbo].[BRS_PriceMethod]"
+            "value": [
+              "SELECT",
+              "--\ttop 10",
+              "\tpm.[PriceMethodKey] ",
+              "\t,pm.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethod",
+              "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
+              "\t,pm.PriceMethod\t\t\t\t\t\t\t\tAS PriceMethodCode",
+              "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+              "",
+              "FROM [dbo].[BRS_PriceMethod] AS pm",
+              "",
+              "\tINNER JOIN [BRS_PriceMethod] AS pm2",
+              "\tON pm.[PriceMethodRollup] = pm2.[PriceMethod]"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -2476,7 +2524,20 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_PriceMethod].[PriceMethod],[dbo].[BRS_PriceMethod].[PriceMethodDescr],[dbo].[BRS_PriceMethod].[PriceMethodKey] FROM [dbo].[BRS_PriceMethod]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "--\ttop 10",
+              "\tpm.[PriceMethodKey] ",
+              "\t,pm.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethod",
+              "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
+              "\t,pm.PriceMethod\t\t\t\t\t\t\t\tAS PriceMethodCode",
+              "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+              "",
+              "FROM [dbo].[BRS_PriceMethod] AS pm",
+              "",
+              "\tINNER JOIN [BRS_PriceMethod] AS pm2",
+              "\tON pm.[PriceMethodRollup] = pm2.[PriceMethod]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -2758,18 +2819,6 @@
             "sourceProviderType": "Integer"
           },
           {
-            "name": "PriceMethod",
-            "dataType": "string",
-            "sourceColumn": "PriceMethod",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "PriceMethodRollup",
-            "dataType": "string",
-            "sourceColumn": "PriceMethodRollup",
-            "sourceProviderType": "WChar"
-          },
-          {
             "name": "OrderSource",
             "dataType": "string",
             "sourceColumn": "OrderSource",
@@ -2821,16 +2870,6 @@
             "sourceColumn": "ReturnRange"
           },
           {
-            "name": "PriceMethodCode",
-            "dataType": "string",
-            "sourceColumn": "PriceMethodCode"
-          },
-          {
-            "name": "PriceMethodRollupCode",
-            "dataType": "string",
-            "sourceColumn": "PriceMethodRollupCode"
-          },
-          {
             "type": "calculated",
             "name": "OrderBand",
             "dataType": "string",
@@ -2856,21 +2895,17 @@
               "type": "query",
               "query": [
                 "SELECT",
-                "\tSalesOrderNumber,",
-                "\tsales_order_key,",
-                "\tReturnValidInd,",
-                "\tReturnMonths,",
-                "\tReturnRange,",
-                "\tOriginalSalesOrderNumber,",
-                "\tPriceMethod,",
-                "\tPriceMethodRollup,",
-                "\tOrderSource,",
-                "\tPromotionType,",
-                "\tPromotion,",
-                "\tPromotionConvention,",
-                "\tDocType,",
-                "\tPriceMethodCode,",
-                "\tPriceMethodRollupCode",
+                "\tSalesOrderNumber",
+                "\t,sales_order_key",
+                "\t,ReturnValidInd",
+                "\t,ReturnMonths",
+                "\t,ReturnRange",
+                "\t,OriginalSalesOrderNumber",
+                "\t,OrderSource",
+                "\t,PromotionType",
+                "\t,Promotion",
+                "\t,PromotionConvention",
+                "\t,DocType",
                 "FROM",
                 "\tDimension.Salesorder_qt"
               ],
@@ -2881,21 +2916,17 @@
                 "name": "QueryEditorSerialization",
                 "value": [
                   "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
-                  "\tSalesOrderNumber,",
-                  "\tsales_order_key,",
-                  "\tReturnValidInd,",
-                  "\tReturnMonths,",
-                  "\tReturnRange,",
-                  "\tOriginalSalesOrderNumber,",
-                  "\tPriceMethod,",
-                  "\tPriceMethodRollup,",
-                  "\tOrderSource,",
-                  "\tPromotionType,",
-                  "\tPromotion,",
-                  "\tPromotionConvention,",
-                  "\tDocType,",
-                  "\tPriceMethodCode,",
-                  "\tPriceMethodRollupCode",
+                  "\tSalesOrderNumber",
+                  "\t,sales_order_key",
+                  "\t,ReturnValidInd",
+                  "\t,ReturnMonths",
+                  "\t,ReturnRange",
+                  "\t,OriginalSalesOrderNumber",
+                  "\t,OrderSource",
+                  "\t,PromotionType",
+                  "\t,Promotion",
+                  "\t,PromotionConvention",
+                  "\t,DocType",
                   "FROM",
                   "\tDimension.Salesorder_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -2908,21 +2939,17 @@
             "name": "_TM_ExtProp_QueryDefinition",
             "value": [
               "SELECT",
-              "\tSalesOrderNumber,",
-              "\tsales_order_key,",
-              "\tReturnValidInd,",
-              "\tReturnMonths,",
-              "\tReturnRange,",
-              "\tOriginalSalesOrderNumber,",
-              "\tPriceMethod,",
-              "\tPriceMethodRollup,",
-              "\tOrderSource,",
-              "\tPromotionType,",
-              "\tPromotion,",
-              "\tPromotionConvention,",
-              "\tDocType,",
-              "\tPriceMethodCode,",
-              "\tPriceMethodRollupCode",
+              "\tSalesOrderNumber",
+              "\t,sales_order_key",
+              "\t,ReturnValidInd",
+              "\t,ReturnMonths",
+              "\t,ReturnRange",
+              "\t,OriginalSalesOrderNumber",
+              "\t,OrderSource",
+              "\t,PromotionType",
+              "\t,Promotion",
+              "\t,PromotionConvention",
+              "\t,DocType",
               "FROM",
               "\tDimension.Salesorder_qt"
             ]
@@ -2939,21 +2966,17 @@
             "name": "QueryEditorSerialization",
             "value": [
               "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
-              "\tSalesOrderNumber,",
-              "\tsales_order_key,",
-              "\tReturnValidInd,",
-              "\tReturnMonths,",
-              "\tReturnRange,",
-              "\tOriginalSalesOrderNumber,",
-              "\tPriceMethod,",
-              "\tPriceMethodRollup,",
-              "\tOrderSource,",
-              "\tPromotionType,",
-              "\tPromotion,",
-              "\tPromotionConvention,",
-              "\tDocType,",
-              "\tPriceMethodCode,",
-              "\tPriceMethodRollupCode",
+              "\tSalesOrderNumber",
+              "\t,sales_order_key",
+              "\t,ReturnValidInd",
+              "\t,ReturnMonths",
+              "\t,ReturnRange",
+              "\t,OriginalSalesOrderNumber",
+              "\t,OrderSource",
+              "\t,PromotionType",
+              "\t,Promotion",
+              "\t,PromotionConvention",
+              "\t,DocType",
               "FROM",
               "\tDimension.Salesorder_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
