@@ -643,8 +643,30 @@
             "source": {
               "type": "query",
               "query": [
-                "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
-                " FROM [Dimension].[Customer]"
+                "SELECT",
+                "--\ttop 10",
+                "\tShipTo,",
+                "\tBillto,",
+                "\tCustomer,",
+                "\tCustomerGroup,",
+                "\tSalesPlan,",
+                "\tFieldSales,",
+                "\tBranch,",
+                "\tCity,",
+                "\tProvince,",
+                "\tSalesDivision,",
+                "\tMarketClass,",
+                "\tSegment,",
+                "\tSpecialty,",
+                "\tDCC_TrackingShipTo,",
+                "\tPrivilegesCode,",
+                "",
+                "\t-- note, tracker set by VPA or Billto, tmc, 5 May 20",
+                "\tReviewTrackingInd,",
+                "\tESTName,",
+                "\tpma_ind",
+                "FROM",
+                "\tDimension.Customer AS c"
               ],
               "dataSource": "SqlServer BRSales"
             },
@@ -652,8 +674,30 @@
               {
                 "name": "QueryEditorSerialization",
                 "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
-                  " FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "--\ttop 10",
+                  "\tShipTo,",
+                  "\tBillto,",
+                  "\tCustomer,",
+                  "\tCustomerGroup,",
+                  "\tSalesPlan,",
+                  "\tFieldSales,",
+                  "\tBranch,",
+                  "\tCity,",
+                  "\tProvince,",
+                  "\tSalesDivision,",
+                  "\tMarketClass,",
+                  "\tSegment,",
+                  "\tSpecialty,",
+                  "\tDCC_TrackingShipTo,",
+                  "\tPrivilegesCode,",
+                  "",
+                  "\t-- note, tracker set by VPA or Billto, tmc, 5 May 20",
+                  "\tReviewTrackingInd,",
+                  "\tESTName,",
+                  "\tpma_ind",
+                  "FROM",
+                  "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -669,8 +713,30 @@
           {
             "name": "_TM_ExtProp_QueryDefinition",
             "value": [
-              "SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
-              " FROM [Dimension].[Customer]"
+              "SELECT",
+              "--\ttop 10",
+              "\tShipTo,",
+              "\tBillto,",
+              "\tCustomer,",
+              "\tCustomerGroup,",
+              "\tSalesPlan,",
+              "\tFieldSales,",
+              "\tBranch,",
+              "\tCity,",
+              "\tProvince,",
+              "\tSalesDivision,",
+              "\tMarketClass,",
+              "\tSegment,",
+              "\tSpecialty,",
+              "\tDCC_TrackingShipTo,",
+              "\tPrivilegesCode,",
+              "",
+              "\t-- note, tracker set by VPA or Billto, tmc, 5 May 20",
+              "\tReviewTrackingInd,",
+              "\tESTName,",
+              "\tpma_ind",
+              "FROM",
+              "\tDimension.Customer AS c"
             ]
           },
           {
@@ -684,8 +750,30 @@
           {
             "name": "QueryEditorSerialization",
             "value": [
-              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Customer].[ShipTo],[Dimension].[Customer].[Billto],[Dimension].[Customer].[Customer],[Dimension].[Customer].[CustomerGroup],[Dimension].[Customer].[SalesPlan],[Dimension].[Customer].[FieldSales],[Dimension].[Customer].[Branch],[Dimension].[Customer].[City],[Dimension].[Customer].[Province],[Dimension].[Customer].[SalesDivision],[Dimension].[Customer].[MarketClass],[Dimension].[Customer].[Segment],[Dimension].[Customer].[Specialty],[Dimension].[Customer].[DCC_TrackingShipTo], [PrivilegesCode], ReviewTrackingInd,  ESTName ,pma_ind",
-              " FROM [Dimension].[Customer]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "--\ttop 10",
+              "\tShipTo,",
+              "\tBillto,",
+              "\tCustomer,",
+              "\tCustomerGroup,",
+              "\tSalesPlan,",
+              "\tFieldSales,",
+              "\tBranch,",
+              "\tCity,",
+              "\tProvince,",
+              "\tSalesDivision,",
+              "\tMarketClass,",
+              "\tSegment,",
+              "\tSpecialty,",
+              "\tDCC_TrackingShipTo,",
+              "\tPrivilegesCode,",
+              "",
+              "\t-- note, tracker set by VPA or Billto, tmc, 5 May 20",
+              "\tReviewTrackingInd,",
+              "\tESTName,",
+              "\tpma_ind",
+              "FROM",
+              "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
