@@ -1892,7 +1892,7 @@
             "name": "AdjEffectiveDateAgeInMonths",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": "if(DATEDIFF(min([AdjEffectiveDate], [__current_last_working_date]),[__current_last_working_date],MONTH)>12, 999, DATEDIFF([AdjEffectiveDate],[__current_last_working_date],MONTH))",
+            "expression": "if(DATEDIFF(min([AdjEffectiveDate], [__current_last_working_date]),[__current_last_working_date],MONTH)>12, 999,DATEDIFF(min([AdjEffectiveDate], [__current_last_working_date]),[__current_last_working_date],MONTH))",
             "formatString": "0"
           },
           {
