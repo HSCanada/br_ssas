@@ -360,11 +360,6 @@
             "sourceColumn": "CommGroupCpsCode"
           },
           {
-            "name": "CommGroupHiTech",
-            "dataType": "string",
-            "sourceColumn": "CustomCommGroup1Code"
-          },
-          {
             "name": "MajorCode",
             "dataType": "string",
             "sourceColumn": "MajorCode"
@@ -416,7 +411,6 @@
                 "  ,Dimension.Item.CommGroupNote",
                 "  ,Dimension.Item.Current_BasePrice",
                 "  ,Dimension.Item.CommGroupCpsCode",
-                "  ,Dimension.Item.CustomCommGroup1Code",
                 "  ,Dimension.Item.MajorCode",
                 "  ,SalesCategoryRollup",
                 " ,SalesCategoryScorecard",
@@ -447,7 +441,6 @@
                   "  ,Dimension.Item.CommGroupNote",
                   "  ,Dimension.Item.Current_BasePrice",
                   "  ,Dimension.Item.CommGroupCpsCode",
-                  "  ,Dimension.Item.CustomCommGroup1Code",
                   "  ,Dimension.Item.MajorCode",
                   "  ,SalesCategoryRollup",
                   " ,SalesCategoryScorecard",
@@ -480,7 +473,6 @@
               "  ,Dimension.Item.CommGroupNote",
               "  ,Dimension.Item.Current_BasePrice",
               "  ,Dimension.Item.CommGroupCpsCode",
-              "  ,Dimension.Item.CustomCommGroup1Code",
               "  ,Dimension.Item.MajorCode",
               "  ,SalesCategoryRollup",
               " ,SalesCategoryScorecard",
@@ -517,7 +509,6 @@
               "  ,Dimension.Item.CommGroupNote",
               "  ,Dimension.Item.Current_BasePrice",
               "  ,Dimension.Item.CommGroupCpsCode",
-              "  ,Dimension.Item.CustomCommGroup1Code",
               "  ,Dimension.Item.MajorCode",
               "  ,SalesCategoryRollup",
               " ,SalesCategoryScorecard",
