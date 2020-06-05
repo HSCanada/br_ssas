@@ -563,21 +563,6 @@
             "sourceColumn": "CommGroupCpsCode"
           },
           {
-            "name": "CustomCommGroup1Code",
-            "dataType": "string",
-            "sourceColumn": "CustomCommGroup1Code"
-          },
-          {
-            "name": "CustomCommGroup2Code",
-            "dataType": "string",
-            "sourceColumn": "CustomCommGroup2Code"
-          },
-          {
-            "name": "CustomCommGroup3Code",
-            "dataType": "string",
-            "sourceColumn": "CustomCommGroup3Code"
-          },
-          {
             "name": "MajorCode",
             "dataType": "string",
             "sourceColumn": "MajorCode"
@@ -603,6 +588,46 @@
               ")",
               ""
             ]
+          },
+          {
+            "name": "StrengthInd",
+            "dataType": "int64",
+            "sourceColumn": "StrengthInd"
+          },
+          {
+            "name": "size_factor",
+            "dataType": "int64",
+            "sourceColumn": "size_factor"
+          },
+          {
+            "name": "SalesCategoryScorecard",
+            "dataType": "string",
+            "sourceColumn": "SalesCategoryScorecard"
+          },
+          {
+            "name": "PrivateLabelScopeInd",
+            "dataType": "boolean",
+            "sourceColumn": "PrivateLabelScopeInd"
+          },
+          {
+            "name": "ClassificationCode",
+            "dataType": "string",
+            "sourceColumn": "ClassificationCode"
+          },
+          {
+            "name": "PrivateLabelScope_Item",
+            "dataType": "string",
+            "sourceColumn": "PrivateLabelScope_Item"
+          },
+          {
+            "name": "CurrentFileCost",
+            "dataType": "double",
+            "sourceColumn": "CurrentFileCost"
+          },
+          {
+            "name": "CurrentCorporatePrice",
+            "dataType": "double",
+            "sourceColumn": "CurrentCorporatePrice"
           }
         ],
         "partitions": [
