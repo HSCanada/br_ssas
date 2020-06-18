@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\JLi"
   DTS:DTSID="{FAA0D228-3DE5-4DE3-B27D-8E9C1483F260}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LastModifiedProductVersion="15.0.2000.94"
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_weekly_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="328"
-  DTS:VersionGUID="{94F8200B-951E-40BC-BDB7-BC277DEA6C31}">
+  DTS:VersionBuild="329"
+  DTS:VersionGUID="{8ACB36C7-5E0C-40C9-822E-6AA4B85CD362}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -656,7 +656,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2655,7 +2655,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3989,7 +3989,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Id="Package\seq_open_order_opordrpt\dft_load_stage\opordrpt"
           TopLeft="141,55" />
         <NodeLayout
-          Size="181,42"
+          Size="179,42"
           Id="Package\seq_open_order_opordrpt\dft_load_stage\open_order_opordrpt"
           TopLeft="86,222" />
         <EdgeLayout
@@ -3998,9 +3998,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-25.5,125"
+              EndConnector="-26.5,125"
               Start="0,0"
-              End="-25.5,117.5">
+              End="-26.5,117.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -4011,13 +4011,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                     Point2="0,62.5"
                     Point3="-4,62.5" />
                   <mssgle:LineSegment
-                    End="-21.5,62.5" />
+                    End="-22.5,62.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-21.5,62.5"
-                    Point2="-25.5,62.5"
-                    Point3="-25.5,66.5" />
+                    Point1="-22.5,62.5"
+                    Point2="-26.5,62.5"
+                    Point3="-26.5,66.5" />
                   <mssgle:LineSegment
-                    End="-25.5,117.5" />
+                    End="-26.5,117.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -1660,6 +1660,11 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "FamilySet",
+            "dataType": "string",
+            "sourceColumn": "FamilySet"
           }
         ],
         "partitions": [
@@ -1685,7 +1690,8 @@
                 "\tClassificationCode,",
                 "\tPrivateLabelScope_Item,",
                 "\tCurrentFileCost,",
-                "\t[CurrentCorporatePrice]",
+                "\t[CurrentCorporatePrice],",
+                "\t[FamilySet]",
                 "",
                 "",
                 "FROM",
@@ -1715,7 +1721,8 @@
                   "\tClassificationCode,",
                   "\tPrivateLabelScope_Item,",
                   "\tCurrentFileCost,",
-                  "\t[CurrentCorporatePrice]",
+                  "\t[CurrentCorporatePrice],",
+                  "\t[FamilySet]",
                   "",
                   "",
                   "FROM",
@@ -1753,7 +1760,8 @@
               "\tClassificationCode,",
               "\tPrivateLabelScope_Item,",
               "\tCurrentFileCost,",
-              "\t[CurrentCorporatePrice]",
+              "\t[CurrentCorporatePrice],",
+              "\t[FamilySet]",
               "",
               "",
               "FROM",
@@ -1789,7 +1797,8 @@
               "\tClassificationCode,",
               "\tPrivateLabelScope_Item,",
               "\tCurrentFileCost,",
-              "\t[CurrentCorporatePrice]",
+              "\t[CurrentCorporatePrice],",
+              "\t[FamilySet]",
               "",
               "",
               "FROM",
