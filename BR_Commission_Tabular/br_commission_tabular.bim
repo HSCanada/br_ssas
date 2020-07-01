@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -1087,11 +1087,13 @@
           {
             "name": "FreeGoodsEstInd",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FreeGoodsEstInd"
           },
           {
             "name": "FreeGoodsRedeemedInd",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FreeGoodsRedeemedInd"
           },
           {
@@ -1162,12 +1164,20 @@
           {
             "name": "EPS_CommAmt",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "EPS_CommAmt"
           },
           {
             "name": "CPS_CommAmt",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "CPS_CommAmt"
+          },
+          {
+            "name": "AdjKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "AdjKey"
           }
         ],
         "partitions": [
@@ -1207,6 +1217,7 @@
                 "\tFreeGoodsInvoicedInd,",
                 "\tFreeGoodsEstInd,",
                 "\tFreeGoodsRedeemedInd,",
+                "\tAdjKey,",
                 "",
                 "\tQuantity,",
                 "\tSalesAmt,",
@@ -1255,6 +1266,7 @@
                   "\tFreeGoodsInvoicedInd,",
                   "\tFreeGoodsEstInd,",
                   "\tFreeGoodsRedeemedInd,",
+                  "\tAdjKey,",
                   "",
                   "\tQuantity,",
                   "\tSalesAmt,",
@@ -1431,22 +1443,22 @@
           {
             "name": "MTD Sales Var %",
             "expression": "DIVIDE( [MTD Sales]-[PY MTD Sales],[PY MTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD GP Var %",
             "expression": "DIVIDE( [MTD GP] - [PY MTD GP], [PY MTD GP])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD Sales Var %",
             "expression": "DIVIDE( [YTD Sales]-[PY YTD Sales], [PY YTD Sales])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD GP Sales Var %",
             "expression": "DIVIDE( [YTD GP] - [PY YTD GP], [PY YTD GP])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Comm_FSC in Period",
@@ -1507,8 +1519,8 @@
           },
           {
             "name": "MTD Comm FSC Var %",
-            "expression": "[MTD Comm FSC]/[PY MTD Comm FSC] -1",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "expression": "DIVIDE( [MTD Comm FSC] - [PY MTD Comm FSC], [PY MTD Comm FSC])",
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD Comm FSC",
@@ -1545,8 +1557,8 @@
           },
           {
             "name": "YTD Comm FSC Var %",
-            "expression": "[YTD Comm FSC]/[PY YTD Comm FSC]-1",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "expression": "DIVIDE( [YTD Comm FSC] - [PY YTD Comm FSC], [PY YTD Comm FSC])",
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Comm ESS",
@@ -1583,8 +1595,8 @@
           },
           {
             "name": "MTD Comm ESS Var %",
-            "expression": "[MTD Comm ESS]/[PY MTD Comm ESS] -1",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "expression": "DIVIDE( [MTD Comm ESS] - [PY MTD Comm ESS], [PY MTD Comm ESS])",
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD Comm ESS",
@@ -1621,8 +1633,8 @@
           },
           {
             "name": "YTD Comm ESS Var %",
-            "expression": "[YTD Comm ESS]/[PY YTD Comm ESS]-1",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "expression": "DIVIDE( [YTD Comm ESS] - [PY YTD Comm ESS], [PY YTD Comm ESS])",
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Qty in Period",
@@ -1630,8 +1642,231 @@
             "isHidden": true
           },
           {
-            "name": "MTD Qty",
-            "expression": "CALCULATE([Qty in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "name": "Comm_EPS in Period",
+            "expression": "SUM([EPS_CommAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Comm_CPS in Period",
+            "expression": "SUM([CPS_CommAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm EPS",
+            "expression": "CALCULATE([Comm_EPS in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Comm EPS",
+            "expression": "CALCULATE([Comm_EPS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm EPS Var",
+            "expression": "[MTD Comm EPS]-[PY MTD Comm EPS]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm EPS Var %",
+            "expression": "DIVIDE( [MTD Comm EPS] - [PY MTD Comm EPS], [PY MTD Comm EPS])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm EPS",
+            "expression": "CALCULATE([Comm_EPS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Comm EPS",
+            "expression": "CALCULATE([Comm_EPS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm EPS Var",
+            "expression": "[YTD Comm EPS]-[PY YTD Comm EPS]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm EPS Var %",
+            "expression": "DIVIDE( [YTD Comm EPS] - [PY YTD Comm EPS], [PY YTD Comm EPS])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD Comm CPS",
+            "expression": "CALCULATE([Comm_CPS in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Comm CPS",
+            "expression": "CALCULATE([Comm_CPS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm CPS Var",
+            "expression": "[MTD Comm CPS]-[PY MTD Comm CPS]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm CPS Var %",
+            "expression": "DIVIDE( [MTD Comm CPS] - [PY MTD Comm CPS], [PY MTD Comm CPS])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm CPS",
+            "expression": "CALCULATE([Comm_CPS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Comm CPS",
+            "expression": "CALCULATE([Comm_CPS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm CPS Var",
+            "expression": "[YTD Comm CPS]-[PY YTD Comm CPS]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm CPS Var %",
+            "expression": "DIVIDE( [YTD Comm CPS] - [PY YTD Comm CPS], [PY YTD Comm CPS])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "SalesOrder in Period",
+            "expression": "DISTINCTCOUNT([SalesOrderNumber])",
+            "formatString": "#,0",
+            "isHidden": true
+          },
+          {
+            "name": "Lines in Period",
+            "expression": "COUNTA([LineNumber])",
+            "formatString": "#,0",
+            "isHidden": true
+          },
+          {
+            "name": "MTD Salesorder",
+            "expression": "CALCULATE([Salesorder in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY MTD Salesorder",
+            "expression": "CALCULATE([Salesorder in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Salesorder",
+            "expression": "CALCULATE([Salesorder in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD Salesorder",
+            "expression": "CALCULATE([Salesorder in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Lines",
+            "expression": "CALCULATE([Lines in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY MTD Lines",
+            "expression": "CALCULATE([Lines in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Lines",
+            "expression": "CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD Lines",
+            "expression": "CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
             "formatString": "#,0"
           }
         ],
@@ -1669,6 +1904,7 @@
               "\tFreeGoodsInvoicedInd,",
               "\tFreeGoodsEstInd,",
               "\tFreeGoodsRedeemedInd,",
+              "\tAdjKey,",
               "",
               "\tQuantity,",
               "\tSalesAmt,",
@@ -1723,6 +1959,7 @@
               "\tFreeGoodsInvoicedInd,",
               "\tFreeGoodsEstInd,",
               "\tFreeGoodsRedeemedInd,",
+              "\tAdjKey,",
               "",
               "\tQuantity,",
               "\tSalesAmt,",
@@ -4076,7 +4313,7 @@
           {
             "name": "YTD Event Var %",
             "expression": "DIVIDE( [YTD Event]-[PY YTD Event], [PY YTD Event])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -4425,6 +4662,366 @@
             }
           }
         ]
+      },
+      {
+        "name": "CommAdjust",
+        "columns": [
+          {
+            "name": "adj_comment_org",
+            "dataType": "string",
+            "sourceColumn": "adj_comment_org",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "adj_source_org",
+            "dataType": "string",
+            "sourceColumn": "adj_source_org",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "source_cd",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "source_cd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "adj_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "adj_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "adj_source",
+            "dataType": "string",
+            "sourceColumn": "adj_source",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "adj_type",
+            "dataType": "string",
+            "sourceColumn": "adj_type",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CommAdjust",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [comm].[adjustment].[adj_comment_org],[comm].[adjustment].[adj_source_org],[comm].[adjustment].[source_cd],[comm].[adjustment].[adj_key],[comm].[adjustment].[adj_source],[comm].[adjustment].[adj_type] FROM [comm].[adjustment] ",
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_comment_org</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>170</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_source_org</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>142</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>source_cd</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>112</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_key</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>68</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_source</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>132</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_type</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>123</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>183</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_comment_org</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_source_org</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>source_cd</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_key</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_source</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_type</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>6</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>adj_note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [comm].[adjustment].[adj_comment_org],[comm].[adjustment].[adj_source_org],[comm].[adjustment].[source_cd],[comm].[adjustment].[adj_key],[comm].[adjustment].[adj_source],[comm].[adjustment].[adj_type] FROM [comm].[adjustment] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "adjustment"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "comm"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_comment_org</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>170</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_source_org</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>142</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>source_cd</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>112</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_key</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>68</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_source</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>132</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_type</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>123</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_note</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>183</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_comment_org</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_source_org</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>source_cd</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_key</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_source</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_type</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_note</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>6</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>adj_note</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
       }
     ],
     "relationships": [
@@ -4609,6 +5206,13 @@
         "fromColumn": "EPS_CommGroupKey",
         "toTable": "CommGroup_EPS",
         "toColumn": "CommGroupKey"
+      },
+      {
+        "name": "8c2217da-8c65-4219-8703-c7bc2398f0cc",
+        "fromTable": "Sales",
+        "fromColumn": "AdjKey",
+        "toTable": "CommAdjust",
+        "toColumn": "adj_key"
       }
     ],
     "roles": [
@@ -4619,22 +5223,6 @@
           {
             "memberName": "CAHSI\\tcrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
-          },
-          {
-            "memberName": "CAHSI\\Gary.Winslow",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
-          },
-          {
-            "memberName": "CAHSI\\JRusso",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-6859"
-          },
-          {
-            "memberName": "CAHSI\\David.Macleod",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11196"
-          },
-          {
-            "memberName": "CAHSI\\Suzanne.Gaiero",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-5740"
           }
         ]
       }
