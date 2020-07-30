@@ -2461,6 +2461,16 @@
             "name": "PriceMethodRollupCode",
             "dataType": "string",
             "sourceColumn": "PriceMethodRollupCode"
+          },
+          {
+            "name": "PriceMethodRollup2",
+            "dataType": "string",
+            "sourceColumn": "PriceMethodRollup2"
+          },
+          {
+            "name": "PriceMethodRollup2Code",
+            "dataType": "string",
+            "sourceColumn": "PriceMethodRollup2Code"
           }
         ],
         "partitions": [
@@ -2474,14 +2484,19 @@
                 "--\ttop 10",
                 "\tpm.[PriceMethodKey] ",
                 "\t,pm.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethod",
-                "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
                 "\t,pm.PriceMethod\t\t\t\t\t\t\t\tAS PriceMethodCode",
-                "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+                "\t,pm1.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
+                "\t,pm1.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+                "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup2",
+                "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollup2Code",
                 "",
                 "FROM [dbo].[BRS_PriceMethod] AS pm",
                 "",
+                "\tINNER JOIN [BRS_PriceMethod] AS pm1",
+                "\tON pm1.[PriceMethod] = pm.[PriceMethodRollup]",
+                "",
                 "\tINNER JOIN [BRS_PriceMethod] AS pm2",
-                "\tON pm.[PriceMethodRollup] = pm2.[PriceMethod]"
+                "\tON pm2.[PriceMethod] = pm.[PriceMethodRollup_L2]"
               ],
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
             },
@@ -2493,14 +2508,19 @@
                   "--\ttop 10",
                   "\tpm.[PriceMethodKey] ",
                   "\t,pm.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethod",
-                  "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
                   "\t,pm.PriceMethod\t\t\t\t\t\t\t\tAS PriceMethodCode",
-                  "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+                  "\t,pm1.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
+                  "\t,pm1.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+                  "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup2",
+                  "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollup2Code",
                   "",
                   "FROM [dbo].[BRS_PriceMethod] AS pm",
                   "",
+                  "\tINNER JOIN [BRS_PriceMethod] AS pm1",
+                  "\tON pm1.[PriceMethod] = pm.[PriceMethodRollup]",
+                  "",
                   "\tINNER JOIN [BRS_PriceMethod] AS pm2",
-                  "\tON pm.[PriceMethodRollup] = pm2.[PriceMethod]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "\tON pm2.[PriceMethod] = pm.[PriceMethodRollup_L2]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -2514,14 +2534,19 @@
               "--\ttop 10",
               "\tpm.[PriceMethodKey] ",
               "\t,pm.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethod",
-              "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
               "\t,pm.PriceMethod\t\t\t\t\t\t\t\tAS PriceMethodCode",
-              "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+              "\t,pm1.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
+              "\t,pm1.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+              "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup2",
+              "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollup2Code",
               "",
               "FROM [dbo].[BRS_PriceMethod] AS pm",
               "",
+              "\tINNER JOIN [BRS_PriceMethod] AS pm1",
+              "\tON pm1.[PriceMethod] = pm.[PriceMethodRollup]",
+              "",
               "\tINNER JOIN [BRS_PriceMethod] AS pm2",
-              "\tON pm.[PriceMethodRollup] = pm2.[PriceMethod]"
+              "\tON pm2.[PriceMethod] = pm.[PriceMethodRollup_L2]"
             ]
           },
           {
@@ -2539,14 +2564,19 @@
               "--\ttop 10",
               "\tpm.[PriceMethodKey] ",
               "\t,pm.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethod",
-              "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
               "\t,pm.PriceMethod\t\t\t\t\t\t\t\tAS PriceMethodCode",
-              "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+              "\t,pm1.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup",
+              "\t,pm1.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollupCode",
+              "\t,pm2.[PriceMethodDescr]\t\t\t\t\t\tAS PriceMethodRollup2",
+              "\t,pm2.PriceMethod\t\t\t\t\t\t\tAS PriceMethodRollup2Code",
               "",
               "FROM [dbo].[BRS_PriceMethod] AS pm",
               "",
+              "\tINNER JOIN [BRS_PriceMethod] AS pm1",
+              "\tON pm1.[PriceMethod] = pm.[PriceMethodRollup]",
+              "",
               "\tINNER JOIN [BRS_PriceMethod] AS pm2",
-              "\tON pm.[PriceMethodRollup] = pm2.[PriceMethod]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "\tON pm2.[PriceMethod] = pm.[PriceMethodRollup_L2]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
