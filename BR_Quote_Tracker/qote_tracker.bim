@@ -404,6 +404,12 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "BadGMLine"
+          },
+          {
+            "name": "EpsKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EpsKey"
           }
         ],
         "partitions": [
@@ -421,6 +427,7 @@
                 "\tPriceMethodKey,",
                 "\t[entered_by_key],",
                 "\tMarketClassKey,",
+                "\tEpsKey,",
                 "\tCreditKey,",
                 "\tFiscalMonth,",
                 "\tDateKey,",
@@ -445,7 +452,7 @@
                 "FROM",
                 "\tFact.Sale_qt",
                 "WHERE ",
-                "\tSalesCategory = 'MERCH' AND",
+                "\tSalesCategory in( 'MERCH', 'SMEQU') AND",
                 "\tFreeGoodsInvoicedInd = 0"
               ],
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
@@ -462,6 +469,7 @@
                   "\tPriceMethodKey,",
                   "\t[entered_by_key],",
                   "\tMarketClassKey,",
+                  "\tEpsKey,",
                   "\tCreditKey,",
                   "\tFiscalMonth,",
                   "\tDateKey,",
@@ -486,7 +494,7 @@
                   "FROM",
                   "\tFact.Sale_qt",
                   "WHERE ",
-                  "\tSalesCategory = 'MERCH' AND",
+                  "\tSalesCategory in( 'MERCH', 'SMEQU') AND",
                   "\tFreeGoodsInvoicedInd = 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
@@ -1478,6 +1486,7 @@
               "\tPriceMethodKey,",
               "\t[entered_by_key],",
               "\tMarketClassKey,",
+              "\tEpsKey,",
               "\tCreditKey,",
               "\tFiscalMonth,",
               "\tDateKey,",
@@ -1502,7 +1511,7 @@
               "FROM",
               "\tFact.Sale_qt",
               "WHERE ",
-              "\tSalesCategory = 'MERCH' AND",
+              "\tSalesCategory in( 'MERCH', 'SMEQU') AND",
               "\tFreeGoodsInvoicedInd = 0"
             ]
           },
@@ -1525,6 +1534,7 @@
               "\tPriceMethodKey,",
               "\t[entered_by_key],",
               "\tMarketClassKey,",
+              "\tEpsKey,",
               "\tCreditKey,",
               "\tFiscalMonth,",
               "\tDateKey,",
@@ -1549,7 +1559,7 @@
               "FROM",
               "\tFact.Sale_qt",
               "WHERE ",
-              "\tSalesCategory = 'MERCH' AND",
+              "\tSalesCategory in( 'MERCH', 'SMEQU') AND",
               "\tFreeGoodsInvoicedInd = 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
@@ -1697,7 +1707,7 @@
                 "FROM",
                 "\tDimension.Item",
                 "WHERE",
-                "\tSalesCategoryCode = 'MERCH'"
+                "\tSalesCategoryCode IN( 'MERCH', 'SMEQU')"
               ],
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
             },
@@ -1728,7 +1738,7 @@
                   "FROM",
                   "\tDimension.Item",
                   "WHERE",
-                  "\tSalesCategoryCode = 'MERCH'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "\tSalesCategoryCode IN( 'MERCH', 'SMEQU')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -1767,7 +1777,7 @@
               "FROM",
               "\tDimension.Item",
               "WHERE",
-              "\tSalesCategoryCode = 'MERCH'"
+              "\tSalesCategoryCode IN( 'MERCH', 'SMEQU')"
             ]
           },
           {
@@ -1804,7 +1814,7 @@
               "FROM",
               "\tDimension.Item",
               "WHERE",
-              "\tSalesCategoryCode = 'MERCH'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "\tSalesCategoryCode IN( 'MERCH', 'SMEQU')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -4283,6 +4293,141 @@
             }
           }
         ]
+      },
+      {
+        "name": "Exclusive",
+        "columns": [
+          {
+            "name": "eps_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "eps_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "eps_name",
+            "dataType": "string",
+            "sourceColumn": "eps_name",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "eps_brand_equity_category",
+            "dataType": "string",
+            "sourceColumn": "eps_brand_equity_category",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "eps_team_portfolio_ind",
+            "dataType": "string",
+            "sourceColumn": "eps_team_portfolio_ind",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "eps_code",
+            "dataType": "string",
+            "sourceColumn": "eps_code",
+            "sourceProviderType": "VarChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Exclusive",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT ",
+                "\t[Excl_Key]\t\tAS eps_key",
+                "\t,[Excl_Name]\t\tAS eps_name",
+                "\t,[BrandEquityCategory]\tAS eps_brand_equity_category",
+                "\t,CASE ",
+                "\t\tWHEN [eps_track_ind]=1 ",
+                "\t\tTHEN 'Yes' ",
+                "\t\tELSE 'No' ",
+                "\tEND\t\t\tAS eps_team_portfolio_ind",
+                "\t,[Excl_Code_Public]\t\tAS eps_code",
+                "",
+                "FROM",
+                "\t[hfm].[exclusive_product]",
+                "WHERE",
+                "--\t[BrandEquityCategory] in ('Owned', 'Exclusive') AND",
+                "\t(1=1)"
+              ],
+              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+                  "\t[Excl_Key]\t\tAS eps_key",
+                  "\t,[Excl_Name]\t\tAS eps_name",
+                  "\t,[BrandEquityCategory]\tAS eps_brand_equity_category",
+                  "\t,CASE ",
+                  "\t\tWHEN [eps_track_ind]=1 ",
+                  "\t\tTHEN 'Yes' ",
+                  "\t\tELSE 'No' ",
+                  "\tEND\t\t\tAS eps_team_portfolio_ind",
+                  "\t,[Excl_Code_Public]\t\tAS eps_code",
+                  "",
+                  "FROM",
+                  "\t[hfm].[exclusive_product]",
+                  "WHERE",
+                  "--\t[BrandEquityCategory] in ('Owned', 'Exclusive') AND",
+                  "\t(1=1)</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT ",
+              "\t[Excl_Key]\t\tAS eps_key",
+              "\t,[Excl_Name]\t\tAS eps_name",
+              "\t,[BrandEquityCategory]\tAS eps_brand_equity_category",
+              "\t,CASE ",
+              "\t\tWHEN [eps_track_ind]=1 ",
+              "\t\tTHEN 'Yes' ",
+              "\t\tELSE 'No' ",
+              "\tEND\t\t\tAS eps_team_portfolio_ind",
+              "\t,[Excl_Code_Public]\t\tAS eps_code",
+              "",
+              "FROM",
+              "\t[hfm].[exclusive_product]",
+              "WHERE",
+              "--\t[BrandEquityCategory] in ('Owned', 'Exclusive') AND",
+              "\t(1=1)"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Exclusive"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+              "\t[Excl_Key]\t\tAS eps_key",
+              "\t,[Excl_Name]\t\tAS eps_name",
+              "\t,[BrandEquityCategory]\tAS eps_brand_equity_category",
+              "\t,CASE ",
+              "\t\tWHEN [eps_track_ind]=1 ",
+              "\t\tTHEN 'Yes' ",
+              "\t\tELSE 'No' ",
+              "\tEND\t\t\tAS eps_team_portfolio_ind",
+              "\t,[Excl_Code_Public]\t\tAS eps_code",
+              "",
+              "FROM",
+              "\t[hfm].[exclusive_product]",
+              "WHERE",
+              "--\t[BrandEquityCategory] in ('Owned', 'Exclusive') AND",
+              "\t(1=1)</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
       }
     ],
     "relationships": [
@@ -4355,6 +4500,13 @@
         "fromColumn": "BadGMLine",
         "toTable": "GMBand",
         "toColumn": "GM Flag"
+      },
+      {
+        "name": "542eb9ac-1c86-44f6-a5d7-12ad69a51e07",
+        "fromTable": "Sales",
+        "fromColumn": "EpsKey",
+        "toTable": "Exclusive",
+        "toColumn": "eps_key"
       }
     ],
     "roles": [
