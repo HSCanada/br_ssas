@@ -609,7 +609,7 @@
           },
           {
             "name": "PY YTD GM",
-            "expression": "divide([YTD GP],[PY YTD Sales])",
+            "expression": "divide([PY YTD GP],[PY YTD Sales])",
             "formatString": "0.0%;-0.0%;0.0%"
           },
           {
@@ -1472,6 +1472,297 @@
             "name": "Quote YTD Lines",
             "expression": " CALCULATE([Quote Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
             "formatString": "#,0"
+          },
+          {
+            "name": "YTD PL Sales Var",
+            "expression": " [YTD PL Sales]-[PY YTD PL Sales]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD PL Sales Var %",
+            "expression": " DIVIDE([YTD PL Sales]-[PY YTD PL Sales],[PY YTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD PL Sales",
+            "expression": "CALCULATE([Private Sales in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD PL Sales",
+            "expression": "CALCULATE([Private Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD PL Sales Var",
+            "expression": "[MTD PL Sales]-[PY MTD PL Sales]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD PL Sales Var %",
+            "expression": "DIVIDE( [MTD PL Sales]-[PY MTD PL Sales],[PY MTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD PL Sales Share",
+            "expression": "DIVIDE([MTD PL Sales], [MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY MTD PL Sales Share",
+            "expression": "DIVIDE([PY MTD PL Sales], [PY MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD PL Sales Share Growth",
+            "expression": "[MTD PL Sales Share] - [PY MTD PL Sales Share]",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD PL Sales",
+            "expression": "CALCULATE([Private Sales in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY QTD PL Sales",
+            "expression": "CALCULATE([Private Sales in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12 &&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD PL Sales Var",
+            "expression": "[QTD PL Sales]-[PY QTD PL Sales]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD PL Sales Var %",
+            "expression": "DIVIDE( [QTD PL Sales]-[PY QTD PL Sales],[PY QTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD PL Sales Share",
+            "expression": "DIVIDE([QTD PL Sales], [QTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY QTD PL Sales Share",
+            "expression": "DIVIDE([PY QTD PL Sales], [PY QTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD PL Sales Share Growth",
+            "expression": "[QTD PL Sales Share] - [PY QTD PL Sales Share]",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD PL GP",
+            "expression": " CALCULATE([Private GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD PL GM",
+            "expression": " DIVIDE([YTD PL GP],[YTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Private GP in Period",
+            "expression": " CALCULATE ( [GP in Period], 'Item'[Label] = \"P\")",
+            "isHidden": true
+          },
+          {
+            "name": "PY YTD PL GP",
+            "expression": " CALCULATE([Private GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD PL GP Var",
+            "expression": " [YTD PL GP]-[PY YTD PL GP]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD PL GM",
+            "expression": "divide([PY YTD PL GP],[PY YTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD PL GP Var %",
+            "expression": " DIVIDE([YTD PL GP]-[PY YTD Pl GP],[PY YTD Pl GP]) ",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD PL GP",
+            "expression": "CALCULATE([Private GP in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD PL GP",
+            "expression": "CALCULATE([Private GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD PL GP Var",
+            "expression": "[MTD PL GP]-[PY MTD PL GP]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD PL GP Var %",
+            "expression": "DIVIDE( [MTD PL GP] - [PY MTD PL GP], [PY MTD PL GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD PL GP",
+            "expression": "CALCULATE([Private GP in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY QTD PL GP",
+            "expression": "CALCULATE([Private GP in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12 &&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD PL GP Var",
+            "expression": "[QTD PL GP]-[PY QTD PL GP] ",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD PL GP Var %",
+            "expression": "DIVIDE( [QTD PL GP] - [PY QTD PL GP], [PY QTD PL GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD PL GM",
+            "expression": " DIVIDE([MTD PL GP],[MTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY MTD PL GM",
+            "expression": "divide([PY MTD PL GP],[PY MTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD PL GM",
+            "expression": " DIVIDE([QTD PL GP],[QTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY QTD PL GM",
+            "expression": "divide([PY QTD PL GP],[PY QTD PL Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD GM",
+            "expression": " DIVIDE([MTD GP],[MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY MTD GM",
+            "expression": "divide([PY MTD GP],[PY MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD GM",
+            "expression": " DIVIDE([QTD GP],[QTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY QTD GM",
+            "expression": "divide([PY QTD GP],[PY QTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
