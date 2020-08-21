@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_com_rebate_terr"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{A96C2A8A-7CC6-4C9C-80BA-82FAE4451F7C}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{D0AB34FD-93EA-4092-BED4-F8FB5E65B4CE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,6 @@
       DTS:refId="Package\seq_F55479C_rebate_by_shipto_Staging"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:Disabled="True"
       DTS:DTSID="{12CBD368-E5D6-4BAC-96E4-3C1E57E9013A}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -1162,7 +1161,7 @@
 --------------------------------------------------------------------------------
 
 SELECT 
- --  Top 10
+--  Top 10
     "QMAN8" AS QMAN8__billto,
 	"QMSHAN" AS QMSHAN_shipto,
 	"QMBNAD" AS QMBNAD_beneficiary,
@@ -1278,8 +1277,8 @@ FROM
 		QM$GTY,
 		QM$CGN,
 		QMTKBY,
-		CAST((QMDY01)/100.0 AS DEC(15,2)) AS QMDY01,
-		CAST((QMDY02)/100.0 AS DEC(15,2)) AS QMDY02,
+		CAST((QMDY01)/1.0 AS DEC(15,2)) AS QMDY01,
+		CAST((QMDY02)/1.0 AS DEC(15,2)) AS QMDY02,
 		CAST((QMAA1)/100.0 AS DEC(15,2)) AS QMAA1,
 		CAST((QMAA2)/100.0 AS DEC(15,2)) AS QMAA2,
 		QM$EPD AS QM$EPD,
@@ -3105,7 +3104,7 @@ FROM
     design-time-name="Package\seq_F55479C_rebate_by_shipto_Staging\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="197,42"
           Id="Package\seq_F55479C_rebate_by_shipto_Staging\dft_load_stage\OLE DB Source F55479C"
@@ -3145,9 +3144,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
