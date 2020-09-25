@@ -1868,6 +1868,26 @@
             "name": "PY YTD Lines",
             "expression": "CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
             "formatString": "#,0"
+          },
+          {
+            "name": "YTD GM",
+            "expression": "DIVIDE([YTD GP],[YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD GM",
+            "expression": "DIVIDE([MTD GP],[MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY YTD GM",
+            "expression": "DIVIDE([PY YTD GP],[PY YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY MTD GM",
+            "expression": "DIVIDE([PY MTD GP],[PY MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
