@@ -628,6 +628,11 @@
             "name": "CurrentCorporatePrice",
             "dataType": "double",
             "sourceColumn": "CurrentCorporatePrice"
+          },
+          {
+            "name": "ppe_code",
+            "dataType": "string",
+            "sourceColumn": "ppe_code"
           }
         ],
         "partitions": [

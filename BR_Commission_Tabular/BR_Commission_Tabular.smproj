@@ -40,7 +40,7 @@
     <DeploymentServerName>CAHSIONNLSQL1</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
-    <DeploymentServerDatabase>BR_Commission_Tabular</DeploymentServerDatabase>
+    <DeploymentServerDatabase>DEV_BR_Commission_Tabular</DeploymentServerDatabase>
     <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
