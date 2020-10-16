@@ -24,7 +24,6 @@
           {
             "name": "FiscalMonth",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "FiscalMonth",
             "sourceProviderType": "Integer"
           },
@@ -506,7 +505,6 @@
             "name": "Sales in Period",
             "expression": " SUM([SalesAmt])",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -518,7 +516,6 @@
             "name": "GP in Period",
             "expression": " SUM([GPAtCommCostAmt]) ",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -1356,7 +1353,7 @@
           {
             "name": "Quantity in Period",
             "expression": "SUM([Quantity])",
-            "isHidden": true
+            "formatString": "#,0"
           },
           {
             "name": "YTD Units",
@@ -1966,6 +1963,11 @@
             "name": "FamilySet",
             "dataType": "string",
             "sourceColumn": "FamilySet"
+          },
+          {
+            "name": "ppe_code",
+            "dataType": "string",
+            "sourceColumn": "ppe_code"
           }
         ],
         "partitions": [
@@ -1992,7 +1994,8 @@
                 "\tPrivateLabelScope_Item,",
                 "\tCurrentFileCost,",
                 "\t[CurrentCorporatePrice],",
-                "\t[FamilySet]",
+                "\t[FamilySet],",
+                "\t[ppe_code]",
                 "",
                 "",
                 "FROM",
@@ -2023,7 +2026,8 @@
                   "\tPrivateLabelScope_Item,",
                   "\tCurrentFileCost,",
                   "\t[CurrentCorporatePrice],",
-                  "\t[FamilySet]",
+                  "\t[FamilySet],",
+                  "\t[ppe_code]",
                   "",
                   "",
                   "FROM",
@@ -2062,7 +2066,8 @@
               "\tPrivateLabelScope_Item,",
               "\tCurrentFileCost,",
               "\t[CurrentCorporatePrice],",
-              "\t[FamilySet]",
+              "\t[FamilySet],",
+              "\t[ppe_code]",
               "",
               "",
               "FROM",
@@ -2099,7 +2104,8 @@
               "\tPrivateLabelScope_Item,",
               "\tCurrentFileCost,",
               "\t[CurrentCorporatePrice],",
-              "\t[FamilySet]",
+              "\t[FamilySet],",
+              "\t[ppe_code]",
               "",
               "",
               "FROM",
