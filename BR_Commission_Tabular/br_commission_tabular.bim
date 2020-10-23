@@ -1178,6 +1178,24 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "AdjKey"
+          },
+          {
+            "name": "ISR_SalespersonKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ISR_SalespersonKey"
+          },
+          {
+            "name": "ISR_CommAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "ISR_CommAmt"
+          },
+          {
+            "name": "ISR_CommGroupKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ISR_CommGroupKey"
           }
         ],
         "partitions": [
@@ -1196,6 +1214,9 @@
                 "\tFSC_SalespersonKey,",
                 "\tFSC_SalespersonCodeKey,",
                 "\tFSC_CommGroupKey,",
+                "",
+                "\tISR_SalespersonKey,",
+                "\tISR_CommGroupKey,",
                 "",
                 "\tESS_SalespersonKey,",
                 "\tESS_CommGroupKey,",
@@ -1223,6 +1244,7 @@
                 "\tSalesAmt,",
                 "\tGPAmt,",
                 "\tFSC_CommAmt,",
+                "\tISR_CommAmt,",
                 "\tESS_CommAmt,",
                 "\tEPS_CommAmt,",
                 "\tCPS_CommAmt",
@@ -1245,6 +1267,9 @@
                   "\tFSC_SalespersonKey,",
                   "\tFSC_SalespersonCodeKey,",
                   "\tFSC_CommGroupKey,",
+                  "",
+                  "\tISR_SalespersonKey,",
+                  "\tISR_CommGroupKey,",
                   "",
                   "\tESS_SalespersonKey,",
                   "\tESS_CommGroupKey,",
@@ -1272,6 +1297,7 @@
                   "\tSalesAmt,",
                   "\tGPAmt,",
                   "\tFSC_CommAmt,",
+                  "\tISR_CommAmt,",
                   "\tESS_CommAmt,",
                   "\tEPS_CommAmt,",
                   "\tCPS_CommAmt",
@@ -1888,6 +1914,94 @@
             "name": "PY MTD GM",
             "expression": "DIVIDE([PY MTD GP],[PY MTD Sales])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Comm_ISR in Period",
+            "expression": "SUM([ISR_CommAmt])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm ISR",
+            "expression": "CALCULATE([Comm_ISR in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Comm ISR",
+            "expression": "CALCULATE([Comm_ISR in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm ISR Var",
+            "expression": "[MTD Comm ISR]-[PY MTD Comm ISR]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm ISR Var %",
+            "expression": "DIVIDE( [MTD Comm ISR] - [PY MTD Comm ISR], [PY MTD Comm ISR])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm ISR",
+            "expression": "CALCULATE([Comm_ISR in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Comm ISR",
+            "expression": "CALCULATE([Comm_ISR in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm ISR Var",
+            "expression": "[YTD Comm ISR]-[PY YTD Comm ISR]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm ISR Var %",
+            "expression": "DIVIDE( [YTD Comm ISR] - [PY YTD Comm CPS], [PY YTD Comm ISR])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -1903,6 +2017,9 @@
               "\tFSC_SalespersonKey,",
               "\tFSC_SalespersonCodeKey,",
               "\tFSC_CommGroupKey,",
+              "",
+              "\tISR_SalespersonKey,",
+              "\tISR_CommGroupKey,",
               "",
               "\tESS_SalespersonKey,",
               "\tESS_CommGroupKey,",
@@ -1930,6 +2047,7 @@
               "\tSalesAmt,",
               "\tGPAmt,",
               "\tFSC_CommAmt,",
+              "\tISR_CommAmt,",
               "\tESS_CommAmt,",
               "\tEPS_CommAmt,",
               "\tCPS_CommAmt",
@@ -1959,6 +2077,9 @@
               "\tFSC_SalespersonCodeKey,",
               "\tFSC_CommGroupKey,",
               "",
+              "\tISR_SalespersonKey,",
+              "\tISR_CommGroupKey,",
+              "",
               "\tESS_SalespersonKey,",
               "\tESS_CommGroupKey,",
               "",
@@ -1985,6 +2106,7 @@
               "\tSalesAmt,",
               "\tGPAmt,",
               "\tFSC_CommAmt,",
+              "\tISR_CommAmt,",
               "\tESS_CommAmt,",
               "\tEPS_CommAmt,",
               "\tCPS_CommAmt",
@@ -3736,6 +3858,172 @@
             ]
           }
         ]
+      },
+      {
+        "name": "CommSalesperson_ISR",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeNumber_ISR",
+            "dataType": "int64",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[EmployeeNumber_FSC]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommMasterCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommMasterCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommPlanCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommPlanCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryStart",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[TerritoryStart]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonID",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonID]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCount",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCount]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "ZoneName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "tracker_ind",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CommSalesperson_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CommGroup_ISR",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupCode_ISR",
+            "dataType": "string",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupCode_FSC]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroup]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "comm_group_scorecard_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CommGroup_FSC"
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -3857,6 +4145,20 @@
         "fromColumn": "AdjKey",
         "toTable": "CommAdjust",
         "toColumn": "adj_key"
+      },
+      {
+        "name": "66823e6d-b98f-49bc-8676-b69c5c9215e7",
+        "fromTable": "Sales",
+        "fromColumn": "ISR_SalespersonKey",
+        "toTable": "CommSalesperson_ISR",
+        "toColumn": "SalespersonKey"
+      },
+      {
+        "name": "4e04621c-da6a-40fa-a895-29f237413e87",
+        "fromTable": "Sales",
+        "fromColumn": "ISR_CommGroupKey",
+        "toTable": "CommGroup_ISR",
+        "toColumn": "CommGroupKey"
       }
     ],
     "roles": [
