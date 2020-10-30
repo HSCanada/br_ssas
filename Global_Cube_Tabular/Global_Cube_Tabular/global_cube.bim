@@ -1,0 +1,1852 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer cahsionnlsql1 DEV_BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Persist Security Info=false;Initial Catalog=DEV_BRSales;User ID=tcrowley;Integrated Security=SSPI",
+        "impersonationMode": "impersonateAccount",
+        "account": "CAHSI\\tcrowley",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "sales_fact",
+        "columns": [
+          {
+            "name": "EntityKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EntityKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HFM_Account_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "HFM_Account_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "global_product_class_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "global_product_class_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Excl_Key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Excl_Key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MarketClassKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MarketClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "gps_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "gps_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SupplierKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SupplierKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DocTypeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DocTypeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "GLBU_ClassKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GLBU_ClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SalesDivision_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SalesDivision_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "sales_day",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "sales_day",
+            "formatString": "General Date",
+            "sourceProviderType": "Date"
+          },
+          {
+            "name": "Shipto",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Shipto",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ItemKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ItemKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "BranchKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BranchKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AdjCodeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "AdjCodeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FreeGoodsEstInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsEstInd",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "sales_amt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "sales_amt",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "gp_amt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "gp_amt",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "SalesOrderNumber",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderNumber"
+          },
+          {
+            "name": "LineNumber",
+            "dataType": "int64",
+            "sourceColumn": "LineNumber"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "global_cube_fact",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": "Exec [hfm].global_cube_model_proc",
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec [hfm].global_cube_model_proc</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales in Period",
+            "expression": "SUM([sales_amt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GP in Period",
+            "expression": "SUM([gp_amt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "Exec [hfm].global_cube_model_proc"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "global_cube_fact"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec [hfm].global_cube_model_proc</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "MarketClass",
+        "columns": [
+          {
+            "name": "MarketClass",
+            "dataType": "string",
+            "sourceColumn": "MarketClass",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClassDesc",
+            "dataType": "string",
+            "sourceColumn": "MarketClassDesc",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketRollup_L1",
+            "dataType": "string",
+            "sourceColumn": "MarketRollup_L1",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketRollup_L2",
+            "dataType": "string",
+            "sourceColumn": "MarketRollup_L2",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketRollup_L3",
+            "dataType": "string",
+            "sourceColumn": "MarketRollup_L3",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClassKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MarketClassKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_CustomerMarketClass",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT        MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2, MarketRollup_L3, MarketClassKey",
+                "FROM            BRS_CustomerMarketClass"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2, MarketRollup_L3, MarketClassKey",
+                  "FROM            BRS_CustomerMarketClass</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT        MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2, MarketRollup_L3, MarketClassKey",
+              "FROM            BRS_CustomerMarketClass"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_CustomerMarketClass"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2, MarketRollup_L3, MarketClassKey",
+              "FROM            BRS_CustomerMarketClass</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Account",
+        "columns": [
+          {
+            "name": "HFM_Account",
+            "dataType": "string",
+            "sourceColumn": "HFM_Account",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "HFM_Account_descr",
+            "dataType": "string",
+            "sourceColumn": "HFM_Account_descr",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "HFM_Account_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "HFM_Account_key",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "account",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT        HFM_Account, HFM_Account_descr, HFM_Account_key",
+                "FROM            hfm.account"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        HFM_Account, HFM_Account_descr, HFM_Account_key",
+                  "FROM            hfm.account</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT        HFM_Account, HFM_Account_descr, HFM_Account_key",
+              "FROM            hfm.account"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "account"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "hfm"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        HFM_Account, HFM_Account_descr, HFM_Account_key",
+              "FROM            hfm.account</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Entity",
+        "columns": [
+          {
+            "name": "Entity",
+            "dataType": "string",
+            "sourceColumn": "Entity",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "EntityDescr",
+            "dataType": "string",
+            "sourceColumn": "EntityDescr",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "EntityKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EntityKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "entity",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT        Entity, EntityDescr, EntityKey",
+                "FROM            hfm.entity"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        Entity, EntityDescr, EntityKey",
+                  "FROM            hfm.entity</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT        Entity, EntityDescr, EntityKey",
+              "FROM            hfm.entity"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "entity"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "hfm"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        Entity, EntityDescr, EntityKey",
+              "FROM            hfm.entity</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Exclusive",
+        "columns": [
+          {
+            "name": "Excl_Code",
+            "dataType": "string",
+            "sourceColumn": "Excl_Code",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Excl_Name",
+            "dataType": "string",
+            "sourceColumn": "Excl_Name",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "BrandEquityCategory",
+            "dataType": "string",
+            "sourceColumn": "BrandEquityCategory",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Excl_Key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Excl_Key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "eps_track_ind",
+            "dataType": "boolean",
+            "sourceColumn": "eps_track_ind",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "exclusive_product",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "Excl_Code, Excl_Name, BrandEquityCategory, ",
+                "Excl_Key, eps_track_ind",
+                "                         ",
+                "FROM            hfm.exclusive_product"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "Excl_Code, Excl_Name, BrandEquityCategory, ",
+                  "Excl_Key, eps_track_ind",
+                  "                         ",
+                  "FROM            hfm.exclusive_product</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "Excl_Code, Excl_Name, BrandEquityCategory, ",
+              "Excl_Key, eps_track_ind",
+              "                         ",
+              "FROM            hfm.exclusive_product"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "exclusive_product"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "hfm"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "Excl_Code, Excl_Name, BrandEquityCategory, ",
+              "Excl_Key, eps_track_ind",
+              "                         ",
+              "FROM            hfm.exclusive_product</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "GPS",
+        "columns": [
+          {
+            "name": "GpsCode",
+            "dataType": "string",
+            "sourceColumn": "GpsCode",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "GpsDescr",
+            "dataType": "string",
+            "sourceColumn": "GpsDescr",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "GpsKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GpsKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "gps_code",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [hfm].[gps_code].* FROM [hfm].[gps_code] ",
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [hfm].[gps_code].* FROM [hfm].[gps_code] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "gps_code"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "hfm"
+          }
+        ]
+      },
+      {
+        "name": "Day",
+        "columns": [
+          {
+            "name": "SalesDate",
+            "dataType": "dateTime",
+            "sourceColumn": "SalesDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "DaySeq",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DaySeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "DayNumber",
+            "dataType": "int64",
+            "sourceColumn": "DayNumber",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "DayType",
+            "dataType": "string",
+            "sourceColumn": "DayType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "WorkingDaysMonth",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "MonthSeq",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthSeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInQtr",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FirstMonthSeqInQtr",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FirstMonthSeqInYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstWeekSeqInDay",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FirstWeekSeqInDay",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Day",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [Dimension].[Day].* FROM [Dimension].[Day] ",
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Day].* FROM [Dimension].[Day] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Day"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Item",
+        "columns": [
+          {
+            "name": "ItemKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ItemKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Item",
+            "dataType": "string",
+            "sourceColumn": "Item",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesCategory",
+            "dataType": "string",
+            "sourceColumn": "SalesCategory",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Top15",
+            "dataType": "string",
+            "sourceColumn": "Top15",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Major",
+            "dataType": "string",
+            "sourceColumn": "Major",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SubMajor",
+            "dataType": "string",
+            "sourceColumn": "SubMajor",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Minor",
+            "dataType": "string",
+            "sourceColumn": "Minor",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Supplier",
+            "dataType": "string",
+            "sourceColumn": "Supplier",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ItemStatus",
+            "dataType": "string",
+            "sourceColumn": "ItemStatus",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Label",
+            "dataType": "string",
+            "sourceColumn": "Label",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MajorCode",
+            "dataType": "string",
+            "sourceColumn": "MajorCode",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PrivateLabelScope_Item",
+            "dataType": "string",
+            "sourceColumn": "PrivateLabelScope_Item",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CurrentFileCost",
+            "dataType": "decimal",
+            "sourceColumn": "CurrentFileCost",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "CurrentCorporatePrice",
+            "dataType": "decimal",
+            "sourceColumn": "CurrentCorporatePrice",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "ppe_code",
+            "dataType": "string",
+            "sourceColumn": "ppe_code",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Item",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "",
+                "ItemKey, Item, SalesCategory, Top15, Major, SubMajor, Minor, Supplier, ",
+                "ItemStatus, Label, Current_BasePrice, MajorCode, PrivateLabelScope_Item, ",
+                "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
+                "FROM            Dimension.Item"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "",
+                  "ItemKey, Item, SalesCategory, Top15, Major, SubMajor, Minor, Supplier, ",
+                  "ItemStatus, Label, Current_BasePrice, MajorCode, PrivateLabelScope_Item, ",
+                  "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
+                  "FROM            Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "",
+              "ItemKey, Item, SalesCategory, Top15, Major, SubMajor, Minor, Supplier, ",
+              "ItemStatus, Label, Current_BasePrice, MajorCode, PrivateLabelScope_Item, ",
+              "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
+              "FROM            Dimension.Item"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Item"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "",
+              "ItemKey, Item, SalesCategory, Top15, Major, SubMajor, Minor, Supplier, ",
+              "ItemStatus, Label, Current_BasePrice, MajorCode, PrivateLabelScope_Item, ",
+              "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
+              "FROM            Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Supplier",
+        "columns": [
+          {
+            "name": "SupplierKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SupplierKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SupplierCode",
+            "dataType": "string",
+            "sourceColumn": "SupplierCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SupplierName",
+            "dataType": "string",
+            "sourceColumn": "SupplierName",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ItemSupplier",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "SupplierKey, SupplierCode, SupplierName",
+                "",
+                "FROM            Dimension.ItemSupplier"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "SupplierKey, SupplierCode, SupplierName",
+                  "",
+                  "FROM            Dimension.ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "SupplierKey, SupplierCode, SupplierName",
+              "",
+              "FROM            Dimension.ItemSupplier"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "ItemSupplier"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "SupplierKey, SupplierCode, SupplierName",
+              "",
+              "FROM            Dimension.ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Period",
+        "columns": [
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "sourceColumn": "WorkingDaysMonth",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "MonthSeq",
+            "dataType": "int64",
+            "sourceColumn": "MonthSeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInQtr",
+            "dataType": "int64",
+            "sourceColumn": "FirstMonthSeqInQtr",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInYear",
+            "dataType": "int64",
+            "sourceColumn": "FirstMonthSeqInYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "LastWorkingDay",
+            "dataType": "dateTime",
+            "sourceColumn": "LastWorkingDay",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Period",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Period"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "Branch",
+        "columns": [
+          {
+            "name": "BranchKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BranchKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "BranchName",
+            "dataType": "string",
+            "sourceColumn": "BranchName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ZoneName",
+            "dataType": "string",
+            "sourceColumn": "ZoneName",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Branch",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [Dimension].[Branch].* FROM [Dimension].[Branch] ",
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Dimension].[Branch].* FROM [Dimension].[Branch] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Branch"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
+      },
+      {
+        "name": "BusinessUnitClass",
+        "columns": [
+          {
+            "name": "GLBU_Class",
+            "dataType": "string",
+            "sourceColumn": "GLBU_Class",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassNm",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassNm",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ReportingClass",
+            "dataType": "string",
+            "sourceColumn": "ReportingClass",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GLBU_ClassKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_BusinessUnitClass",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "GLBU_Class, GLBU_ClassNm, ReportingClass,                         GLBU_ClassKey",
+                "FROM            BRS_BusinessUnitClass"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "GLBU_Class, GLBU_ClassNm, ReportingClass,                         GLBU_ClassKey",
+                  "FROM            BRS_BusinessUnitClass</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "GLBU_Class, GLBU_ClassNm, ReportingClass,                         GLBU_ClassKey",
+              "FROM            BRS_BusinessUnitClass"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_BusinessUnitClass"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "GLBU_Class, GLBU_ClassNm, ReportingClass,                         GLBU_ClassKey",
+              "FROM            BRS_BusinessUnitClass</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "SalesDivision",
+        "columns": [
+          {
+            "name": "SalesDivision",
+            "dataType": "string",
+            "sourceColumn": "SalesDivision",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesDivisionDesc",
+            "dataType": "string",
+            "sourceColumn": "SalesDivisionDesc",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesDivision_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SalesDivision_key",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_SalesDivision",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "SalesDivision, SalesDivisionDesc, SalesDivision_key",
+                "FROM            BRS_SalesDivision"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "SalesDivision, SalesDivisionDesc, SalesDivision_key",
+                  "FROM            BRS_SalesDivision</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "SalesDivision, SalesDivisionDesc, SalesDivision_key",
+              "FROM            BRS_SalesDivision"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_SalesDivision"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "SalesDivision, SalesDivisionDesc, SalesDivision_key",
+              "FROM            BRS_SalesDivision</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "GlobalProduct",
+        "columns": [
+          {
+            "name": "global_product_class",
+            "dataType": "string",
+            "sourceColumn": "global_product_class",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "global_product_class_descr",
+            "dataType": "string",
+            "sourceColumn": "global_product_class_descr",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "level_num",
+            "dataType": "int64",
+            "sourceColumn": "level_num",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "global_product_class_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "global_product_class_key",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "global_product",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "global_product_class, global_product_class_descr, level_num, global_product_class_key",
+                "FROM            hfm.global_product"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "global_product_class, global_product_class_descr, level_num, global_product_class_key",
+                  "FROM            hfm.global_product</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "global_product_class, global_product_class_descr, level_num, global_product_class_key",
+              "FROM            hfm.global_product"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "global_product"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "hfm"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "global_product_class, global_product_class_descr, level_num, global_product_class_key",
+              "FROM            hfm.global_product</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Adjustment",
+        "columns": [
+          {
+            "name": "AdjCode",
+            "dataType": "string",
+            "sourceColumn": "AdjCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "AdjType",
+            "dataType": "string",
+            "sourceColumn": "AdjType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "AdjCodeDesc",
+            "dataType": "string",
+            "sourceColumn": "AdjCodeDesc",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "AdjCodeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "AdjCodeKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_AdjCode",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "AdjCode, AdjType, AdjCodeDesc, AdjCodeKey",
+                "FROM            BRS_AdjCode"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "AdjCode, AdjType, AdjCodeDesc, AdjCodeKey",
+                  "FROM            BRS_AdjCode</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "AdjCode, AdjType, AdjCodeDesc, AdjCodeKey",
+              "FROM            BRS_AdjCode"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_AdjCode"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "AdjCode, AdjType, AdjCodeDesc, AdjCodeKey",
+              "FROM            BRS_AdjCode</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "DocType",
+        "columns": [
+          {
+            "name": "DocType",
+            "dataType": "string",
+            "sourceColumn": "DocType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DocTypeDescr",
+            "dataType": "string",
+            "sourceColumn": "DocTypeDescr",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SourceCd",
+            "dataType": "string",
+            "sourceColumn": "SourceCd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DocTypeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DocTypeKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DocType",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "DocType, DocTypeDescr, SourceCd, DocTypeKey",
+                "FROM            BRS_DocType"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "DocType, DocTypeDescr, SourceCd, DocTypeKey",
+                  "FROM            BRS_DocType</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "DocType, DocTypeDescr, SourceCd, DocTypeKey",
+              "FROM            BRS_DocType"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DocType"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "DocType, DocTypeDescr, SourceCd, DocTypeKey",
+              "FROM            BRS_DocType</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "ShipTo",
+            "dataType": "int64",
+            "sourceColumn": "ShipTo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Billto",
+            "dataType": "int64",
+            "sourceColumn": "Billto",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Customer",
+            "dataType": "string",
+            "sourceColumn": "Customer",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CustomerGroup",
+            "dataType": "string",
+            "sourceColumn": "CustomerGroup",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlan",
+            "dataType": "string",
+            "sourceColumn": "SalesPlan",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlanCode",
+            "dataType": "string",
+            "sourceColumn": "SalesPlanCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesPlanType",
+            "dataType": "string",
+            "sourceColumn": "SalesPlanType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FieldSales",
+            "dataType": "string",
+            "sourceColumn": "FieldSales",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Branch",
+            "dataType": "string",
+            "sourceColumn": "Branch",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesDivision",
+            "dataType": "string",
+            "sourceColumn": "SalesDivision",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClass",
+            "dataType": "string",
+            "sourceColumn": "MarketClass",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Specialty",
+            "dataType": "string",
+            "sourceColumn": "Specialty",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CustomerStatus",
+            "dataType": "string",
+            "sourceColumn": "CustomerStatus",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesDivisionCode",
+            "dataType": "string",
+            "sourceColumn": "SalesDivisionCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClassCode",
+            "dataType": "string",
+            "sourceColumn": "MarketClassCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FscTerritoryCd",
+            "dataType": "string",
+            "sourceColumn": "FscTerritoryCd",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Customer",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "",
+                "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
+                "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
+                "SalesDivisionCode, BranchCode, MarketClassCode, ",
+                "FscTerritoryCd",
+                "",
+                "FROM            Dimension.Customer"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "",
+                  "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
+                  "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
+                  "SalesDivisionCode, BranchCode, MarketClassCode, ",
+                  "FscTerritoryCd",
+                  "",
+                  "FROM            Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "",
+              "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
+              "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
+              "SalesDivisionCode, BranchCode, MarketClassCode, ",
+              "FscTerritoryCd",
+              "",
+              "FROM            Dimension.Customer"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Customer"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "",
+              "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
+              "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
+              "SalesDivisionCode, BranchCode, MarketClassCode, ",
+              "FscTerritoryCd",
+              "",
+              "FROM            Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "8b233931-128a-40a5-a7b5-87a9fb63fcc4",
+        "fromTable": "sales_fact",
+        "fromColumn": "MarketClassKey",
+        "toTable": "MarketClass",
+        "toColumn": "MarketClassKey"
+      },
+      {
+        "name": "008d7013-ed96-4528-9036-bb24c1b51ed0",
+        "fromTable": "sales_fact",
+        "fromColumn": "HFM_Account_key",
+        "toTable": "Account",
+        "toColumn": "HFM_Account_key"
+      },
+      {
+        "name": "79b52b09-9ad4-401a-b740-53854bc15178",
+        "fromTable": "sales_fact",
+        "fromColumn": "EntityKey",
+        "toTable": "Entity",
+        "toColumn": "EntityKey"
+      },
+      {
+        "name": "5b37c32a-5b21-4483-bc16-c8ad73eaf308",
+        "fromTable": "sales_fact",
+        "fromColumn": "Excl_Key",
+        "toTable": "Exclusive",
+        "toColumn": "Excl_Key"
+      },
+      {
+        "name": "5bb8ec0a-0c17-45ca-8bed-ddbadc0aaae0",
+        "fromTable": "sales_fact",
+        "fromColumn": "FiscalMonth",
+        "toTable": "Period",
+        "toColumn": "FiscalMonth"
+      },
+      {
+        "name": "21115e0c-7bf6-404a-ac7a-831f98129f34",
+        "fromTable": "sales_fact",
+        "fromColumn": "gps_key",
+        "toTable": "GPS",
+        "toColumn": "GpsKey"
+      },
+      {
+        "name": "1238b639-75b0-4310-bccc-288c7d57acac",
+        "fromTable": "sales_fact",
+        "fromColumn": "SupplierKey",
+        "toTable": "Supplier",
+        "toColumn": "SupplierKey"
+      },
+      {
+        "name": "e4c951a4-d6a1-4b55-8375-48ce4b3441f5",
+        "fromTable": "sales_fact",
+        "fromColumn": "sales_day",
+        "toTable": "Day",
+        "toColumn": "SalesDate"
+      },
+      {
+        "name": "1544ba51-dee4-4254-8e91-669ae02609c0",
+        "fromTable": "sales_fact",
+        "fromColumn": "ItemKey",
+        "toTable": "Item",
+        "toColumn": "ItemKey"
+      },
+      {
+        "name": "59692ee9-aff2-4393-9c55-141bde3311ad",
+        "fromTable": "sales_fact",
+        "fromColumn": "BranchKey",
+        "toTable": "Branch",
+        "toColumn": "BranchKey"
+      },
+      {
+        "name": "87eb8787-201a-41bc-9d85-5547bb4bed2f",
+        "fromTable": "sales_fact",
+        "fromColumn": "SalesDivision_key",
+        "toTable": "SalesDivision",
+        "toColumn": "SalesDivision_key"
+      },
+      {
+        "name": "e1647055-779b-42e8-8072-228a8d0c8fdc",
+        "fromTable": "sales_fact",
+        "fromColumn": "GLBU_ClassKey",
+        "toTable": "BusinessUnitClass",
+        "toColumn": "GLBU_ClassKey"
+      },
+      {
+        "name": "1e4d28d5-fb92-416f-8f1b-a3d6dede6676",
+        "fromTable": "sales_fact",
+        "fromColumn": "global_product_class_key",
+        "toTable": "GlobalProduct",
+        "toColumn": "global_product_class_key"
+      },
+      {
+        "name": "85051d95-7e38-4b75-be11-a822b52a82e4",
+        "fromTable": "sales_fact",
+        "fromColumn": "DocTypeKey",
+        "toTable": "DocType",
+        "toColumn": "DocTypeKey"
+      },
+      {
+        "name": "d79a1abf-60b8-4c8f-9bea-8b7341b4ec5a",
+        "fromTable": "sales_fact",
+        "fromColumn": "AdjCodeKey",
+        "toTable": "Adjustment",
+        "toColumn": "AdjCodeKey"
+      },
+      {
+        "name": "c6ead21d-c555-46ad-98ea-b7953e15886d",
+        "fromTable": "sales_fact",
+        "fromColumn": "Shipto",
+        "toTable": "Customer",
+        "toColumn": "ShipTo"
+      }
+    ],
+    "roles": [
+      {
+        "name": "Role",
+        "modelPermission": "readRefresh",
+        "members": [
+          {
+            "memberName": "CAHSI\\tcrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
+          },
+          {
+            "memberName": "CAHSI\\JLi",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
