@@ -249,6 +249,11 @@
             "name": "Top15",
             "dataType": "string",
             "sourceColumn": "Top15"
+          },
+          {
+            "name": "ppe_code",
+            "dataType": "string",
+            "sourceColumn": "ppe_code"
           }
         ],
         "partitions": [
@@ -286,7 +291,8 @@
                 "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
                 "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
                 "\ti.size_factor,",
-                "\ti.Top15",
+                "\ti.Top15,",
+                "\ti.ppe_code",
                 "",
                 "FROM",
                 "\tDimension.Item AS i ",
@@ -328,7 +334,8 @@
                   "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
                   "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
                   "\ti.size_factor,",
-                  "\ti.Top15",
+                  "\ti.Top15,",
+                  "\ti.ppe_code",
                   "",
                   "FROM",
                   "\tDimension.Item AS i ",
@@ -386,7 +393,8 @@
               "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
               "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
               "\ti.size_factor,",
-              "\ti.Top15",
+              "\ti.Top15,",
+              "\ti.ppe_code",
               "",
               "FROM",
               "\tDimension.Item AS i ",
@@ -434,7 +442,8 @@
               "\tisub.Current_BasePrice\t\t\t\t\tAS SubsItemBasePrice,",
               "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
               "\ti.size_factor,",
-              "\ti.Top15",
+              "\ti.Top15,",
+              "\ti.ppe_code",
               "",
               "FROM",
               "\tDimension.Item AS i ",
