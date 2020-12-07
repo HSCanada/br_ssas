@@ -19,7 +19,7 @@
     ],
     "tables": [
       {
-        "name": "sales_fact",
+        "name": "Sales",
         "columns": [
           {
             "name": "EntityKey",
@@ -85,7 +85,7 @@
             "sourceProviderType": "Integer"
           },
           {
-            "name": "ID",
+            "name": "fact_id",
             "dataType": "int64",
             "sourceColumn": "ID",
             "sourceProviderType": "Integer"
@@ -103,14 +103,6 @@
             "isHidden": true,
             "sourceColumn": "SalesDivision_key",
             "sourceProviderType": "Integer"
-          },
-          {
-            "name": "sales_day",
-            "dataType": "dateTime",
-            "isHidden": true,
-            "sourceColumn": "sales_day",
-            "formatString": "General Date",
-            "sourceProviderType": "Date"
           },
           {
             "name": "Shipto",
@@ -170,6 +162,24 @@
             "name": "LineNumber",
             "dataType": "int64",
             "sourceColumn": "LineNumber"
+          },
+          {
+            "name": "promotion_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "promotion_key"
+          },
+          {
+            "name": "SalesDate_ORG",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "SalesDate_ORG"
+          },
+          {
+            "name": "day_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "day_key"
           }
         ],
         "partitions": [
@@ -608,20 +618,6 @@
         "name": "Day",
         "columns": [
           {
-            "name": "SalesDate",
-            "dataType": "dateTime",
-            "sourceColumn": "SalesDate",
-            "formatString": "General Date",
-            "sourceProviderType": "DBDate"
-          },
-          {
-            "name": "DaySeq",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "DaySeq",
-            "sourceProviderType": "SmallInt"
-          },
-          {
             "name": "DayNumber",
             "dataType": "int64",
             "sourceColumn": "DayNumber",
@@ -634,69 +630,25 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "FiscalMonth",
+            "name": "CalWeek",
             "dataType": "int64",
-            "sourceColumn": "FiscalMonth",
-            "sourceProviderType": "Integer"
+            "sourceColumn": "CalWeek"
           },
           {
-            "name": "MonthName",
+            "name": "FiscWeekName",
             "dataType": "string",
-            "sourceColumn": "MonthName",
-            "sourceProviderType": "WChar"
+            "sourceColumn": "FiscWeekName"
           },
           {
-            "name": "MonthNum",
-            "dataType": "int64",
-            "sourceColumn": "MonthNum",
-            "sourceProviderType": "SmallInt"
+            "name": "SalesDay",
+            "dataType": "dateTime",
+            "sourceColumn": "SalesDay"
           },
           {
-            "name": "QuarterName",
-            "dataType": "string",
-            "sourceColumn": "QuarterName",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "YearNum",
-            "dataType": "int64",
-            "sourceColumn": "YearNum",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "WorkingDaysMonth",
+            "name": "day_key",
             "dataType": "int64",
             "isHidden": true,
-            "sourceColumn": "WorkingDaysMonth",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "MonthSeq",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "MonthSeq",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "FirstMonthSeqInQtr",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "FirstMonthSeqInQtr",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "FirstMonthSeqInYear",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "FirstMonthSeqInYear",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "FirstWeekSeqInDay",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "FirstWeekSeqInDay",
-            "sourceProviderType": "Integer"
+            "sourceColumn": "day_key"
           }
         ],
         "partitions": [
@@ -705,15 +657,54 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [Dimension].[Day].* FROM [Dimension].[Day] ",
+              "query": [
+                "SELECT ",
+                "\tday_key\t",
+                "\t,SalesDay",
+                "\t,DayNumber",
+                "\t,DayType",
+                "\t,[CalWeek]",
+                "\t,[FiscWeekName]",
+                "",
+                "FROM",
+                "Dimension.Day"
+              ],
               "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+                  "\tday_key\t",
+                  "\t,SalesDay",
+                  "\t,DayNumber",
+                  "\t,DayType",
+                  "\t,[CalWeek]",
+                  "\t,[FiscWeekName]",
+                  "",
+                  "FROM",
+                  "Dimension.Day</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Dimension].[Day].* FROM [Dimension].[Day] "
+            "value": [
+              "SELECT ",
+              "\tday_key\t",
+              "\t,SalesDay",
+              "\t,DayNumber",
+              "\t,DayType",
+              "\t,[CalWeek]",
+              "\t,[FiscWeekName]",
+              "",
+              "FROM",
+              "Dimension.Day"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -722,6 +713,21 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ",
+              "\tday_key\t",
+              "\t,SalesDay",
+              "\t,DayNumber",
+              "\t,DayType",
+              "\t,[CalWeek]",
+              "\t,[FiscWeekName]",
+              "",
+              "FROM",
+              "Dimension.Day</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -1632,6 +1638,18 @@
             "dataType": "string",
             "sourceColumn": "FscTerritoryCd",
             "sourceProviderType": "Char"
+          },
+          {
+            "name": "Est12MoMerch",
+            "dataType": "double",
+            "sourceColumn": "Est12MoMerch"
+          },
+          {
+            "type": "calculated",
+            "name": "spend_abc",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if([Est12MoMerch] > 50000, \"A\",  if([Est12MoMerch] > 10000, \"B\",  \"C\"))"
           }
         ],
         "partitions": [
@@ -1646,7 +1664,8 @@
                 "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
                 "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
                 "SalesDivisionCode, BranchCode, MarketClassCode, ",
-                "FscTerritoryCd",
+                "FscTerritoryCd, [Est12MoMerch]",
+                "",
                 "",
                 "FROM            Dimension.Customer"
               ],
@@ -1661,7 +1680,8 @@
                   "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
                   "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
                   "SalesDivisionCode, BranchCode, MarketClassCode, ",
-                  "FscTerritoryCd",
+                  "FscTerritoryCd, [Est12MoMerch]",
+                  "",
                   "",
                   "FROM            Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -1678,7 +1698,8 @@
               "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
               "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
               "SalesDivisionCode, BranchCode, MarketClassCode, ",
-              "FscTerritoryCd",
+              "FscTerritoryCd, [Est12MoMerch]",
+              "",
               "",
               "FROM            Dimension.Customer"
             ]
@@ -1699,9 +1720,117 @@
               "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
               "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
               "SalesDivisionCode, BranchCode, MarketClassCode, ",
-              "FscTerritoryCd",
+              "FscTerritoryCd, [Est12MoMerch]",
+              "",
               "",
               "FROM            Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Promotion",
+        "columns": [
+          {
+            "name": "PromotionCode",
+            "dataType": "string",
+            "sourceColumn": "PromotionCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "PromotionDescription",
+            "dataType": "string",
+            "sourceColumn": "PromotionDescription",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PromotionType",
+            "dataType": "string",
+            "sourceColumn": "PromotionType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PromotionTrackingCode",
+            "dataType": "string",
+            "sourceColumn": "PromotionTrackingCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "promotion_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "promotion_key",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_Promotion",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT",
+                "promotion_key",
+                ",PromotionCode",
+                ",PromotionDescription",
+                ",PromotionTrackingCode",
+                ",PromotionType",
+                "FROM",
+                "BRS_Promotion"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "promotion_key",
+                  ",PromotionCode",
+                  ",PromotionDescription",
+                  ",PromotionTrackingCode",
+                  ",PromotionType",
+                  "FROM",
+                  "BRS_Promotion</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT",
+              "promotion_key",
+              ",PromotionCode",
+              ",PromotionDescription",
+              ",PromotionTrackingCode",
+              ",PromotionType",
+              "FROM",
+              "BRS_Promotion"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_Promotion"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "promotion_key",
+              ",PromotionCode",
+              ",PromotionDescription",
+              ",PromotionTrackingCode",
+              ",PromotionType",
+              "FROM",
+              "BRS_Promotion</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -1710,115 +1839,122 @@
     "relationships": [
       {
         "name": "8b233931-128a-40a5-a7b5-87a9fb63fcc4",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "MarketClassKey",
         "toTable": "MarketClass",
         "toColumn": "MarketClassKey"
       },
       {
         "name": "008d7013-ed96-4528-9036-bb24c1b51ed0",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "HFM_Account_key",
         "toTable": "Account",
         "toColumn": "HFM_Account_key"
       },
       {
         "name": "79b52b09-9ad4-401a-b740-53854bc15178",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "EntityKey",
         "toTable": "Entity",
         "toColumn": "EntityKey"
       },
       {
         "name": "5b37c32a-5b21-4483-bc16-c8ad73eaf308",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "Excl_Key",
         "toTable": "Exclusive",
         "toColumn": "Excl_Key"
       },
       {
         "name": "5bb8ec0a-0c17-45ca-8bed-ddbadc0aaae0",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "FiscalMonth",
         "toTable": "Period",
         "toColumn": "FiscalMonth"
       },
       {
         "name": "21115e0c-7bf6-404a-ac7a-831f98129f34",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "gps_key",
         "toTable": "GPS",
         "toColumn": "GpsKey"
       },
       {
         "name": "1238b639-75b0-4310-bccc-288c7d57acac",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "SupplierKey",
         "toTable": "Supplier",
         "toColumn": "SupplierKey"
       },
       {
-        "name": "e4c951a4-d6a1-4b55-8375-48ce4b3441f5",
-        "fromTable": "sales_fact",
-        "fromColumn": "sales_day",
-        "toTable": "Day",
-        "toColumn": "SalesDate"
-      },
-      {
         "name": "1544ba51-dee4-4254-8e91-669ae02609c0",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "ItemKey",
         "toTable": "Item",
         "toColumn": "ItemKey"
       },
       {
         "name": "59692ee9-aff2-4393-9c55-141bde3311ad",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "BranchKey",
         "toTable": "Branch",
         "toColumn": "BranchKey"
       },
       {
         "name": "87eb8787-201a-41bc-9d85-5547bb4bed2f",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "SalesDivision_key",
         "toTable": "SalesDivision",
         "toColumn": "SalesDivision_key"
       },
       {
         "name": "e1647055-779b-42e8-8072-228a8d0c8fdc",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "GLBU_ClassKey",
         "toTable": "BusinessUnitClass",
         "toColumn": "GLBU_ClassKey"
       },
       {
         "name": "1e4d28d5-fb92-416f-8f1b-a3d6dede6676",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "global_product_class_key",
         "toTable": "GlobalProduct",
         "toColumn": "global_product_class_key"
       },
       {
         "name": "85051d95-7e38-4b75-be11-a822b52a82e4",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "DocTypeKey",
         "toTable": "DocType",
         "toColumn": "DocTypeKey"
       },
       {
         "name": "d79a1abf-60b8-4c8f-9bea-8b7341b4ec5a",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "AdjCodeKey",
         "toTable": "Adjustment",
         "toColumn": "AdjCodeKey"
       },
       {
         "name": "c6ead21d-c555-46ad-98ea-b7953e15886d",
-        "fromTable": "sales_fact",
+        "fromTable": "Sales",
         "fromColumn": "Shipto",
         "toTable": "Customer",
         "toColumn": "ShipTo"
+      },
+      {
+        "name": "55686ecf-c9f1-43f0-b0c9-dd324b3eedeb",
+        "fromTable": "Sales",
+        "fromColumn": "promotion_key",
+        "toTable": "Promotion",
+        "toColumn": "promotion_key"
+      },
+      {
+        "name": "798e7131-2711-40a6-8b2c-6e988520ac3c",
+        "fromTable": "Sales",
+        "fromColumn": "day_key",
+        "toTable": "Day",
+        "toColumn": "day_key"
       }
     ],
     "roles": [
