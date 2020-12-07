@@ -5,8 +5,8 @@
     "culture": "en-US",
     "dataSources": [
       {
-        "name": "SqlServer cahsionnlsql1 DEV_BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Persist Security Info=false;Initial Catalog=DEV_BRSales;User ID=tcrowley;Integrated Security=SSPI",
+        "name": "SqlServer cahsionnlsql1 BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Persist Security Info=false;Initial Catalog=BRSales;User ID=tcrowley;Integrated Security=SSPI",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -189,7 +189,7 @@
             "source": {
               "type": "query",
               "query": "Exec [hfm].global_cube_model_proc",
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -289,7 +289,7 @@
                 "SELECT        MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2, MarketRollup_L3, MarketClassKey",
                 "FROM            BRS_CustomerMarketClass"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -360,7 +360,7 @@
                 "SELECT        HFM_Account, HFM_Account_descr, HFM_Account_key",
                 "FROM            hfm.account"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -431,7 +431,7 @@
                 "SELECT        Entity, EntityDescr, EntityKey",
                 "FROM            hfm.entity"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -518,7 +518,7 @@
                 "                         ",
                 "FROM            hfm.exclusive_product"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -595,7 +595,7 @@
             "source": {
               "type": "query",
               "query": " SELECT [hfm].[gps_code].* FROM [hfm].[gps_code] ",
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             }
           }
         ],
@@ -669,7 +669,7 @@
                 "FROM",
                 "Dimension.Day"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -854,7 +854,7 @@
                 "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
                 "FROM            Dimension.Item"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -939,7 +939,7 @@
                 "",
                 "FROM            Dimension.ItemSupplier"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -1055,7 +1055,7 @@
             "source": {
               "type": "query",
               "query": " SELECT [Dimension].[Period].* FROM [Dimension].[Period] ",
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             }
           }
         ],
@@ -1110,7 +1110,7 @@
             "source": {
               "type": "query",
               "query": " SELECT [Dimension].[Branch].* FROM [Dimension].[Branch] ",
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             }
           }
         ],
@@ -1169,7 +1169,7 @@
                 "GLBU_Class, GLBU_ClassNm, ReportingClass,                         GLBU_ClassKey",
                 "FROM            BRS_BusinessUnitClass"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -1244,7 +1244,7 @@
                 "SalesDivision, SalesDivisionDesc, SalesDivision_key",
                 "FROM            BRS_SalesDivision"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -1325,7 +1325,7 @@
                 "global_product_class, global_product_class_descr, level_num, global_product_class_key",
                 "FROM            hfm.global_product"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -1406,7 +1406,7 @@
                 "AdjCode, AdjType, AdjCodeDesc, AdjCodeKey",
                 "FROM            BRS_AdjCode"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -1487,7 +1487,7 @@
                 "DocType, DocTypeDescr, SourceCd, DocTypeKey",
                 "FROM            BRS_DocType"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -1669,7 +1669,7 @@
                 "",
                 "FROM            Dimension.Customer"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
@@ -1779,7 +1779,7 @@
                 "FROM",
                 "BRS_Promotion"
               ],
-              "dataSource": "SqlServer cahsionnlsql1 DEV_BRSales"
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
