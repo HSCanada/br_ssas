@@ -1430,13 +1430,13 @@
             "formatString": "0.0%;-0.0%;0.0%"
           },
           {
-            "name": "Orders in Period",
+            "name": "Distinct Count of Orders",
             "expression": "DISTINCTCOUNT([SalesOrderNumber])",
-            "isHidden": true
+            "formatString": "#,0"
           },
           {
             "name": "YTD Orders",
-            "expression": " CALCULATE([Orders in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "expression": " CALCULATE([Distinct Count of Orders],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
             "formatString": "#,0"
           },
           {
@@ -1456,7 +1456,7 @@
             ]
           },
           {
-            "name": "Count of BillTo Sales",
+            "name": "Distinct Count of Billto",
             "expression": "DISTINCTCOUNT('sales'[BillTo])",
             "formatString": "#,0"
           },
@@ -1760,6 +1760,11 @@
             "name": "PY QTD GM",
             "expression": "divide([PY QTD GP],[PY QTD Sales])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Distinct Count of ShipTo",
+            "expression": "DISTINCTCOUNT([ShipTo])",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
