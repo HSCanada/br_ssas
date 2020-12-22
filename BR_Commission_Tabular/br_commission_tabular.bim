@@ -1196,6 +1196,24 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "ISR_CommGroupKey"
+          },
+          {
+            "name": "EST_SalespersonKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EST_SalespersonKey"
+          },
+          {
+            "name": "EST_CommGroupKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EST_CommGroupKey"
+          },
+          {
+            "name": "EST_CommAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "EST_CommAmt"
           }
         ],
         "partitions": [
@@ -1227,6 +1245,9 @@
                 "\tEPS_SalespersonKey,",
                 "\tEPS_CommGroupKey,",
                 "",
+                "\tEST_SalespersonKey,",
+                "\tEST_CommGroupKey,",
+                "",
                 "\tShipTo,",
                 "\tItemKey,",
                 "\tSalesOrderNumber,",
@@ -1247,7 +1268,8 @@
                 "\tISR_CommAmt,",
                 "\tESS_CommAmt,",
                 "\tEPS_CommAmt,",
-                "\tCPS_CommAmt",
+                "\tCPS_CommAmt,",
+                "\tEST_CommAmt",
                 "",
                 "FROM",
                 "\tFact.Commission"
@@ -1280,6 +1302,9 @@
                   "\tEPS_SalespersonKey,",
                   "\tEPS_CommGroupKey,",
                   "",
+                  "\tEST_SalespersonKey,",
+                  "\tEST_CommGroupKey,",
+                  "",
                   "\tShipTo,",
                   "\tItemKey,",
                   "\tSalesOrderNumber,",
@@ -1300,7 +1325,8 @@
                   "\tISR_CommAmt,",
                   "\tESS_CommAmt,",
                   "\tEPS_CommAmt,",
-                  "\tCPS_CommAmt",
+                  "\tCPS_CommAmt,",
+                  "\tEST_CommAmt",
                   "",
                   "FROM",
                   "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2002,6 +2028,87 @@
             "name": "YTD Comm ISR Var %",
             "expression": "DIVIDE( [YTD Comm ISR] - [PY YTD Comm CPS], [PY YTD Comm ISR])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Comm_EST in Period",
+            "expression": "SUM([EST_CommAmt])",
+            "isHidden": true
+          },
+          {
+            "name": "YTD Comm EST",
+            "expression": "CALCULATE([Comm_EST in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm EST",
+            "expression": "CALCULATE([Comm_EST in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Comm EST",
+            "expression": "CALCULATE([Comm_EST in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm EST Var",
+            "expression": "[MTD Comm EST]-[PY MTD Comm EST]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Comm EST Var %",
+            "expression": "DIVIDE( [MTD Comm EST] - [PY MTD Comm EST], [PY MTD Comm EST])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY YTD Comm EST",
+            "expression": "CALCULATE([Comm_EST in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm EST Var",
+            "expression": "[YTD Comm EST]-[PY YTD Comm EST]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Comm EST Var %",
+            "expression": "DIVIDE( [YTD Comm EST] - [PY YTD Comm EST], [PY YTD Comm EST])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -2030,6 +2137,9 @@
               "\tEPS_SalespersonKey,",
               "\tEPS_CommGroupKey,",
               "",
+              "\tEST_SalespersonKey,",
+              "\tEST_CommGroupKey,",
+              "",
               "\tShipTo,",
               "\tItemKey,",
               "\tSalesOrderNumber,",
@@ -2050,7 +2160,8 @@
               "\tISR_CommAmt,",
               "\tESS_CommAmt,",
               "\tEPS_CommAmt,",
-              "\tCPS_CommAmt",
+              "\tCPS_CommAmt,",
+              "\tEST_CommAmt",
               "",
               "FROM",
               "\tFact.Commission"
@@ -2089,6 +2200,9 @@
               "\tEPS_SalespersonKey,",
               "\tEPS_CommGroupKey,",
               "",
+              "\tEST_SalespersonKey,",
+              "\tEST_CommGroupKey,",
+              "",
               "\tShipTo,",
               "\tItemKey,",
               "\tSalesOrderNumber,",
@@ -2109,7 +2223,8 @@
               "\tISR_CommAmt,",
               "\tESS_CommAmt,",
               "\tEPS_CommAmt,",
-              "\tCPS_CommAmt",
+              "\tCPS_CommAmt,",
+              "\tEST_CommAmt",
               "",
               "FROM",
               "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2337,14 +2452,14 @@
             "sourceColumn": "CommGroupKey"
           },
           {
-            "name": "CommGroup",
-            "dataType": "string",
-            "sourceColumn": "CommGroup"
-          },
-          {
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "sourceColumn": "comm_group_scorecard_cd"
+          },
+          {
+            "name": "CommGroup",
+            "dataType": "string",
+            "sourceColumn": "CommGroup"
           }
         ],
         "partitions": [
@@ -2441,20 +2556,20 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "CommGroup",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[CommGroup]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroup]"
           }
         ],
         "partitions": [
@@ -3050,124 +3165,6 @@
         ]
       },
       {
-        "name": "CommSalesperson_CCS",
-        "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "EmployeeNumber_CCS",
-            "dataType": "int64",
-            "isNameInferred": false,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[EmployeeNumber_FSC]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CommMasterCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[CommMasterCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalespersonName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[SalespersonName]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CommPlanCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[CommPlanCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "TerritoryStart",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[TerritoryStart]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalespersonID",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[SalespersonID]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalespersonKey",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "BranchCount",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[BranchCount]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "BranchCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "BranchName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[BranchName]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "ZoneName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "tracker_ind",
-            "dataType": "boolean",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
-            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
-          }
-        ],
-        "partitions": [
-          {
-            "name": "CalculatedTable 1",
-            "source": {
-              "type": "calculated",
-              "expression": "CommSalesperson_FSC"
-            }
-          }
-        ]
-      },
-      {
         "name": "CommSalesperson_CPS",
         "columns": [
           {
@@ -3425,20 +3422,20 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "CommGroup",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[CommGroup]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroup]"
           }
         ],
         "partitions": [
@@ -3473,20 +3470,20 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "CommGroup",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[CommGroup]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "comm_group_scorecard_cd",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroup]"
           }
         ],
         "partitions": [
@@ -3999,11 +3996,51 @@
           },
           {
             "type": "calculatedTableColumn",
+            "name": "comm_group_scorecard_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
             "name": "CommGroup",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "CommGroup_FSC[CommGroup]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CommGroup_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CommGroup_EST",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupCode_EST",
+            "dataType": "string",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupCode_FSC]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupKey]"
           },
           {
             "type": "calculatedTableColumn",
@@ -4013,6 +4050,14 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroup]"
           }
         ],
         "partitions": [
@@ -4021,6 +4066,124 @@
             "source": {
               "type": "calculated",
               "expression": "CommGroup_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CommSalesperson_EST",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeNumber_EST",
+            "dataType": "int64",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[EmployeeNumber_FSC]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommMasterCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommMasterCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommPlanCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommPlanCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryStart",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[TerritoryStart]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonID",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonID]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCount",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCount]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "ZoneName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "tracker_ind",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CommSalesperson_FSC"
             }
           }
         ]
@@ -4105,13 +4268,6 @@
         "toColumn": "FSC_SalespersonCodeKey"
       },
       {
-        "name": "ed59598a-9394-4b63-a17c-78d74e0faa29",
-        "fromTable": "Sales",
-        "fromColumn": "ESS_SalespersonKey",
-        "toTable": "CommSalesperson_CCS",
-        "toColumn": "SalespersonKey"
-      },
-      {
         "name": "d359c253-2b8c-4b33-a96b-0ab3bcff6fd0",
         "fromTable": "Sales",
         "fromColumn": "CPS_SalespersonKey",
@@ -4159,6 +4315,20 @@
         "fromColumn": "ISR_CommGroupKey",
         "toTable": "CommGroup_ISR",
         "toColumn": "CommGroupKey"
+      },
+      {
+        "name": "07ffbbcf-126e-4405-b14b-8c157d1674ff",
+        "fromTable": "Sales",
+        "fromColumn": "EST_CommGroupKey",
+        "toTable": "CommGroup_EST",
+        "toColumn": "CommGroupKey"
+      },
+      {
+        "name": "b4456c9b-6b01-4797-a87c-370276f040b1",
+        "fromTable": "Sales",
+        "fromColumn": "EST_SalespersonKey",
+        "toTable": "CommSalesperson_EST",
+        "toColumn": "SalespersonKey"
       }
     ],
     "roles": [
