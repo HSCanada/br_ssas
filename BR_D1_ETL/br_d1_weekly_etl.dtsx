@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\JLi"
   DTS:DTSID="{FAA0D228-3DE5-4DE3-B27D-8E9C1483F260}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.94"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_weekly_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="329"
-  DTS:VersionGUID="{8ACB36C7-5E0C-40C9-822E-6AA4B85CD362}">
+  DTS:VersionBuild="331"
+  DTS:VersionGUID="{F355B688-A8CF-412F-9E21-2A72F8ACCD08}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

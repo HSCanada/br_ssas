@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\JLi"
   DTS:DTSID="{28A930B3-A5DF-408A-8937-2312B9A4E5C9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.93"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
   DTS:LocaleID="1033"
   DTS:ObjectName="br_d1_daily_etl"
   DTS:PackageType="5"
-  DTS:VersionBuild="306"
-  DTS:VersionGUID="{8F355AFA-AA3E-4108-BA84-AF9359DF27BE}">
+  DTS:VersionBuild="307"
+  DTS:VersionGUID="{A166DEF4-BE31-48D9-9089-671DC3C46DDF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
         DTS:Name="ConnectionString">@[$Project::ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BR_D1_ETL-{BF90ED84-6DC2-40A1-897B-A8622803513B}CAHSIONNLSQL2.DEV_BRSales;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BR_D1_ETL-{BF90ED84-6DC2-40A1-897B-A8622803513B}CAHSIONNLSQL2.DEV_BRSales;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
