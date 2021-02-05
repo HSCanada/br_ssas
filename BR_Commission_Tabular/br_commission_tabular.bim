@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -783,7 +783,8 @@
                   "  <ColumnFilter />",
                   "  <SelectionFilter />",
                   "  <FilterParameters />",
-                  "  <IsSortDescending>false</IsSortDescending>",
+                  "  <SortByColumn>FiscalMonth</SortByColumn>",
+                  "  <IsSortDescending>true</IsSortDescending>",
                   "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
                 ]
               }
@@ -992,7 +993,8 @@
               "  <ColumnFilter />",
               "  <SelectionFilter />",
               "  <FilterParameters />",
-              "  <IsSortDescending>false</IsSortDescending>",
+              "  <SortByColumn>FiscalMonth</SortByColumn>",
+              "  <IsSortDescending>true</IsSortDescending>",
               "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
             ]
           }
