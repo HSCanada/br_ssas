@@ -1973,6 +1973,18 @@
             "name": "ppe_code",
             "dataType": "string",
             "sourceColumn": "ppe_code"
+          },
+          {
+            "type": "calculated",
+            "name": "LabelReporting",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if('Item'[PrivateLabelScopeInd] && 'Item'[Label]=\"P\", \"Henry Schein Brands\", \"Branded\")"
+          },
+          {
+            "name": "PrivateLabelScopeInd",
+            "dataType": "boolean",
+            "sourceColumn": "PrivateLabelScopeInd"
           }
         ],
         "partitions": [
@@ -1997,6 +2009,7 @@
                 "\tLabel,",
                 "\tClassificationCode,",
                 "\tPrivateLabelScope_Item,",
+                "\t[PrivateLabelScopeInd],",
                 "\tCurrentFileCost,",
                 "\t[CurrentCorporatePrice],",
                 "\t[FamilySet],",
@@ -2029,6 +2042,7 @@
                   "\tLabel,",
                   "\tClassificationCode,",
                   "\tPrivateLabelScope_Item,",
+                  "\t[PrivateLabelScopeInd],",
                   "\tCurrentFileCost,",
                   "\t[CurrentCorporatePrice],",
                   "\t[FamilySet],",
@@ -2069,6 +2083,7 @@
               "\tLabel,",
               "\tClassificationCode,",
               "\tPrivateLabelScope_Item,",
+              "\t[PrivateLabelScopeInd],",
               "\tCurrentFileCost,",
               "\t[CurrentCorporatePrice],",
               "\t[FamilySet],",
@@ -2107,6 +2122,7 @@
               "\tLabel,",
               "\tClassificationCode,",
               "\tPrivateLabelScope_Item,",
+              "\t[PrivateLabelScopeInd],",
               "\tCurrentFileCost,",
               "\t[CurrentCorporatePrice],",
               "\t[FamilySet],",
