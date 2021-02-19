@@ -2303,7 +2303,7 @@
             "name": "YTD Quote Score",
             "dataType": "string",
             "isDataTypeInferred": true,
-            "expression": "IF('Sales'[Quote YTD GM]>=0.38,IF('Sales'[Quote YTD Disc%]<0.1,\"Good\", \"Bad Disc\"), \"Bad GM\")"
+            "expression": "IF('Sales'[Quote YTD GM]<0.38 && 'Sales'[Quote YTD Disc%]>0.1, IF('Sales'[Rolling 12mo Sales]>=30000,\"Review\", \"Remove?\"), \"OK\")"
           }
         ],
         "partitions": [
