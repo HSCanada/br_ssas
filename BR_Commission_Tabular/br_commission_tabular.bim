@@ -2804,7 +2804,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[BranchName]"
           },
           {
@@ -2813,7 +2812,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[ZoneName]"
           },
           {
@@ -3251,7 +3249,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[BranchName]"
           },
           {
@@ -3260,7 +3257,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[ZoneName]"
           },
           {
@@ -3369,7 +3365,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[BranchName]"
           },
           {
@@ -3378,7 +3373,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[ZoneName]"
           },
           {
@@ -3943,7 +3937,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[BranchName]"
           },
           {
@@ -3952,7 +3945,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[ZoneName]"
           },
           {
@@ -4157,7 +4149,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[BranchName]"
           },
           {
@@ -4166,7 +4157,6 @@
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[ZoneName]"
           },
           {
