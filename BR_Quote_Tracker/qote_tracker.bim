@@ -3009,6 +3009,21 @@
             "name": "FocusSmCd",
             "dataType": "string",
             "sourceColumn": "FocusSmCd"
+          },
+          {
+            "name": "CommStatusCode",
+            "dataType": "string",
+            "sourceColumn": "CommStatusCode"
+          },
+          {
+            "name": "MarketClassNewCode",
+            "dataType": "string",
+            "sourceColumn": "MarketClassNewCode"
+          },
+          {
+            "name": "MarketClassCode",
+            "dataType": "string",
+            "sourceColumn": "MarketClassCode"
           }
         ],
         "partitions": [
@@ -3040,6 +3055,9 @@
                 "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
                 "\t\t'')\t\t\t\tAS CustomerParent",
                 "\t,PrivateLabelScope_Cust",
+                "\t,CommStatusCode",
+                "\t,MarketClassCode",
+                "\t,MarketClassNewCode",
                 "",
                 "FROM",
                 "\tDimension.Customer c",
@@ -3075,6 +3093,9 @@
                   "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
                   "\t\t'')\t\t\t\tAS CustomerParent",
                   "\t,PrivateLabelScope_Cust",
+                  "\t,CommStatusCode",
+                  "\t,MarketClassCode",
+                  "\t,MarketClassNewCode",
                   "",
                   "FROM",
                   "\tDimension.Customer c",
@@ -3119,6 +3140,9 @@
               "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
               "\t\t'')\t\t\t\tAS CustomerParent",
               "\t,PrivateLabelScope_Cust",
+              "\t,CommStatusCode",
+              "\t,MarketClassCode",
+              "\t,MarketClassNewCode",
               "",
               "FROM",
               "\tDimension.Customer c",
@@ -3160,6 +3184,9 @@
               "\t\tt.PracticeName + ' | ' + RTRIM(CAST(t.ShipTo as char)),",
               "\t\t'')\t\t\t\tAS CustomerParent",
               "\t,PrivateLabelScope_Cust",
+              "\t,CommStatusCode",
+              "\t,MarketClassCode",
+              "\t,MarketClassNewCode",
               "",
               "FROM",
               "\tDimension.Customer c",
