@@ -2304,6 +2304,13 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": "IF('Sales'[Quote YTD GM]<0.38 && 'Sales'[Quote YTD Disc%]>0.1, IF('Sales'[Rolling 12mo Sales]>=30000,\"Review\", \"Remove?\"), \"OK\")"
+          },
+          {
+            "type": "calculated",
+            "name": "YTD CommStatus Score",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "IF('Sales'[YTD GM]<0.35,\"HALF\", \"FULL\")"
           }
         ],
         "partitions": [
@@ -3024,6 +3031,13 @@
             "name": "MarketClassCode",
             "dataType": "string",
             "sourceColumn": "MarketClassCode"
+          },
+          {
+            "type": "calculated",
+            "name": "CommStatus",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if([CommStatusCode] = \"SPMALL\" || [CommStatusCode] = \"SPMSND\", \"HALF\", \"FULL\")"
           }
         ],
         "partitions": [
