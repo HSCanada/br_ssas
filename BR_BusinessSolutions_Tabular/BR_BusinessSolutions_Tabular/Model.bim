@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -1145,7 +1145,7 @@
           },
           {
             "name": "PY MTD Sales",
-            "expression": " CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1156,7 +1156,7 @@
           },
           {
             "name": "PY MTD GP",
-            "expression": " CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1189,7 +1189,7 @@
           },
           {
             "name": "PY YTD Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12* [__year_factor]) &&Period[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1200,7 +1200,7 @@
           },
           {
             "name": "PY YTD GP",
-            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor]) &&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1234,22 +1234,22 @@
           {
             "name": "MTD Sales Var %",
             "expression": " DIVIDE([MTD Sales],[PY MTD Sales]) -1",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD GP Var %",
             "expression": " DIVIDE([MTD GP],[PY MTD GP]) -1",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD Sales Var %",
             "expression": " DIVIDE([YTD Sales],[PY YTD Sales])-1",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD GP Sales Var %",
             "expression": " DIVIDE([YTD GP],[PY YTD GP]) -1",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Qty in Period",
@@ -1269,7 +1269,7 @@
           },
           {
             "name": "PY MTD Qty",
-            "expression": " CALCULATE([Qty in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Qty in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "0"
           },
           {
@@ -1279,7 +1279,7 @@
           },
           {
             "name": "PY YTD Qty",
-            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "0"
           },
           {
@@ -1323,7 +1323,7 @@
           },
           {
             "name": "PY MTD Disc",
-            "expression": " CALCULATE([Disc in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Disc in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1334,7 +1334,7 @@
           },
           {
             "name": "PY YTD Disc",
-            "expression": " CALCULATE([Disc in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Disc in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1379,7 +1379,7 @@
           },
           {
             "name": "PY MTD Ext.Base",
-            "expression": " CALCULATE([Ext.Base in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Ext.Base in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1390,7 +1390,7 @@
           },
           {
             "name": "PY YTD Ext.Base",
-            "expression": " CALCULATE([Ext.Base in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Ext.Base in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -1402,38 +1402,38 @@
           {
             "name": "Disc% in Period",
             "expression": " [Disc in Period]/[Ext.Base in Period]",
-            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "formatString": "0.0%;-0.0%;0.0%",
             "isHidden": true
           },
           {
             "name": "MTD Disc%",
             "expression": " DIVIDE([MTD Disc],[MTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD Disc%",
             "expression": " DIVIDE([YTD Disc],[YTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY MTD Disc%",
             "expression": " DIVIDE([PY MTD Disc],[PY MTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY YTD Disc%",
             "expression": " DIVIDE([PY YTD Disc],[PY YTD Ext.Base])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Disc% Improvement",
             "expression": " [MTD Disc%]-[PY MTD Disc%]",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD Disc% Improvement",
             "expression": " [YTD Disc%]-[PY YTD Disc%]",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Rolling  3mo Sales",
@@ -1546,7 +1546,7 @@
           },
           {
             "name": "PY Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_in_year]-1))",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor] ) &&Period[MonthSeq]<=[__seq_first_month_in_year]-1-12*([__year_factor]-1) ))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -2653,6 +2653,55 @@
               "WHERE",
               "\tItem = '1127017'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
+          }
+        ]
+      },
+      {
+        "name": "Period Select YearFactor",
+        "columns": [
+          {
+            "name": "YearFactor",
+            "dataType": "int64",
+            "sourceColumn": "YearFactor",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Note",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Note",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Period Select YearFactor",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_FiscalYearFactor].* FROM [dbo].[BRS_FiscalYearFactor] ",
+              "dataSource": "SqlServer BRSales"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "__year_factor",
+            "expression": "min([YearFactor])"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_FiscalYearFactor].* FROM [dbo].[BRS_FiscalYearFactor] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_FiscalYearFactor"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
           }
         ]
       }

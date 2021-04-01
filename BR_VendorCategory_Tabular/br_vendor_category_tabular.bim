@@ -1406,7 +1406,7 @@
           },
           {
             "name": "PY MTD Sales",
-            "expression": "CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1417,7 +1417,7 @@
           },
           {
             "name": "PY MTD GP",
-            "expression": "CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * [__year_factor]) ))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1450,7 +1450,7 @@
           },
           {
             "name": "PY QTD Sales",
-            "expression": "CALCULATE([Sales in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12 &&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Sales in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-(12 *[__year_factor]) &&Period[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1461,7 +1461,7 @@
           },
           {
             "name": "PY QTD GP",
-            "expression": "CALCULATE([GP in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12 &&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([GP in Period],filter(all(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-(12 * [__year_factor]) &&Period[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1494,7 +1494,7 @@
           },
           {
             "name": "PY YTD Sales",
-            "expression": "CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12 * [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor]) ))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1505,7 +1505,7 @@
           },
           {
             "name": "PY YTD GP",
-            "expression": "CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]- (12 * [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1789,54 +1789,63 @@
           {
             "name": "MonthName",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "MonthName",
             "sourceProviderType": "WChar"
           },
           {
             "name": "MonthSeq",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "MonthSeq",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "FirstMonthSeqInQtr",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FirstMonthSeqInQtr",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "FirstMonthSeqInYear",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FirstMonthSeqInYear",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "YearNum",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "YearNum",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "QuarterName",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "QuarterName",
             "sourceProviderType": "Char"
           },
           {
             "name": "MonthNum",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "MonthNum",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "WorkingDaysMonth",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "WorkingDaysMonth",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "LastWorkingDay",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "LastWorkingDay",
             "formatString": "General Date",
             "sourceProviderType": "DBDate"
@@ -3691,6 +3700,55 @@
               "  <IsSortDescending>false</IsSortDescending>",
               "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
             ]
+          }
+        ]
+      },
+      {
+        "name": "Period Select YearFactor",
+        "columns": [
+          {
+            "name": "YearFactor",
+            "dataType": "int64",
+            "sourceColumn": "YearFactor",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Note",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Note",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_FiscalYearFactor",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_FiscalYearFactor].* FROM [dbo].[BRS_FiscalYearFactor] ",
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "__year_factor",
+            "expression": "min([YearFactor])"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_FiscalYearFactor].* FROM [dbo].[BRS_FiscalYearFactor] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_FiscalYearFactor"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
           }
         ]
       }
