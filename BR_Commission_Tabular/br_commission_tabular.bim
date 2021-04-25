@@ -2477,12 +2477,16 @@
             "name": "CommGroup",
             "dataType": "string",
             "sourceColumn": "CommGroup"
+          },
+          {
+            "name": "CommGroupRollup",
+            "dataType": "string",
+            "sourceColumn": "CommGroupRollup"
           }
         ],
         "partitions": [
           {
             "name": "CommissionGroup",
-            "dataView": "full",
             "source": {
               "type": "query",
               "query": [
@@ -2491,6 +2495,7 @@
                 "  ,Dimension.CommissionGroup.CommGroup",
                 "  ,Dimension.CommissionGroup.CommGroupCode",
                 " , comm_group_scorecard_cd",
+                " , CommGroupRollup",
                 "",
                 "FROM",
                 "  Dimension.CommissionGroup"
@@ -2506,9 +2511,10 @@
                   "  ,Dimension.CommissionGroup.CommGroup",
                   "  ,Dimension.CommissionGroup.CommGroupCode",
                   " , comm_group_scorecard_cd",
+                  " , CommGroupRollup",
                   "",
                   "FROM",
-                  "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketStatusCode\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -2544,9 +2550,10 @@
               "  ,Dimension.CommissionGroup.CommGroup",
               "  ,Dimension.CommissionGroup.CommGroupCode",
               " , comm_group_scorecard_cd",
+              " , CommGroupRollup",
               "",
               "FROM",
-              "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"CommissionGroup\" ColumnName=\"SpecialMarketStatusCode\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "  Dimension.CommissionGroup</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -2587,6 +2594,14 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "CommGroup_FSC[CommGroup]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupRollup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupRollup]"
           }
         ],
         "partitions": [
@@ -3447,6 +3462,14 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "CommGroup_FSC[CommGroup]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupRollup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupRollup]"
           }
         ],
         "partitions": [
@@ -3495,6 +3518,14 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "CommGroup_FSC[CommGroup]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupRollup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupRollup]"
           }
         ],
         "partitions": [
@@ -4019,6 +4050,14 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "CommGroup_FSC[CommGroup]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupRollup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupRollup]"
           }
         ],
         "partitions": [
@@ -4067,6 +4106,14 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "CommGroup_FSC[CommGroup]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommGroupRollup",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommGroup_FSC[CommGroupRollup]"
           }
         ],
         "partitions": [
