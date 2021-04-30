@@ -143,7 +143,7 @@
           {
             "name": "MTD Sales Growth%",
             "expression": "DIVIDE( [MTD Sales Growth], [PY MTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "GP in Period",
@@ -160,34 +160,34 @@
           {
             "name": "QTD GP Growth%",
             "expression": "DIVIDE([QTD GP Growth], [PY QTD GP], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "formatString": "0.0%;-0.0%;0.0%",
             "isHidden": true
           },
           {
             "name": "PY QTD GM",
             "expression": "DIVIDE([PY QTD GP],[PY QTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY MTD GM",
             "expression": "DIVIDE([PY MTD GP], [PY MTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD GM",
             "expression": "DIVIDE([YTD GP],[YTD Sales],BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD GM",
             "expression": "DIVIDE([QTD GP], [QTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "formatString": "0.0%;-0.0%;0.0%",
             "isHidden": true
           },
           {
             "name": "MTD GM",
             "expression": "DIVIDE([MTD GP],[MTD Sales],BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Sales",
@@ -235,7 +235,7 @@
           },
           {
             "name": "PY MTD Sales",
-            "expression": "  CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))*[__mtd_factor]",
+            "expression": "  CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12* [__year_factor])))*[__mtd_factor]",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -246,7 +246,7 @@
           },
           {
             "name": "PY MTD GP",
-            "expression": " CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))*[__mtd_factor]",
+            "expression": " CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12* [__year_factor])))*[__mtd_factor]",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -272,7 +272,7 @@
           },
           {
             "name": "PY YTD Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12-1))+[PY MTD Sales]",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])-1))+[PY MTD Sales]",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -283,7 +283,7 @@
           },
           {
             "name": "PY YTD GP",
-            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12-1))+[PY MTD GP]",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])-1))+[PY MTD GP]",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -325,7 +325,7 @@
           },
           {
             "name": "PY MTD Qty",
-            "expression": " CALCULATE([Qty in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))*[__mtd_factor]",
+            "expression": " CALCULATE([Qty in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12* [__year_factor])))*[__mtd_factor]",
             "formatString": "#,0"
           },
           {
@@ -335,7 +335,7 @@
           },
           {
             "name": "PY YTD Qty",
-            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12-1))+[PY MTD Qty]",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])-1))+[PY MTD Qty]",
             "formatString": "#,0"
           },
           {
@@ -381,7 +381,7 @@
           },
           {
             "name": "PY QTD Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12-1))+[PY MTD Sales]",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])-1))+[PY MTD Sales]",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -405,13 +405,13 @@
           {
             "name": "QTD Sales Growth%",
             "expression": "DIVIDE([QTD Sales Growth], [PY QTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "formatString": "0.0%;-0.0%;0.0%",
             "isHidden": true
           },
           {
             "name": "YTD Sales Growth%",
             "expression": "DIVIDE( [YTD Sales Growth], [PY YTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD GP Growth",
@@ -420,7 +420,7 @@
           },
           {
             "name": "PY QTD GP",
-            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12-1))+[PY MTD GP]",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])-1))+[PY MTD GP]",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -432,12 +432,12 @@
           {
             "name": "MTD GP Growth%",
             "expression": "DIVIDE([MTD GP Growth],[PY MTD GP], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "YTD GP Growth%",
             "expression": "DIVIDE([YTD GP Growth], [PY YTD GP], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "QTD Qty",
@@ -447,7 +447,7 @@
           },
           {
             "name": "PY QTD Qty",
-            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12-1))+[PY MTD Qty]",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])-1))+[PY MTD Qty]",
             "formatString": "#,0"
           },
           {
@@ -458,7 +458,7 @@
           {
             "name": "PY YTD GM",
             "expression": "DIVIDE([PY YTD GP], [PY YTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Last 3Mo GP",
@@ -473,7 +473,7 @@
           },
           {
             "name": "PY Last 3Mo Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -484,7 +484,7 @@
           },
           {
             "name": "PY Last 3Mo GP",
-            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -507,7 +507,7 @@
           {
             "name": "Last 3Mo Sales Growth%",
             "expression": "DIVIDE([Last 3Mo Sales Growth],  [PY Last 3Mo Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Last 3Mo GP Growth",
@@ -523,7 +523,7 @@
           {
             "name": "Last 3Mo GP Growth%",
             "expression": "DIVIDE( [Last 3Mo GP Growth], [PY Last 3Mo GP], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "WTD Sales",
@@ -587,11 +587,11 @@
           {
             "name": "Last 6Mo Sales Growth%",
             "expression": "DIVIDE([Last 6Mo Sales Growth],  [PY Last 6Mo Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "PY Last 6Mo Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-6-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-6-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -602,7 +602,7 @@
           },
           {
             "name": "PY Last 12Mo Sales",
-            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])))",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
             "annotations": [
               {
@@ -625,7 +625,7 @@
           {
             "name": "Last 12Mo Sales Growth%",
             "expression": "DIVIDE([Last 12Mo Sales Growth], [PY Last 12Mo Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Last Order Qty",
@@ -658,7 +658,7 @@
           {
             "name": "WTD GM",
             "expression": "DIVIDE([WTD GP], [WTD Sales], BLANK())",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "WTD Qty",
@@ -674,7 +674,7 @@
           {
             "name": "MTD Percent to Goal",
             "expression": "DIVIDE( [MTD Sales], [MTD Goal])",
-            "formatString": "0.0 %;-0.0 %;0.0 %"
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "Goal Growth Factor",
@@ -1326,7 +1326,6 @@
           {
             "name": "Current Day",
             "expression": "MAX([SalesDate])",
-            "formatString": "d-MMM-yy",
             "annotations": [
               {
                 "name": "Format",
@@ -2052,6 +2051,55 @@
               "\tEND AS deal",
               "FROM            Redemptions_tbl_Main as d</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
+          }
+        ]
+      },
+      {
+        "name": "Period Select YearFactor",
+        "columns": [
+          {
+            "name": "YearFactor",
+            "dataType": "int64",
+            "sourceColumn": "YearFactor",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Note",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Note",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Period Select YearFactor",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_FiscalYearFactor].* FROM [dbo].[BRS_FiscalYearFactor] ",
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "__year_factor",
+            "expression": "min([YearFactor])"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_FiscalYearFactor].* FROM [dbo].[BRS_FiscalYearFactor] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_FiscalYearFactor"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
           }
         ]
       }
