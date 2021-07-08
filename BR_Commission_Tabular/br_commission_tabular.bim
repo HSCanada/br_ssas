@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -403,6 +403,11 @@
             "name": "SupplierCode",
             "dataType": "string",
             "sourceColumn": "SupplierCode"
+          },
+          {
+            "name": "MinorCode",
+            "dataType": "string",
+            "sourceColumn": "MinorCode"
           }
         ],
         "partitions": [
@@ -434,6 +439,7 @@
                 ",SupplierGlobal",
                 ",MELP_code",
                 ",Current_SupplierCode AS SupplierCode",
+                ",MinorCode",
                 "",
                 "FROM",
                 "  Dimension.Item"
@@ -467,6 +473,7 @@
                   ",SupplierGlobal",
                   ",MELP_code",
                   ",Current_SupplierCode AS SupplierCode",
+                  ",MinorCode",
                   "",
                   "FROM",
                   "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -502,6 +509,7 @@
               ",SupplierGlobal",
               ",MELP_code",
               ",Current_SupplierCode AS SupplierCode",
+              ",MinorCode",
               "",
               "FROM",
               "  Dimension.Item"
@@ -541,6 +549,7 @@
               ",SupplierGlobal",
               ",MELP_code",
               ",Current_SupplierCode AS SupplierCode",
+              ",MinorCode",
               "",
               "FROM",
               "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1434,7 +1443,7 @@
           },
           {
             "name": "PY MTD Sales",
-            "expression": "CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1445,7 +1454,7 @@
           },
           {
             "name": "PY MTD GP",
-            "expression": "CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1478,7 +1487,7 @@
           },
           {
             "name": "PY YTD Sales",
-            "expression": "CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1489,7 +1498,7 @@
           },
           {
             "name": "PY YTD GP",
-            "expression": "CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1577,7 +1586,7 @@
           },
           {
             "name": "PY MTD Comm FSC",
-            "expression": "CALCULATE([Comm_FSC in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_FSC in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1615,7 +1624,7 @@
           },
           {
             "name": "PY YTD Comm FSC",
-            "expression": "CALCULATE([Comm_FSC in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_FSC in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1653,7 +1662,7 @@
           },
           {
             "name": "PY MTD Comm ESS",
-            "expression": "CALCULATE([Comm_ESS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_ESS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1691,7 +1700,7 @@
           },
           {
             "name": "PY YTD Comm ESS",
-            "expression": "CALCULATE([Comm_ESS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_ESS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1758,7 +1767,7 @@
           },
           {
             "name": "PY MTD Comm EPS",
-            "expression": "CALCULATE([Comm_EPS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_EPS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1796,7 +1805,7 @@
           },
           {
             "name": "PY YTD Comm EPS",
-            "expression": "CALCULATE([Comm_EPS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_EPS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1834,7 +1843,7 @@
           },
           {
             "name": "PY MTD Comm CPS",
-            "expression": "CALCULATE([Comm_CPS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_CPS in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1872,7 +1881,7 @@
           },
           {
             "name": "PY YTD Comm CPS",
-            "expression": "CALCULATE([Comm_CPS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_CPS in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -1916,7 +1925,7 @@
           },
           {
             "name": "PY MTD Salesorder",
-            "expression": "CALCULATE([Salesorder in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Salesorder in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "#,0"
           },
           {
@@ -1926,7 +1935,7 @@
           },
           {
             "name": "PY YTD Salesorder",
-            "expression": "CALCULATE([Salesorder in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Salesorder in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "#,0"
           },
           {
@@ -1946,7 +1955,7 @@
           },
           {
             "name": "PY YTD Lines",
-            "expression": "CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "#,0"
           },
           {
@@ -1994,7 +2003,7 @@
           },
           {
             "name": "PY MTD Comm ISR",
-            "expression": "CALCULATE([Comm_ISR in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_ISR in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -2032,7 +2041,7 @@
           },
           {
             "name": "PY YTD Comm ISR",
-            "expression": "CALCULATE([Comm_ISR in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_ISR in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -2086,7 +2095,7 @@
           },
           {
             "name": "PY MTD Comm EST",
-            "expression": "CALCULATE([Comm_EST in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_EST in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -2113,7 +2122,7 @@
           },
           {
             "name": "PY YTD Comm EST",
-            "expression": "CALCULATE([Comm_EST in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]-12))",
+            "expression": "CALCULATE([Comm_EST in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "annotations": [
               {
@@ -4250,6 +4259,180 @@
               "type": "calculated",
               "expression": "CommSalesperson_FSC"
             }
+          }
+        ]
+      },
+      {
+        "name": "Period Select YearFactor",
+        "columns": [
+          {
+            "name": "YearFactor",
+            "dataType": "int64",
+            "sourceColumn": "YearFactor",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Period Select YearFactor",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_FiscalYearFactor].[YearFactor] FROM [dbo].[BRS_FiscalYearFactor] ",
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>YearFactor</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>83</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>53</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>YearFactor</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Note</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "__year_factor",
+            "expression": "min([YearFactor])"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_FiscalYearFactor].[YearFactor] FROM [dbo].[BRS_FiscalYearFactor] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_FiscalYearFactor"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>YearFactor</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>83</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Note</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>53</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>YearFactor</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Note</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>Note</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       }
