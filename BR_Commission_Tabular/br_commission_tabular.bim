@@ -135,6 +135,65 @@
             "name": "Specialty",
             "dataType": "string",
             "sourceColumn": "Specialty"
+          },
+          {
+            "name": "wheel_active_ind",
+            "dataType": "int64",
+            "sourceColumn": "wheel_active_ind"
+          },
+          {
+            "name": "wheel_seg1_merchandise_ind",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "wheel_seg1_merchandise_ind"
+          },
+          {
+            "name": "wheel_seg2_hs_branded_ind",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "wheel_seg2_hs_branded_ind"
+          },
+          {
+            "name": "wheel_seg3_equip_hitech_ind",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "wheel_seg3_equip_hitech_ind"
+          },
+          {
+            "name": "wheel_seg4_digital_restoration_ind",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "wheel_seg4_digital_restoration_ind"
+          },
+          {
+            "name": "wheel_seg5_henry_schein_one_ind",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "wheel_seg5_henry_schein_one_ind"
+          },
+          {
+            "name": "wheel_seg6_equipment_services_ind",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "wheel_seg6_equipment_services_ind"
+          },
+          {
+            "name": "wheel_seg7_business_solutions_ind",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "wheel_seg7_business_solutions_ind"
+          },
+          {
+            "type": "calculated",
+            "name": "wheel_seg_count",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "[wheel_seg1_merchandise_ind]+Customer[wheel_seg2_hs_branded_ind]+Customer[wheel_seg3_equip_hitech_ind]+Customer[wheel_seg4_digital_restoration_ind]+Customer[wheel_seg5_henry_schein_one_ind]+Customer[wheel_seg6_equipment_services_ind]+Customer[wheel_seg7_business_solutions_ind]"
+          },
+          {
+            "name": "playbook_focus_code",
+            "dataType": "string",
+            "sourceColumn": "playbook_focus_code"
           }
         ],
         "partitions": [
@@ -165,6 +224,18 @@
                 "  ,FocusCd",
                 "  ,Segment",
                 " ,Specialty",
+                "",
+                "-- wheel graft on last month results",
+                ",[wheel_active_ind]",
+                ",[wheel_seg1_merchandise_ind]",
+                ",[wheel_seg2_hs_branded_ind]",
+                ",[wheel_seg3_equip_hitech_ind]",
+                ",[wheel_seg4_digital_restoration_ind]",
+                ",[wheel_seg5_henry_schein_one_ind]",
+                ",[wheel_seg6_equipment_services_ind]",
+                ",[wheel_seg7_business_solutions_ind]",
+                "",
+                ", playbook_focus_code",
                 "",
                 "FROM",
                 "  Dimension.Customer"
@@ -197,11 +268,66 @@
                   "  ,Segment",
                   " ,Specialty",
                   "",
+                  "-- wheel graft on last month results",
+                  ",[wheel_active_ind]",
+                  ",[wheel_seg1_merchandise_ind]",
+                  ",[wheel_seg2_hs_branded_ind]",
+                  ",[wheel_seg3_equip_hitech_ind]",
+                  ",[wheel_seg4_digital_restoration_ind]",
+                  ",[wheel_seg5_henry_schein_one_ind]",
+                  ",[wheel_seg6_equipment_services_ind]",
+                  ",[wheel_seg7_business_solutions_ind]",
+                  "",
+                  ", playbook_focus_code",
+                  "",
                   "FROM",
                   "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "wheel_seg_score",
+            "expression": "DIVIDE( ([wheel_seg1_count]*1.0 + [wheel_seg2_count]*2.0 + [wheel_seg3_count]*3.0 + [wheel_seg4_count]*4.0 + [wheel_seg5_count]*5.0 + [wheel_seg6_count]*6.0 + [wheel_seg7_count]*7.0 ), [wheel_active_count])",
+            "formatString": "0.0"
+          },
+          {
+            "name": "Count of wheel_seg_count",
+            "expression": "COUNTA([wheel_seg_count])"
+          },
+          {
+            "name": "wheel_seg7_count",
+            "expression": "CALCULATE([Count of wheel_seg_count],'Customer'[wheel_seg_count]=7)"
+          },
+          {
+            "name": "wheel_seg6_count",
+            "expression": "CALCULATE([Count of wheel_seg_count],'Customer'[wheel_seg_count]=6)"
+          },
+          {
+            "name": "wheel_seg5_count",
+            "expression": "CALCULATE([Count of wheel_seg_count],'Customer'[wheel_seg_count]=5)"
+          },
+          {
+            "name": "wheel_seg4_count",
+            "expression": "CALCULATE([Count of wheel_seg_count],'Customer'[wheel_seg_count]=4)"
+          },
+          {
+            "name": "wheel_seg3_count",
+            "expression": "CALCULATE([Count of wheel_seg_count],'Customer'[wheel_seg_count]=3)"
+          },
+          {
+            "name": "wheel_seg2_count",
+            "expression": "CALCULATE([Count of wheel_seg_count],'Customer'[wheel_seg_count]=2)"
+          },
+          {
+            "name": "wheel_seg1_count",
+            "expression": "CALCULATE([Count of wheel_seg_count],'Customer'[wheel_seg_count]=1)"
+          },
+          {
+            "name": "wheel_active_count",
+            "expression": "SUM([wheel_active_ind])"
           }
         ],
         "annotations": [
@@ -229,6 +355,18 @@
               "  ,FocusCd",
               "  ,Segment",
               " ,Specialty",
+              "",
+              "-- wheel graft on last month results",
+              ",[wheel_active_ind]",
+              ",[wheel_seg1_merchandise_ind]",
+              ",[wheel_seg2_hs_branded_ind]",
+              ",[wheel_seg3_equip_hitech_ind]",
+              ",[wheel_seg4_digital_restoration_ind]",
+              ",[wheel_seg5_henry_schein_one_ind]",
+              ",[wheel_seg6_equipment_services_ind]",
+              ",[wheel_seg7_business_solutions_ind]",
+              "",
+              ", playbook_focus_code",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -266,6 +404,18 @@
               "  ,FocusCd",
               "  ,Segment",
               " ,Specialty",
+              "",
+              "-- wheel graft on last month results",
+              ",[wheel_active_ind]",
+              ",[wheel_seg1_merchandise_ind]",
+              ",[wheel_seg2_hs_branded_ind]",
+              ",[wheel_seg3_equip_hitech_ind]",
+              ",[wheel_seg4_digital_restoration_ind]",
+              ",[wheel_seg5_henry_schein_one_ind]",
+              ",[wheel_seg6_equipment_services_ind]",
+              ",[wheel_seg7_business_solutions_ind]",
+              "",
+              ", playbook_focus_code",
               "",
               "FROM",
               "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -408,6 +558,16 @@
             "name": "MinorCode",
             "dataType": "string",
             "sourceColumn": "MinorCode"
+          },
+          {
+            "name": "BrandEquityCategory",
+            "dataType": "string",
+            "sourceColumn": "BrandEquityCategory"
+          },
+          {
+            "name": "BrandEquityCode",
+            "dataType": "string",
+            "sourceColumn": "BrandEquityCode"
           }
         ],
         "partitions": [
@@ -440,6 +600,10 @@
                 ",MELP_code",
                 ",Current_SupplierCode AS SupplierCode",
                 ",MinorCode",
+                "",
+                "-- equity graft on last month results",
+                ",BrandEquityCategory",
+                ",BrandEquityCode",
                 "",
                 "FROM",
                 "  Dimension.Item"
@@ -474,6 +638,10 @@
                   ",MELP_code",
                   ",Current_SupplierCode AS SupplierCode",
                   ",MinorCode",
+                  "",
+                  "-- equity graft on last month results",
+                  ",BrandEquityCategory",
+                  ",BrandEquityCode",
                   "",
                   "FROM",
                   "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -510,6 +678,10 @@
               ",MELP_code",
               ",Current_SupplierCode AS SupplierCode",
               ",MinorCode",
+              "",
+              "-- equity graft on last month results",
+              ",BrandEquityCategory",
+              ",BrandEquityCode",
               "",
               "FROM",
               "  Dimension.Item"
@@ -550,6 +722,10 @@
               ",MELP_code",
               ",Current_SupplierCode AS SupplierCode",
               ",MinorCode",
+              "",
+              "-- equity graft on last month results",
+              ",BrandEquityCategory",
+              ",BrandEquityCode",
               "",
               "FROM",
               "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1251,6 +1427,11 @@
             "dataType": "double",
             "isHidden": true,
             "sourceColumn": "EST_CommAmt"
+          },
+          {
+            "name": "hs_branded_baseline_ind",
+            "dataType": "int64",
+            "sourceColumn": "hs_branded_baseline_ind"
           }
         ],
         "partitions": [
@@ -1306,7 +1487,9 @@
                 "\tESS_CommAmt,",
                 "\tEPS_CommAmt,",
                 "\tCPS_CommAmt,",
-                "\tEST_CommAmt",
+                "\tEST_CommAmt,",
+                "",
+                "\ths_branded_baseline_ind",
                 "",
                 "FROM",
                 "\tFact.Commission"
@@ -1363,7 +1546,9 @@
                   "\tESS_CommAmt,",
                   "\tEPS_CommAmt,",
                   "\tCPS_CommAmt,",
-                  "\tEST_CommAmt",
+                  "\tEST_CommAmt,",
+                  "",
+                  "\ths_branded_baseline_ind",
                   "",
                   "FROM",
                   "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2198,7 +2383,9 @@
               "\tESS_CommAmt,",
               "\tEPS_CommAmt,",
               "\tCPS_CommAmt,",
-              "\tEST_CommAmt",
+              "\tEST_CommAmt,",
+              "",
+              "\ths_branded_baseline_ind",
               "",
               "FROM",
               "\tFact.Commission"
@@ -2261,7 +2448,9 @@
               "\tESS_CommAmt,",
               "\tEPS_CommAmt,",
               "\tCPS_CommAmt,",
-              "\tEST_CommAmt",
+              "\tEST_CommAmt,",
+              "",
+              "\ths_branded_baseline_ind",
               "",
               "FROM",
               "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2705,6 +2894,84 @@
             "name": "tracker_ind",
             "dataType": "boolean",
             "sourceColumn": "tracker_ind"
+          },
+          {
+            "name": "sf_adpt_login_score",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_adpt_login_score"
+          },
+          {
+            "name": "sf_adpt_created_opps_score",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_adpt_created_opps_score"
+          },
+          {
+            "name": "sf_adpt_activity_score",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_adpt_activity_score"
+          },
+          {
+            "name": "sf_adpt_pastdue_opps_score",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_adpt_pastdue_opps_score"
+          },
+          {
+            "name": "sf_adpt_closed_opps_score",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_adpt_closed_opps_score"
+          },
+          {
+            "name": "sf_opps_equipment_technology_cnt",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_opps_equipment_technology_cnt"
+          },
+          {
+            "name": "sf_opps_cadcam_digitial_imaging_cnt",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_opps_cadcam_digitial_imaging_cnt"
+          },
+          {
+            "name": "sf_opps_merchandise_cnt",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_opps_merchandise_cnt"
+          },
+          {
+            "name": "sf_opps_other_cnt",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "sf_opps_other_cnt"
+          },
+          {
+            "name": "sf_opps_equipment_technology_amt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "sf_opps_equipment_technology_amt"
+          },
+          {
+            "name": "sf_opps_cadcam_digitial_imaging_amt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "sf_opps_cadcam_digitial_imaging_amt"
+          },
+          {
+            "name": "sf_opps_merchandise_amt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "sf_opps_merchandise_amt"
+          },
+          {
+            "name": "sf_opps_other_amt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "sf_opps_other_amt"
           }
         ],
         "partitions": [
@@ -2716,6 +2983,24 @@
               "query": [
                 "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
                 "[BranchCode], [BranchName], [ZoneName], tracker_ind",
+                "",
+                "\t-- tmc\tadd salesforce adoption and opportunity for playbook, 19 Jul 21",
+                "\t,sf_adpt_login_score ",
+                "\t,sf_adpt_created_opps_score ",
+                "\t,sf_adpt_activity_score ",
+                "\t,sf_adpt_pastdue_opps_score ",
+                "\t,sf_adpt_closed_opps_score ",
+                "",
+                "\t,sf_opps_equipment_technology_cnt",
+                "\t,sf_opps_cadcam_digitial_imaging_cnt",
+                "\t,sf_opps_merchandise_cnt",
+                "\t,sf_opps_other_cnt",
+                "",
+                "\t,sf_opps_equipment_technology_amt",
+                "\t,sf_opps_cadcam_digitial_imaging_amt",
+                "\t,sf_opps_merchandise_amt",
+                "\t,sf_opps_other_amt",
+                "",
                 " ",
                 "FROM [Dimension].[SalespersonCommission]"
               ],
@@ -2727,6 +3012,24 @@
                 "value": [
                   "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
                   "[BranchCode], [BranchName], [ZoneName], tracker_ind",
+                  "",
+                  "\t-- tmc\tadd salesforce adoption and opportunity for playbook, 19 Jul 21",
+                  "\t,sf_adpt_login_score ",
+                  "\t,sf_adpt_created_opps_score ",
+                  "\t,sf_adpt_activity_score ",
+                  "\t,sf_adpt_pastdue_opps_score ",
+                  "\t,sf_adpt_closed_opps_score ",
+                  "",
+                  "\t,sf_opps_equipment_technology_cnt",
+                  "\t,sf_opps_cadcam_digitial_imaging_cnt",
+                  "\t,sf_opps_merchandise_cnt",
+                  "\t,sf_opps_other_cnt",
+                  "",
+                  "\t,sf_opps_equipment_technology_amt",
+                  "\t,sf_opps_cadcam_digitial_imaging_amt",
+                  "\t,sf_opps_merchandise_amt",
+                  "\t,sf_opps_other_amt",
+                  "",
                   " ",
                   "FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -2738,6 +3041,86 @@
           {
             "name": "_Count of Salesperson_FSC",
             "expression": "COUNTA([EmployeeNumber_FSC])"
+          },
+          {
+            "name": "Sum of sf_adpt_login_score",
+            "expression": "SUM([sf_adpt_login_score])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_adpt_created_opps_score",
+            "expression": "SUM([sf_adpt_created_opps_score])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_adpt_activity_score",
+            "expression": "SUM([sf_adpt_activity_score])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_adpt_pastdue_opps_score",
+            "expression": "SUM([sf_adpt_pastdue_opps_score])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_adpt_closed_opps_score",
+            "expression": "SUM([sf_adpt_closed_opps_score])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_opps_equipment_technology_cnt",
+            "expression": "SUM([sf_opps_equipment_technology_cnt])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_opps_cadcam_digitial_imaging_cnt",
+            "expression": "SUM([sf_opps_cadcam_digitial_imaging_cnt])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_opps_merchandise_cnt",
+            "expression": "SUM([sf_opps_merchandise_cnt])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_opps_other_cnt",
+            "expression": "SUM([sf_opps_other_cnt])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_opps_equipment_technology_amt",
+            "expression": "SUM([sf_opps_equipment_technology_amt])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_opps_cadcam_digitial_imaging_amt",
+            "expression": "SUM([sf_opps_cadcam_digitial_imaging_amt])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_opps_merchandise_amt",
+            "expression": "SUM([sf_opps_merchandise_amt])",
+            "isHidden": true
+          },
+          {
+            "name": "Sum of sf_opps_other_amt",
+            "expression": "SUM([sf_opps_other_amt])",
+            "isHidden": true
+          },
+          {
+            "name": "SalesForce Adoption Score",
+            "expression": "[Sum of sf_adpt_activity_score]+[Sum of sf_adpt_closed_opps_score]+[Sum of sf_adpt_created_opps_score]+[Sum of sf_adpt_login_score]+[Sum of sf_adpt_pastdue_opps_score]",
+            "formatString": "0"
+          },
+          {
+            "name": "SalesForce Opportunity - Equipment & Technology Count",
+            "expression": "[Sum of sf_opps_equipment_technology_cnt]",
+            "formatString": "0"
+          },
+          {
+            "name": "SalesForce Opportunity - CAD/CAM & DI Count",
+            "expression": "[Sum of sf_opps_cadcam_digitial_imaging_cnt]",
+            "formatString": "0"
           }
         ],
         "annotations": [
@@ -2746,6 +3129,24 @@
             "value": [
               "SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
               "[BranchCode], [BranchName], [ZoneName], tracker_ind",
+              "",
+              "\t-- tmc\tadd salesforce adoption and opportunity for playbook, 19 Jul 21",
+              "\t,sf_adpt_login_score ",
+              "\t,sf_adpt_created_opps_score ",
+              "\t,sf_adpt_activity_score ",
+              "\t,sf_adpt_pastdue_opps_score ",
+              "\t,sf_adpt_closed_opps_score ",
+              "",
+              "\t,sf_opps_equipment_technology_cnt",
+              "\t,sf_opps_cadcam_digitial_imaging_cnt",
+              "\t,sf_opps_merchandise_cnt",
+              "\t,sf_opps_other_cnt",
+              "",
+              "\t,sf_opps_equipment_technology_amt",
+              "\t,sf_opps_cadcam_digitial_imaging_amt",
+              "\t,sf_opps_merchandise_amt",
+              "\t,sf_opps_other_amt",
+              "",
               " ",
               "FROM [Dimension].[SalespersonCommission]"
             ]
@@ -2763,6 +3164,24 @@
             "value": [
               "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[SalespersonCommission].[SalespersonKey],[Dimension].[SalespersonCommission].[EmployeeNumber],[Dimension].[SalespersonCommission].[CommMasterCode],[Dimension].[SalespersonCommission].[SalespersonName],[Dimension].[SalespersonCommission].[CommPlanCode],[Dimension].[SalespersonCommission].[TerritoryStart],[Dimension].[SalespersonCommission].[SalespersonID], BranchCount,",
               "[BranchCode], [BranchName], [ZoneName], tracker_ind",
+              "",
+              "\t-- tmc\tadd salesforce adoption and opportunity for playbook, 19 Jul 21",
+              "\t,sf_adpt_login_score ",
+              "\t,sf_adpt_created_opps_score ",
+              "\t,sf_adpt_activity_score ",
+              "\t,sf_adpt_pastdue_opps_score ",
+              "\t,sf_adpt_closed_opps_score ",
+              "",
+              "\t,sf_opps_equipment_technology_cnt",
+              "\t,sf_opps_cadcam_digitial_imaging_cnt",
+              "\t,sf_opps_merchandise_cnt",
+              "\t,sf_opps_other_cnt",
+              "",
+              "\t,sf_opps_equipment_technology_amt",
+              "\t,sf_opps_cadcam_digitial_imaging_amt",
+              "\t,sf_opps_merchandise_amt",
+              "\t,sf_opps_other_amt",
+              "",
               " ",
               "FROM [Dimension].[SalespersonCommission]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -2873,6 +3292,123 @@
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_login_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_login_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_created_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_created_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_activity_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_activity_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_pastdue_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_pastdue_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_closed_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_closed_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
           }
         ],
         "partitions": [
@@ -3318,6 +3854,123 @@
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_login_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_login_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_created_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_created_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_activity_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_activity_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_pastdue_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_pastdue_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_closed_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_closed_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
           }
         ],
         "partitions": [
@@ -3434,6 +4087,123 @@
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_login_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_login_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_created_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_created_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_activity_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_activity_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_pastdue_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_pastdue_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_closed_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_closed_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
           }
         ],
         "partitions": [
@@ -4022,6 +4792,123 @@
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_login_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_login_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_created_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_created_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_activity_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_activity_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_pastdue_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_pastdue_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_closed_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_closed_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
           }
         ],
         "partitions": [
@@ -4250,6 +5137,123 @@
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_login_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_login_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_created_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_created_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_activity_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_activity_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_pastdue_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_pastdue_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_closed_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_closed_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
           }
         ],
         "partitions": [

@@ -21,7 +21,7 @@
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
-    <DeploymentOptionQueryImpersonation>ImpersonateCurrentUser</DeploymentOptionQueryImpersonation>
+    <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == '' ">
