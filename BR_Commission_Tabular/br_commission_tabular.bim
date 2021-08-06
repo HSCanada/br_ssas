@@ -349,6 +349,10 @@
             "name": "Count of ShipTo",
             "expression": "COUNTA([ShipTo])",
             "formatString": "0"
+          },
+          {
+            "name": "Distinct Count of Billto",
+            "expression": "DISTINCTCOUNT([Billto])"
           }
         ],
         "annotations": [
@@ -2378,6 +2382,10 @@
             "name": "YTD Comm EST Var %",
             "expression": "DIVIDE( [YTD Comm EST] - [PY YTD Comm EST], [PY YTD Comm EST])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Sales Var % - Customer Count Below Threshhold",
+            "expression": "CALCULATE([Count of ShipTo], FILTER('Customer',  [YTD Sales Var %] < 0.25))"
           }
         ],
         "annotations": [
@@ -2671,6 +2679,13 @@
             "dataType": "string",
             "sourceColumn": "CustomerPOText1",
             "sourceProviderType": "Char"
+          },
+          {
+            "type": "calculated",
+            "name": "FSC and Customer eBiz",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if([OrderTakenByCode]=\"FSC\",\"Aruba FSC\", if([OrderTakenByCode]=\"CUSTOMER\" || [OrderTakenByCode]=\"DCORBZ\", \"Aruba Web\", \"CSR\"))"
           }
         ],
         "partitions": [
@@ -3019,6 +3034,13 @@
             "dataType": "double",
             "isHidden": true,
             "sourceColumn": "sf_opps_other_amt"
+          },
+          {
+            "type": "calculated",
+            "name": "Years of Service",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "year(now()) - year([TerritoryStart])"
           }
         ],
         "partitions": [
@@ -3456,6 +3478,14 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Years of Service",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[Years of Service]"
           }
         ],
         "partitions": [
@@ -4018,6 +4048,14 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Years of Service",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[Years of Service]"
           }
         ],
         "partitions": [
@@ -4251,6 +4289,14 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Years of Service",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[Years of Service]"
           }
         ],
         "partitions": [
@@ -4956,6 +5002,14 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Years of Service",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[Years of Service]"
           }
         ],
         "partitions": [
@@ -5301,6 +5355,14 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Years of Service",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[Years of Service]"
           }
         ],
         "partitions": [

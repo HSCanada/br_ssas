@@ -254,6 +254,11 @@
             "name": "ppe_code",
             "dataType": "string",
             "sourceColumn": "ppe_code"
+          },
+          {
+            "name": "StockingCode",
+            "dataType": "string",
+            "sourceColumn": "StockingCode"
           }
         ],
         "partitions": [
@@ -292,7 +297,8 @@
                 "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
                 "\ti.size_factor,",
                 "\ti.Top15,",
-                "\ti.ppe_code",
+                "\ti.ppe_code,",
+                "\ti.StockingCode",
                 "",
                 "FROM",
                 "\tDimension.Item AS i ",
@@ -335,7 +341,8 @@
                   "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
                   "\ti.size_factor,",
                   "\ti.Top15,",
-                  "\ti.ppe_code",
+                  "\ti.ppe_code,",
+                  "\ti.StockingCode",
                   "",
                   "FROM",
                   "\tDimension.Item AS i ",
@@ -394,7 +401,8 @@
               "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
               "\ti.size_factor,",
               "\ti.Top15,",
-              "\ti.ppe_code",
+              "\ti.ppe_code,",
+              "\ti.StockingCode",
               "",
               "FROM",
               "\tDimension.Item AS i ",
@@ -443,7 +451,8 @@
               "\tISNULL(i.Item_Competitive_Conversion_rt,0) AS SubsItem2Subs_factor,",
               "\ti.size_factor,",
               "\ti.Top15,",
-              "\ti.ppe_code",
+              "\ti.ppe_code,",
+              "\ti.StockingCode",
               "",
               "FROM",
               "\tDimension.Item AS i ",
