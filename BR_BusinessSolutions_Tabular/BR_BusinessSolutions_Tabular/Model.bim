@@ -259,6 +259,16 @@
             "name": "StockingCode",
             "dataType": "string",
             "sourceColumn": "StockingCode"
+          },
+          {
+            "name": "BrandEquityCategory",
+            "dataType": "string",
+            "sourceColumn": "BrandEquityCategory"
+          },
+          {
+            "name": "BrandEquityCode",
+            "dataType": "string",
+            "sourceColumn": "BrandEquityCode"
           }
         ],
         "partitions": [
@@ -299,6 +309,10 @@
                 "\ti.Top15,",
                 "\ti.ppe_code,",
                 "\ti.StockingCode",
+                "",
+                "\t,i.BrandEquityCategory",
+                "\t,i.BrandEquityCode",
+                "",
                 "",
                 "FROM",
                 "\tDimension.Item AS i ",
@@ -343,6 +357,10 @@
                   "\ti.Top15,",
                   "\ti.ppe_code,",
                   "\ti.StockingCode",
+                  "",
+                  "\t,i.BrandEquityCategory",
+                  "\t,i.BrandEquityCode",
+                  "",
                   "",
                   "FROM",
                   "\tDimension.Item AS i ",
@@ -404,6 +422,10 @@
               "\ti.ppe_code,",
               "\ti.StockingCode",
               "",
+              "\t,i.BrandEquityCategory",
+              "\t,i.BrandEquityCode",
+              "",
+              "",
               "FROM",
               "\tDimension.Item AS i ",
               "",
@@ -453,6 +475,10 @@
               "\ti.Top15,",
               "\ti.ppe_code,",
               "\ti.StockingCode",
+              "",
+              "\t,i.BrandEquityCategory",
+              "\t,i.BrandEquityCode",
+              "",
               "",
               "FROM",
               "\tDimension.Item AS i ",
@@ -652,6 +678,26 @@
             "name": "pma_ind",
             "dataType": "string",
             "sourceColumn": "pma_ind"
+          },
+          {
+            "name": "CommMasterCode_FSC_Current",
+            "dataType": "string",
+            "sourceColumn": "CommMasterCode_FSC_Current"
+          },
+          {
+            "name": "playbook_focus_code",
+            "dataType": "string",
+            "sourceColumn": "playbook_focus_code"
+          },
+          {
+            "name": "CreateDate",
+            "dataType": "dateTime",
+            "sourceColumn": "CreateDate"
+          },
+          {
+            "name": "CustomerStatus",
+            "dataType": "string",
+            "sourceColumn": "CustomerStatus"
           }
         ],
         "partitions": [
@@ -683,6 +729,13 @@
                 "\tReviewTrackingInd,",
                 "\tESTName,",
                 "\tpma_ind",
+                "",
+                "\t,CommMasterCode_FSC_Current",
+                "\t,playbook_focus_code",
+                "\t,CreateDate",
+                "",
+                "\t, CustomerStatus",
+                "",
                 "FROM",
                 "\tDimension.Customer AS c"
               ],
@@ -714,6 +767,13 @@
                   "\tReviewTrackingInd,",
                   "\tESTName,",
                   "\tpma_ind",
+                  "",
+                  "\t,CommMasterCode_FSC_Current",
+                  "\t,playbook_focus_code",
+                  "\t,CreateDate",
+                  "",
+                  "\t, CustomerStatus",
+                  "",
                   "FROM",
                   "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -753,6 +813,13 @@
               "\tReviewTrackingInd,",
               "\tESTName,",
               "\tpma_ind",
+              "",
+              "\t,CommMasterCode_FSC_Current",
+              "\t,playbook_focus_code",
+              "\t,CreateDate",
+              "",
+              "\t, CustomerStatus",
+              "",
               "FROM",
               "\tDimension.Customer AS c"
             ]
@@ -790,6 +857,13 @@
               "\tReviewTrackingInd,",
               "\tESTName,",
               "\tpma_ind",
+              "",
+              "\t,CommMasterCode_FSC_Current",
+              "\t,playbook_focus_code",
+              "\t,CreateDate",
+              "",
+              "\t, CustomerStatus",
+              "",
               "FROM",
               "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -1006,6 +1080,11 @@
             "name": "sales_order_key",
             "dataType": "int64",
             "sourceColumn": "sales_order_key"
+          },
+          {
+            "name": "hs_branded_baseline_ind",
+            "dataType": "int64",
+            "sourceColumn": "hs_branded_baseline_ind"
           }
         ],
         "partitions": [
@@ -1041,6 +1120,8 @@
                 "\tSubsQuantity,",
                 "\tSubsSalesAmt",
                 "",
+                "\t,hs_branded_baseline_ind",
+                "",
                 "FROM",
                 "\tFact.Sale_brs AS f"
               ],
@@ -1075,6 +1156,8 @@
                   "\tDiscountOrderAmt,",
                   "\tSubsQuantity,",
                   "\tSubsSalesAmt",
+                  "",
+                  "\t,hs_branded_baseline_ind",
                   "",
                   "FROM",
                   "\tFact.Sale_brs AS f</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1864,6 +1947,10 @@
               ") "
             ],
             "isHidden": true
+          },
+          {
+            "name": "YTD Sales Var % - Customer Count Below Threshhold",
+            "expression": "CALCULATE('Customer'[ShipTo Count], FILTER('Customer',  [YTD Sales Var %] < 0.25))"
           }
         ],
         "annotations": [
@@ -1895,6 +1982,8 @@
               "\tDiscountOrderAmt,",
               "\tSubsQuantity,",
               "\tSubsSalesAmt",
+              "",
+              "\t,hs_branded_baseline_ind",
               "",
               "FROM",
               "\tFact.Sale_brs AS f"
@@ -1936,6 +2025,8 @@
               "\tDiscountOrderAmt,",
               "\tSubsQuantity,",
               "\tSubsSalesAmt",
+              "",
+              "\t,hs_branded_baseline_ind",
               "",
               "FROM",
               "\tFact.Sale_brs AS f</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
