@@ -620,6 +620,11 @@
             "name": "KeySupplierMerchInd",
             "dataType": "int64",
             "sourceColumn": "KeySupplierMerchInd"
+          },
+          {
+            "name": "comm_group_legacy_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_group_legacy_cd"
           }
         ],
         "partitions": [
@@ -658,6 +663,7 @@
                 ",BrandEquityCode",
                 "",
                 ", KeySupplierMerchInd",
+                ",comm_group_legacy_cd",
                 "",
                 "FROM",
                 "  Dimension.Item"
@@ -698,6 +704,7 @@
                   ",BrandEquityCode",
                   "",
                   ", KeySupplierMerchInd",
+                  ",comm_group_legacy_cd",
                   "",
                   "FROM",
                   "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -747,6 +754,7 @@
               ",BrandEquityCode",
               "",
               ", KeySupplierMerchInd",
+              ",comm_group_legacy_cd",
               "",
               "FROM",
               "  Dimension.Item"
@@ -793,6 +801,7 @@
               ",BrandEquityCode",
               "",
               ", KeySupplierMerchInd",
+              ",comm_group_legacy_cd",
               "",
               "FROM",
               "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1499,6 +1508,28 @@
             "name": "hs_branded_baseline_ind",
             "dataType": "int64",
             "sourceColumn": "hs_branded_baseline_ind"
+          },
+          {
+            "type": "calculated",
+            "name": "gm_line_rt",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "DIVIDE([GPAmt],[SalesAmt])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "type": "calculated",
+            "name": "Add Column2",
+            "dataType": "int64",
+            "isDataTypeInferred": true
+          },
+          {
+            "type": "calculated",
+            "name": "gm_line_neg_ind",
+            "dataType": "boolean",
+            "isDataTypeInferred": false,
+            "expression": "IF([gm_line_rt]<0,1,0)",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           }
         ],
         "partitions": [
