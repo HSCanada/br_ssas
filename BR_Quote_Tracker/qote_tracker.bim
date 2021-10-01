@@ -409,6 +409,24 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "EpsKey"
+          },
+          {
+            "name": "backorder_ind",
+            "dataType": "boolean",
+            "sourceColumn": "backorder_ind",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "name": "OrderFirstShipDateKey",
+            "dataType": "dateTime",
+            "sourceColumn": "OrderFirstShipDateKey",
+            "formatString": "yyyy-MM-dd",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"yyyy-MM-dd\" /></DateTimes></Format>"
+              }
+            ]
           }
         ],
         "partitions": [
@@ -447,6 +465,10 @@
                 "",
                 "\t-- Bottom-up low margin",
                 "\tCASE WHEN ISNULL((GPAtCommCostAmt / NULLIF(SalesAmt,0)),0) < 0.24 THEN 1 ELSE 0 END as BadGMLine",
+                "",
+                "\t-- add backorder",
+                "\t,backorder_ind",
+                "\t,OrderFirstShipDateKey",
                 "",
                 "FROM",
                 "\tFact.Sale_qt",
@@ -489,6 +511,10 @@
                   "",
                   "\t-- Bottom-up low margin",
                   "\tCASE WHEN ISNULL((GPAtCommCostAmt / NULLIF(SalesAmt,0)),0) < 0.24 THEN 1 ELSE 0 END as BadGMLine",
+                  "",
+                  "\t-- add backorder",
+                  "\t,backorder_ind",
+                  "\t,OrderFirstShipDateKey",
                   "",
                   "FROM",
                   "\tFact.Sale_qt",
@@ -1801,6 +1827,10 @@
               "\t-- Bottom-up low margin",
               "\tCASE WHEN ISNULL((GPAtCommCostAmt / NULLIF(SalesAmt,0)),0) < 0.24 THEN 1 ELSE 0 END as BadGMLine",
               "",
+              "\t-- add backorder",
+              "\t,backorder_ind",
+              "\t,OrderFirstShipDateKey",
+              "",
               "FROM",
               "\tFact.Sale_qt",
               "WHERE ",
@@ -1848,6 +1878,10 @@
               "",
               "\t-- Bottom-up low margin",
               "\tCASE WHEN ISNULL((GPAtCommCostAmt / NULLIF(SalesAmt,0)),0) < 0.24 THEN 1 ELSE 0 END as BadGMLine",
+              "",
+              "\t-- add backorder",
+              "\t,backorder_ind",
+              "\t,OrderFirstShipDateKey",
               "",
               "FROM",
               "\tFact.Sale_qt",

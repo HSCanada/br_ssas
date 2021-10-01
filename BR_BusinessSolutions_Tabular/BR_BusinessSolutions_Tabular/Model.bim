@@ -269,6 +269,11 @@
             "name": "BrandEquityCode",
             "dataType": "string",
             "sourceColumn": "BrandEquityCode"
+          },
+          {
+            "name": "FamilySetCode",
+            "dataType": "string",
+            "sourceColumn": "FamilySetCode"
           }
         ],
         "partitions": [
@@ -312,6 +317,7 @@
                 "",
                 "\t,i.BrandEquityCategory",
                 "\t,i.BrandEquityCode",
+                "\t,i.FamilySetCode",
                 "",
                 "",
                 "FROM",
@@ -360,6 +366,7 @@
                   "",
                   "\t,i.BrandEquityCategory",
                   "\t,i.BrandEquityCode",
+                  "\t,i.FamilySetCode",
                   "",
                   "",
                   "FROM",
@@ -424,6 +431,7 @@
               "",
               "\t,i.BrandEquityCategory",
               "\t,i.BrandEquityCode",
+              "\t,i.FamilySetCode",
               "",
               "",
               "FROM",
@@ -478,6 +486,7 @@
               "",
               "\t,i.BrandEquityCategory",
               "\t,i.BrandEquityCode",
+              "\t,i.FamilySetCode",
               "",
               "",
               "FROM",
@@ -698,6 +707,23 @@
             "name": "CustomerStatus",
             "dataType": "string",
             "sourceColumn": "CustomerStatus"
+          },
+          {
+            "type": "calculated",
+            "name": "CreateDateYears",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "QUOTIENT(DATEDIFF([CreateDate], Now(), Month), 12)"
+          },
+          {
+            "name": "SalesPlanCode",
+            "dataType": "string",
+            "sourceColumn": "SalesPlanCode"
+          },
+          {
+            "name": "MarketClassNewCode",
+            "dataType": "string",
+            "sourceColumn": "MarketClassNewCode"
           }
         ],
         "partitions": [
@@ -735,6 +761,8 @@
                 "\t,CreateDate",
                 "",
                 "\t, CustomerStatus",
+                "\t,SalesPlanCode",
+                "\t,MarketClassNewCode",
                 "",
                 "FROM",
                 "\tDimension.Customer AS c"
@@ -773,6 +801,8 @@
                   "\t,CreateDate",
                   "",
                   "\t, CustomerStatus",
+                  "\t,SalesPlanCode",
+                  "\t,MarketClassNewCode",
                   "",
                   "FROM",
                   "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -819,6 +849,8 @@
               "\t,CreateDate",
               "",
               "\t, CustomerStatus",
+              "\t,SalesPlanCode",
+              "\t,MarketClassNewCode",
               "",
               "FROM",
               "\tDimension.Customer AS c"
@@ -863,6 +895,8 @@
               "\t,CreateDate",
               "",
               "\t, CustomerStatus",
+              "\t,SalesPlanCode",
+              "\t,MarketClassNewCode",
               "",
               "FROM",
               "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1951,6 +1985,26 @@
           {
             "name": "YTD Sales Var % - Customer Count Below Threshhold",
             "expression": "CALCULATE('Customer'[ShipTo Count], FILTER('Customer',  [YTD Sales Var %] < 0.25))"
+          },
+          {
+            "name": "MTD GM",
+            "expression": " DIVIDE([MTD GP],[MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD GM",
+            "expression": " DIVIDE([YTD GP],[YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY MTD GM",
+            "expression": " DIVIDE([PY MTD GP],[PY MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY YTD GM",
+            "expression": " DIVIDE([PY YTD GP],[PY YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
