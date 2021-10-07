@@ -724,6 +724,11 @@
             "name": "MarketClassNewCode",
             "dataType": "string",
             "sourceColumn": "MarketClassNewCode"
+          },
+          {
+            "name": "adhoc_model_code",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code"
           }
         ],
         "partitions": [
@@ -764,6 +769,8 @@
                 "\t,SalesPlanCode",
                 "\t,MarketClassNewCode",
                 "",
+                "\t,adhoc_model_code",
+                "",
                 "FROM",
                 "\tDimension.Customer AS c"
               ],
@@ -803,6 +810,8 @@
                   "\t, CustomerStatus",
                   "\t,SalesPlanCode",
                   "\t,MarketClassNewCode",
+                  "",
+                  "\t,adhoc_model_code",
                   "",
                   "FROM",
                   "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -852,6 +861,8 @@
               "\t,SalesPlanCode",
               "\t,MarketClassNewCode",
               "",
+              "\t,adhoc_model_code",
+              "",
               "FROM",
               "\tDimension.Customer AS c"
             ]
@@ -897,6 +908,8 @@
               "\t, CustomerStatus",
               "\t,SalesPlanCode",
               "\t,MarketClassNewCode",
+              "",
+              "\t,adhoc_model_code",
               "",
               "FROM",
               "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
