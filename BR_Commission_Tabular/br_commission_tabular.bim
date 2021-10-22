@@ -209,13 +209,30 @@
             "name": "CreateDate",
             "dataType": "dateTime",
             "sourceColumn": "CreateDate",
-            "formatString": "Short Date",
+            "formatString": "yyyy-MM-dd",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"yyyy-MM-dd\" /></DateTimes></Format>"
               }
             ]
+          },
+          {
+            "name": "adhoc_model_code",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code"
+          },
+          {
+            "name": "ApplyFreightInd",
+            "dataType": "boolean",
+            "sourceColumn": "ApplyFreightInd",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "name": "ApplySmallOrderChargesInd",
+            "dataType": "boolean",
+            "sourceColumn": "ApplySmallOrderChargesInd",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           }
         ],
         "partitions": [
@@ -262,6 +279,9 @@
                 ",CommMasterCode_FSC_Current",
                 ",service_bonus_include_ind",
                 ",CreateDate",
+                ",adhoc_model_code",
+                ",ApplyFreightInd",
+                ",ApplySmallOrderChargesInd",
                 "",
                 "FROM",
                 "  Dimension.Customer"
@@ -309,6 +329,9 @@
                   ",CommMasterCode_FSC_Current",
                   ",service_bonus_include_ind",
                   ",CreateDate",
+                  ",adhoc_model_code",
+                  ",ApplyFreightInd",
+                  ",ApplySmallOrderChargesInd",
                   "",
                   "FROM",
                   "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -410,6 +433,9 @@
               ",CommMasterCode_FSC_Current",
               ",service_bonus_include_ind",
               ",CreateDate",
+              ",adhoc_model_code",
+              ",ApplyFreightInd",
+              ",ApplySmallOrderChargesInd",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -463,6 +489,9 @@
               ",CommMasterCode_FSC_Current",
               ",service_bonus_include_ind",
               ",CreateDate",
+              ",adhoc_model_code",
+              ",ApplyFreightInd",
+              ",ApplySmallOrderChargesInd",
               "",
               "FROM",
               "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1358,8 +1387,15 @@
           },
           {
             "name": "DateKey",
-            "dataType": "string",
-            "sourceColumn": "DateKey"
+            "dataType": "dateTime",
+            "sourceColumn": "DateKey",
+            "formatString": "yyyy-MM-dd",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"yyyy-MM-dd\" /></DateTimes></Format>"
+              }
+            ]
           },
           {
             "name": "BillTo",
@@ -1519,16 +1555,28 @@
           },
           {
             "type": "calculated",
-            "name": "Add Column2",
-            "dataType": "int64",
-            "isDataTypeInferred": true
-          },
-          {
-            "type": "calculated",
             "name": "gm_line_neg_ind",
             "dataType": "boolean",
             "isDataTypeInferred": false,
             "expression": "IF([gm_line_rt]<0,1,0)",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "name": "OrderDateKey",
+            "dataType": "dateTime",
+            "sourceColumn": "OrderDateKey",
+            "formatString": "yyyy-MM-dd",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"yyyy-MM-dd\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "name": "backorder_ind",
+            "dataType": "boolean",
+            "sourceColumn": "backorder_ind",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           }
         ],
@@ -1589,6 +1637,9 @@
                 "",
                 "\ths_branded_baseline_ind",
                 "",
+                "\t,OrderDateKey",
+                "\t,backorder_ind",
+                "",
                 "FROM",
                 "\tFact.Commission"
               ],
@@ -1647,6 +1698,9 @@
                   "\tEST_CommAmt,",
                   "",
                   "\ths_branded_baseline_ind",
+                  "",
+                  "\t,OrderDateKey",
+                  "\t,backorder_ind",
                   "",
                   "FROM",
                   "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2433,6 +2487,66 @@
           {
             "name": "YTD Sales Var % - Customer Count Below Threshhold",
             "expression": "CALCULATE([Count of ShipTo], FILTER('Customer',  [YTD Sales Var %] < 0.25))"
+          },
+          {
+            "name": "MTD Comm Rate FSC",
+            "expression": "DIVIDE([MTD Comm FSC],[MTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm Rate FSC",
+            "expression": "DIVIDE([YTD Comm FSC],[YTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm Rate ESS",
+            "expression": "DIVIDE([YTD Comm ESS],[YTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD Comm Rate ESS",
+            "expression": "DIVIDE([MTD Comm ESS],[MTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD Comm Rate EPS",
+            "expression": "DIVIDE([MTD Comm EPS],[MTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm Rate EPS",
+            "expression": "DIVIDE([YTD Comm EPS],[YTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD Comm Rate CPS",
+            "expression": "DIVIDE([MTD Comm CPS],[MTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm Rate CPS",
+            "expression": "DIVIDE([YTD Comm CPS],[YTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD Comm Rate ISR",
+            "expression": "DIVIDE([MTD Comm ISR],[MTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm Rate ISR",
+            "expression": "DIVIDE([YTD Comm ISR],[YTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD Comm Rate EST",
+            "expression": "DIVIDE([MTD Comm EST],[MTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Comm Rate EST",
+            "expression": "DIVIDE([YTD Comm EST],[YTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -2488,6 +2602,9 @@
               "\tEST_CommAmt,",
               "",
               "\ths_branded_baseline_ind",
+              "",
+              "\t,OrderDateKey",
+              "\t,backorder_ind",
               "",
               "FROM",
               "\tFact.Commission"
@@ -2553,6 +2670,9 @@
               "\tEST_CommAmt,",
               "",
               "\ths_branded_baseline_ind",
+              "",
+              "\t,OrderDateKey",
+              "\t,backorder_ind",
               "",
               "FROM",
               "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
