@@ -274,6 +274,16 @@
             "name": "FamilySetCode",
             "dataType": "string",
             "sourceColumn": "FamilySetCode"
+          },
+          {
+            "name": "adhoc_model_code",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code"
+          },
+          {
+            "name": "adhoc_model_code2",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code2"
           }
         ],
         "partitions": [
@@ -318,6 +328,8 @@
                 "\t,i.BrandEquityCategory",
                 "\t,i.BrandEquityCode",
                 "\t,i.FamilySetCode",
+                "\t,i.adhoc_model_code",
+                "\t,i.adhoc_model_code2",
                 "",
                 "",
                 "FROM",
@@ -367,6 +379,8 @@
                   "\t,i.BrandEquityCategory",
                   "\t,i.BrandEquityCode",
                   "\t,i.FamilySetCode",
+                  "\t,i.adhoc_model_code",
+                  "\t,i.adhoc_model_code2",
                   "",
                   "",
                   "FROM",
@@ -391,6 +405,10 @@
           {
             "name": "Brand Count",
             "expression": "DISTINCTCOUNT([Brand])"
+          },
+          {
+            "name": "FamilySet Count",
+            "expression": "DISTINCTCOUNT([FamilySetCode])"
           }
         ],
         "annotations": [
@@ -432,6 +450,8 @@
               "\t,i.BrandEquityCategory",
               "\t,i.BrandEquityCode",
               "\t,i.FamilySetCode",
+              "\t,i.adhoc_model_code",
+              "\t,i.adhoc_model_code2",
               "",
               "",
               "FROM",
@@ -487,6 +507,8 @@
               "\t,i.BrandEquityCategory",
               "\t,i.BrandEquityCode",
               "\t,i.FamilySetCode",
+              "\t,i.adhoc_model_code",
+              "\t,i.adhoc_model_code2",
               "",
               "",
               "FROM",
