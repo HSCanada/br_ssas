@@ -842,6 +842,31 @@
                 "value": "<Format Format=\"Currency\" ThousandSeparator=\"True\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment"
+          },
+          {
+            "name": "PotentialSpendAmount",
+            "dataType": "double",
+            "sourceColumn": "PotentialSpendAmount"
+          },
+          {
+            "name": "adhoc_model_code",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code"
+          },
+          {
+            "name": "adhoc_model_code2",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code2"
           }
         ],
         "partitions": [
@@ -874,6 +899,8 @@
                 "  ,Dimension.Customer.IsrEmployeeKey",
                 " ,FocusCd",
                 " ,CreditLimit",
+                " ,adhoc_model_code",
+                " ,adhoc_model_code2",
                 "",
                 "FROM",
                 "  Dimension.Customer"
@@ -908,6 +935,8 @@
                   "  ,Dimension.Customer.IsrEmployeeKey",
                   " ,FocusCd",
                   " ,CreditLimit",
+                  " ,adhoc_model_code",
+                  " ,adhoc_model_code2",
                   "",
                   "FROM",
                   "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -959,6 +988,8 @@
               "  ,Dimension.Customer.IsrEmployeeKey",
               " ,FocusCd",
               " ,CreditLimit",
+              " ,adhoc_model_code",
+              " ,adhoc_model_code2",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -991,6 +1022,8 @@
               "  ,Dimension.Customer.IsrEmployeeKey",
               " ,FocusCd",
               " ,CreditLimit",
+              " ,adhoc_model_code",
+              " ,adhoc_model_code2",
               "",
               "FROM",
               "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2243,7 +2276,13 @@
       },
       {
         "name": "Inside_Admin_role",
-        "modelPermission": "administrator"
+        "modelPermission": "administrator",
+        "members": [
+          {
+            "memberName": "CAHSI\\Noah.Thompson",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11129"
+          }
+        ]
       }
     ]
   },
