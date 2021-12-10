@@ -284,6 +284,21 @@
             "name": "adhoc_model_code2",
             "dataType": "string",
             "sourceColumn": "adhoc_model_code2"
+          },
+          {
+            "name": "adhoc_model_code3",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code3"
+          },
+          {
+            "name": "adhoc_model_code4",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code4"
+          },
+          {
+            "name": "adhoc_model_code5",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code5"
           }
         ],
         "partitions": [
@@ -330,6 +345,9 @@
                 "\t,i.FamilySetCode",
                 "\t,i.adhoc_model_code",
                 "\t,i.adhoc_model_code2",
+                "\t,i.adhoc_model_code3",
+                "\t,i.adhoc_model_code4",
+                "\t,i.adhoc_model_code5",
                 "",
                 "",
                 "FROM",
@@ -381,6 +399,9 @@
                   "\t,i.FamilySetCode",
                   "\t,i.adhoc_model_code",
                   "\t,i.adhoc_model_code2",
+                  "\t,i.adhoc_model_code3",
+                  "\t,i.adhoc_model_code4",
+                  "\t,i.adhoc_model_code5",
                   "",
                   "",
                   "FROM",
@@ -452,6 +473,9 @@
               "\t,i.FamilySetCode",
               "\t,i.adhoc_model_code",
               "\t,i.adhoc_model_code2",
+              "\t,i.adhoc_model_code3",
+              "\t,i.adhoc_model_code4",
+              "\t,i.adhoc_model_code5",
               "",
               "",
               "FROM",
@@ -509,6 +533,9 @@
               "\t,i.FamilySetCode",
               "\t,i.adhoc_model_code",
               "\t,i.adhoc_model_code2",
+              "\t,i.adhoc_model_code3",
+              "\t,i.adhoc_model_code4",
+              "\t,i.adhoc_model_code5",
               "",
               "",
               "FROM",
