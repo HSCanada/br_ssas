@@ -1267,7 +1267,6 @@
             "name": "Sales in Period",
             "expression": " SUM([SalesAmt])",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -1279,7 +1278,6 @@
             "name": "GP in Period",
             "expression": " SUM([GPAmt]) ",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -1442,8 +1440,7 @@
           {
             "name": "Qty in Period",
             "expression": " sum([Quantity])",
-            "formatString": "#,0",
-            "isHidden": true
+            "formatString": "#,0"
           },
           {
             "name": "MTD Qty",
@@ -1479,7 +1476,6 @@
             "name": "Disc in Period",
             "expression": " sum(Sales[DiscountAmt])",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -1535,7 +1531,6 @@
             "name": "Ext.Base in Period",
             "expression": " sum(Sales[ExtBaseAmt])",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -1590,8 +1585,7 @@
           {
             "name": "Disc% in Period",
             "expression": " [Disc in Period]/[Ext.Base in Period]",
-            "formatString": "0.0%;-0.0%;0.0%",
-            "isHidden": true
+            "formatString": "0.0%;-0.0%;0.0%"
           },
           {
             "name": "MTD Disc%",
@@ -2066,6 +2060,22 @@
           {
             "name": "PY YTD GM",
             "expression": " DIVIDE([PY YTD GP],[PY YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Average Price in Period",
+            "expression": "DIVIDE([Sales in Period],[Qty in Period])",
+            "formatString": "\\$#,0.00;-\\$#,0.00;\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GM in Period",
+            "expression": "Divide([GP in Period],[Sales in Period])",
             "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
