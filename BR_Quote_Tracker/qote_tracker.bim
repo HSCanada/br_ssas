@@ -2024,6 +2024,16 @@
             "name": "RebateExcludeInd",
             "dataType": "boolean",
             "sourceColumn": "RebateExcludeInd"
+          },
+          {
+            "name": "BrandEquityCategory",
+            "dataType": "string",
+            "sourceColumn": "BrandEquityCategory"
+          },
+          {
+            "name": "BrandEquityCode",
+            "dataType": "string",
+            "sourceColumn": "BrandEquityCode"
           }
         ],
         "partitions": [
@@ -2054,6 +2064,9 @@
                 "\t[FamilySet],",
                 "\t[ppe_code]",
                 "\t,RebateExcludeInd",
+                "\t,BrandEquityCategory",
+                "\t,BrandEquityCode",
+                "",
                 "",
                 "",
                 "FROM",
@@ -2088,6 +2101,9 @@
                   "\t[FamilySet],",
                   "\t[ppe_code]",
                   "\t,RebateExcludeInd",
+                  "\t,BrandEquityCategory",
+                  "\t,BrandEquityCode",
+                  "",
                   "",
                   "",
                   "FROM",
@@ -2130,6 +2146,9 @@
               "\t[FamilySet],",
               "\t[ppe_code]",
               "\t,RebateExcludeInd",
+              "\t,BrandEquityCategory",
+              "\t,BrandEquityCode",
+              "",
               "",
               "",
               "FROM",
@@ -2170,6 +2189,9 @@
               "\t[FamilySet],",
               "\t[ppe_code]",
               "\t,RebateExcludeInd",
+              "\t,BrandEquityCategory",
+              "\t,BrandEquityCode",
+              "",
               "",
               "",
               "FROM",
