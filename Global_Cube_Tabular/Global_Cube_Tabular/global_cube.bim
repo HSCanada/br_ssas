@@ -180,6 +180,18 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "day_key"
+          },
+          {
+            "name": "GM Line",
+            "dataType": "double",
+            "sourceColumn": "gm_line",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "gm_line_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "gm_line_key"
           }
         ],
         "partitions": [
@@ -202,7 +214,198 @@
         "measures": [
           {
             "name": "Sales in Period",
-            "expression": "SUM([sales_amt])",
+            "expression": " SUM([sales_amt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales",
+            "expression": " CALCULATE([Sales in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Sales",
+            "expression": " CALCULATE([Sales in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * 1)))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var",
+            "expression": " [MTD Sales]-[PY MTD Sales]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12* 1) &&Period[MonthSeq]<=[__seq_first_month_current]-(12 * 1)))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales Var",
+            "expression": " [YTD Sales]-[PY YTD Sales]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var %",
+            "expression": " DIVIDE([MTD Sales],[PY MTD Sales]) -1",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Sales Var %",
+            "expression": " DIVIDE([YTD Sales],[PY YTD Sales])-1",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Rolling  3mo Sales",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Sales in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-3) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  6mo Sales",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Sales in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-6) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 12mo Sales",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Sales in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-12) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "CY Sales (Est)",
+            "expression": " [YTD Sales] * [__ytd_factor]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY Sales",
+            "expression": " CALCULATE([Sales in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*1 ) &&Period[MonthSeq]<=[__seq_first_month_in_year]-1-12*(1-1) ))",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
@@ -213,7 +416,7 @@
           },
           {
             "name": "GP in Period",
-            "expression": "SUM([gp_amt])",
+            "expression": " SUM([gp_amt]) ",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
@@ -223,8 +426,114 @@
             ]
           },
           {
-            "name": "Distinct Count of SalesOrderNumber",
-            "expression": "DISTINCTCOUNT([SalesOrderNumber])",
+            "name": "MTD GP",
+            "expression": " CALCULATE([GP in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD GP",
+            "expression": " CALCULATE([GP in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * 1)))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP Var",
+            "expression": " [MTD GP]-[PY MTD GP]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD GP",
+            "expression": " CALCULATE([GP in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*1) &&Period[MonthSeq]<=[__seq_first_month_current]-(12*1)))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP Var",
+            "expression": " [YTD GP]-[PY YTD GP]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP Var %",
+            "expression": " DIVIDE([MTD GP],[PY MTD GP]) -1",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD GP Sales Var %",
+            "expression": " DIVIDE([YTD GP],[PY YTD GP]) -1",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "GM in Period",
+            "expression": "Divide([GP in Period],[Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD GM",
+            "expression": " DIVIDE([MTD GP],[MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD GM",
+            "expression": " DIVIDE([YTD GP],[YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY MTD GM",
+            "expression": " DIVIDE([PY MTD GP],[PY MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY YTD GM",
+            "expression": " DIVIDE([PY YTD GP],[PY YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Lines in Period",
+            "expression": "COUNTA([LineNumber])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Lines",
+            "expression": " CALCULATE([Lines in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
             "formatString": "#,0"
           }
         ],
@@ -261,6 +570,7 @@
           {
             "name": "MarketRollup_L1",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "MarketRollup_L1",
             "sourceProviderType": "Char"
           },
@@ -273,6 +583,7 @@
           {
             "name": "MarketRollup_L3",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "MarketRollup_L3",
             "sourceProviderType": "Char"
           },
@@ -344,6 +655,7 @@
           {
             "name": "HFM_Account_descr",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "HFM_Account_descr",
             "sourceProviderType": "WChar"
           },
@@ -809,6 +1121,7 @@
           {
             "name": "PrivateLabelScope_Item",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "PrivateLabelScope_Item",
             "sourceProviderType": "Char"
           },
@@ -930,6 +1243,16 @@
             "dataType": "string",
             "sourceColumn": "SupplierName",
             "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SupplierFamilyCode",
+            "dataType": "string",
+            "sourceColumn": "SupplierFamilyCode"
+          },
+          {
+            "name": "SupplierBuyingGroupCode",
+            "dataType": "string",
+            "sourceColumn": "SupplierBuyingGroupCode"
           }
         ],
         "partitions": [
@@ -940,9 +1263,14 @@
               "type": "query",
               "query": [
                 "SELECT",
-                "SupplierKey, SupplierCode, SupplierName",
+                "\tSupplierKey",
+                "\t, SupplierCode",
+                "\t, SupplierName",
+                "\t,[SupplierFamilyCode]",
+                "\t,[SupplierBuyingGroupCode]",
                 "",
-                "FROM            Dimension.ItemSupplier"
+                "FROM",
+                "\tDimension.ItemSupplier"
               ],
               "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
@@ -951,9 +1279,14 @@
                 "name": "QueryEditorSerialization",
                 "value": [
                   "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
-                  "SupplierKey, SupplierCode, SupplierName",
+                  "\tSupplierKey",
+                  "\t, SupplierCode",
+                  "\t, SupplierName",
+                  "\t,[SupplierFamilyCode]",
+                  "\t,[SupplierBuyingGroupCode]",
                   "",
-                  "FROM            Dimension.ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "FROM",
+                  "\tDimension.ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -964,9 +1297,14 @@
             "name": "_TM_ExtProp_QueryDefinition",
             "value": [
               "SELECT",
-              "SupplierKey, SupplierCode, SupplierName",
+              "\tSupplierKey",
+              "\t, SupplierCode",
+              "\t, SupplierName",
+              "\t,[SupplierFamilyCode]",
+              "\t,[SupplierBuyingGroupCode]",
               "",
-              "FROM            Dimension.ItemSupplier"
+              "FROM",
+              "\tDimension.ItemSupplier"
             ]
           },
           {
@@ -981,9 +1319,14 @@
             "name": "QueryEditorSerialization",
             "value": [
               "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
-              "SupplierKey, SupplierCode, SupplierName",
+              "\tSupplierKey",
+              "\t, SupplierCode",
+              "\t, SupplierName",
+              "\t,[SupplierFamilyCode]",
+              "\t,[SupplierBuyingGroupCode]",
               "",
-              "FROM            Dimension.ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "FROM",
+              "\tDimension.ItemSupplier</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -1030,24 +1373,28 @@
           {
             "name": "MonthSeq",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "MonthSeq",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "FirstMonthSeqInQtr",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FirstMonthSeqInQtr",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "FirstMonthSeqInYear",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FirstMonthSeqInYear",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "LastWorkingDay",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "LastWorkingDay",
             "formatString": "General Date",
             "sourceProviderType": "DBDate"
@@ -1643,18 +1990,6 @@
             "dataType": "string",
             "sourceColumn": "FscTerritoryCd",
             "sourceProviderType": "Char"
-          },
-          {
-            "name": "Est12MoMerch",
-            "dataType": "double",
-            "sourceColumn": "Est12MoMerch"
-          },
-          {
-            "type": "calculated",
-            "name": "spend_abc",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": "if([Est12MoMerch] > 50000, \"A\",  if([Est12MoMerch] > 10000, \"B\",  \"C\"))"
           }
         ],
         "partitions": [
@@ -1669,7 +2004,7 @@
                 "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
                 "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
                 "SalesDivisionCode, BranchCode, MarketClassCode, ",
-                "FscTerritoryCd, [Est12MoMerch]",
+                "FscTerritoryCd",
                 "",
                 "",
                 "FROM            Dimension.Customer"
@@ -1685,7 +2020,7 @@
                   "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
                   "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
                   "SalesDivisionCode, BranchCode, MarketClassCode, ",
-                  "FscTerritoryCd, [Est12MoMerch]",
+                  "FscTerritoryCd",
                   "",
                   "",
                   "FROM            Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1703,7 +2038,7 @@
               "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
               "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
               "SalesDivisionCode, BranchCode, MarketClassCode, ",
-              "FscTerritoryCd, [Est12MoMerch]",
+              "FscTerritoryCd",
               "",
               "",
               "FROM            Dimension.Customer"
@@ -1725,7 +2060,7 @@
               "ShipTo, Billto, Customer, CustomerGroup, SalesPlan, SalesPlanCode, SalesPlanType, FieldSales, Branch, ",
               "SalesDivision, MarketClass, Segment, Specialty, CustomerStatus, ",
               "SalesDivisionCode, BranchCode, MarketClassCode, ",
-              "FscTerritoryCd, [Est12MoMerch]",
+              "FscTerritoryCd",
               "",
               "",
               "FROM            Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -1837,6 +2172,210 @@
               "FROM",
               "BRS_Promotion</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
+          }
+        ]
+      },
+      {
+        "name": "Period Select",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Period[FiscalMonth]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "MonthName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[MonthName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "MonthNum",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[MonthNum]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "QuarterName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[QuarterName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "YearNum",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[YearNum]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[WorkingDaysMonth]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "MonthSeq",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[MonthSeq]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "FirstMonthSeqInQtr",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[FirstMonthSeqInQtr]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "FirstMonthSeqInYear",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[FirstMonthSeqInYear]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "LastWorkingDay",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[LastWorkingDay]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "Period"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "__first_month_current",
+            "expression": " max('Period Select'[FiscalMonth])",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_current",
+            "expression": " calculate(max('Period Select'[MonthSeq]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_in_year",
+            "expression": " calculate(max('Period Select'[FirstMonthSeqInYear]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__seq_first_month_in_quarter",
+            "expression": " calculate(max('Period Select'[FirstMonthSeqInQtr]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__first_month_number",
+            "expression": " calculate(max('Period Select'[MonthNum]),filter('Period Select','Period Select'[FiscalMonth]=[__first_month_current]))",
+            "isHidden": true
+          },
+          {
+            "name": "__ytd_factor",
+            "expression": "12/[__first_month_number]",
+            "isHidden": true
+          }
+        ]
+      },
+      {
+        "name": "gm_line_buckets",
+        "columns": [
+          {
+            "name": "Spend_From",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Spend_From",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "Spend_To",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Spend_To",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "GM Bin",
+            "dataType": "string",
+            "sourceColumn": "Spend_Display",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "GM Status",
+            "dataType": "int64",
+            "sourceColumn": "Spend_Rank",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "SpendKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SpendKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "gm_line_buckets",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')",
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "gm_line_buckets"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       }
@@ -1960,6 +2499,13 @@
         "fromColumn": "day_key",
         "toTable": "Day",
         "toColumn": "day_key"
+      },
+      {
+        "name": "2d5af872-5bb7-4663-a277-b10fb543e83c",
+        "fromTable": "Sales",
+        "fromColumn": "gm_line_key",
+        "toTable": "gm_line_buckets",
+        "toColumn": "SpendKey"
       }
     ],
     "roles": [
