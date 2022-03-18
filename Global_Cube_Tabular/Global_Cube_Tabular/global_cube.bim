@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer cahsionnlsql1 BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Persist Security Info=false;Initial Catalog=BRSales;User ID=tcrowley;Integrated Security=SSPI",
+        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Persist Security Info=false;Initial Catalog=DEV_BRSales;User ID=tcrowley;Integrated Security=SSPI",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -156,18 +156,13 @@
           {
             "name": "SalesOrderNumber",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "SalesOrderNumber"
           },
           {
             "name": "LineNumber",
             "dataType": "int64",
             "sourceColumn": "LineNumber"
-          },
-          {
-            "name": "promotion_key",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "promotion_key"
           },
           {
             "name": "SalesDate_ORG",
@@ -192,6 +187,29 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "gm_line_key"
+          },
+          {
+            "name": "PriceMethodKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PriceMethodKey"
+          },
+          {
+            "name": "ID_Header",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ID_Header"
+          },
+          {
+            "name": "FreeGoodsInvoicedInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsInvoicedInd"
+          },
+          {
+            "name": "ShippedQty",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShippedQty"
           }
         ],
         "partitions": [
@@ -200,13 +218,79 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": "Exec [hfm].global_cube_model_proc",
+              "query": [
+                "SELECT",
+                "\tEntityKey",
+                "\t,HFM_Account_key",
+                "\t,global_product_class_key",
+                "\t,Excl_Key",
+                "\t,MarketClassKey",
+                "\t,gps_key",
+                "\t,SupplierKey",
+                "\t,DocTypeKey",
+                "\t,FiscalMonth",
+                "\t,ID",
+                "\t,GLBU_ClassKey",
+                "\t,SalesDivision_key",
+                "\t,SalesDate_ORG",
+                "\t,day_key",
+                "\t,Shipto",
+                "\t,ItemKey",
+                "\t,BranchKey",
+                "\t,AdjCodeKey",
+                "\t,SalesOrderNumber",
+                "\t,LineNumber",
+                "\t,FreeGoodsInvoicedInd",
+                "\t,FreeGoodsEstInd",
+                "\t,ShippedQty",
+                "\t,sales_amt",
+                "\t,gp_amt",
+                "\t,gm_line",
+                "\t,gm_line_key",
+                "\t,PriceMethodKey",
+                "\t,ID_Header",
+                "FROM",
+                "\tFact.global_cube"
+              ],
               "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec [hfm].global_cube_model_proc</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+                  "\tEntityKey",
+                  "\t,HFM_Account_key",
+                  "\t,global_product_class_key",
+                  "\t,Excl_Key",
+                  "\t,MarketClassKey",
+                  "\t,gps_key",
+                  "\t,SupplierKey",
+                  "\t,DocTypeKey",
+                  "\t,FiscalMonth",
+                  "\t,ID",
+                  "\t,GLBU_ClassKey",
+                  "\t,SalesDivision_key",
+                  "\t,SalesDate_ORG",
+                  "\t,day_key",
+                  "\t,Shipto",
+                  "\t,ItemKey",
+                  "\t,BranchKey",
+                  "\t,AdjCodeKey",
+                  "\t,SalesOrderNumber",
+                  "\t,LineNumber",
+                  "\t,FreeGoodsInvoicedInd",
+                  "\t,FreeGoodsEstInd",
+                  "\t,ShippedQty",
+                  "\t,sales_amt",
+                  "\t,gp_amt",
+                  "\t,gm_line",
+                  "\t,gm_line_key",
+                  "\t,PriceMethodKey",
+                  "\t,ID_Header",
+                  "FROM",
+                  "\tFact.global_cube</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -535,12 +619,387 @@
             "name": "MTD Lines",
             "expression": " CALCULATE([Lines in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
             "formatString": "#,0"
+          },
+          {
+            "name": "Qty in Period",
+            "expression": " sum([ShippedQty])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Qty",
+            "expression": " CALCULATE([Qty in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Qty",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY MTD Qty",
+            "expression": " CALCULATE([Qty in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12 * 1)))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Qty Var",
+            "expression": " [MTD Qty]-[PY MTD Qty]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD Qty",
+            "expression": " CALCULATE([Qty in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*1)&&Period[MonthSeq]<=[__seq_first_month_current]-(12*1)))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Qty Var",
+            "expression": " [YTD Qty]-[PY YTD Qty]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Lines",
+            "expression": " CALCULATE([Lines in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Rolling  3mo Qty",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Qty in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-3) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Rolling  3mo Average Price",
+            "expression": "DIVIDE([Rolling  3mo Sales],[Rolling  3mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  6mo Average Price",
+            "expression": "DIVIDE([Rolling  6mo Sales],[Rolling  6mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  6mo Qty",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Qty in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-6) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Rolling 12mo Qty",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Qty in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-12) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Rolling 12mo Average Price",
+            "expression": "DIVIDE([Rolling 12mo Sales],[Rolling 12mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Average Price in Period",
+            "expression": "DIVIDE([Sales in Period],[Qty in Period])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 12mo Lines",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Lines in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-12) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Cost in Period",
+            "expression": " [Sales in Period]-[GP in Period]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  3mo Cost",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Cost in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-3) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  6mo Cost",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Cost in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-6) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 12mo Cost",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Cost in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-12) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  3mo Average Cost",
+            "expression": "DIVIDE([Rolling  3mo cost],[Rolling  3mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  6mo Average Cost",
+            "expression": "DIVIDE([Rolling  6mo Cost],[Rolling  6mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 12mo Average Cost",
+            "expression": "DIVIDE([Rolling 12mo cost],[Rolling 12mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Average Cost in Period",
+            "expression": "DIVIDE([Cost in Period],[Qty in Period])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Distinct Count of ShipTo",
+            "expression": "DISTINCTCOUNT([ShipTo])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Distinct Count of Orders",
+            "expression": "DISTINCTCOUNT([SalesOrderNumber])",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "Exec [hfm].global_cube_model_proc"
+            "value": [
+              "SELECT",
+              "\tEntityKey",
+              "\t,HFM_Account_key",
+              "\t,global_product_class_key",
+              "\t,Excl_Key",
+              "\t,MarketClassKey",
+              "\t,gps_key",
+              "\t,SupplierKey",
+              "\t,DocTypeKey",
+              "\t,FiscalMonth",
+              "\t,ID",
+              "\t,GLBU_ClassKey",
+              "\t,SalesDivision_key",
+              "\t,SalesDate_ORG",
+              "\t,day_key",
+              "\t,Shipto",
+              "\t,ItemKey",
+              "\t,BranchKey",
+              "\t,AdjCodeKey",
+              "\t,SalesOrderNumber",
+              "\t,LineNumber",
+              "\t,FreeGoodsInvoicedInd",
+              "\t,FreeGoodsEstInd",
+              "\t,ShippedQty",
+              "\t,sales_amt",
+              "\t,gp_amt",
+              "\t,gm_line",
+              "\t,gm_line_key",
+              "\t,PriceMethodKey",
+              "\t,ID_Header",
+              "FROM",
+              "\tFact.global_cube"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -548,7 +1007,40 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec [hfm].global_cube_model_proc</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
+              "\tEntityKey",
+              "\t,HFM_Account_key",
+              "\t,global_product_class_key",
+              "\t,Excl_Key",
+              "\t,MarketClassKey",
+              "\t,gps_key",
+              "\t,SupplierKey",
+              "\t,DocTypeKey",
+              "\t,FiscalMonth",
+              "\t,ID",
+              "\t,GLBU_ClassKey",
+              "\t,SalesDivision_key",
+              "\t,SalesDate_ORG",
+              "\t,day_key",
+              "\t,Shipto",
+              "\t,ItemKey",
+              "\t,BranchKey",
+              "\t,AdjCodeKey",
+              "\t,SalesOrderNumber",
+              "\t,LineNumber",
+              "\t,FreeGoodsInvoicedInd",
+              "\t,FreeGoodsEstInd",
+              "\t,ShippedQty",
+              "\t,sales_amt",
+              "\t,gp_amt",
+              "\t,gm_line",
+              "\t,gm_line_key",
+              "\t,PriceMethodKey",
+              "\t,ID_Header",
+              "FROM",
+              "\tFact.global_cube</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -1156,6 +1648,41 @@
             "dataType": "string",
             "sourceColumn": "ppe_code",
             "sourceProviderType": "Char"
+          },
+          {
+            "name": "Current_BasePrice",
+            "dataType": "double",
+            "sourceColumn": "Current_BasePrice"
+          },
+          {
+            "name": "CommGroupCode",
+            "dataType": "string",
+            "sourceColumn": "CommGroupCode"
+          },
+          {
+            "name": "adhoc_model_code",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code"
+          },
+          {
+            "name": "adhoc_model_code2",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code2"
+          },
+          {
+            "name": "adhoc_model_code3",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code3"
+          },
+          {
+            "name": "adhoc_model_code4",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code4"
+          },
+          {
+            "name": "adhoc_model_code5",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code5"
           }
         ],
         "partitions": [
@@ -1169,7 +1696,7 @@
                 "",
                 "ItemKey, Item, SalesCategory, Top15, Major, SubMajor, Minor, Supplier, ",
                 "ItemStatus, Label, Current_BasePrice, MajorCode, PrivateLabelScope_Item, ",
-                "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
+                "                         CurrentFileCost, CurrentCorporatePrice, ppe_code, CommGroupCode, adhoc_model_code, adhoc_model_code2, adhoc_model_code3, adhoc_model_code4, adhoc_model_code5",
                 "FROM            Dimension.Item"
               ],
               "dataSource": "SqlServer cahsionnlsql1 BRSales"
@@ -1182,7 +1709,7 @@
                   "",
                   "ItemKey, Item, SalesCategory, Top15, Major, SubMajor, Minor, Supplier, ",
                   "ItemStatus, Label, Current_BasePrice, MajorCode, PrivateLabelScope_Item, ",
-                  "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
+                  "                         CurrentFileCost, CurrentCorporatePrice, ppe_code, CommGroupCode, adhoc_model_code, adhoc_model_code2, adhoc_model_code3, adhoc_model_code4, adhoc_model_code5",
                   "FROM            Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
@@ -1197,7 +1724,7 @@
               "",
               "ItemKey, Item, SalesCategory, Top15, Major, SubMajor, Minor, Supplier, ",
               "ItemStatus, Label, Current_BasePrice, MajorCode, PrivateLabelScope_Item, ",
-              "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
+              "                         CurrentFileCost, CurrentCorporatePrice, ppe_code, CommGroupCode, adhoc_model_code, adhoc_model_code2, adhoc_model_code3, adhoc_model_code4, adhoc_model_code5",
               "FROM            Dimension.Item"
             ]
           },
@@ -1216,7 +1743,7 @@
               "",
               "ItemKey, Item, SalesCategory, Top15, Major, SubMajor, Minor, Supplier, ",
               "ItemStatus, Label, Current_BasePrice, MajorCode, PrivateLabelScope_Item, ",
-              "                         CurrentFileCost, CurrentCorporatePrice, ppe_code",
+              "                         CurrentFileCost, CurrentCorporatePrice, ppe_code, CommGroupCode, adhoc_model_code, adhoc_model_code2, adhoc_model_code3, adhoc_model_code4, adhoc_model_code5",
               "FROM            Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
@@ -2069,113 +2596,6 @@
         ]
       },
       {
-        "name": "Promotion",
-        "columns": [
-          {
-            "name": "PromotionCode",
-            "dataType": "string",
-            "sourceColumn": "PromotionCode",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "PromotionDescription",
-            "dataType": "string",
-            "sourceColumn": "PromotionDescription",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "PromotionType",
-            "dataType": "string",
-            "sourceColumn": "PromotionType",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "PromotionTrackingCode",
-            "dataType": "string",
-            "sourceColumn": "PromotionTrackingCode",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "promotion_key",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "promotion_key",
-            "sourceProviderType": "Integer"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "BRS_Promotion",
-            "dataView": "full",
-            "source": {
-              "type": "query",
-              "query": [
-                "SELECT",
-                "promotion_key",
-                ",PromotionCode",
-                ",PromotionDescription",
-                ",PromotionTrackingCode",
-                ",PromotionType",
-                "FROM",
-                "BRS_Promotion"
-              ],
-              "dataSource": "SqlServer cahsionnlsql1 BRSales"
-            },
-            "annotations": [
-              {
-                "name": "QueryEditorSerialization",
-                "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
-                  "promotion_key",
-                  ",PromotionCode",
-                  ",PromotionDescription",
-                  ",PromotionTrackingCode",
-                  ",PromotionType",
-                  "FROM",
-                  "BRS_Promotion</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
-                ]
-              }
-            ]
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": [
-              "SELECT",
-              "promotion_key",
-              ",PromotionCode",
-              ",PromotionDescription",
-              ",PromotionTrackingCode",
-              ",PromotionType",
-              "FROM",
-              "BRS_Promotion"
-            ]
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "BRS_Promotion"
-          },
-          {
-            "name": "_TM_ExtProp_DbSchemaName",
-            "value": "dbo"
-          },
-          {
-            "name": "QueryEditorSerialization",
-            "value": [
-              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT",
-              "promotion_key",
-              ",PromotionCode",
-              ",PromotionDescription",
-              ",PromotionTrackingCode",
-              ",PromotionType",
-              "FROM",
-              "BRS_Promotion</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
-            ]
-          }
-        ]
-      },
-      {
         "name": "Period Select",
         "columns": [
           {
@@ -2311,7 +2731,7 @@
         ]
       },
       {
-        "name": "gm_line_buckets",
+        "name": "GM Bin Lines",
         "columns": [
           {
             "name": "Spend_From",
@@ -2328,7 +2748,7 @@
             "sourceProviderType": "Decimal"
           },
           {
-            "name": "GM Bin",
+            "name": "GM Bin Line",
             "dataType": "string",
             "sourceColumn": "Spend_Display",
             "sourceProviderType": "VarChar"
@@ -2336,6 +2756,7 @@
           {
             "name": "GM Status",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "Spend_Rank",
             "sourceProviderType": "SmallInt"
           },
@@ -2353,13 +2774,13 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')",
+              "query": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'L')",
               "dataSource": "SqlServer cahsionnlsql1 BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'L')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -2367,7 +2788,7 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')"
+            "value": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'L')"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -2375,7 +2796,572 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'L')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "Salesorder",
+        "columns": [
+          {
+            "name": "SalesOrderNumber",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderNumber",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "OriginalSalesOrderNumber",
+            "dataType": "int64",
+            "sourceColumn": "OriginalSalesOrderNumber",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "OrderSource",
+            "dataType": "string",
+            "sourceColumn": "OrderSource",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Promotion",
+            "dataType": "string",
+            "sourceColumn": "Promotion",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PromotionTracking",
+            "dataType": "string",
+            "sourceColumn": "PromotionTracking",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PromotionTrackingType",
+            "dataType": "string",
+            "sourceColumn": "PromotionTrackingType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DocType",
+            "dataType": "string",
+            "sourceColumn": "DocType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "EnteredBy",
+            "dataType": "string",
+            "sourceColumn": "EnteredBy",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "OrderTakenBy",
+            "dataType": "string",
+            "sourceColumn": "OrderTakenBy",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ID_Header",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ID_Header"
+          },
+          {
+            "type": "calculated",
+            "name": "gm_order",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "DIVIDE([GP in Period],[Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "type": "calculated",
+            "name": "GM Bin Orders",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CALCULATE(VALUES('GM Bin Lines'[GM Bin Line]), filter('GM Bin Lines',[gm_order] >='GM Bin Lines'[Spend_From] && [gm_order] < 'GM Bin Lines'[Spend_To]))"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Salesorder_global",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT        SalesOrderNumber, OriginalSalesOrderNumber, OrderSource, Promotion, PromotionTracking, PromotionTrackingType, DocType, EnteredBy, OrderTakenBy, ID_Header",
+                "FROM            Dimension.Salesorder_global"
+              ],
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        SalesOrderNumber, OriginalSalesOrderNumber, OrderSource, Promotion, PromotionTracking, PromotionTrackingType, DocType, EnteredBy, OrderTakenBy, ID_Header",
+                  "FROM            Dimension.Salesorder_global</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT        SalesOrderNumber, OriginalSalesOrderNumber, OrderSource, Promotion, PromotionTracking, PromotionTrackingType, DocType, EnteredBy, OrderTakenBy, ID_Header",
+              "FROM            Dimension.Salesorder_global"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Salesorder_global"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        SalesOrderNumber, OriginalSalesOrderNumber, OrderSource, Promotion, PromotionTracking, PromotionTrackingType, DocType, EnteredBy, OrderTakenBy, ID_Header",
+              "FROM            Dimension.Salesorder_global</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "PriceMethod",
+        "columns": [
+          {
+            "name": "PriceMethod",
+            "dataType": "string",
+            "sourceColumn": "PriceMethod",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "PriceMethodDescr",
+            "dataType": "string",
+            "sourceColumn": "PriceMethodDescr",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PriceMethodKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PriceMethodKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_PriceMethod",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_PriceMethod].[PriceMethod],[dbo].[BRS_PriceMethod].[PriceMethodDescr],[dbo].[BRS_PriceMethod].[PriceMethodKey] FROM [dbo].[BRS_PriceMethod] ",
+              "dataSource": "SqlServer cahsionnlsql1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethod</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>89</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodDescr</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>116</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>NoteTxt</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>121</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>StatusCd</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>176</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>164</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup_L2</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>180</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup_L3</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>135</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodKey</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>107</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethod</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodDescr</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>NoteTxt</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>StatusCd</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup_L2</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup_L3</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>6</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodKey</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>7</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>NoteTxt</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>StatusCd</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup_L2</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>PriceMethodRollup_L3</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_PriceMethod].[PriceMethod],[dbo].[BRS_PriceMethod].[PriceMethodDescr],[dbo].[BRS_PriceMethod].[PriceMethodKey] FROM [dbo].[BRS_PriceMethod] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_PriceMethod"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethod</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>89</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodDescr</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>116</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>NoteTxt</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>121</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>StatusCd</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>176</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>164</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup_L2</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>180</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup_L3</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>135</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodKey</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>107</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethod</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodDescr</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>NoteTxt</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>StatusCd</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup_L2</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup_L3</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>6</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodKey</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>7</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>NoteTxt</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>StatusCd</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup_L2</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>PriceMethodRollup_L3</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       }
@@ -2487,13 +3473,6 @@
         "toColumn": "ShipTo"
       },
       {
-        "name": "55686ecf-c9f1-43f0-b0c9-dd324b3eedeb",
-        "fromTable": "Sales",
-        "fromColumn": "promotion_key",
-        "toTable": "Promotion",
-        "toColumn": "promotion_key"
-      },
-      {
         "name": "798e7131-2711-40a6-8b2c-6e988520ac3c",
         "fromTable": "Sales",
         "fromColumn": "day_key",
@@ -2504,8 +3483,23 @@
         "name": "2d5af872-5bb7-4663-a277-b10fb543e83c",
         "fromTable": "Sales",
         "fromColumn": "gm_line_key",
-        "toTable": "gm_line_buckets",
+        "toTable": "GM Bin Lines",
         "toColumn": "SpendKey"
+      },
+      {
+        "name": "6525968e-98b7-4fa7-9dfe-e3f0d225927d",
+        "fromTable": "Sales",
+        "fromColumn": "PriceMethodKey",
+        "toTable": "PriceMethod",
+        "toColumn": "PriceMethodKey",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "06953749-edaa-49d7-b896-900d5f5d219f",
+        "fromTable": "Sales",
+        "fromColumn": "ID_Header",
+        "toTable": "Salesorder",
+        "toColumn": "ID_Header"
       }
     ],
     "roles": [
