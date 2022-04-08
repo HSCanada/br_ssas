@@ -778,6 +778,11 @@
             "name": "adhoc_model_code",
             "dataType": "string",
             "sourceColumn": "adhoc_model_code"
+          },
+          {
+            "name": "adhoc_model_code2",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code2"
           }
         ],
         "partitions": [
@@ -819,6 +824,8 @@
                 "\t,MarketClassNewCode",
                 "",
                 "\t,adhoc_model_code",
+                "\t,adhoc_model_code2",
+                "",
                 "",
                 "FROM",
                 "\tDimension.Customer AS c"
@@ -861,6 +868,8 @@
                   "\t,MarketClassNewCode",
                   "",
                   "\t,adhoc_model_code",
+                  "\t,adhoc_model_code2",
+                  "",
                   "",
                   "FROM",
                   "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -911,6 +920,8 @@
               "\t,MarketClassNewCode",
               "",
               "\t,adhoc_model_code",
+              "\t,adhoc_model_code2",
+              "",
               "",
               "FROM",
               "\tDimension.Customer AS c"
@@ -959,6 +970,8 @@
               "\t,MarketClassNewCode",
               "",
               "\t,adhoc_model_code",
+              "\t,adhoc_model_code2",
+              "",
               "",
               "FROM",
               "\tDimension.Customer AS c</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"

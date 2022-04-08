@@ -3103,6 +3103,16 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": "if([CommStatusCode] = \"SPMALL\" || [CommStatusCode] = \"SPMSND\", \"HALF\", \"FULL\")"
+          },
+          {
+            "name": "adhoc_model_code",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code"
+          },
+          {
+            "name": "adhoc_model_code2",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code2"
           }
         ],
         "partitions": [
@@ -3137,6 +3147,8 @@
                 "\t,CommStatusCode",
                 "\t,MarketClassCode",
                 "\t,MarketClassNewCode",
+                "\t,c.adhoc_model_code",
+                "\t,c.adhoc_model_code2",
                 "",
                 "FROM",
                 "\tDimension.Customer c",
@@ -3175,6 +3187,8 @@
                   "\t,CommStatusCode",
                   "\t,MarketClassCode",
                   "\t,MarketClassNewCode",
+                  "\t,c.adhoc_model_code",
+                  "\t,c.adhoc_model_code2",
                   "",
                   "FROM",
                   "\tDimension.Customer c",
@@ -3222,6 +3236,8 @@
               "\t,CommStatusCode",
               "\t,MarketClassCode",
               "\t,MarketClassNewCode",
+              "\t,c.adhoc_model_code",
+              "\t,c.adhoc_model_code2",
               "",
               "FROM",
               "\tDimension.Customer c",
@@ -3266,6 +3282,8 @@
               "\t,CommStatusCode",
               "\t,MarketClassCode",
               "\t,MarketClassNewCode",
+              "\t,c.adhoc_model_code",
+              "\t,c.adhoc_model_code2",
               "",
               "FROM",
               "\tDimension.Customer c",
