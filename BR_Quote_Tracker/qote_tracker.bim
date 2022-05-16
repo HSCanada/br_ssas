@@ -3113,6 +3113,40 @@
             "name": "adhoc_model_code2",
             "dataType": "string",
             "sourceColumn": "adhoc_model_code2"
+          },
+          {
+            "name": "adhoc_model_1_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_1_text"
+          },
+          {
+            "name": "adhoc_model_2_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_2_text"
+          },
+          {
+            "name": "adhoc_model_3_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_3_text"
+          },
+          {
+            "name": "DSO_operatory_count",
+            "dataType": "int64",
+            "sourceColumn": "DSO_operatory_count"
+          },
+          {
+            "type": "calculated",
+            "name": "DSO_operatory_spend_12mo",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": "[DSO_operatory_count]*[spend per op]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ],
         "partitions": [
@@ -3149,6 +3183,13 @@
                 "\t,MarketClassNewCode",
                 "\t,c.adhoc_model_code",
                 "\t,c.adhoc_model_code2",
+                "\t",
+                "\t,c.adhoc_model_1_text",
+                "\t,c.adhoc_model_2_text",
+                "\t,c.adhoc_model_3_text",
+                "",
+                "\t,t.DSO_operatory_count",
+                "",
                 "",
                 "FROM",
                 "\tDimension.Customer c",
@@ -3189,6 +3230,13 @@
                   "\t,MarketClassNewCode",
                   "\t,c.adhoc_model_code",
                   "\t,c.adhoc_model_code2",
+                  "\t",
+                  "\t,c.adhoc_model_1_text",
+                  "\t,c.adhoc_model_2_text",
+                  "\t,c.adhoc_model_3_text",
+                  "",
+                  "\t,t.DSO_operatory_count",
+                  "",
                   "",
                   "FROM",
                   "\tDimension.Customer c",
@@ -3204,6 +3252,60 @@
           {
             "name": "Count of ShipTo",
             "expression": "COUNTA([ShipTo])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "DSO 12mo Opp",
+            "expression": "CALCULATE(sum([DSO_operatory_spend_12mo]), FILTER('Customer Shipto', [DSO_TrackingShipTo] = 'Customer Shipto'[ShipTo]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Count of Parent",
+            "expression": "DISTINCTCOUNT([DSO_TrackingShipTo])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "DSO Quarter Opp",
+            "expression": "[DSO 12mo Opp]/4",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DSO 12mo Opp Gap",
+            "expression": "[Rolling 12mo Sales]-[DSO 12mo Opp]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DSO Quarter Opp Gap",
+            "expression": "[QTD Sales] - [DSO Quarter Opp]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DSO operatory count",
+            "expression": "CALCULATE(sum('Customer Shipto'[DSO_operatory_count]), FILTER('Customer Shipto', [DSO_TrackingShipTo] = 'Customer Shipto'[ShipTo]))",
             "formatString": "#,0"
           }
         ],
@@ -3238,6 +3340,13 @@
               "\t,MarketClassNewCode",
               "\t,c.adhoc_model_code",
               "\t,c.adhoc_model_code2",
+              "\t",
+              "\t,c.adhoc_model_1_text",
+              "\t,c.adhoc_model_2_text",
+              "\t,c.adhoc_model_3_text",
+              "",
+              "\t,t.DSO_operatory_count",
+              "",
               "",
               "FROM",
               "\tDimension.Customer c",
@@ -3284,6 +3393,13 @@
               "\t,MarketClassNewCode",
               "\t,c.adhoc_model_code",
               "\t,c.adhoc_model_code2",
+              "\t",
+              "\t,c.adhoc_model_1_text",
+              "\t,c.adhoc_model_2_text",
+              "\t,c.adhoc_model_3_text",
+              "",
+              "\t,t.DSO_operatory_count",
+              "",
               "",
               "FROM",
               "\tDimension.Customer c",
@@ -4919,6 +5035,51 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "Operatory",
+        "isHidden": true,
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "spend_per_operatory",
+            "dataType": "decimal",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[spend_per_operatory]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                "",
+                "DATATABLE (",
+                "    \"spend_per_operatory\", CURRENCY,",
+                "        {{ 10000}, ",
+                "        { 11000 },",
+                "        { 12000}}",
+                ")"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "spend per op",
+            "expression": "Min('Operatory'[spend_per_operatory])",
+            "isHidden": true
+          }
+        ]
       }
     ],
     "relationships": [
@@ -4986,18 +5147,18 @@
         "toColumn": "credit_key"
       },
       {
-        "name": "23e88095-a22b-437b-a090-8f605576b14d",
-        "fromTable": "Sales",
-        "fromColumn": "BadGMLine",
-        "toTable": "GMBand",
-        "toColumn": "GM Flag"
-      },
-      {
         "name": "542eb9ac-1c86-44f6-a5d7-12ad69a51e07",
         "fromTable": "Sales",
         "fromColumn": "EpsKey",
         "toTable": "Exclusive",
         "toColumn": "eps_key"
+      },
+      {
+        "name": "23e88095-a22b-437b-a090-8f605576b14d",
+        "fromTable": "Sales",
+        "fromColumn": "BadGMLine",
+        "toTable": "GMBand",
+        "toColumn": "GM Flag"
       }
     ],
     "roles": [
