@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Integrated Security=SSPI;Persist Security Info=false",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Integrated Security=SSPI;Persist Security Info=false",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -768,11 +768,11 @@
               "",
               ""
             ],
-            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
           },
@@ -1791,6 +1791,184 @@
             "name": "Distinct Count of ShipTo",
             "expression": "DISTINCTCOUNT([ShipTo])",
             "formatString": "#,0"
+          },
+          {
+            "name": "Rolling  3mo Sales",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Sales in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-3) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")"
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  6mo Sales",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Sales in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-6) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  3mo Qty",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Quantity in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-3) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Rolling  6mo Qty",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Quantity in Period] ,",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-6) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Rolling 12mo Qty",
+            "expression": [
+              " ",
+              "",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Quantity in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-12) &&",
+              "",
+              "            Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              ""
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Rolling  3mo Average Price",
+            "expression": "DIVIDE([Rolling  3mo Sales],[Rolling  3mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling  6mo Average Price",
+            "expression": "DIVIDE([Rolling  6mo Sales],[Rolling  6mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 12mo Average Price",
+            "expression": "DIVIDE([Rolling 12mo Sales],[Rolling 12mo Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Average Price in Period",
+            "expression": "DIVIDE([Sales in Period],[Quantity in Period])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ],
         "annotations": [
@@ -2034,6 +2212,36 @@
             "name": "BrandEquityCode",
             "dataType": "string",
             "sourceColumn": "BrandEquityCode"
+          },
+          {
+            "name": "pchg_active_ind",
+            "dataType": "boolean",
+            "sourceColumn": "pchg_active_ind"
+          },
+          {
+            "name": "pchg_active_dt",
+            "dataType": "dateTime",
+            "sourceColumn": "pchg_active_dt"
+          },
+          {
+            "name": "pchg_price_old",
+            "dataType": "double",
+            "sourceColumn": "pchg_price_old"
+          },
+          {
+            "name": "pchg_price_new",
+            "dataType": "double",
+            "sourceColumn": "pchg_price_new"
+          },
+          {
+            "name": "pchg_note",
+            "dataType": "string",
+            "sourceColumn": "pchg_note"
+          },
+          {
+            "name": "pchg_brand_equiv",
+            "dataType": "string",
+            "sourceColumn": "pchg_brand_equiv"
           }
         ],
         "partitions": [
@@ -2066,6 +2274,14 @@
                 "\t,RebateExcludeInd",
                 "\t,BrandEquityCategory",
                 "\t,BrandEquityCode",
+                "",
+                "\t,pchg_active_ind ",
+                "\t,pchg_active_dt",
+                "\t,pchg_price_old",
+                "\t,pchg_price_new",
+                "\t,pchg_note",
+                "\t,pchg_brand_equiv",
+                "",
                 "",
                 "",
                 "",
@@ -2103,6 +2319,14 @@
                   "\t,RebateExcludeInd",
                   "\t,BrandEquityCategory",
                   "\t,BrandEquityCode",
+                  "",
+                  "\t,pchg_active_ind ",
+                  "\t,pchg_active_dt",
+                  "\t,pchg_price_old",
+                  "\t,pchg_price_new",
+                  "\t,pchg_note",
+                  "\t,pchg_brand_equiv",
+                  "",
                   "",
                   "",
                   "",
@@ -2149,6 +2373,14 @@
               "\t,BrandEquityCategory",
               "\t,BrandEquityCode",
               "",
+              "\t,pchg_active_ind ",
+              "\t,pchg_active_dt",
+              "\t,pchg_price_old",
+              "\t,pchg_price_new",
+              "\t,pchg_note",
+              "\t,pchg_brand_equiv",
+              "",
+              "",
               "",
               "",
               "FROM",
@@ -2191,6 +2423,14 @@
               "\t,RebateExcludeInd",
               "\t,BrandEquityCategory",
               "\t,BrandEquityCode",
+              "",
+              "\t,pchg_active_ind ",
+              "\t,pchg_active_dt",
+              "\t,pchg_price_old",
+              "\t,pchg_price_new",
+              "\t,pchg_note",
+              "\t,pchg_brand_equiv",
+              "",
               "",
               "",
               "",
