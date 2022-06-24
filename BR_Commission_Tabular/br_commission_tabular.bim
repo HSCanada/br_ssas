@@ -1736,7 +1736,6 @@
             "name": "Sales in Period",
             "expression": "SUM([SalesAmt])",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -1748,7 +1747,6 @@
             "name": "GP in Period",
             "expression": "SUM([GPAmt])",
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -2568,6 +2566,84 @@
           {
             "name": "YTD Comm Rate EST",
             "expression": "DIVIDE([YTD Comm EST],[YTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Rolling 12mo Sales",
+            "expression": [
+              " ",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Sales in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-12) &&",
+              "",
+              "           Period[MonthSeq]<=[__seq_first_month_current]",
+              "",
+              "        )",
+              "",
+              ")",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY Rolling 12mo Sales",
+            "expression": [
+              " ",
+              "",
+              "CALCULATE(",
+              "",
+              "        [Sales in Period],",
+              "",
+              "        filter(",
+              "",
+              "            ALL(Period),",
+              " ",
+              "           Period[MonthSeq]>([__seq_first_month_current]-12-12) &&",
+              "",
+              "           Period[MonthSeq]<=([__seq_first_month_current] -12)",
+              "",
+              "        )",
+              "",
+              ")",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 12mo Sales Var",
+            "expression": "[Rolling 12mo Sales]-[PY Rolling 12mo Sales]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Rolling 12mo Sales Var %",
+            "expression": "DIVIDE( [Rolling 12mo Sales]-[PY Rolling 12mo Sales],[PY Rolling 12mo Sales])",
             "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
