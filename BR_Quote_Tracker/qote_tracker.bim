@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Integrated Security=SSPI;Persist Security Info=false",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Integrated Security=SSPI;Persist Security Info=false",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -790,7 +790,6 @@
             "name": "Ext.Base in Period",
             "expression": " sum(Sales[ExtBaseAmt])",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -813,7 +812,6 @@
             "name": "Disc in Period",
             "expression": " sum(Sales[DiscountAmt])",
             "formatString": "\\$#,0;-\\$#,0;\\$#,0",
-            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -1969,6 +1967,141 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "GP$ w/Chargeback in Period",
+            "expression": " SUM([GPAmt]) +sum(Sales[ExtChargebackAmt])",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Qty",
+            "expression": "CALCULATE([Quantity in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY MTD Qty",
+            "expression": "CALCULATE([Quantity in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Average Base",
+            "expression": "DIVIDE([MTD Ext.Base],[MTD Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Average Base",
+            "expression": "DIVIDE([PY MTD Ext.Base],[PY MTD Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Average Sell",
+            "expression": "DIVIDE([MTD Sales],[MTD Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Average Sell",
+            "expression": "DIVIDE([PY MTD Sales],[PY MTD Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP w/Chargeback",
+            "expression": "CALCULATE([GP$ w/Chargeback in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GM w/Charchback",
+            "expression": " DIVIDE([MTD GP w/Chargeback],[MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY MTD GP w/Chargeback",
+            "expression": "CALCULATE([GP$ w/Chargeback in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD GM w/Chargeback",
+            "expression": "divide([PY MTD GP w/Chargeback],[PY MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD Average GP w/Chargeback",
+            "expression": "DIVIDE([MTD GP w/Chargeback],[MTD Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Average GP w/Chargeback",
+            "expression": "DIVIDE([PY MTD GP w/Chargeback],[PY MTD Qty])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP w/Chargeback Var",
+            "expression": "[MTD GP w/Chargeback]-[PY MTD GP w/Chargeback]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP w/Chargeback Var %",
+            "expression": "DIVIDE( [MTD GP w/Chargeback] - [PY MTD GP w/Chargeback], [PY MTD GP w/Chargeback])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -2242,6 +2375,26 @@
             "name": "pchg_brand_equiv",
             "dataType": "string",
             "sourceColumn": "pchg_brand_equiv"
+          },
+          {
+            "name": "pchg_adhoc_model_code1",
+            "dataType": "string",
+            "sourceColumn": "pchg_adhoc_model_code1"
+          },
+          {
+            "name": "pchg_adhoc_model_code2",
+            "dataType": "string",
+            "sourceColumn": "pchg_adhoc_model_code2"
+          },
+          {
+            "name": "pchg_mpc_active_ind",
+            "dataType": "boolean",
+            "sourceColumn": "pchg_mpc_active_ind"
+          },
+          {
+            "name": "MajorCode",
+            "dataType": "string",
+            "sourceColumn": "MajorCode"
           }
         ],
         "partitions": [
@@ -2281,6 +2434,10 @@
                 "\t,pchg_price_new",
                 "\t,pchg_note",
                 "\t,pchg_brand_equiv",
+                "\t,pchg_adhoc_model_code1",
+                "\t,pchg_adhoc_model_code2",
+                "\t,pchg_mpc_active_ind",
+                "\t,MajorCode",
                 "",
                 "",
                 "",
@@ -2326,6 +2483,10 @@
                   "\t,pchg_price_new",
                   "\t,pchg_note",
                   "\t,pchg_brand_equiv",
+                  "\t,pchg_adhoc_model_code1",
+                  "\t,pchg_adhoc_model_code2",
+                  "\t,pchg_mpc_active_ind",
+                  "\t,MajorCode",
                   "",
                   "",
                   "",
@@ -2343,6 +2504,11 @@
           {
             "name": "Count of Item",
             "expression": "COUNTA([ItemKey])"
+          },
+          {
+            "name": "Count of FamilySet",
+            "expression": "DISTINCTCOUNT([FamilySet])",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
@@ -2379,6 +2545,10 @@
               "\t,pchg_price_new",
               "\t,pchg_note",
               "\t,pchg_brand_equiv",
+              "\t,pchg_adhoc_model_code1",
+              "\t,pchg_adhoc_model_code2",
+              "\t,pchg_mpc_active_ind",
+              "\t,MajorCode",
               "",
               "",
               "",
@@ -2430,6 +2600,10 @@
               "\t,pchg_price_new",
               "\t,pchg_note",
               "\t,pchg_brand_equiv",
+              "\t,pchg_adhoc_model_code1",
+              "\t,pchg_adhoc_model_code2",
+              "\t,pchg_mpc_active_ind",
+              "\t,MajorCode",
               "",
               "",
               "",
