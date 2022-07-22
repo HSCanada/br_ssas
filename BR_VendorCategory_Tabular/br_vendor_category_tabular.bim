@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer_cahsionnlsql1_BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
