@@ -2136,6 +2136,48 @@
                 "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "Supplier Sales  in Period",
+            "expression": " CALCULATE([Sales in Period], 'Item'[SupplierFamilyCode]=[__supplier_family_code])"
+          },
+          {
+            "name": "YTD Supplier Sales",
+            "expression": "CALCULATE([Supplier Sales  in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Supplier Sales",
+            "expression": "CALCULATE([Supplier Sales  in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12 * [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor]) ))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Supplier Sales Var",
+            "expression": "[YTD Supplier Sales]-[PY YTD Supplier Sales]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Supplier Sales Var %",
+            "expression": "DIVIDE([YTD Supplier Sales Var],[PY YTD Supplier Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -4129,6 +4171,34 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Supplier Select",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "SupplierFamilyCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Item[SupplierFamilyCode]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "VALUES('Item'[SupplierFamilyCode])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "__supplier_family_code",
+            "expression": "min([SupplierFamilyCode])"
           }
         ]
       }
