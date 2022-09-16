@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\TCrowley"
   DTS:DTSID="{42089646-F48B-44BD-AD55-303905F77C0D}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="15.0.2000.123"
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_com_rebate_terr"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{C56F7A6E-1FA1-40DE-AE91-5190FA037A79}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{D0AB34FD-93EA-4092-BED4-F8FB5E65B4CE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

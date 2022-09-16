@@ -8,12 +8,12 @@
   DTS:CreatorName="CAHSI\TCrowley"
   DTS:DTSID="{F6DC0BE7-D39D-45FB-8831-2FEB7FA66EFA}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_order_comments"
   DTS:PackageType="5"
-  DTS:VersionBuild="184"
-  DTS:VersionGUID="{17148C5D-CE28-4208-8A35-726A678344FC}">
+  DTS:VersionBuild="198"
+  DTS:VersionGUID="{55222560-E991-41E7-9CF5-DE1B7043F5FD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -61,6 +61,649 @@
     </DTS:Property>
   </DTS:LoggingOptions>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\seq_D1ICMTPF_order_note_Stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{d28baa26-d171-401b-bbf5-cd1c109e7eae}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="seq_D1ICMTPF_order_note_Stage">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">2,7,OnError,13,OnPostExecute</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{3df19d51-2a7b-4d07-9f07-ece260996105}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dft_load_stage"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="F5503_canned_message_file_parameters"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Integration].[D1ICMTPF_order_note_Stage]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Connections[OleDbConnection]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].Columns[ICMOWO_work_order_number]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="ICMOWO_work_order_number"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMOWO_work_order_number]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMOWO_work_order_number]" />
+                        <inputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].Columns[ICMORD_ets_order_number]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="6"
+                          cachedName="ICMORD_ets_order_number"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMORD_ets_order_number]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMORD_ets_order_number]" />
+                        <inputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].Columns[ICMTYP2_header_detail]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ICMTYP2_header_detail"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMTYP2_header_detail]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMTYP2_header_detail]" />
+                        <inputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].Columns[ICMLNE_detail_line_sequence]"
+                          cachedDataType="numeric"
+                          cachedName="ICMLNE_detail_line_sequence"
+                          cachedPrecision="4"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMLNE_detail_line_sequence]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMLNE_detail_line_sequence]" />
+                        <inputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].Columns[ICMSEQ_comments_sequence]"
+                          cachedDataType="numeric"
+                          cachedName="ICMSEQ_comments_sequence"
+                          cachedPrecision="4"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMSEQ_comments_sequence]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMSEQ_comments_sequence]" />
+                        <inputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].Columns[ICMMSG_comments]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="75"
+                          cachedName="ICMMSG_comments"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMMSG_comments]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMMSG_comments]" />
+                        <inputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].Columns[ICMBCH_batch_number]"
+                          cachedDataType="numeric"
+                          cachedName="ICMBCH_batch_number"
+                          cachedPrecision="5"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMBCH_batch_number]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMBCH_batch_number]" />
+                        <inputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].Columns[ICMTYP1_record_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="ICMTYP1_record_type"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMTYP1_record_type]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMTYP1_record_type]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMOWO_work_order_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ICMOWO_work_order_number" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMORD_ets_order_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="ICMORD_ets_order_number" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMTYP2_header_detail]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ICMTYP2_header_detail" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMLNE_detail_line_sequence]"
+                          dataType="numeric"
+                          name="ICMLNE_detail_line_sequence"
+                          precision="4" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMSEQ_comments_sequence]"
+                          dataType="numeric"
+                          name="ICMSEQ_comments_sequence"
+                          precision="4" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMMSG_comments]"
+                          codePage="1252"
+                          dataType="str"
+                          length="75"
+                          name="ICMMSG_comments" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMBCH_batch_number]"
+                          dataType="numeric"
+                          name="ICMBCH_batch_number"
+                          precision="5" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input].ExternalColumns[ICMTYP1_record_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="ICMTYP1_record_type" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source D1ICMTPF"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
+-- DROP TABLE Integration.F5503_canned_message_file_parameters_Staging
+--------------------------------------------------------------------------------
+
+SELECT 
+    Top 5
+    "Q3KCOO" AS Q3KCOO_order_number_document_company,
+	"Q3DCTO" AS Q3DCTO_order_type,
+	"Q3DOCO" AS Q3DOCO_salesorder_number,
+	"Q3LNID" AS Q3LNID_line_number,
+	"Q3$APC" AS Q3$APC_application_code,
+	"Q3$PMQ" AS Q3$PMQ_program_parameter,
+	"Q3LNGP" AS Q3LNGP_language,
+	"Q3INMG" AS Q3INMG_print_message,
+	"Q3$SNB" AS Q3$SNB_sequence_number,
+	"QCTRDJ" AS QCTRDJ_order_date,
+	HASHBYTES('SHA1', "Q3$PMQ") AS chksum
+
+--INTO Integration.F5503_canned_message_file_parameters_Staging
+
+FROM 
+    OPENQUERY (ESYS_PROD, '
+
+	SELECT
+		Q3KCOO,
+		Q3DCTO,
+		Q3DOCO,
+		CAST((Q3LNID)/1000.0 AS DEC(15,3)) AS Q3LNID,
+		Q3$APC,
+		Q3$PMQ,
+		Q3LNGP,
+		Q3INMG,
+		CAST((Q3$SNB)/100.0 AS DEC(15,2)) AS Q3$SNB,
+
+		DATE(DIGITS(DEC(QCTRDJ+ 1900000,7,0))) AS QCTRDJ
+
+	FROM
+		ARCPDTA71.F5503 n, ARCPDTA71.F5501 h
+    WHERE
+		Q3KCOO = QCKCOO AND
+		Q3DCTO = QCDCTO AND
+		Q3DOCO = QCDOCO AND
+
+		Q3KCOO = ''02000'' AND
+		(QCTRDJ &gt;= 120000) AND
+--		(QCTRDJ between 119000 AND 119365) AND
+--		QCTRDJ &gt;= 120001 AND
+		1=1
+
+    ORDER BY
+        QCTRDJ
+')</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">$Project::Param_srcsql_D1ICMTPF</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Connections[OleDbConnection]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMOWO_work_order_number]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMOWO_work_order_number]"
+                          length="10"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMOWO_work_order_number]"
+                          name="ICMOWO_work_order_number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMORD_ets_order_number]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMORD_ets_order_number]"
+                          length="6"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMORD_ets_order_number]"
+                          name="ICMORD_ets_order_number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMTYP2_header_detail]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMTYP2_header_detail]"
+                          length="1"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMTYP2_header_detail]"
+                          name="ICMTYP2_header_detail"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMLNE_detail_line_sequence]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMLNE_detail_line_sequence]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMLNE_detail_line_sequence]"
+                          name="ICMLNE_detail_line_sequence"
+                          precision="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMSEQ_comments_sequence]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMSEQ_comments_sequence]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMSEQ_comments_sequence]"
+                          name="ICMSEQ_comments_sequence"
+                          precision="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMMSG_comments]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMMSG_comments]"
+                          length="75"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMMSG_comments]"
+                          name="ICMMSG_comments"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMBCH_batch_number]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMBCH_batch_number]"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMBCH_batch_number]"
+                          name="ICMBCH_batch_number"
+                          precision="5"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMTYP1_record_type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMTYP1_record_type]"
+                          length="2"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].Columns[ICMTYP1_record_type]"
+                          name="ICMTYP1_record_type"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMOWO_work_order_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ICMOWO_work_order_number" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMORD_ets_order_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="ICMORD_ets_order_number" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMTYP2_header_detail]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ICMTYP2_header_detail" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMLNE_detail_line_sequence]"
+                          dataType="numeric"
+                          name="ICMLNE_detail_line_sequence"
+                          precision="4" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMSEQ_comments_sequence]"
+                          dataType="numeric"
+                          name="ICMSEQ_comments_sequence"
+                          precision="4" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMMSG_comments]"
+                          codePage="1252"
+                          dataType="str"
+                          length="75"
+                          name="ICMMSG_comments" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMBCH_batch_number]"
+                          dataType="numeric"
+                          name="ICMBCH_batch_number"
+                          precision="5" />
+                        <externalMetadataColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output].ExternalColumns[ICMTYP1_record_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="ICMTYP1_record_type" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMOWO_work_order_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMOWO_work_order_number]"
+                          name="ICMOWO_work_order_number" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMORD_ets_order_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMORD_ets_order_number]"
+                          name="ICMORD_ets_order_number" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMTYP2_header_detail]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMTYP2_header_detail]"
+                          name="ICMTYP2_header_detail" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMLNE_detail_line_sequence]"
+                          dataType="numeric"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMLNE_detail_line_sequence]"
+                          name="ICMLNE_detail_line_sequence"
+                          precision="4" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMSEQ_comments_sequence]"
+                          dataType="numeric"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMSEQ_comments_sequence]"
+                          name="ICMSEQ_comments_sequence"
+                          precision="4" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMMSG_comments]"
+                          codePage="1252"
+                          dataType="str"
+                          length="75"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMMSG_comments]"
+                          name="ICMMSG_comments" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMBCH_batch_number]"
+                          dataType="numeric"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMBCH_batch_number]"
+                          name="ICMBCH_batch_number"
+                          precision="5" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMTYP1_record_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ICMTYP1_record_type]"
+                          name="ICMTYP1_record_type" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage.Paths[OLE DB Source Output]"
+                  endId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seq_D1ICMTPF_order_note_Stage\sql_truncate_stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{a0711b3c-88f7-4397-9622-b160417a3af8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_truncate_stage"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Integration.D1ICMTPF_order_note_Stage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seq_D1ICMTPF_order_note_Stage.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{cecdf085-9edc-469c-889d-12bf0c0c5334}"
+          DTS:From="Package\seq_D1ICMTPF_order_note_Stage\sql_truncate_stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\seq_F5503_canned_message_file_parameters"
       DTS:CreationName="STOCK:SEQUENCE"
@@ -155,7 +798,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -408,7 +1051,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
 -- DROP TABLE Integration.F5503_canned_message_file_parameters_Staging
 --------------------------------------------------------------------------------
 
@@ -794,7 +1437,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -829,7 +1472,7 @@ FROM
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
         <NodeLayout
           Size="149,42"
           Id="Package\seq_F5503_canned_message_file_parameters\dft_load_stage"
@@ -863,26 +1506,135 @@ FROM
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="222,204"
-          Size="222,247"
+          PanelSize="295,216"
+          Size="295,259"
           Id="Package\seq_F5503_canned_message_file_parameters"
-          TopLeft="114.5,2" />
+          TopLeft="82.5,83.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage"
+          TopLeft="15,107.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\seq_D1ICMTPF_order_note_Stage\sql_truncate_stage"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\seq_D1ICMTPF_order_note_Stage.PrecedenceConstraints[Constraint]"
+          TopLeft="90,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="295,216"
+          Size="295,259"
+          Id="Package\seq_D1ICMTPF_order_note_Stage"
+          TopLeft="503.666666666667,68.6666666666667" />
         <GroupLayout
           Text="returns_info"
           ParentId="Package"
-          HeaderHeight="43"
+          HeaderHeight="398"
           IsExpanded="True"
-          PanelSize="1504,335"
-          Size="1504,378"
+          PanelSize="1882,348"
+          Size="1882,746"
           Id="13c5f7e0-04d7-4bc8-aa82-eb58c3b31d0d"
-          TopLeft="88,26.5">
+          TopLeft="254.666666666667,153.333333333333">
           <GroupLayout.ChildrenIds>
             <s:String>Package\seq_F5503_canned_message_file_parameters</s:String>
+            <s:String>Package\seq_D1ICMTPF_order_note_Stage</s:String>
           </GroupLayout.ChildrenIds>
         </GroupLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="273,42"
+          Id="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters"
+          TopLeft="232,214" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF"
+          TopLeft="237,64" />
+        <EdgeLayout
+          Id="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage.Paths[OLE DB Source Output]"
+          TopLeft="338.5,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30,108"
+              Start="0,0"
+              End="30,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50"
+                    Point2="0,54"
+                    Point3="4,54" />
+                  <mssgle:LineSegment
+                    End="26,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26,54"
+                    Point2="30,54"
+                    Point3="30,58" />
+                  <mssgle:LineSegment
+                    End="30,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\seq_F5503_canned_message_file_parameters\dft_load_stage">
     <LayoutInfo>

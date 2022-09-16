@@ -3,6 +3,8 @@
   DTS:ObjectName="conn_dest"
   DTS:DTSID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}"
   DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::ConnectionString]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"

@@ -1,0 +1,1657 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/15/2022 8:58:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CAHSIONNLD3092A"
+  DTS:CreatorName="CAHSI\tcrowley"
+  DTS:DTSID="{BDEF2803-5F9B-47E5-9FF9-80CCD3B21543}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="pkg_backorder"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{8B0FA427-FBE3-4E24-9462-B3B8D316B57D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\seq_FBACKRPT1_backorder"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{b205c6f0-94bd-4402-a313-285795fd35c4}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="seq_FBACKRPT1_backorder">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">2,7,OnError,13,OnPostExecute</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\seq_FBACKRPT1_backorder\dft_load_stage"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{4e27a464-8820-4461-ab88-b16dd93a830e}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="dft_load_stage"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2" />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="FBACKRPT1_backorder_Staging"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Integration].[FBACKRPT1_backorder_Staging]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 50000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Connections[OleDbConnection]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[IMBUYR_buyer_number]"
+                          cachedDataType="numeric"
+                          cachedName="IMBUYR_buyer_number"
+                          cachedPrecision="8"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[IMBUYR_buyer_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[IMBUYR_buyer_number]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[QN$SPC_supplier_code]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="6"
+                          cachedName="QN$SPC_supplier_code"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QN$SPC_supplier_code]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QN$SPC_supplier_code]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDLITM_item_number]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="SDLITM_item_number"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDLITM_item_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLITM_item_number]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDDSC1_description]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="SDDSC1_description"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDDSC1_description]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDSC1_description]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[QV$PRI_pricing_info]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="QV$PRI_pricing_info"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QV$PRI_pricing_info]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$PRI_pricing_info]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[QV$AVC_availability_code]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="QV$AVC_availability_code"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QV$AVC_availability_code]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$AVC_availability_code]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[QV$CLC_classification_code]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="QV$CLC_classification_code"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QV$CLC_classification_code]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$CLC_classification_code]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDUPRC_unit_price]"
+                          cachedDataType="numeric"
+                          cachedName="SDUPRC_unit_price"
+                          cachedPrecision="15"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDUPRC_unit_price]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDUPRC_unit_price]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDUORG_quantity]"
+                          cachedDataType="numeric"
+                          cachedName="SDUORG_quantity"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDUORG_quantity]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDUORG_quantity]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDSOBK_quantity_backordered]"
+                          cachedDataType="numeric"
+                          cachedName="SDSOBK_quantity_backordered"
+                          cachedPrecision="15"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDSOBK_quantity_backordered]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSOBK_quantity_backordered]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDLNTY_line_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="SDLNTY_line_type"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDLNTY_line_type]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLNTY_line_type]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[IMLNTY_line_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="IMLNTY_line_type"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[IMLNTY_line_type]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[IMLNTY_line_type]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[QCAC10_division_code]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="QCAC10_division_code"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QCAC10_division_code]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCAC10_division_code]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDMCU__business_unit]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="12"
+                          cachedName="SDMCU__business_unit"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDMCU__business_unit]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDMCU__business_unit]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDDOC__document_number]"
+                          cachedDataType="numeric"
+                          cachedName="SDDOC__document_number"
+                          cachedPrecision="8"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDDOC__document_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDOC__document_number]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDDOCO_salesorder_number]"
+                          cachedDataType="numeric"
+                          cachedName="SDDOCO_salesorder_number"
+                          cachedPrecision="8"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDDOCO_salesorder_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDOCO_salesorder_number]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDDCTO_order_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2"
+                          cachedName="SDDCTO_order_type"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDDCTO_order_type]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDCTO_order_type]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDLNID_line_number]"
+                          cachedDataType="numeric"
+                          cachedName="SDLNID_line_number"
+                          cachedPrecision="15"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDLNID_line_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLNID_line_number]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[QCTRDJ_order_date]"
+                          cachedDataType="dbDate"
+                          cachedName="QCTRDJ_order_date"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QCTRDJ_order_date]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCTRDJ_order_date]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDVR01_reference]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="SDVR01_reference"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDVR01_reference]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDVR01_reference]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDVR02_reference_2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="SDVR02_reference_2"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDVR02_reference_2]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDVR02_reference_2]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[QCENTB_entered_by]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="QCENTB_entered_by"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QCENTB_entered_by]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCENTB_entered_by]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDSHAN_shipto]"
+                          cachedDataType="numeric"
+                          cachedName="SDSHAN_shipto"
+                          cachedPrecision="8"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDSHAN_shipto]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSHAN_shipto]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDSHAN01_mailing_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="SDSHAN01_mailing_name"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDSHAN01_mailing_name]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSHAN01_mailing_name]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDAN8__billto]"
+                          cachedDataType="numeric"
+                          cachedName="SDAN8__billto"
+                          cachedPrecision="8"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDAN8__billto]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDAN8__billto]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDAN801_mailing_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="SDAN801_mailing_name"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDAN801_mailing_name]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDAN801_mailing_name]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[GIADDZ_postal_code]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="12"
+                          cachedName="GIADDZ_postal_code"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GIADDZ_postal_code]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GIADDZ_postal_code]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[GICTY1_city]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="GICTY1_city"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GICTY1_city]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICTY1_city]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[GICOUN_county]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="25"
+                          cachedName="GICOUN_county"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GICOUN_county]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICOUN_county]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[GIADDS_state]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="GIADDS_state"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GIADDS_state]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GIADDS_state]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[GICTR__country]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="GICTR__country"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GICTR__country]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICTR__country]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDRSDJ_promised_delivery]"
+                          cachedDataType="dbDate"
+                          cachedName="SDRSDJ_promised_delivery"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDRSDJ_promised_delivery]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDRSDJ_promised_delivery]" />
+                        <inputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].Columns[SDNXTR_status_code_next]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="SDNXTR_status_code_next"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDNXTR_status_code_next]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDNXTR_status_code_next]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[IMBUYR_buyer_number]"
+                          dataType="numeric"
+                          name="IMBUYR_buyer_number"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QN$SPC_supplier_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="QN$SPC_supplier_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDLITM_item_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="SDLITM_item_number" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDDSC1_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="SDDSC1_description" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QV$PRI_pricing_info]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="QV$PRI_pricing_info" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QV$AVC_availability_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="QV$AVC_availability_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QV$CLC_classification_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="QV$CLC_classification_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDUPRC_unit_price]"
+                          dataType="numeric"
+                          name="SDUPRC_unit_price"
+                          precision="15"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDUORG_quantity]"
+                          dataType="numeric"
+                          name="SDUORG_quantity"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDSOBK_quantity_backordered]"
+                          dataType="numeric"
+                          name="SDSOBK_quantity_backordered"
+                          precision="15" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDLNTY_line_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="SDLNTY_line_type" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[IMLNTY_line_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="IMLNTY_line_type" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QCAC10_division_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="QCAC10_division_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDMCU__business_unit]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="SDMCU__business_unit" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDDOC__document_number]"
+                          dataType="numeric"
+                          name="SDDOC__document_number"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDDOCO_salesorder_number]"
+                          dataType="numeric"
+                          name="SDDOCO_salesorder_number"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDDCTO_order_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="SDDCTO_order_type" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDLNID_line_number]"
+                          dataType="numeric"
+                          name="SDLNID_line_number"
+                          precision="15"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QCTRDJ_order_date]"
+                          dataType="dbDate"
+                          name="QCTRDJ_order_date" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDVR01_reference]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="SDVR01_reference" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDVR02_reference_2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="SDVR02_reference_2" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[QCENTB_entered_by]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="QCENTB_entered_by" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDSHAN_shipto]"
+                          dataType="numeric"
+                          name="SDSHAN_shipto"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDSHAN01_mailing_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="SDSHAN01_mailing_name" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDAN8__billto]"
+                          dataType="numeric"
+                          name="SDAN8__billto"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDAN801_mailing_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="SDAN801_mailing_name" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GIADDZ_postal_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="GIADDZ_postal_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GICTY1_city]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="GICTY1_city" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GICOUN_county]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="GICOUN_county" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GIADDS_state]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="GIADDS_state" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[GICTR__country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="GICTR__country" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDRSDJ_promised_delivery]"
+                          dataType="dbDate"
+                          name="SDRSDJ_promised_delivery" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input].ExternalColumns[SDNXTR_status_code_next]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="SDNXTR_status_code_next" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source FBACKRPT1"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        
+--TOP (500) 
+IMBUYR AS IMBUYR_buyer_number, QN$SPC AS QN$SPC_supplier_code, SDLITM AS SDLITM_item_number, SDDSC1 AS SDDSC1_description, QV$PRI AS QV$PRI_pricing_info, QV$AVC AS QV$AVC_availability_code,
+                          QV$CLC AS QV$CLC_classification_code, SDUPRC AS SDUPRC_unit_price, SDUORG AS SDUORG_quantity, SDSOBK AS SDSOBK_quantity_backordered, SDLNTY AS SDLNTY_line_type, IMLNTY AS IMLNTY_line_type, 
+                         QCAC10 AS QCAC10_division_code, SDMCU AS SDMCU__business_unit, SDDOC AS SDDOC__document_number, SDDOCO AS SDDOCO_salesorder_number, SDDCTO AS SDDCTO_order_type, SDLNID AS SDLNID_line_number, 
+                         CONVERT(date, QCTRDJ) AS QCTRDJ_order_date, SDVR01 AS SDVR01_reference, SDVR02 AS SDVR02_reference_2, QCENTB AS QCENTB_entered_by, SDSHAN AS SDSHAN_shipto, SDSHAN01 AS SDSHAN01_mailing_name, 
+                         SDAN8 AS SDAN8__billto, SDAN801 AS SDAN801_mailing_name, GIADDZ AS GIADDZ_postal_code, GICTY1 AS GICTY1_city, GICOUN AS GICOUN_county, GIADDS AS GIADDS_state, GICTR AS GICTR__country, CONVERT(date, 
+                         SDRSDJ) AS SDRSDJ_promised_delivery, SDNXTR AS SDNXTR_status_code_next
+FROM            OPENQUERY(ESYS_PROD, 
+                         '
+
+	SELECT
+		IMBUYR, QN$SPC, SDLITM, SDDSC1, QV$PRI, QV$AVC, QV$CLC
+		, CAST((SDUPRC)/1.0 AS DEC(15,4)) AS SDUPRC
+		, SDUORG, SDSOBK, SDLNTY, IMLNTY, QCAC10, SDMCU, SDDOC, SDDOCO, SDDCTO
+		, CAST((SDLNID)/1.0 AS DEC(15,3)) AS SDLNID
+		, QCTRDJ
+		, SDVR01, SDVR02, QCENTB, SDSHAN, SDSHAN01, SDAN8, SDAN801, GIADDZ, GICTY1, GICOUN, GIADDS, GICTR
+		, SDRSDJ
+		, SDNXTR
+	FROM
+		HSIUSRFLE.FBACKRPT1
+')</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Connections[OleDbConnection]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[IMBUYR_buyer_number]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[IMBUYR_buyer_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[IMBUYR_buyer_number]"
+                          name="IMBUYR_buyer_number"
+                          precision="8"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QN$SPC_supplier_code]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QN$SPC_supplier_code]"
+                          length="6"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QN$SPC_supplier_code]"
+                          name="QN$SPC_supplier_code"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLITM_item_number]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDLITM_item_number]"
+                          length="10"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLITM_item_number]"
+                          name="SDLITM_item_number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDSC1_description]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDDSC1_description]"
+                          length="20"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDSC1_description]"
+                          name="SDDSC1_description"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$PRI_pricing_info]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QV$PRI_pricing_info]"
+                          length="20"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$PRI_pricing_info]"
+                          name="QV$PRI_pricing_info"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$AVC_availability_code]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QV$AVC_availability_code]"
+                          length="1"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$AVC_availability_code]"
+                          name="QV$AVC_availability_code"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$CLC_classification_code]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QV$CLC_classification_code]"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QV$CLC_classification_code]"
+                          name="QV$CLC_classification_code"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDUPRC_unit_price]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDUPRC_unit_price]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDUPRC_unit_price]"
+                          name="SDUPRC_unit_price"
+                          precision="15"
+                          scale="4"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDUORG_quantity]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDUORG_quantity]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDUORG_quantity]"
+                          name="SDUORG_quantity"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSOBK_quantity_backordered]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDSOBK_quantity_backordered]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSOBK_quantity_backordered]"
+                          name="SDSOBK_quantity_backordered"
+                          precision="15"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLNTY_line_type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDLNTY_line_type]"
+                          length="2"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLNTY_line_type]"
+                          name="SDLNTY_line_type"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[IMLNTY_line_type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[IMLNTY_line_type]"
+                          length="2"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[IMLNTY_line_type]"
+                          name="IMLNTY_line_type"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCAC10_division_code]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QCAC10_division_code]"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCAC10_division_code]"
+                          name="QCAC10_division_code"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDMCU__business_unit]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDMCU__business_unit]"
+                          length="12"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDMCU__business_unit]"
+                          name="SDMCU__business_unit"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDOC__document_number]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDDOC__document_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDOC__document_number]"
+                          name="SDDOC__document_number"
+                          precision="8"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDOCO_salesorder_number]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDDOCO_salesorder_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDOCO_salesorder_number]"
+                          name="SDDOCO_salesorder_number"
+                          precision="8"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDCTO_order_type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDDCTO_order_type]"
+                          length="2"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDDCTO_order_type]"
+                          name="SDDCTO_order_type"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLNID_line_number]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDLNID_line_number]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDLNID_line_number]"
+                          name="SDLNID_line_number"
+                          precision="15"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCTRDJ_order_date]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QCTRDJ_order_date]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCTRDJ_order_date]"
+                          name="QCTRDJ_order_date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDVR01_reference]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDVR01_reference]"
+                          length="25"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDVR01_reference]"
+                          name="SDVR01_reference"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDVR02_reference_2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDVR02_reference_2]"
+                          length="25"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDVR02_reference_2]"
+                          name="SDVR02_reference_2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCENTB_entered_by]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QCENTB_entered_by]"
+                          length="10"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[QCENTB_entered_by]"
+                          name="QCENTB_entered_by"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSHAN_shipto]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDSHAN_shipto]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSHAN_shipto]"
+                          name="SDSHAN_shipto"
+                          precision="8"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSHAN01_mailing_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDSHAN01_mailing_name]"
+                          length="20"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDSHAN01_mailing_name]"
+                          name="SDSHAN01_mailing_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDAN8__billto]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDAN8__billto]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDAN8__billto]"
+                          name="SDAN8__billto"
+                          precision="8"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDAN801_mailing_name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDAN801_mailing_name]"
+                          length="30"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDAN801_mailing_name]"
+                          name="SDAN801_mailing_name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GIADDZ_postal_code]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GIADDZ_postal_code]"
+                          length="12"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GIADDZ_postal_code]"
+                          name="GIADDZ_postal_code"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICTY1_city]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GICTY1_city]"
+                          length="25"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICTY1_city]"
+                          name="GICTY1_city"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICOUN_county]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GICOUN_county]"
+                          length="25"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICOUN_county]"
+                          name="GICOUN_county"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GIADDS_state]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GIADDS_state]"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GIADDS_state]"
+                          name="GIADDS_state"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICTR__country]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GICTR__country]"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[GICTR__country]"
+                          name="GICTR__country"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDRSDJ_promised_delivery]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDRSDJ_promised_delivery]"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDRSDJ_promised_delivery]"
+                          name="SDRSDJ_promised_delivery"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDNXTR_status_code_next]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDNXTR_status_code_next]"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].Columns[SDNXTR_status_code_next]"
+                          name="SDNXTR_status_code_next"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[IMBUYR_buyer_number]"
+                          dataType="numeric"
+                          name="IMBUYR_buyer_number"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QN$SPC_supplier_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="QN$SPC_supplier_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDLITM_item_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="SDLITM_item_number" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDDSC1_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="SDDSC1_description" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QV$PRI_pricing_info]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="QV$PRI_pricing_info" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QV$AVC_availability_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="QV$AVC_availability_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QV$CLC_classification_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="QV$CLC_classification_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDUPRC_unit_price]"
+                          dataType="numeric"
+                          name="SDUPRC_unit_price"
+                          precision="15"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDUORG_quantity]"
+                          dataType="numeric"
+                          name="SDUORG_quantity"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDSOBK_quantity_backordered]"
+                          dataType="numeric"
+                          name="SDSOBK_quantity_backordered"
+                          precision="15" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDLNTY_line_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="SDLNTY_line_type" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[IMLNTY_line_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="IMLNTY_line_type" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QCAC10_division_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="QCAC10_division_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDMCU__business_unit]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="SDMCU__business_unit" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDDOC__document_number]"
+                          dataType="numeric"
+                          name="SDDOC__document_number"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDDOCO_salesorder_number]"
+                          dataType="numeric"
+                          name="SDDOCO_salesorder_number"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDDCTO_order_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          name="SDDCTO_order_type" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDLNID_line_number]"
+                          dataType="numeric"
+                          name="SDLNID_line_number"
+                          precision="15"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QCTRDJ_order_date]"
+                          dataType="dbDate"
+                          name="QCTRDJ_order_date" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDVR01_reference]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="SDVR01_reference" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDVR02_reference_2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="SDVR02_reference_2" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[QCENTB_entered_by]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="QCENTB_entered_by" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDSHAN_shipto]"
+                          dataType="numeric"
+                          name="SDSHAN_shipto"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDSHAN01_mailing_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="SDSHAN01_mailing_name" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDAN8__billto]"
+                          dataType="numeric"
+                          name="SDAN8__billto"
+                          precision="8" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDAN801_mailing_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="SDAN801_mailing_name" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GIADDZ_postal_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          name="GIADDZ_postal_code" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GICTY1_city]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="GICTY1_city" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GICOUN_county]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          name="GICOUN_county" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GIADDS_state]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="GIADDS_state" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[GICTR__country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="GICTR__country" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDRSDJ_promised_delivery]"
+                          dataType="dbDate"
+                          name="SDRSDJ_promised_delivery" />
+                        <externalMetadataColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output].ExternalColumns[SDNXTR_status_code_next]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="SDNXTR_status_code_next" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[IMBUYR_buyer_number]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[IMBUYR_buyer_number]"
+                          name="IMBUYR_buyer_number"
+                          precision="8" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QN$SPC_supplier_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QN$SPC_supplier_code]"
+                          name="QN$SPC_supplier_code" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDLITM_item_number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDLITM_item_number]"
+                          name="SDLITM_item_number" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDDSC1_description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDDSC1_description]"
+                          name="SDDSC1_description" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QV$PRI_pricing_info]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QV$PRI_pricing_info]"
+                          name="QV$PRI_pricing_info" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QV$AVC_availability_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QV$AVC_availability_code]"
+                          name="QV$AVC_availability_code" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QV$CLC_classification_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QV$CLC_classification_code]"
+                          name="QV$CLC_classification_code" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDUPRC_unit_price]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDUPRC_unit_price]"
+                          name="SDUPRC_unit_price"
+                          precision="15"
+                          scale="4" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDUORG_quantity]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDUORG_quantity]"
+                          name="SDUORG_quantity"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDSOBK_quantity_backordered]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDSOBK_quantity_backordered]"
+                          name="SDSOBK_quantity_backordered"
+                          precision="15" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDLNTY_line_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDLNTY_line_type]"
+                          name="SDLNTY_line_type" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[IMLNTY_line_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[IMLNTY_line_type]"
+                          name="IMLNTY_line_type" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QCAC10_division_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QCAC10_division_code]"
+                          name="QCAC10_division_code" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDMCU__business_unit]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDMCU__business_unit]"
+                          name="SDMCU__business_unit" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDDOC__document_number]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDDOC__document_number]"
+                          name="SDDOC__document_number"
+                          precision="8" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDDOCO_salesorder_number]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDDOCO_salesorder_number]"
+                          name="SDDOCO_salesorder_number"
+                          precision="8" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDDCTO_order_type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDDCTO_order_type]"
+                          name="SDDCTO_order_type" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDLNID_line_number]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDLNID_line_number]"
+                          name="SDLNID_line_number"
+                          precision="15"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QCTRDJ_order_date]"
+                          dataType="dbDate"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QCTRDJ_order_date]"
+                          name="QCTRDJ_order_date" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDVR01_reference]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDVR01_reference]"
+                          name="SDVR01_reference" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDVR02_reference_2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDVR02_reference_2]"
+                          name="SDVR02_reference_2" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QCENTB_entered_by]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[QCENTB_entered_by]"
+                          name="QCENTB_entered_by" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDSHAN_shipto]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDSHAN_shipto]"
+                          name="SDSHAN_shipto"
+                          precision="8" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDSHAN01_mailing_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDSHAN01_mailing_name]"
+                          name="SDSHAN01_mailing_name" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDAN8__billto]"
+                          dataType="numeric"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDAN8__billto]"
+                          name="SDAN8__billto"
+                          precision="8" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDAN801_mailing_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDAN801_mailing_name]"
+                          name="SDAN801_mailing_name" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GIADDZ_postal_code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="12"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GIADDZ_postal_code]"
+                          name="GIADDZ_postal_code" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GICTY1_city]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GICTY1_city]"
+                          name="GICTY1_city" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GICOUN_county]"
+                          codePage="1252"
+                          dataType="str"
+                          length="25"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GICOUN_county]"
+                          name="GICOUN_county" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GIADDS_state]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GIADDS_state]"
+                          name="GIADDS_state" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GICTR__country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[GICTR__country]"
+                          name="GICTR__country" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDRSDJ_promised_delivery]"
+                          dataType="dbDate"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDRSDJ_promised_delivery]"
+                          name="SDRSDJ_promised_delivery" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDNXTR_status_code_next]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[SDNXTR_status_code_next]"
+                          name="SDNXTR_status_code_next" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\seq_FBACKRPT1_backorder\dft_load_stage.Paths[OLE DB Source Output]"
+                  endId="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seq_FBACKRPT1_backorder\sql_truncate_stage"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{e50b6a11-333f-4b0a-907f-746762177c5a}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_truncate_stage"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="2" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Integration.FBACKRPT1_backorder_Staging" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seq_FBACKRPT1_backorder.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{747769ff-2d3d-4adf-bdda-8e9d378978a0}"
+          DTS:From="Package\seq_FBACKRPT1_backorder\sql_truncate_stage"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\seq_FBACKRPT1_backorder\dft_load_stage" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\seq_FBACKRPT1_backorder\dft_load_stage"
+          TopLeft="15,107.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\seq_FBACKRPT1_backorder\sql_truncate_stage"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\seq_FBACKRPT1_backorder.PrecedenceConstraints[Constraint]"
+          TopLeft="90.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="294,196"
+          Size="294,239"
+          Id="Package\seq_FBACKRPT1_backorder"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\seq_FBACKRPT1_backorder\dft_load_stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="228,42"
+          Id="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging"
+          TopLeft="232,214" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1"
+          TopLeft="237,64" />
+        <EdgeLayout
+          Id="Package\seq_FBACKRPT1_backorder\dft_load_stage.Paths[OLE DB Source Output]"
+          TopLeft="343.75,106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,108"
+              Start="0,0"
+              End="0,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_FBACKRPT1_backorder\dft_load_stage\FBACKRPT1_backorder_Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\seq_FBACKRPT1_backorder\dft_load_stage\OLE DB Source FBACKRPT1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
