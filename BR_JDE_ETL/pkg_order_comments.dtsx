@@ -8,12 +8,12 @@
   DTS:CreatorName="CAHSI\TCrowley"
   DTS:DTSID="{F6DC0BE7-D39D-45FB-8831-2FEB7FA66EFA}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.845.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_order_comments"
   DTS:PackageType="5"
-  DTS:VersionBuild="198"
-  DTS:VersionGUID="{55222560-E991-41E7-9CF5-DE1B7043F5FD}">
+  DTS:VersionBuild="202"
+  DTS:VersionGUID="{3A659D77-F1D6-4F60-A2EC-39054E824EDC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -155,7 +155,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -364,7 +364,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
 -- DROP TABLE Integration.F5503_canned_message_file_parameters_Staging
 --------------------------------------------------------------------------------
 
@@ -798,7 +798,7 @@ FROM
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1051,7 +1051,7 @@ FROM
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
 -- DROP TABLE Integration.F5503_canned_message_file_parameters_Staging
 --------------------------------------------------------------------------------
 
@@ -1509,7 +1509,7 @@ FROM
           PanelSize="295,216"
           Size="295,259"
           Id="Package\seq_F5503_canned_message_file_parameters"
-          TopLeft="82.5,83.5" />
+          TopLeft="5.5,5.5" />
         <NodeLayout
           Size="149,42"
           Id="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage"
@@ -1546,16 +1546,16 @@ FROM
           PanelSize="295,216"
           Size="295,259"
           Id="Package\seq_D1ICMTPF_order_note_Stage"
-          TopLeft="503.666666666667,68.6666666666667" />
+          TopLeft="382.666666666667,9.5" />
         <GroupLayout
-          Text="returns_info"
+          Text="Group "
           ParentId="Package"
-          HeaderHeight="398"
+          HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1882,348"
-          Size="1882,746"
-          Id="13c5f7e0-04d7-4bc8-aa82-eb58c3b31d0d"
-          TopLeft="254.666666666667,153.333333333333">
+          PanelSize="1751,427"
+          Size="1751,470"
+          Id="19eab2a2-0413-4e48-836a-1f845c6680cc"
+          TopLeft="374,372">
           <GroupLayout.ChildrenIds>
             <s:String>Package\seq_F5503_canned_message_file_parameters</s:String>
             <s:String>Package\seq_D1ICMTPF_order_note_Stage</s:String>
