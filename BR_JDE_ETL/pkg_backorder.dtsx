@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\tcrowley"
   DTS:DTSID="{BDEF2803-5F9B-47E5-9FF9-80CCD3B21543}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LastModifiedProductVersion="16.0.845.0"
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_backorder"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{8B0FA427-FBE3-4E24-9462-B3B8D316B57D}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{AE34133C-1135-4D97-BB1E-9D4CF2068947}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -111,7 +111,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -654,7 +654,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        
 --TOP (500) 
 IMBUYR AS IMBUYR_buyer_number, QN$SPC AS QN$SPC_supplier_code, SDLITM AS SDLITM_item_number, SDDSC1 AS SDDSC1_description, QV$PRI AS QV$PRI_pricing_info, QV$AVC AS QV$AVC_availability_code,
                           QV$CLC AS QV$CLC_classification_code, SDUPRC AS SDUPRC_unit_price, SDUORG AS SDUORG_quantity, SDSOBK AS SDSOBK_quantity_backordered, SDLNTY AS SDLNTY_line_type, IMLNTY AS IMLNTY_line_type, 
