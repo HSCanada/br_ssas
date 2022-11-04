@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -1194,6 +1194,34 @@
             "name": "hs_branded_baseline_ind",
             "dataType": "int64",
             "sourceColumn": "hs_branded_baseline_ind"
+          },
+          {
+            "name": "fg_order_ind",
+            "dataType": "boolean",
+            "sourceColumn": "fg_order_ind",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "name": "fg_buy_ind",
+            "dataType": "int64",
+            "sourceColumn": "fg_buy_ind"
+          },
+          {
+            "name": "fg_get_ind",
+            "dataType": "int64",
+            "sourceColumn": "fg_get_ind"
+          },
+          {
+            "name": "fg_deal_id",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "fg_deal_id"
+          },
+          {
+            "name": "fg_deal_ind",
+            "dataType": "boolean",
+            "sourceColumn": "fg_deal_ind",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           }
         ],
         "partitions": [
@@ -1228,8 +1256,15 @@
                 "\tDiscountOrderAmt,",
                 "\tSubsQuantity,",
                 "\tSubsSalesAmt",
-                "",
                 "\t,hs_branded_baseline_ind",
+                "",
+                "\t,fg_order_ind",
+                "\t,fg_buy_ind",
+                "\t,fg_get_ind",
+                "\t,fg_deal_ind",
+                "\t,fg_deal_id",
+                "",
+                "",
                 "",
                 "FROM",
                 "\tFact.Sale_brs AS f"
@@ -1265,8 +1300,15 @@
                   "\tDiscountOrderAmt,",
                   "\tSubsQuantity,",
                   "\tSubsSalesAmt",
-                  "",
                   "\t,hs_branded_baseline_ind",
+                  "",
+                  "\t,fg_order_ind",
+                  "\t,fg_buy_ind",
+                  "\t,fg_get_ind",
+                  "\t,fg_deal_ind",
+                  "\t,fg_deal_id",
+                  "",
+                  "",
                   "",
                   "FROM",
                   "\tFact.Sale_brs AS f</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2090,6 +2132,16 @@
             "name": "GM in Period",
             "expression": "Divide([GP in Period],[Sales in Period])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "fg_buy_count",
+            "expression": "SUM([fg_buy_ind])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "fg_get_count",
+            "expression": "SUM([fg_get_ind])",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
@@ -2121,8 +2173,15 @@
               "\tDiscountOrderAmt,",
               "\tSubsQuantity,",
               "\tSubsSalesAmt",
-              "",
               "\t,hs_branded_baseline_ind",
+              "",
+              "\t,fg_order_ind",
+              "\t,fg_buy_ind",
+              "\t,fg_get_ind",
+              "\t,fg_deal_ind",
+              "\t,fg_deal_id",
+              "",
+              "",
               "",
               "FROM",
               "\tFact.Sale_brs AS f"
@@ -2164,8 +2223,15 @@
               "\tDiscountOrderAmt,",
               "\tSubsQuantity,",
               "\tSubsSalesAmt",
-              "",
               "\t,hs_branded_baseline_ind",
+              "",
+              "\t,fg_order_ind",
+              "\t,fg_buy_ind",
+              "\t,fg_get_ind",
+              "\t,fg_deal_ind",
+              "\t,fg_deal_id",
+              "",
+              "",
               "",
               "FROM",
               "\tFact.Sale_brs AS f</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"

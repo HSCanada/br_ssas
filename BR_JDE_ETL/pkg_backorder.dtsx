@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_backorder"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{AE34133C-1135-4D97-BB1E-9D4CF2068947}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{0D3BB088-A507-4D77-84B8-8C07B1D37B3C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
