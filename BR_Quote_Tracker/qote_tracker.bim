@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Integrated Security=SSPI;Persist Security Info=false",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Integrated Security=SSPI;Persist Security Info=false",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -2847,6 +2847,30 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": "left('Customer Billto'[SalesplanType],6)"
+          },
+          {
+            "name": "billto_adhoc_model_amt1",
+            "dataType": "decimal",
+            "sourceColumn": "billto_adhoc_model_amt1",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "billto_adhoc_model_amt2",
+            "dataType": "decimal",
+            "sourceColumn": "billto_adhoc_model_amt2",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ],
         "partitions": [
@@ -2873,6 +2897,8 @@
                 " , SalesplanType",
                 ",billto_adhoc_model_code1",
                 ",billto_adhoc_model_code2",
+                ",billto_adhoc_model_amt1",
+                ",billto_adhoc_model_amt2",
                 "FROM",
                 "  Dimension.Customer_qt"
               ],
@@ -2899,6 +2925,8 @@
                   " , SalesplanType",
                   ",billto_adhoc_model_code1",
                   ",billto_adhoc_model_code2",
+                  ",billto_adhoc_model_amt1",
+                  ",billto_adhoc_model_amt2",
                   "FROM",
                   "  Dimension.Customer_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"ShipToPrimary\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"City\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"DateAccountOpened\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Adjustment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjEffectiveDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjUserId\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -2933,6 +2961,8 @@
               " , SalesplanType",
               ",billto_adhoc_model_code1",
               ",billto_adhoc_model_code2",
+              ",billto_adhoc_model_amt1",
+              ",billto_adhoc_model_amt2",
               "FROM",
               "  Dimension.Customer_qt"
             ]
@@ -2965,6 +2995,8 @@
               " , SalesplanType",
               ",billto_adhoc_model_code1",
               ",billto_adhoc_model_code2",
+              ",billto_adhoc_model_amt1",
+              ",billto_adhoc_model_amt2",
               "FROM",
               "  Dimension.Customer_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"ShipToPrimary\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"City\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"DateAccountOpened\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"Adjustment\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjEffectiveDate\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer_qt\" ColumnName=\"AdjUserId\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
