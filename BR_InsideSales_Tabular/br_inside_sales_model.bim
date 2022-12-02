@@ -867,6 +867,26 @@
             "name": "adhoc_model_code2",
             "dataType": "string",
             "sourceColumn": "adhoc_model_code2"
+          },
+          {
+            "name": "adhoc_model_1_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_1_text"
+          },
+          {
+            "name": "adhoc_model_2_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_2_text"
+          },
+          {
+            "name": "adhoc_model_3_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_3_text"
+          },
+          {
+            "name": "MarketClassNewCode",
+            "dataType": "string",
+            "sourceColumn": "MarketClassNewCode"
           }
         ],
         "partitions": [
@@ -902,7 +922,13 @@
                 " ,adhoc_model_code",
                 " ,adhoc_model_code2",
                 "",
+                "      ,[adhoc_model_1_text]",
+                "      ,[adhoc_model_2_text]",
+                "      ,[adhoc_model_3_text]",
+                "      ,[MarketClassNewCode]",
+                "",
                 "FROM",
+                "",
                 "  Dimension.Customer"
               ],
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
@@ -938,7 +964,13 @@
                   " ,adhoc_model_code",
                   " ,adhoc_model_code2",
                   "",
+                  "      ,[adhoc_model_1_text]",
+                  "      ,[adhoc_model_2_text]",
+                  "      ,[adhoc_model_3_text]",
+                  "      ,[MarketClassNewCode]",
+                  "",
                   "FROM",
+                  "",
                   "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
@@ -991,7 +1023,13 @@
               " ,adhoc_model_code",
               " ,adhoc_model_code2",
               "",
+              "      ,[adhoc_model_1_text]",
+              "      ,[adhoc_model_2_text]",
+              "      ,[adhoc_model_3_text]",
+              "      ,[MarketClassNewCode]",
+              "",
               "FROM",
+              "",
               "  Dimension.Customer"
             ]
           },
@@ -1025,7 +1063,13 @@
               " ,adhoc_model_code",
               " ,adhoc_model_code2",
               "",
+              "      ,[adhoc_model_1_text]",
+              "      ,[adhoc_model_2_text]",
+              "      ,[adhoc_model_3_text]",
+              "      ,[MarketClassNewCode]",
+              "",
               "FROM",
+              "",
               "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
@@ -1802,6 +1846,31 @@
             "name": "SubstItem",
             "dataType": "string",
             "sourceColumn": "SubstItem"
+          },
+          {
+            "name": "adhoc_model_code",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code"
+          },
+          {
+            "name": "adhoc_model_code2",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code2"
+          },
+          {
+            "name": "adhoc_model_code3",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code3"
+          },
+          {
+            "name": "adhoc_model_code4",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code4"
+          },
+          {
+            "name": "adhoc_model_code5",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_code5"
           }
         ],
         "partitions": [
@@ -1833,6 +1902,13 @@
                 "\t\tTHEN ''",
                 "\t\tELSE isub.Item",
                 "\tEND AS SubstItem",
+                "",
+                "      ,i.[adhoc_model_code]",
+                "      ,i.[adhoc_model_code2]",
+                "      ,i.[adhoc_model_code3]",
+                "      ,i.[adhoc_model_code4]",
+                "      ,i.[adhoc_model_code5]",
+                "",
                 "",
                 "FROM ",
                 "\t[Dimension].[Item] i",
@@ -1878,6 +1954,13 @@
                   "\t\tTHEN ''",
                   "\t\tELSE isub.Item",
                   "\tEND AS SubstItem",
+                  "",
+                  "      ,i.[adhoc_model_code]",
+                  "      ,i.[adhoc_model_code2]",
+                  "      ,i.[adhoc_model_code3]",
+                  "      ,i.[adhoc_model_code4]",
+                  "      ,i.[adhoc_model_code5]",
+                  "",
                   "",
                   "FROM ",
                   "\t[Dimension].[Item] i",
@@ -1933,6 +2016,13 @@
               "\t\tELSE isub.Item",
               "\tEND AS SubstItem",
               "",
+              "      ,i.[adhoc_model_code]",
+              "      ,i.[adhoc_model_code2]",
+              "      ,i.[adhoc_model_code3]",
+              "      ,i.[adhoc_model_code4]",
+              "      ,i.[adhoc_model_code5]",
+              "",
+              "",
               "FROM ",
               "\t[Dimension].[Item] i",
               "",
@@ -1983,6 +2073,13 @@
               "\t\tTHEN ''",
               "\t\tELSE isub.Item",
               "\tEND AS SubstItem",
+              "",
+              "      ,i.[adhoc_model_code]",
+              "      ,i.[adhoc_model_code2]",
+              "      ,i.[adhoc_model_code3]",
+              "      ,i.[adhoc_model_code4]",
+              "      ,i.[adhoc_model_code5]",
+              "",
               "",
               "FROM ",
               "\t[Dimension].[Item] i",

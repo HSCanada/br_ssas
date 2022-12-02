@@ -783,6 +783,26 @@
             "name": "adhoc_model_code2",
             "dataType": "string",
             "sourceColumn": "adhoc_model_code2"
+          },
+          {
+            "name": "adhoc_model_1_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_1_text"
+          },
+          {
+            "name": "adhoc_model_2_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_2_text"
+          },
+          {
+            "name": "adhoc_model_3_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_3_text"
+          },
+          {
+            "name": "IsrName",
+            "dataType": "string",
+            "sourceColumn": "IsrName"
           }
         ],
         "partitions": [
@@ -825,6 +845,11 @@
                 "",
                 "\t,adhoc_model_code",
                 "\t,adhoc_model_code2",
+                "\t",
+                "\t,[adhoc_model_1_text]",
+                "\t,[adhoc_model_2_text]",
+                "\t,[adhoc_model_3_text]",
+                "\t,[IsrName]",
                 "",
                 "",
                 "FROM",
@@ -869,6 +894,11 @@
                   "",
                   "\t,adhoc_model_code",
                   "\t,adhoc_model_code2",
+                  "\t",
+                  "\t,[adhoc_model_1_text]",
+                  "\t,[adhoc_model_2_text]",
+                  "\t,[adhoc_model_3_text]",
+                  "\t,[IsrName]",
                   "",
                   "",
                   "FROM",
@@ -921,6 +951,11 @@
               "",
               "\t,adhoc_model_code",
               "\t,adhoc_model_code2",
+              "\t",
+              "\t,[adhoc_model_1_text]",
+              "\t,[adhoc_model_2_text]",
+              "\t,[adhoc_model_3_text]",
+              "\t,[IsrName]",
               "",
               "",
               "FROM",
@@ -971,6 +1006,11 @@
               "",
               "\t,adhoc_model_code",
               "\t,adhoc_model_code2",
+              "\t",
+              "\t,[adhoc_model_1_text]",
+              "\t,[adhoc_model_2_text]",
+              "\t,[adhoc_model_3_text]",
+              "\t,[IsrName]",
               "",
               "",
               "FROM",
