@@ -708,12 +708,6 @@
             "name": "SalesCategoryCode",
             "dataType": "string",
             "sourceColumn": "SalesCategoryCode"
-          },
-          {
-            "type": "calculated",
-            "name": "Add Column2",
-            "dataType": "int64",
-            "isDataTypeInferred": true
           }
         ],
         "partitions": [
