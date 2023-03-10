@@ -2164,8 +2164,7 @@
           },
           {
             "name": "Qty in Period",
-            "expression": "SUM([Quantity])",
-            "isHidden": true
+            "expression": "SUM([Quantity])"
           },
           {
             "name": "Comm_EPS in Period",
@@ -2352,8 +2351,7 @@
           {
             "name": "Lines in Period",
             "expression": "COUNTA([LineNumber])",
-            "formatString": "#,0",
-            "isHidden": true
+            "formatString": "#,0"
           },
           {
             "name": "MTD Salesorder",

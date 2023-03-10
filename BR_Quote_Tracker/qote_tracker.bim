@@ -2112,6 +2112,11 @@
             "name": "MTD GP w/Chargeback Var %",
             "expression": "DIVIDE( [MTD GP w/Chargeback] - [PY MTD GP w/Chargeback], [PY MTD GP w/Chargeback])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "GM in Period",
+            "expression": " DIVIDE([GP in Period],[Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -2826,10 +2831,10 @@
           },
           {
             "type": "calculated",
-            "name": "YTD CommStatus Score",
+            "name": "MTD CommStatus Score",
             "dataType": "string",
             "isDataTypeInferred": true,
-            "expression": "IF('Sales'[YTD GM]<0.35,\"HALF\", \"FULL\")"
+            "expression": "IF('Sales'[MTD GM]<0.35,\"HALF\", \"FULL\")"
           },
           {
             "name": "billto_adhoc_model_code1",
@@ -3658,6 +3663,11 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "IsrName",
+            "dataType": "string",
+            "sourceColumn": "IsrName"
           }
         ],
         "partitions": [
@@ -3700,6 +3710,7 @@
                 "\t,c.adhoc_model_3_text",
                 "",
                 "\t,t.DSO_operatory_count",
+                "\t,c.IsrName",
                 "",
                 "",
                 "FROM",
@@ -3747,6 +3758,7 @@
                   "\t,c.adhoc_model_3_text",
                   "",
                   "\t,t.DSO_operatory_count",
+                  "\t,c.IsrName",
                   "",
                   "",
                   "FROM",
@@ -3857,6 +3869,7 @@
               "\t,c.adhoc_model_3_text",
               "",
               "\t,t.DSO_operatory_count",
+              "\t,c.IsrName",
               "",
               "",
               "FROM",
@@ -3910,6 +3923,7 @@
               "\t,c.adhoc_model_3_text",
               "",
               "\t,t.DSO_operatory_count",
+              "\t,c.IsrName",
               "",
               "",
               "FROM",
