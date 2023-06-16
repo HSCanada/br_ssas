@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_pricing"
   DTS:PackageType="5"
-  DTS:VersionBuild="191"
-  DTS:VersionGUID="{632EDFCC-1409-4492-ACF6-58F4206D89D5}">
+  DTS:VersionBuild="192"
+  DTS:VersionGUID="{27BE63A9-38B1-4846-BA60-C207D2C628F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -635,7 +635,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -3329,7 +3329,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -3356,7 +3356,6 @@ FROM
       DTS:refId="Package\seq_F0005_user_defined_codes"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:Disabled="True"
       DTS:DTSID="{47026D18-2A42-47F2-BABA-C579A8CBE4F1}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -7977,7 +7976,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -8695,7 +8694,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -10025,7 +10024,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -11244,7 +11243,7 @@ PJEFTJ &lt;&gt; 118366 AND
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -12018,7 +12017,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -13709,7 +13708,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -15374,7 +15373,7 @@ CONCAT(CONCAT(''1'',SUBSTR(CHAR(YEAR(CURRENT DATE)),3,2)),SUBSTR(CHAR(DIGITS(DAY
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -16517,7 +16516,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -17276,7 +17275,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -23973,7 +23972,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -25162,7 +25161,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="14">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -25978,7 +25977,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="14">
+          DTS:ThreadHint="15">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -27505,7 +27504,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="sql_truncate_stage"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="15">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -31023,7 +31022,7 @@ FROM
     design-time-name="Package\seq_F0005_user_defined_codes\dft_load_stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="184,42"
           Id="Package\seq_F0005_user_defined_codes\dft_load_stage\OLE DB Source F0150"
@@ -31051,9 +31050,7 @@ FROM
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-27.84953125,68.69921875,55.6990625,11.1015625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
