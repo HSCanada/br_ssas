@@ -52,9 +52,16 @@
           },
           {
             "name": "SalesDate",
-            "dataType": "string",
+            "dataType": "dateTime",
             "isHidden": true,
-            "sourceColumn": "SalesDate"
+            "sourceColumn": "SalesDate",
+            "formatString": "Short Date",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
+            ]
           },
           {
             "name": "ItemKey",
@@ -623,7 +630,13 @@
           {
             "name": "Last Order Date",
             "expression": " CALCULATE([Last Date in Period] ,'sales'[Lastorderind]=1)",
-            "formatString": "#,0"
+            "formatString": "Short Date",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
+            ]
           },
           {
             "name": "Last Date in Period",
@@ -1076,9 +1089,16 @@
         "columns": [
           {
             "name": "SalesDate",
-            "dataType": "string",
+            "dataType": "dateTime",
             "sourceColumn": "SalesDate",
-            "sourceProviderType": "WChar"
+            "formatString": "Short Date",
+            "sourceProviderType": "WChar",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
+            ]
           },
           {
             "name": "DaySeq",
@@ -1214,10 +1234,17 @@
           {
             "type": "calculatedTableColumn",
             "name": "SalesDate",
-            "dataType": "string",
+            "dataType": "dateTime",
             "isNameInferred": true,
             "isDataTypeInferred": true,
-            "sourceColumn": "Period[SalesDate]"
+            "sourceColumn": "Period[SalesDate]",
+            "formatString": "Short Date",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
+            ]
           },
           {
             "type": "calculatedTableColumn",
@@ -1399,10 +1426,11 @@
           {
             "name": "Current Day",
             "expression": "MAX([SalesDate])",
+            "formatString": "Short Date",
             "annotations": [
               {
                 "name": "Format",
-                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"4105\" Group=\"LongDate\" FormatString=\"d-MMM-yy\" /></DateTimes></Format>"
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
               }
             ]
           }

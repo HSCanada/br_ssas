@@ -238,6 +238,21 @@
             "name": "MarketClassNewCode",
             "dataType": "string",
             "sourceColumn": "MarketClassNewCode"
+          },
+          {
+            "name": "adhoc_model_1_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_1_text"
+          },
+          {
+            "name": "adhoc_model_2_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_2_text"
+          },
+          {
+            "name": "adhoc_model_3_text",
+            "dataType": "string",
+            "sourceColumn": "adhoc_model_3_text"
           }
         ],
         "partitions": [
@@ -288,6 +303,10 @@
                 ",ApplyFreightInd",
                 ",ApplySmallOrderChargesInd",
                 ",Dimension.Customer.MarketClassNewCode",
+                ",adhoc_model_1_text",
+                ",adhoc_model_2_text",
+                ",adhoc_model_3_text",
+                "",
                 "",
                 "FROM",
                 "  Dimension.Customer"
@@ -339,6 +358,10 @@
                   ",ApplyFreightInd",
                   ",ApplySmallOrderChargesInd",
                   ",Dimension.Customer.MarketClassNewCode",
+                  ",adhoc_model_1_text",
+                  ",adhoc_model_2_text",
+                  ",adhoc_model_3_text",
+                  "",
                   "",
                   "FROM",
                   "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -444,6 +467,10 @@
               ",ApplyFreightInd",
               ",ApplySmallOrderChargesInd",
               ",Dimension.Customer.MarketClassNewCode",
+              ",adhoc_model_1_text",
+              ",adhoc_model_2_text",
+              ",adhoc_model_3_text",
+              "",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -501,6 +528,10 @@
               ",ApplyFreightInd",
               ",ApplySmallOrderChargesInd",
               ",Dimension.Customer.MarketClassNewCode",
+              ",adhoc_model_1_text",
+              ",adhoc_model_2_text",
+              ",adhoc_model_3_text",
+              "",
               "",
               "FROM",
               "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -708,6 +739,16 @@
             "name": "SalesCategoryCode",
             "dataType": "string",
             "sourceColumn": "SalesCategoryCode"
+          },
+          {
+            "name": "minor_adhoc_model_code1",
+            "dataType": "string",
+            "sourceColumn": "minor_adhoc_model_code1"
+          },
+          {
+            "name": "minor_adhoc_model_code2",
+            "dataType": "string",
+            "sourceColumn": "minor_adhoc_model_code2"
           }
         ],
         "partitions": [
@@ -758,6 +799,9 @@
                 ",comm_bonus3_cd",
                 ",mpc_comm_bonus3_cd",
                 ",SalesCategoryCode",
+                "",
+                ",minor_adhoc_model_code1",
+                ",minor_adhoc_model_code2",
                 "",
                 "",
                 "FROM",
@@ -811,6 +855,9 @@
                   ",comm_bonus3_cd",
                   ",mpc_comm_bonus3_cd",
                   ",SalesCategoryCode",
+                  "",
+                  ",minor_adhoc_model_code1",
+                  ",minor_adhoc_model_code2",
                   "",
                   "",
                   "FROM",
@@ -874,6 +921,9 @@
               ",mpc_comm_bonus3_cd",
               ",SalesCategoryCode",
               "",
+              ",minor_adhoc_model_code1",
+              ",minor_adhoc_model_code2",
+              "",
               "",
               "FROM",
               "  Dimension.Item"
@@ -932,6 +982,9 @@
               ",comm_bonus3_cd",
               ",mpc_comm_bonus3_cd",
               ",SalesCategoryCode",
+              "",
+              ",minor_adhoc_model_code1",
+              ",minor_adhoc_model_code2",
               "",
               "",
               "FROM",
@@ -2345,8 +2398,7 @@
           {
             "name": "SalesOrder in Period",
             "expression": "DISTINCTCOUNT([SalesOrderNumber])",
-            "formatString": "#,0",
-            "isHidden": true
+            "formatString": "#,0"
           },
           {
             "name": "Lines in Period",
