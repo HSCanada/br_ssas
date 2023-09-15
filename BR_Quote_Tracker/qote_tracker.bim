@@ -3668,6 +3668,11 @@
             "name": "IsrName",
             "dataType": "string",
             "sourceColumn": "IsrName"
+          },
+          {
+            "name": "SegmentCodeNew",
+            "dataType": "string",
+            "sourceColumn": "SegmentCodeNew"
           }
         ],
         "partitions": [
@@ -3711,6 +3716,7 @@
                 "",
                 "\t,t.DSO_operatory_count",
                 "\t,c.IsrName",
+                "\t,c.SegmentCodeNEW AS SegmentCodeNew",
                 "",
                 "",
                 "FROM",
@@ -3759,6 +3765,7 @@
                   "",
                   "\t,t.DSO_operatory_count",
                   "\t,c.IsrName",
+                  "\t,c.SegmentCodeNEW AS SegmentCodeNew",
                   "",
                   "",
                   "FROM",
@@ -3870,6 +3877,7 @@
               "",
               "\t,t.DSO_operatory_count",
               "\t,c.IsrName",
+              "\t,c.SegmentCodeNEW AS SegmentCodeNew",
               "",
               "",
               "FROM",
@@ -3924,6 +3932,7 @@
               "",
               "\t,t.DSO_operatory_count",
               "\t,c.IsrName",
+              "\t,c.SegmentCodeNEW AS SegmentCodeNew",
               "",
               "",
               "FROM",
