@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -253,6 +253,11 @@
             "name": "adhoc_model_3_text",
             "dataType": "string",
             "sourceColumn": "adhoc_model_3_text"
+          },
+          {
+            "name": "eps_branch",
+            "dataType": "string",
+            "sourceColumn": "eps_branch"
           }
         ],
         "partitions": [
@@ -306,6 +311,8 @@
                 ",adhoc_model_1_text",
                 ",adhoc_model_2_text",
                 ",adhoc_model_3_text",
+                "",
+                ",eps_branch",
                 "",
                 "",
                 "FROM",
@@ -361,6 +368,8 @@
                   ",adhoc_model_1_text",
                   ",adhoc_model_2_text",
                   ",adhoc_model_3_text",
+                  "",
+                  ",eps_branch",
                   "",
                   "",
                   "FROM",
@@ -471,6 +480,8 @@
               ",adhoc_model_2_text",
               ",adhoc_model_3_text",
               "",
+              ",eps_branch",
+              "",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -531,6 +542,8 @@
               ",adhoc_model_1_text",
               ",adhoc_model_2_text",
               ",adhoc_model_3_text",
+              "",
+              ",eps_branch",
               "",
               "",
               "FROM",
@@ -749,6 +762,11 @@
             "name": "minor_adhoc_model_code2",
             "dataType": "string",
             "sourceColumn": "minor_adhoc_model_code2"
+          },
+          {
+            "name": "comm_group_eps_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_group_eps_cd"
           }
         ],
         "partitions": [
@@ -803,6 +821,7 @@
                 ",minor_adhoc_model_code1",
                 ",minor_adhoc_model_code2",
                 "",
+                ",comm_group_eps_cd",
                 "",
                 "FROM",
                 "  Dimension.Item"
@@ -859,6 +878,7 @@
                   ",minor_adhoc_model_code1",
                   ",minor_adhoc_model_code2",
                   "",
+                  ",comm_group_eps_cd",
                   "",
                   "FROM",
                   "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -924,6 +944,7 @@
               ",minor_adhoc_model_code1",
               ",minor_adhoc_model_code2",
               "",
+              ",comm_group_eps_cd",
               "",
               "FROM",
               "  Dimension.Item"
@@ -986,6 +1007,7 @@
               ",minor_adhoc_model_code1",
               ",minor_adhoc_model_code2",
               "",
+              ",comm_group_eps_cd",
               "",
               "FROM",
               "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2774,6 +2796,38 @@
           {
             "name": "Rolling 12mo Sales Var %",
             "expression": "DIVIDE( [Rolling 12mo Sales]-[PY Rolling 12mo Sales],[PY Rolling 12mo Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Private Sales in Period",
+            "expression": " CALCULATE ( [Sales in Period], 'Item'[Label] = \"P\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Private GP in Period",
+            "expression": " CALCULATE ( [GP in Period], 'Item'[Label] = \"P\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Private Sales Share in Period",
+            "expression": "DIVIDE([Private Sales in Period], [Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "GM in Period",
+            "expression": "DIVIDE([GP in Period], [Sales in Period])",
             "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
