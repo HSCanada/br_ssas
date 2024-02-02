@@ -1,0 +1,1008 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer CAHSIONNLSQL1 BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateAccount",
+        "account": "CAHSI\\srv_cahsionnlsql1",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "BRS_DS_Day",
+        "columns": [
+          {
+            "name": "SalesDate",
+            "dataType": "dateTime",
+            "sourceColumn": "SalesDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "DayNumber",
+            "dataType": "int64",
+            "sourceColumn": "DayNumber",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "DaySeq",
+            "dataType": "int64",
+            "sourceColumn": "DaySeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "DayType",
+            "dataType": "string",
+            "sourceColumn": "DayType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Comment",
+            "dataType": "string",
+            "sourceColumn": "Comment",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SalesWeighting01",
+            "dataType": "double",
+            "sourceColumn": "SalesWeighting01",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "SalesWeighting02",
+            "dataType": "double",
+            "sourceColumn": "SalesWeighting02",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "SalesWeighting03",
+            "dataType": "double",
+            "sourceColumn": "SalesWeighting03",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "StatusCd",
+            "dataType": "int64",
+            "sourceColumn": "StatusCd",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DS_Day",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_DS_Day].* FROM [dbo].[BRS_DS_Day] ",
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_DS_Day].* FROM [dbo].[BRS_DS_Day] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DS_Day"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "BRS_DS_Market_Rollup",
+        "columns": [
+          {
+            "name": "MarketClass",
+            "dataType": "string",
+            "sourceColumn": "MarketClass",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketClassDesc",
+            "dataType": "string",
+            "sourceColumn": "MarketClassDesc",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketRollup_L1",
+            "dataType": "string",
+            "sourceColumn": "MarketRollup_L1",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MarketRollup_L2",
+            "dataType": "string",
+            "sourceColumn": "MarketRollup_L2"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DS_Market_Rollup",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2",
+                "FROM dbo.BRS_CustomerMarketClass",
+                "WHERE (StatusCd <> 0)"
+              ],
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2",
+                  "FROM dbo.BRS_CustomerMarketClass",
+                  "WHERE (StatusCd <> 0)</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2",
+              "FROM dbo.BRS_CustomerMarketClass",
+              "WHERE (StatusCd <> 0)"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DS_Market_Rollup"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT MarketClass, MarketClassDesc, MarketRollup_L1, MarketRollup_L2",
+              "FROM dbo.BRS_CustomerMarketClass",
+              "WHERE (StatusCd <> 0)</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "BRS_DS_Period",
+        "columns": [
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "QuarterNum",
+            "dataType": "int64",
+            "sourceColumn": "QuarterNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "WorkingDaysMonth",
+            "dataType": "int64",
+            "sourceColumn": "WorkingDaysMonth",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "MonthSeq",
+            "dataType": "int64",
+            "sourceColumn": "MonthSeq",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInQtr",
+            "dataType": "int64",
+            "sourceColumn": "FirstMonthSeqInQtr",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FirstMonthSeqInYear",
+            "dataType": "int64",
+            "sourceColumn": "FirstMonthSeqInYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "LastWorkingDt",
+            "dataType": "dateTime",
+            "sourceColumn": "LastWorkingDt",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DS_Period",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_DS_Period].* FROM [dbo].[BRS_DS_Period] ",
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Working Days",
+            "expression": "sum([WorkingDaysMonth])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Total Working Days in Month",
+            "expression": "CALCULATE([Working Days],FILTER(ALL(BRS_DS_Period),[MonthSeq]=LOOKUPVALUE([MonthSeq],[FiscalMonth],max(BRS_DS_Config[FiscalMonth]))))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Total Working Days in Quarter",
+            "expression": "CALCULATE([Working Days],FILTER(ALL(BRS_DS_Period),[FirstMonthSeqInQtr]=LOOKUPVALUE([FirstMonthSeqInQtr],[FiscalMonth],max(BRS_DS_Config[FiscalMonth]))))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Total Working Days in Year",
+            "expression": "CALCULATE([Working Days],FILTER(ALL(BRS_DS_Period),[FirstMonthSeqInYear]=LOOKUPVALUE([FirstMonthSeqInYear],[FiscalMonth],max(BRS_DS_Config[FiscalMonth]))))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Working Days in Quarter",
+            "expression": "CALCULATE([Working Days],FILTER(ALL(BRS_DS_Period),[FirstMonthSeqInQtr]=LOOKUPVALUE([FirstMonthSeqInQtr],[FiscalMonth],max(BRS_DS_Config[FiscalMonth])) && [FiscalMonth] <= MAX(BRS_DS_Config[PriorFiscalMonth]) ))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Working Days in Year",
+            "expression": "CALCULATE([Working Days],FILTER(ALL(BRS_DS_Period),[FiscalMonth] >= MAX(BRS_DS_Config[YearFirstFiscalMonth]) && [FiscalMonth] <= MAX(BRS_DS_Config[PriorFiscalMonth])))",
+            "formatString": "#,0"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_DS_Period].* FROM [dbo].[BRS_DS_Period] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DS_Period"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "BRS_DS_Cube",
+        "columns": [
+          {
+            "name": "TimePeriod",
+            "dataType": "string",
+            "sourceColumn": "TimePeriod",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "DAY",
+            "dataType": "string",
+            "sourceColumn": "DAY",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "MTD",
+            "dataType": "string",
+            "sourceColumn": "MTD",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "QTD",
+            "dataType": "string",
+            "sourceColumn": "QTD",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "YTD",
+            "dataType": "string",
+            "sourceColumn": "YTD",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Branch",
+            "dataType": "string",
+            "sourceColumn": "Branch",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "GLBU_Class",
+            "dataType": "string",
+            "sourceColumn": "GLBU_Class",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "AdjCode",
+            "dataType": "string",
+            "sourceColumn": "AdjCode",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "SalesDivision",
+            "dataType": "string",
+            "sourceColumn": "SalesDivision",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "TrxSrc",
+            "dataType": "string",
+            "sourceColumn": "TrxSrc",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "MarketClass",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "MarketClass",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "SegCd",
+            "dataType": "string",
+            "sourceColumn": "SegCd",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "CategoryRollupPPE",
+            "dataType": "string",
+            "sourceColumn": "CategoryRollupPPE",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "sourceProviderType": "VarChar"
+          },
+          {
+            "name": "SalesAmt",
+            "dataType": "double",
+            "sourceColumn": "SalesAmt",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "GPAmt",
+            "dataType": "double",
+            "sourceColumn": "GPAmt",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "SalesDate",
+            "dataType": "dateTime",
+            "sourceColumn": "SalesDate",
+            "formatString": "General Date",
+            "sourceProviderType": "Date"
+          },
+          {
+            "name": "UniqueID",
+            "dataType": "int64",
+            "sourceColumn": "UniqueID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SalesAcqAmt",
+            "dataType": "double",
+            "sourceColumn": "SalesAcqAmt",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "GPAcqAmt",
+            "dataType": "double",
+            "sourceColumn": "GPAcqAmt",
+            "sourceProviderType": "Double"
+          },
+          {
+            "type": "calculated",
+            "name": "SalesDivisionAdj",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if([GLBU_Class]=\"TEETH\",\"AAL\",[SalesDivision])"
+          },
+          {
+            "type": "calculated",
+            "name": "KeyBranch",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CONCATENATE([GLBU_Class],[Branch])"
+          },
+          {
+            "type": "calculated",
+            "name": "KeyMarket_Merch",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CONCATENATE(RELATED(BRS_DS_Market_Rollup[MarketRollup_L1]),[Branch])"
+          },
+          {
+            "type": "calculated",
+            "name": "KeyMarket_Equip",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CONCATENATE(RELATED(BRS_DS_GLBU_Rollup[GLBU_ClassSM_L1]),CONCATENATE(RELATED(BRS_DS_Market_Rollup[MarketRollup_L2]),[Branch]))"
+          },
+          {
+            "type": "calculated",
+            "name": "KeyMarket_Equip_Corp",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CONCATENATE(RELATED(BRS_DS_GLBU_Rollup[GLBU_ClassSM_L1]),RELATED(BRS_DS_Market_Rollup[MarketRollup_L2]))"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DS_Cube",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": "Exec BRS_DS_Cube_proc 0",
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec BRS_DS_Cube_proc 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Sales",
+            "expression": "sum([SalesAmt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DAY Sales",
+            "expression": "CALCULATE([Total Sales],BRS_DS_Cube[DAY]=\"DAY\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales",
+            "expression": "CALCULATE([Total Sales],BRS_DS_Cube[MTD]=\"MTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD Sales",
+            "expression": "CALCULATE([Total Sales],BRS_DS_Cube[QTD]=\"QTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales",
+            "expression": "CALCULATE([Total Sales],BRS_DS_Cube[YTD]=\"YTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total GP",
+            "expression": "sum([GPAmt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DAY GP",
+            "expression": "CALCULATE([Total GP],BRS_DS_Cube[DAY]=\"DAY\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP",
+            "expression": "CALCULATE([Total GP],BRS_DS_Cube[MTD]=\"MTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD GP",
+            "expression": "CALCULATE([Total GP],BRS_DS_Cube[QTD]=\"QTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP",
+            "expression": "CALCULATE([Total GP],BRS_DS_Cube[YTD]=\"YTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total Acq Sales",
+            "expression": "sum([SalesAcqAmt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DAY Acq Sales",
+            "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[DAY]=\"DAY\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Acq Sales",
+            "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[MTD]=\"MTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD Acq Sales",
+            "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[QTD]=\"QTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Acq Sales",
+            "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[YTD]=\"YTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total Acq GP",
+            "expression": "sum([GPAcqAmt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DAY Acq GP",
+            "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[DAY]=\"DAY\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Acq GP",
+            "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[MTD]=\"MTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD Acq GP",
+            "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[QTD]=\"QTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Acq GP",
+            "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[YTD]=\"YTD\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "Exec BRS_DS_Cube_proc 0"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DS_Cube"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec BRS_DS_Cube_proc 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "BRS_DS_Config",
+        "columns": [
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "SalesDate",
+            "dataType": "dateTime",
+            "sourceColumn": "SalesDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DayNumber",
+            "dataType": "int64",
+            "sourceColumn": "DayNumber",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "DayType",
+            "dataType": "string",
+            "sourceColumn": "DayType",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayStatusCd",
+            "dataType": "int64",
+            "sourceColumn": "DayStatusCd",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ExceptionCd",
+            "dataType": "int64",
+            "sourceColumn": "ExceptionCd",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "ExceptionNote",
+            "dataType": "string",
+            "sourceColumn": "ExceptionNote",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNum",
+            "dataType": "int64",
+            "sourceColumn": "MonthNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "QuarterNum",
+            "dataType": "int64",
+            "sourceColumn": "QuarterNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "YearNum",
+            "dataType": "int64",
+            "sourceColumn": "YearNum",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "LastWorkingDt",
+            "dataType": "dateTime",
+            "sourceColumn": "LastWorkingDt",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "PriorFiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "PriorFiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "YearFirstFiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "YearFirstFiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DayComment",
+            "dataType": "string",
+            "sourceColumn": "DayComment",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "OffsetDaySeq_Yoy_Fiscal_SameDay",
+            "dataType": "int64",
+            "sourceColumn": "OffsetDaySeq_Yoy_Fiscal_SameDay",
+            "sourceProviderType": "SmallInt"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DS_Config",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_DS_Config].* FROM [dbo].[BRS_DS_Config] ",
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_DS_Config].* FROM [dbo].[BRS_DS_Config] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DS_Config"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "BRS_DS_GLBU_Rollup",
+        "columns": [
+          {
+            "name": "GLBU_Class",
+            "dataType": "string",
+            "sourceColumn": "GLBU_Class",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassNm",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassNm",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassDS_L1",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassDS_L1",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassSM_L2",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassSM_L2",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassSM_L1",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassSM_L1",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassUS_L1",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassUS_L1",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "CorpParticipationFactor",
+            "dataType": "double",
+            "sourceColumn": "CorpParticipationFactor",
+            "sourceProviderType": "Single"
+          },
+          {
+            "name": "ReportingClass",
+            "dataType": "string",
+            "sourceColumn": "ReportingClass",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GLBU_ClassSM_L3",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassSM_L3",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DS_GLBU_Rollup",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[BRS_DS_GLBU_Rollup].* FROM [dbo].[BRS_DS_GLBU_Rollup] ",
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[BRS_DS_GLBU_Rollup].* FROM [dbo].[BRS_DS_GLBU_Rollup] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DS_GLBU_Rollup"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "c90095bf-b3b6-40b7-8b76-5ba06d433a81",
+        "fromTable": "BRS_DS_Cube",
+        "fromColumn": "MarketClass",
+        "toTable": "BRS_DS_Market_Rollup",
+        "toColumn": "MarketClass"
+      },
+      {
+        "name": "8dd90abf-e260-4c19-b5d2-aa17f7dc573f",
+        "fromTable": "BRS_DS_Cube",
+        "fromColumn": "FiscalMonth",
+        "toTable": "BRS_DS_Period",
+        "toColumn": "FiscalMonth"
+      },
+      {
+        "name": "7f83f126-8b00-4629-86ec-8dfd0b52fe58",
+        "fromTable": "BRS_DS_Period",
+        "fromColumn": "FiscalMonth",
+        "toTable": "BRS_DS_Config",
+        "toColumn": "FiscalMonth",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "88a5110f-db2b-4534-b65d-aee28fbd4350",
+        "fromTable": "BRS_DS_Cube",
+        "fromColumn": "GLBU_Class",
+        "toTable": "BRS_DS_GLBU_Rollup",
+        "toColumn": "GLBU_Class"
+      }
+    ],
+    "roles": [
+      {
+        "name": "UserRole",
+        "modelPermission": "readRefresh",
+        "members": [
+          {
+            "memberName": "CAHSI\\TCrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
+          },
+          {
+            "memberName": "CAHSI\\JLi",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
