@@ -1663,13 +1663,13 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": "SELECT top 1000 [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]",
+              "query": "SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]",
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT top 1000 [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -2238,12 +2238,37 @@
             "name": "Supplier SKU nonstk in Period",
             "expression": " CALCULATE([Supplier SKU in Period],  'Item'[StockingCode]<>\"STCK\")",
             "formatString": "#,0"
+          },
+          {
+            "name": "ShipTo Count in Period",
+            "expression": "DISTINCTCOUNT([ShipTo])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Shipto Count",
+            "expression": "CALCULATE([ShipTo Count in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD Shipto Count",
+            "expression": "CALCULATE([ShipTo Count in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12 * [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor]) ))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Shipto Count Var",
+            "expression": "[YTD Shipto Count] - [PY YTD Shipto Count]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Shipto Count Var %",
+            "expression": "DIVIDE([YTD Shipto Count Var], [PY YTD Shipto Count])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT top 1000 [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]"
+            "value": "SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]"
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -2255,7 +2280,7 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT top 1000 [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
