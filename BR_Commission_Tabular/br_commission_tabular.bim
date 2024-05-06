@@ -1755,6 +1755,18 @@
             "dataType": "boolean",
             "sourceColumn": "backorder_ind",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "name": "FSC_SalespersonKey_QtrGrowth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FSC_SalespersonKey_QtrGrowth"
+          },
+          {
+            "name": "ISR_SalespersonKey_QtrGrowth",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ISR_SalespersonKey_QtrGrowth"
           }
         ],
         "partitions": [
@@ -1817,6 +1829,9 @@
                 "\t,OrderDateKey",
                 "\t,backorder_ind",
                 "",
+                "\t,FSC_SalespersonKey_QtrGrowth",
+                "\t,ISR_SalespersonKey_QtrGrowth",
+                "",
                 "FROM",
                 "\tFact.Commission"
               ],
@@ -1878,6 +1893,9 @@
                   "",
                   "\t,OrderDateKey",
                   "\t,backorder_ind",
+                  "",
+                  "\t,FSC_SalespersonKey_QtrGrowth",
+                  "\t,ISR_SalespersonKey_QtrGrowth",
                   "",
                   "FROM",
                   "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2970,6 +2988,9 @@
               "\t,OrderDateKey",
               "\t,backorder_ind",
               "",
+              "\t,FSC_SalespersonKey_QtrGrowth",
+              "\t,ISR_SalespersonKey_QtrGrowth",
+              "",
               "FROM",
               "\tFact.Commission"
             ]
@@ -3037,6 +3058,9 @@
               "",
               "\t,OrderDateKey",
               "\t,backorder_ind",
+              "",
+              "\t,FSC_SalespersonKey_QtrGrowth",
+              "\t,ISR_SalespersonKey_QtrGrowth",
               "",
               "FROM",
               "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -6074,6 +6098,490 @@
             ]
           }
         ]
+      },
+      {
+        "name": "QtrGrthCommSalesperson_FSC",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeNumber_FSC",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[EmployeeNumber_FSC]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommMasterCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommMasterCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommPlanCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommPlanCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryStart",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[TerritoryStart]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonID",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonID]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCount",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCount]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "ZoneName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "tracker_ind",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_login_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_login_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_created_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_created_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_activity_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_activity_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_pastdue_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_pastdue_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_closed_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_closed_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Years of Service",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[Years of Service]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CommSalesperson_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "QtrGrthCommSalesperson_ISR",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeNumber_ISR",
+            "dataType": "int64",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[EmployeeNumber_FSC]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommMasterCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommMasterCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CommPlanCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[CommPlanCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryStart",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[TerritoryStart]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonID",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonID]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalespersonKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCount",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCount]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BranchName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[BranchName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "ZoneName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "tracker_ind",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_login_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_login_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_created_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_created_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_activity_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_activity_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_pastdue_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_pastdue_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_adpt_closed_opps_score",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_adpt_closed_opps_score]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_cnt",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_cnt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_equipment_technology_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_cadcam_digitial_imaging_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_merchandise_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "sf_opps_other_amt",
+            "dataType": "double",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Years of Service",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "CommSalesperson_FSC[Years of Service]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 2",
+            "source": {
+              "type": "calculated",
+              "expression": "CommSalesperson_FSC"
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -6215,6 +6723,20 @@
         "fromTable": "Sales",
         "fromColumn": "EST_SalespersonKey",
         "toTable": "CommSalesperson_EST",
+        "toColumn": "SalespersonKey"
+      },
+      {
+        "name": "b237f890-cb4d-447d-a7d5-aa80a36130e1",
+        "fromTable": "Sales",
+        "fromColumn": "FSC_SalespersonKey_QtrGrowth",
+        "toTable": "QtrGrthCommSalesperson_FSC",
+        "toColumn": "SalespersonKey"
+      },
+      {
+        "name": "f43a5d7e-bc06-4454-a878-3f1c65e9f879",
+        "fromTable": "Sales",
+        "fromColumn": "ISR_SalespersonKey_QtrGrowth",
+        "toTable": "QtrGrthCommSalesperson_ISR",
         "toColumn": "SalespersonKey"
       }
     ],
