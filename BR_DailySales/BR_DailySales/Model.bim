@@ -506,6 +506,7 @@
             "name": "DAY Sales",
             "expression": "CALCULATE([Total Sales],BRS_DS_Cube[DAY]=\"DAY\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -517,6 +518,7 @@
             "name": "MTD Sales",
             "expression": "CALCULATE([Total Sales],BRS_DS_Cube[MTD]=\"MTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -528,6 +530,7 @@
             "name": "QTD Sales",
             "expression": "CALCULATE([Total Sales],BRS_DS_Cube[QTD]=\"QTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -539,6 +542,7 @@
             "name": "YTD Sales",
             "expression": "CALCULATE([Total Sales],BRS_DS_Cube[YTD]=\"YTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -561,6 +565,7 @@
             "name": "DAY GP",
             "expression": "CALCULATE([Total GP],BRS_DS_Cube[DAY]=\"DAY\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -572,6 +577,7 @@
             "name": "MTD GP",
             "expression": "CALCULATE([Total GP],BRS_DS_Cube[MTD]=\"MTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -583,6 +589,7 @@
             "name": "QTD GP",
             "expression": "CALCULATE([Total GP],BRS_DS_Cube[QTD]=\"QTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -594,6 +601,7 @@
             "name": "YTD GP",
             "expression": "CALCULATE([Total GP],BRS_DS_Cube[YTD]=\"YTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -605,6 +613,7 @@
             "name": "Total Acq Sales",
             "expression": "sum([SalesAcqAmt])",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -616,6 +625,7 @@
             "name": "DAY Acq Sales",
             "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[DAY]=\"DAY\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -627,6 +637,7 @@
             "name": "MTD Acq Sales",
             "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[MTD]=\"MTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -638,6 +649,7 @@
             "name": "QTD Acq Sales",
             "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[QTD]=\"QTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -649,6 +661,7 @@
             "name": "YTD Acq Sales",
             "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[YTD]=\"YTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -660,6 +673,7 @@
             "name": "Total Acq GP",
             "expression": "sum([GPAcqAmt])",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -671,6 +685,7 @@
             "name": "DAY Acq GP",
             "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[DAY]=\"DAY\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -682,6 +697,7 @@
             "name": "MTD Acq GP",
             "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[MTD]=\"MTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -693,6 +709,7 @@
             "name": "QTD Acq GP",
             "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[QTD]=\"QTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
@@ -704,12 +721,377 @@
             "name": "YTD Acq GP",
             "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[YTD]=\"YTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "isHidden": true,
             "annotations": [
               {
                 "name": "Format",
                 "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "CY DAY Sales",
+            "expression": " CALCULATE([Total Sales],FILTER('BRS_DS_Cube', BRS_DS_Cube[DAY]=\"DAY\" && BRS_DS_Cube[TimePeriod]=\"CY\"))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4096\" DisplayName=\"$ English (US Minor Outlying Islands)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY DAY Sales",
+            "expression": " CALCULATE([Total Sales],FILTER('BRS_DS_Cube',BRS_DS_Cube[DAY]=\"DAY\" && BRS_DS_Cube[TimePeriod]=\"PY\"))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4096\" DisplayName=\"$ English (US Minor Outlying Islands)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DAY Sales Var",
+            "expression": " [CY DAY Sales]-[PY DAY Sales]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4096\" DisplayName=\"$ English (US Minor Outlying Islands)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DAY Sales Var%",
+            "expression": " DIVIDE([DAY Sales Var], [PY DAY Sales] )",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY DAY GP",
+            "expression": " CALCULATE([Total GP],FILTER('BRS_DS_Cube', BRS_DS_Cube[DAY]=\"DAY\" && BRS_DS_Cube[TimePeriod]=\"CY\"))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4096\" DisplayName=\"$ English (US Minor Outlying Islands)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY DAY GP",
+            "expression": " CALCULATE([Total GP], FILTER('BRS_DS_Cube', BRS_DS_Cube[DAY]=\"DAY\" && BRS_DS_Cube[TimePeriod]=\"PY\"))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4096\" DisplayName=\"$ English (US Minor Outlying Islands)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DAY GP Var",
+            "expression": " ([CY DAY GP]-[PY DAY GP])",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4096\" DisplayName=\"$ English (US Minor Outlying Islands)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DAY GP Var%",
+            "expression": " DIVIDE([DAY GP Var], [PY DAY GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY DAY GM",
+            "expression": " DIVIDE([CY DAY GP], [CY DAY Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY DAY GM",
+            "expression": " DIVIDE([PY DAY GP], [PY DAY Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "DAY GM Var",
+            "expression": " ([CY DAY GM]-[PY DAY GM])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY MTD Sales",
+            "expression": " CALCULATE([Total Sales], FILTER('BRS_DS_Cube', BRS_DS_Cube[MTD]=\"MTD\" && BRS_DS_Cube[TimePeriod]=\"CY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD Sales",
+            "expression": " CALCULATE([Total Sales],FILTER('BRS_DS_Cube',  BRS_DS_Cube[MTD]=\"MTD\" && BRS_DS_Cube[TimePeriod]=\"PY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var",
+            "expression": " [CY MTD Sales]-[PY MTD Sales]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD Sales Var%",
+            "expression": " DIVIDE([MTD Sales Var], [PY MTD Sales] )",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY MTD GP",
+            "expression": " CALCULATE([Total GP], FILTER('BRS_DS_Cube', BRS_DS_Cube[MTD]=\"MTD\" && BRS_DS_Cube[TimePeriod]=\"CY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD GP",
+            "expression": " CALCULATE([Total GP], FILTER('BRS_DS_Cube', BRS_DS_Cube[MTD]=\"MTD\" && BRS_DS_Cube[TimePeriod]=\"PY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP Var",
+            "expression": " ([CY MTD GP]-[PY MTD GP])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD GP Var%",
+            "expression": " DIVIDE([MTD GP Var], [PY MTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY MTD GM",
+            "expression": " DIVIDE([CY MTD GP], [CY MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY MTD GM",
+            "expression": " DIVIDE([PY MTD GP], [PY MTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD GM Var",
+            "expression": " ([CY MTD GM]-[PY MTD GM])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY QTD Sales",
+            "expression": " CALCULATE([Total Sales],FILTER('BRS_DS_Cube',  BRS_DS_Cube[QTD]=\"QTD\" && BRS_DS_Cube[TimePeriod]=\"CY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY QTD Sales",
+            "expression": " CALCULATE([Total Sales], FILTER('BRS_DS_Cube', BRS_DS_Cube[QTD]=\"QTD\" && BRS_DS_Cube[TimePeriod]=\"PY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD Sales Var",
+            "expression": " [CY QTD Sales]-[PY QTD Sales]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD Sales Var%",
+            "expression": " DIVIDE([QTD Sales Var], [PY QTD Sales] )",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY QTD GP",
+            "expression": " CALCULATE([Total GP],FILTER('BRS_DS_Cube',  BRS_DS_Cube[QTD]=\"QTD\" && BRS_DS_Cube[TimePeriod]=\"CY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY QTD GP",
+            "expression": " CALCULATE([Total GP], FILTER('BRS_DS_Cube', BRS_DS_Cube[QTD]=\"QTD\" && BRS_DS_Cube[TimePeriod]=\"PY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD GP Var",
+            "expression": " ([CY QTD GP]-[PY QTD GP])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD GP Var%",
+            "expression": " DIVIDE([QTD GP Var], [PY QTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY QTD GM",
+            "expression": " DIVIDE([CY QTD GP], [CY QTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY QTD GM",
+            "expression": " DIVIDE([PY QTD GP], [PY QTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD GM Var",
+            "expression": " ([CY QTD GM]-[PY QTD GM])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY YTD Sales",
+            "expression": " CALCULATE([Total Sales], FILTER('BRS_DS_Cube', BRS_DS_Cube[YTD]=\"YTD\" && BRS_DS_Cube[TimePeriod]=\"CY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD Sales",
+            "expression": " CALCULATE([Total Sales], FILTER('BRS_DS_Cube', BRS_DS_Cube[YTD]=\"YTD\" && BRS_DS_Cube[TimePeriod]=\"PY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales Var",
+            "expression": " [CY YTD Sales]-[PY YTD Sales]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD Sales Var%",
+            "expression": " DIVIDE([YTD Sales Var], [PY YTD Sales] )",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY YTD GP",
+            "expression": " CALCULATE([Total GP], FILTER('BRS_DS_Cube', BRS_DS_Cube[YTD]=\"YTD\" && BRS_DS_Cube[TimePeriod]=\"CY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD GP",
+            "expression": " CALCULATE([Total GP], FILTER('BRS_DS_Cube', BRS_DS_Cube[YTD]=\"YTD\" && BRS_DS_Cube[TimePeriod]=\"PY\"))",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP Var",
+            "expression": " ([CY YTD GP]-[PY YTD GP])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD GP Var%",
+            "expression": " DIVIDE([YTD GP Var], [PY YTD GP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "CY YTD GM",
+            "expression": " DIVIDE([CY YTD GP], [CY YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY YTD GM",
+            "expression": " DIVIDE([PY YTD GP], [PY YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD GM Var",
+            "expression": " ([CY YTD GM]-[PY YTD GM])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
