@@ -6,9 +6,9 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1 BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Integrated Security=SSPI;Persist Security Info=false",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Integrated Security=SSPI;Persist Security Info=false",
         "impersonationMode": "impersonateAccount",
-        "account": "CAHSI\\srv_cahsionnlsql1",
+        "account": "CAHSI\\tcrowley",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -391,6 +391,7 @@
           {
             "name": "CategoryRollupPPE",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "CategoryRollupPPE",
             "sourceProviderType": "VarChar"
           },
@@ -471,6 +472,12 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": "CONCATENATE(RELATED(BRS_DS_GLBU_Rollup[GLBU_ClassSM_L1]),RELATED(BRS_DS_Market_Rollup[MarketRollup_L2]))"
+          },
+          {
+            "name": "ppe_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ppe_key"
           }
         ],
         "partitions": [
@@ -1326,6 +1333,70 @@
             "value": "dbo"
           }
         ]
+      },
+      {
+        "name": "BRS_DS_PPE",
+        "columns": [
+          {
+            "name": "CategoryRollupPPE",
+            "dataType": "string",
+            "sourceColumn": "CategoryRollupPPE",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ppe_descr",
+            "dataType": "string",
+            "sourceColumn": "ppe_descr",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "ppe_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ppe_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "disp_ppe_group_cd",
+            "dataType": "string",
+            "sourceColumn": "disp_ppe_group_cd"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_DS_PPE",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": "SELECT * FROM [dbo].[BRS_DS_PPE]",
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM [dbo].[BRS_DS_PPE]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT * FROM [dbo].[BRS_DS_PPE]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_DS_PPE"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM [dbo].[BRS_DS_PPE]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -1357,6 +1428,13 @@
         "fromColumn": "GLBU_Class",
         "toTable": "BRS_DS_GLBU_Rollup",
         "toColumn": "GLBU_Class"
+      },
+      {
+        "name": "b0d87bd3-8d08-452d-854a-0d88884b7162",
+        "fromTable": "BRS_DS_Cube",
+        "fromColumn": "ppe_key",
+        "toTable": "BRS_DS_PPE",
+        "toColumn": "ppe_key"
       }
     ],
     "roles": [

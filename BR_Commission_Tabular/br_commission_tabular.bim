@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -1506,7 +1506,6 @@
           {
             "name": "ShipTo",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "ShipTo",
             "sourceProviderType": "Integer"
           },
@@ -1724,14 +1723,6 @@
           },
           {
             "type": "calculated",
-            "name": "gm_line_rt",
-            "dataType": "double",
-            "isDataTypeInferred": true,
-            "expression": "DIVIDE([GPAmt],[SalesAmt])",
-            "formatString": "0.0%;-0.0%;0.0%"
-          },
-          {
-            "type": "calculated",
             "name": "gm_line_neg_ind",
             "dataType": "boolean",
             "isDataTypeInferred": false,
@@ -1767,12 +1758,31 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "ISR_SalespersonKey_QtrGrowth"
+          },
+          {
+            "name": "gm_line_rt",
+            "dataType": "double",
+            "sourceColumn": "gm_line_rt",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "type": "calculated",
+            "name": "gm_line_rt_round",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "round([gm_line_rt],1)",
+            "formatString": "0%;-0%;0%"
+          },
+          {
+            "name": "FSC_CalcKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FSC_CalcKey"
           }
         ],
         "partitions": [
           {
             "name": "SaleVendor",
-            "dataView": "full",
             "source": {
               "type": "query",
               "query": [
@@ -1831,6 +1841,9 @@
                 "",
                 "\t,FSC_SalespersonKey_QtrGrowth",
                 "\t,ISR_SalespersonKey_QtrGrowth",
+                "",
+                "\t,gm_line_rt",
+                "\t,FSC_CalcKey",
                 "",
                 "FROM",
                 "\tFact.Commission"
@@ -1896,6 +1909,9 @@
                   "",
                   "\t,FSC_SalespersonKey_QtrGrowth",
                   "\t,ISR_SalespersonKey_QtrGrowth",
+                  "",
+                  "\t,gm_line_rt",
+                  "\t,FSC_CalcKey",
                   "",
                   "FROM",
                   "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2991,6 +3007,9 @@
               "\t,FSC_SalespersonKey_QtrGrowth",
               "\t,ISR_SalespersonKey_QtrGrowth",
               "",
+              "\t,gm_line_rt",
+              "\t,FSC_CalcKey",
+              "",
               "FROM",
               "\tFact.Commission"
             ]
@@ -3061,6 +3080,9 @@
               "",
               "\t,FSC_SalespersonKey_QtrGrowth",
               "\t,ISR_SalespersonKey_QtrGrowth",
+              "",
+              "\t,gm_line_rt",
+              "\t,FSC_CalcKey",
               "",
               "FROM",
               "\tFact.Commission</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FactKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_SalespersonKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommGroupKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesOrderNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DocTypeKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"LineNumber\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"DateKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"BillTo\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SourceKey\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsEstInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FreeGoodsRedeemedInd\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"Quantity\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"SalesAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"GPAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"FSC_CommAmt\" /><ColumnExpression Schema=\"Fact\" ColumnOwner=\"Commission\" ColumnName=\"ESS_CommAmt\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -6582,6 +6604,70 @@
             }
           }
         ]
+      },
+      {
+        "name": "CommGroupThresh_FSC",
+        "columns": [
+          {
+            "name": "calc_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "calc_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "disp_comm_group_cd",
+            "dataType": "string",
+            "sourceColumn": "disp_comm_group_cd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "rate_level_display",
+            "dataType": "string",
+            "sourceColumn": "rate_level_display",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "comm_gm_threshold_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_gm_threshold_cd"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CommissionGroupThresh",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": "SELECT calc_key, disp_comm_group_cd, comm_gm_threshold_cd, rate_level_display FROM [Dimension].[CommissionGroupThresh]",
+              "dataSource": "Commission SQL Source"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT calc_key, disp_comm_group_cd, comm_gm_threshold_cd, rate_level_display FROM [Dimension].[CommissionGroupThresh]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT calc_key, disp_comm_group_cd, comm_gm_threshold_cd, rate_level_display FROM [Dimension].[CommissionGroupThresh]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "CommissionGroupThresh"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT calc_key, disp_comm_group_cd, comm_gm_threshold_cd, rate_level_display FROM [Dimension].[CommissionGroupThresh]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -6738,6 +6824,13 @@
         "fromColumn": "ISR_SalespersonKey_QtrGrowth",
         "toTable": "QtrGrthCommSalesperson_ISR",
         "toColumn": "SalespersonKey"
+      },
+      {
+        "name": "6f010b19-e5c0-4b1c-a286-3e4581d8cd4e",
+        "fromTable": "Sales",
+        "fromColumn": "FSC_CalcKey",
+        "toTable": "CommGroupThresh_FSC",
+        "toColumn": "calc_key"
       }
     ],
     "roles": [
