@@ -45,41 +45,6 @@
             "dataType": "string",
             "sourceColumn": "DayType",
             "sourceProviderType": "Char"
-          },
-          {
-            "name": "Comment",
-            "dataType": "string",
-            "isHidden": true,
-            "sourceColumn": "Comment",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "SalesWeighting01",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "SalesWeighting01",
-            "sourceProviderType": "Double"
-          },
-          {
-            "name": "SalesWeighting02",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "SalesWeighting02",
-            "sourceProviderType": "Double"
-          },
-          {
-            "name": "SalesWeighting03",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "SalesWeighting03",
-            "sourceProviderType": "Double"
-          },
-          {
-            "name": "StatusCd",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "StatusCd",
-            "sourceProviderType": "Integer"
           }
         ],
         "partitions": [
@@ -88,13 +53,19 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": "SELECT [dbo].[BRS_DS_Day].* FROM [dbo].[BRS_DS_Day]",
+              "query": [
+                "SELECT   SalesDate, DayNumber, DaySeq, DayType",
+                "FROM     BRS_DS_Day"
+              ],
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_DS_Day].* FROM [dbo].[BRS_DS_Day]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   SalesDate, DayNumber, DaySeq, DayType",
+                  "FROM     BRS_DS_Day</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -102,7 +73,10 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [dbo].[BRS_DS_Day].* FROM [dbo].[BRS_DS_Day]"
+            "value": [
+              "SELECT   SalesDate, DayNumber, DaySeq, DayType",
+              "FROM     BRS_DS_Day"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -114,7 +88,10 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_DS_Day].* FROM [dbo].[BRS_DS_Day]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   SalesDate, DayNumber, DaySeq, DayType",
+              "FROM     BRS_DS_Day</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -239,24 +216,28 @@
           {
             "name": "MonthSeq",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "MonthSeq",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "FirstMonthSeqInQtr",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FirstMonthSeqInQtr",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "FirstMonthSeqInYear",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FirstMonthSeqInYear",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "LastWorkingDt",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "LastWorkingDt",
             "formatString": "General Date",
             "sourceProviderType": "DBTimeStamp"
@@ -451,22 +432,11 @@
             "sourceProviderType": "Integer"
           },
           {
-            "name": "SalesAcqAmt",
-            "dataType": "double",
-            "sourceColumn": "SalesAcqAmt",
-            "sourceProviderType": "Double"
-          },
-          {
-            "name": "GPAcqAmt",
-            "dataType": "double",
-            "sourceColumn": "GPAcqAmt",
-            "sourceProviderType": "Double"
-          },
-          {
             "type": "calculated",
             "name": "SalesDivisionAdj",
             "dataType": "string",
             "isDataTypeInferred": true,
+            "isHidden": true,
             "expression": "if([GLBU_Class]=\"TEETH\",\"AAL\",[SalesDivision])"
           },
           {
@@ -603,126 +573,6 @@
           {
             "name": "YTD GP",
             "expression": "CALCULATE([Total GP],BRS_DS_Cube[YTD]=\"YTD\")",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Total Acq Sales",
-            "expression": "sum([SalesAcqAmt])",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "DAY Acq Sales",
-            "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[DAY]=\"DAY\")",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "MTD Acq Sales",
-            "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[MTD]=\"MTD\")",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "QTD Acq Sales",
-            "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[QTD]=\"QTD\")",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "YTD Acq Sales",
-            "expression": "CALCULATE([Total Acq Sales],BRS_DS_Cube[YTD]=\"YTD\")",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Total Acq GP",
-            "expression": "sum([GPAcqAmt])",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "DAY Acq GP",
-            "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[DAY]=\"DAY\")",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "MTD Acq GP",
-            "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[MTD]=\"MTD\")",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "QTD Acq GP",
-            "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[QTD]=\"QTD\")",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "isHidden": true,
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "YTD Acq GP",
-            "expression": "CALCULATE([Total Acq GP],BRS_DS_Cube[YTD]=\"YTD\")",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "isHidden": true,
             "annotations": [
@@ -1165,30 +1015,6 @@
             "sourceProviderType": "WChar"
           },
           {
-            "name": "MonthName",
-            "dataType": "string",
-            "sourceColumn": "MonthName",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "MonthNum",
-            "dataType": "int64",
-            "sourceColumn": "MonthNum",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "QuarterNum",
-            "dataType": "int64",
-            "sourceColumn": "QuarterNum",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "YearNum",
-            "dataType": "int64",
-            "sourceColumn": "YearNum",
-            "sourceProviderType": "SmallInt"
-          },
-          {
             "name": "LastWorkingDt",
             "dataType": "dateTime",
             "sourceColumn": "LastWorkingDt",
@@ -1204,20 +1030,8 @@
           {
             "name": "YearFirstFiscalMonth",
             "dataType": "int64",
-            "sourceColumn": "YearFirstFiscalMonth",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "DayComment",
-            "dataType": "string",
-            "sourceColumn": "DayComment",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "OffsetDaySeq_Yoy_Fiscal_SameDay",
-            "dataType": "int64",
-            "sourceColumn": "OffsetDaySeq_Yoy_Fiscal_SameDay",
-            "sourceProviderType": "SmallInt"
+            "isHidden": true,
+            "sourceColumn": "YearFirstFiscalMonth"
           }
         ],
         "partitions": [
@@ -1226,15 +1040,30 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [dbo].[BRS_DS_Config].* FROM [dbo].[BRS_DS_Config] ",
+              "query": [
+                "SELECT   id, SalesDate, FiscalMonth, DayNumber, DayType, DayStatusCd, ExceptionCd, ExceptionNote, LastWorkingDt, PriorFiscalMonth,YearFirstFiscalMonth",
+                "FROM     BRS_DS_Config"
+              ],
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   id, SalesDate, FiscalMonth, DayNumber, DayType, DayStatusCd, ExceptionCd, ExceptionNote, LastWorkingDt, PriorFiscalMonth,YearFirstFiscalMonth",
+                  "FROM     BRS_DS_Config</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [dbo].[BRS_DS_Config].* FROM [dbo].[BRS_DS_Config] "
+            "value": [
+              "SELECT   id, SalesDate, FiscalMonth, DayNumber, DayType, DayStatusCd, ExceptionCd, ExceptionNote, LastWorkingDt, PriorFiscalMonth,YearFirstFiscalMonth",
+              "FROM     BRS_DS_Config"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1243,6 +1072,13 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   id, SalesDate, FiscalMonth, DayNumber, DayType, DayStatusCd, ExceptionCd, ExceptionNote, LastWorkingDt, PriorFiscalMonth,YearFirstFiscalMonth",
+              "FROM     BRS_DS_Config</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -1262,46 +1098,50 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "GLBU_ClassDS_L1",
-            "dataType": "string",
-            "sourceColumn": "GLBU_ClassDS_L1",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "GLBU_ClassSM_L2",
-            "dataType": "string",
-            "sourceColumn": "GLBU_ClassSM_L2",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "GLBU_ClassSM_L1",
-            "dataType": "string",
-            "sourceColumn": "GLBU_ClassSM_L1",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "GLBU_ClassUS_L1",
-            "dataType": "string",
-            "sourceColumn": "GLBU_ClassUS_L1",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "CorpParticipationFactor",
-            "dataType": "double",
-            "sourceColumn": "CorpParticipationFactor",
-            "sourceProviderType": "Single"
-          },
-          {
             "name": "ReportingClass",
             "dataType": "string",
             "sourceColumn": "ReportingClass",
             "sourceProviderType": "Char"
           },
           {
-            "name": "GLBU_ClassSM_L3",
+            "name": "GLBU_ClassDS_L1_desc",
             "dataType": "string",
-            "sourceColumn": "GLBU_ClassSM_L3",
-            "sourceProviderType": "Char"
+            "sourceColumn": "GLBU_ClassDS_L1_desc"
+          },
+          {
+            "name": "GLBU_ClassDS_L1_sort",
+            "dataType": "int64",
+            "sourceColumn": "GLBU_ClassDS_L1_sort"
+          },
+          {
+            "name": "GLBU_ClassDS_L2_desc",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassDS_L2_desc"
+          },
+          {
+            "name": "GLBU_ClassDS_L2_sort",
+            "dataType": "int64",
+            "sourceColumn": "GLBU_ClassDS_L2_sort"
+          },
+          {
+            "name": "GLBU_ClassDS_L3_desc",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassDS_L3_desc"
+          },
+          {
+            "name": "GLBU_ClassDS_L3_sort",
+            "dataType": "int64",
+            "sourceColumn": "GLBU_ClassDS_L3_sort"
+          },
+          {
+            "name": "GLBU_ClassDS_Reporting_desc",
+            "dataType": "string",
+            "sourceColumn": "GLBU_ClassDS_Reporting_desc"
+          },
+          {
+            "name": "GLBU_ClassDS_Reporting_sort",
+            "dataType": "int64",
+            "sourceColumn": "GLBU_ClassDS_Reporting_sort"
           }
         ],
         "partitions": [
@@ -1310,15 +1150,30 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [dbo].[BRS_DS_GLBU_Rollup].* FROM [dbo].[BRS_DS_GLBU_Rollup] ",
+              "query": [
+                "SELECT   GLBU_Class, GLBU_ClassNm, ReportingClass, GLBU_ClassDS_L1_desc, GLBU_ClassDS_L1_sort, GLBU_ClassDS_L2_desc, GLBU_ClassDS_L2_sort, GLBU_ClassDS_L3_desc, GLBU_ClassDS_L3_sort, GLBU_ClassDS_Reporting_desc, GLBU_ClassDS_Reporting_sort",
+                "FROM     BRS_BusinessUnitClass"
+              ],
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   GLBU_Class, GLBU_ClassNm, ReportingClass, GLBU_ClassDS_L1_desc, GLBU_ClassDS_L1_sort, GLBU_ClassDS_L2_desc, GLBU_ClassDS_L2_sort, GLBU_ClassDS_L3_desc, GLBU_ClassDS_L3_sort, GLBU_ClassDS_Reporting_desc, GLBU_ClassDS_Reporting_sort",
+                  "FROM     BRS_BusinessUnitClass</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [dbo].[BRS_DS_GLBU_Rollup].* FROM [dbo].[BRS_DS_GLBU_Rollup] "
+            "value": [
+              "SELECT   GLBU_Class, GLBU_ClassNm, ReportingClass, GLBU_ClassDS_L1_desc, GLBU_ClassDS_L1_sort, GLBU_ClassDS_L2_desc, GLBU_ClassDS_L2_sort, GLBU_ClassDS_L3_desc, GLBU_ClassDS_L3_sort, GLBU_ClassDS_Reporting_desc, GLBU_ClassDS_Reporting_sort",
+              "FROM     BRS_BusinessUnitClass"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1327,6 +1182,13 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   GLBU_Class, GLBU_ClassNm, ReportingClass, GLBU_ClassDS_L1_desc, GLBU_ClassDS_L1_sort, GLBU_ClassDS_L2_desc, GLBU_ClassDS_L2_sort, GLBU_ClassDS_L3_desc, GLBU_ClassDS_L3_sort, GLBU_ClassDS_Reporting_desc, GLBU_ClassDS_Reporting_sort",
+              "FROM     BRS_BusinessUnitClass</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -2563,12 +2425,14 @@
           {
             "name": "MarketClass_New",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "MarketClass_New",
             "sourceProviderType": "Char"
           },
           {
             "name": "SalesDivision_key",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "SalesDivision_key",
             "sourceProviderType": "Integer"
           }
