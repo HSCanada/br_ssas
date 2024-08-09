@@ -818,6 +818,16 @@
             "name": "CommMasterCode_adhoc_model_3_text",
             "dataType": "string",
             "sourceColumn": "CommMasterCode_adhoc_model_3_text"
+          },
+          {
+            "name": "FieldSalesCommPlan",
+            "dataType": "string",
+            "sourceColumn": "FieldSalesCommPlan"
+          },
+          {
+            "name": "FieldSalesBranchName",
+            "dataType": "string",
+            "sourceColumn": "FieldSalesBranchName"
           }
         ],
         "partitions": [
@@ -869,6 +879,9 @@
                 "\t,CommMasterCode_adhoc_model_1_text",
                 "\t,CommMasterCode_adhoc_model_2_text",
                 "\t,CommMasterCode_adhoc_model_3_text",
+                "",
+                "\t,FieldSalesCommPlan",
+                "\t,FieldSalesBranchName",
                 "",
                 "",
                 "FROM",
@@ -922,6 +935,9 @@
                   "\t,CommMasterCode_adhoc_model_1_text",
                   "\t,CommMasterCode_adhoc_model_2_text",
                   "\t,CommMasterCode_adhoc_model_3_text",
+                  "",
+                  "\t,FieldSalesCommPlan",
+                  "\t,FieldSalesBranchName",
                   "",
                   "",
                   "FROM",
@@ -984,6 +1000,9 @@
               "\t,CommMasterCode_adhoc_model_2_text",
               "\t,CommMasterCode_adhoc_model_3_text",
               "",
+              "\t,FieldSalesCommPlan",
+              "\t,FieldSalesBranchName",
+              "",
               "",
               "FROM",
               "\tDimension.Customer AS c"
@@ -1042,6 +1061,9 @@
               "\t,CommMasterCode_adhoc_model_1_text",
               "\t,CommMasterCode_adhoc_model_2_text",
               "\t,CommMasterCode_adhoc_model_3_text",
+              "",
+              "\t,FieldSalesCommPlan",
+              "\t,FieldSalesBranchName",
               "",
               "",
               "FROM",
