@@ -116,6 +116,13 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": "if([TsTagInd],\"TS Tagged\", \"TS Not Tagged\") "
+          },
+          {
+            "type": "calculated",
+            "name": "QuantityUnit",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "[Quantity] * RELATED('Item'[size_unit_rate])"
           }
         ],
         "partitions": [
@@ -700,6 +707,97 @@
             "name": "SalesOrders in Period",
             "expression": "DISTINCTCOUNT([SalesOrderNumber])",
             "formatString": "#,0"
+          },
+          {
+            "name": "QtyUnit in Period",
+            "expression": " sum([QuantityUnit])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "QTD QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY MTD QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12* [__year_factor])))*[__mtd_factor]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY QTD QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_quarter]-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])-1))+[PY MTD QtyUnit]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12* [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12* [__year_factor])-1))+[PY MTD QtyUnit]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "WTD QtyUnit",
+            "expression": "  CALCULATE([QtyUnit in Period],filter(Period, Period[FirstWeekSeqInDay]=[__seq_first_week_current]))",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"4105\" DisplayName=\"$ English (Canada)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD QtyUnit Growth",
+            "expression": " [MTD QtyUnit]-[PY MTD QtyUnit]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "QTD QtyUnit Growth",
+            "expression": " [QTD QtyUnit]-[PY QTD QtyUnit]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Last 3Mo QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-3&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Last 6Mo QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-6&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Last 12Mo QtyUnit",
+            "expression": " CALCULATE([QtyUnit in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-12&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD QtyUnit Growth",
+            "expression": " [YTD QtyUnit]-[PY YTD QtyUnit]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD QtyUnit Growth%",
+            "expression": "DIVIDE([MTD QtyUnit Growth],[PY MTD QtyUnit], BLANK())",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD QtyUnit Growth%",
+            "expression": "DIVIDE([QTD QtyUnit Growth],[PY QTD QtyUnit], BLANK())",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD QtyUnit Growth%",
+            "expression": "DIVIDE([YTD QtyUnit Growth],[PY YTD QtyUnit], BLANK())",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -1912,6 +2010,11 @@
             "name": "minor_adhoc_model_code2",
             "dataType": "string",
             "sourceColumn": "minor_adhoc_model_code2"
+          },
+          {
+            "name": "size_unit_rate",
+            "dataType": "int64",
+            "sourceColumn": "size_unit_rate"
           }
         ],
         "partitions": [
@@ -1952,6 +2055,8 @@
                 "",
                 "\t,i.minor_adhoc_model_code1",
                 "\t,i.minor_adhoc_model_code2",
+                "",
+                "\t,i.size_unit_rate",
                 "",
                 "",
                 "FROM ",
@@ -2007,6 +2112,8 @@
                   "",
                   "\t,i.minor_adhoc_model_code1",
                   "\t,i.minor_adhoc_model_code2",
+                  "",
+                  "\t,i.size_unit_rate",
                   "",
                   "",
                   "FROM ",
@@ -2072,6 +2179,8 @@
               "\t,i.minor_adhoc_model_code1",
               "\t,i.minor_adhoc_model_code2",
               "",
+              "\t,i.size_unit_rate",
+              "",
               "",
               "FROM ",
               "\t[Dimension].[Item] i",
@@ -2132,6 +2241,8 @@
               "",
               "\t,i.minor_adhoc_model_code1",
               "\t,i.minor_adhoc_model_code2",
+              "",
+              "\t,i.size_unit_rate",
               "",
               "",
               "FROM ",
