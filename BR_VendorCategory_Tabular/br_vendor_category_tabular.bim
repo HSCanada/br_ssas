@@ -1654,6 +1654,7 @@
           {
             "name": "FiscalMonth",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "FiscalMonth",
             "sourceProviderType": "Integer"
           },
@@ -1757,6 +1758,11 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "ID_MAX",
+            "dataType": "int64",
+            "sourceColumn": "ID_MAX"
           }
         ],
         "partitions": [
@@ -2364,6 +2370,11 @@
           {
             "name": "YTD Shipto Count Var %",
             "expression": "DIVIDE([YTD Shipto Count Var], [PY YTD Shipto Count])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "GM in Period",
+            "expression": "DIVIDE([GP in Period],[Sales in Period])",
             "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
