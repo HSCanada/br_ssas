@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer_cahsionnlsql1_BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -207,6 +207,11 @@
             "name": "FieldSalesBranchName",
             "dataType": "string",
             "sourceColumn": "FieldSalesBranchName"
+          },
+          {
+            "name": "SegmentNew",
+            "dataType": "string",
+            "sourceColumn": "SegmentNew"
           }
         ],
         "partitions": [
@@ -251,6 +256,8 @@
                 "      ,[CommMasterCode_adhoc_model_3_text]",
                 "      ,[FieldSalesCommPlan]",
                 "      ,[FieldSalesBranchName]",
+                "",
+                "  , SegmentNew",
                 "",
                 "",
                 "FROM",
@@ -297,6 +304,8 @@
                   "      ,[CommMasterCode_adhoc_model_3_text]",
                   "      ,[FieldSalesCommPlan]",
                   "      ,[FieldSalesBranchName]",
+                  "",
+                  "  , SegmentNew",
                   "",
                   "",
                   "FROM",
@@ -352,6 +361,8 @@
               "      ,[FieldSalesCommPlan]",
               "      ,[FieldSalesBranchName]",
               "",
+              "  , SegmentNew",
+              "",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -403,6 +414,8 @@
               "      ,[CommMasterCode_adhoc_model_3_text]",
               "      ,[FieldSalesCommPlan]",
               "      ,[FieldSalesBranchName]",
+              "",
+              "  , SegmentNew",
               "",
               "",
               "FROM",
@@ -1708,45 +1721,6 @@
             "sourceProviderType": "Integer"
           },
           {
-            "name": "TotalSalesAmt",
-            "dataType": "decimal",
-            "sourceColumn": "TotalSalesAmt",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "sourceProviderType": "Currency",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "TotalGPAmt",
-            "dataType": "decimal",
-            "sourceColumn": "TotalGPAmt",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "sourceProviderType": "Currency",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "TotalGPExclCBAmt",
-            "dataType": "decimal",
-            "sourceColumn": "TotalGPExclCBAmt",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "sourceProviderType": "Currency",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
             "name": "ExtChargebackAmt",
             "dataType": "decimal",
             "sourceColumn": "ExtChargebackAmt",
@@ -1760,9 +1734,139 @@
             ]
           },
           {
-            "name": "ID_MAX",
+            "name": "ID_DS",
             "dataType": "int64",
-            "sourceColumn": "ID_MAX"
+            "sourceColumn": "ID_DS"
+          },
+          {
+            "name": "ID_DW",
+            "dataType": "int64",
+            "sourceColumn": "ID_DW"
+          },
+          {
+            "name": "day_key",
+            "dataType": "int64",
+            "sourceColumn": "day_key"
+          },
+          {
+            "name": "SalesOrderNumber",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderNumber"
+          },
+          {
+            "name": "source_key",
+            "dataType": "int64",
+            "sourceColumn": "source_key"
+          },
+          {
+            "name": "LineNumber",
+            "dataType": "int64",
+            "sourceColumn": "LineNumber"
+          },
+          {
+            "name": "NetSalesAmt",
+            "dataType": "double",
+            "sourceColumn": "NetSalesAmt"
+          },
+          {
+            "name": "GPAmt",
+            "dataType": "double",
+            "sourceColumn": "GPAmt"
+          },
+          {
+            "name": "GPExclCBAmt",
+            "dataType": "double",
+            "sourceColumn": "GPExclCBAmt"
+          },
+          {
+            "name": "ShippedQty",
+            "dataType": "int64",
+            "sourceColumn": "ShippedQty"
+          },
+          {
+            "name": "QuantityUnit",
+            "dataType": "int64",
+            "sourceColumn": "QuantityUnit"
+          },
+          {
+            "name": "FreeGoodsEstInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsEstInd"
+          },
+          {
+            "name": "hfm_gl_account_sales_key",
+            "dataType": "int64",
+            "sourceColumn": "hfm_gl_account_sales_key"
+          },
+          {
+            "name": "hfm_gl_account_cost_key",
+            "dataType": "int64",
+            "sourceColumn": "hfm_gl_account_cost_key"
+          },
+          {
+            "name": "hfm_gl_account_cb_key",
+            "dataType": "int64",
+            "sourceColumn": "hfm_gl_account_cb_key"
+          },
+          {
+            "name": "ACCOUNT_sales_key",
+            "dataType": "int64",
+            "sourceColumn": "ACCOUNT_sales_key"
+          },
+          {
+            "name": "ACCOUNT_cost_key",
+            "dataType": "int64",
+            "sourceColumn": "ACCOUNT_cost_key"
+          },
+          {
+            "name": "ACCOUNT_cb_key",
+            "dataType": "int64",
+            "sourceColumn": "ACCOUNT_cb_key"
+          },
+          {
+            "name": "ENTITY_sales_key",
+            "dataType": "int64",
+            "sourceColumn": "ENTITY_sales_key"
+          },
+          {
+            "name": "ENTITY_cost_key",
+            "dataType": "int64",
+            "sourceColumn": "ENTITY_cost_key"
+          },
+          {
+            "name": "ENTITY_cb_key",
+            "dataType": "int64",
+            "sourceColumn": "ENTITY_cb_key"
+          },
+          {
+            "name": "MinorProductClassKey",
+            "dataType": "int64",
+            "sourceColumn": "MinorProductClassKey"
+          },
+          {
+            "name": "global_product_class_key",
+            "dataType": "int64",
+            "sourceColumn": "global_product_class_key"
+          },
+          {
+            "name": "Excl_Key",
+            "dataType": "int64",
+            "sourceColumn": "Excl_Key"
+          },
+          {
+            "name": "GpsKey",
+            "dataType": "int64",
+            "sourceColumn": "GpsKey"
+          },
+          {
+            "name": "SalesDivision_key",
+            "dataType": "int64",
+            "sourceColumn": "SalesDivision_key"
+          },
+          {
+            "name": "Billto",
+            "dataType": "int64",
+            "sourceColumn": "Billto"
           }
         ],
         "partitions": [
@@ -1771,13 +1875,103 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": "SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]",
+              "query": [
+                "SELECT   ",
+                "",
+                "-- \tTOP (10) ",
+                "",
+                "\tID_DS",
+                "\t,ID_DW",
+                "\t,FiscalMonth",
+                "\t,day_key",
+                "\t,SalesOrderNumber",
+                "\t,source_key",
+                "\t,LineNumber",
+                "\t,NetSalesAmt",
+                "\t,GPAmt",
+                "\t,GPExclCBAmt",
+                "\t,ExtChargebackAmt",
+                "\t,ShippedQty",
+                "\t,QuantityUnit",
+                "\t,FreeGoodsEstInd",
+                "\t,GLBU_ClassKey",
+                "\t,hfm_gl_account_sales_key",
+                "\t,hfm_gl_account_cost_key",
+                "\t,hfm_gl_account_cb_key",
+                "\t,ACCOUNT_sales_key",
+                "\t,ACCOUNT_cost_key",
+                "\t,ACCOUNT_cb_key",
+                "\t,ENTITY_sales_key",
+                "\t,ENTITY_cost_key",
+                "\t,ENTITY_cb_key",
+                "\t,AdjCodeKey",
+                "\t,ItemKey",
+                "\t,HIST_SupplierKey",
+                "\t,MinorProductClassKey",
+                "\t,global_product_class_key",
+                "\t,Excl_Key",
+                "\t,GpsKey",
+                "\t,ShipTo",
+                "\t,Billto",
+                "\t,HIST_MarketClassKey",
+                "\t,SalesDivision_key",
+                "\t,HIST_BranchKey",
+                "",
+                "FROM",
+                "",
+                "\tFact.SaleVendor"
+              ],
               "dataSource": "SqlServer_cahsionnlsql1_BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   ",
+                  "",
+                  "-- \tTOP (10) ",
+                  "",
+                  "\tID_DS",
+                  "\t,ID_DW",
+                  "\t,FiscalMonth",
+                  "\t,day_key",
+                  "\t,SalesOrderNumber",
+                  "\t,source_key",
+                  "\t,LineNumber",
+                  "\t,NetSalesAmt",
+                  "\t,GPAmt",
+                  "\t,GPExclCBAmt",
+                  "\t,ExtChargebackAmt",
+                  "\t,ShippedQty",
+                  "\t,QuantityUnit",
+                  "\t,FreeGoodsEstInd",
+                  "\t,GLBU_ClassKey",
+                  "\t,hfm_gl_account_sales_key",
+                  "\t,hfm_gl_account_cost_key",
+                  "\t,hfm_gl_account_cb_key",
+                  "\t,ACCOUNT_sales_key",
+                  "\t,ACCOUNT_cost_key",
+                  "\t,ACCOUNT_cb_key",
+                  "\t,ENTITY_sales_key",
+                  "\t,ENTITY_cost_key",
+                  "\t,ENTITY_cb_key",
+                  "\t,AdjCodeKey",
+                  "\t,ItemKey",
+                  "\t,HIST_SupplierKey",
+                  "\t,MinorProductClassKey",
+                  "\t,global_product_class_key",
+                  "\t,Excl_Key",
+                  "\t,GpsKey",
+                  "\t,ShipTo",
+                  "\t,Billto",
+                  "\t,HIST_MarketClassKey",
+                  "\t,SalesDivision_key",
+                  "\t,HIST_BranchKey",
+                  "",
+                  "FROM",
+                  "",
+                  "\tFact.SaleVendor</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -1785,7 +1979,7 @@
         "measures": [
           {
             "name": "Sales in Period",
-            "expression": "SUM([TotalSalesAmt])",
+            "expression": "SUM([NetSalesAmt])",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
@@ -1796,7 +1990,7 @@
           },
           {
             "name": "GP in Period",
-            "expression": "SUM([TotalGPAmt])",
+            "expression": "SUM([GPAmt])",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
@@ -1807,7 +2001,7 @@
           },
           {
             "name": "GPExclCB in Period",
-            "expression": "SUM([TotalGPExclCBAmt])",
+            "expression": "SUM([GPExclCBAmt])",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
@@ -2376,12 +2570,102 @@
             "name": "GM in Period",
             "expression": "DIVIDE([GP in Period],[Sales in Period])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "BillTo Count in Period",
+            "expression": "DISTINCTCOUNT([BillTo])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD GM",
+            "expression": "divide([YTD GP],[YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY YTD GM",
+            "expression": "DIVIDE([PY YTD GP],[PY YTD Sales])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD GM Var",
+            "expression": "[YTD GM]-[py ytd gm]",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "YTD Billto Count",
+            "expression": "CALCULATE([BillTo Count in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY YTD Billto Count",
+            "expression": "CALCULATE([BillTo Count in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12 * [__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor]) ))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Billto Count Var",
+            "expression": "[YTD Billto Count] - [PY YTD Billto Count]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Billto Count Var %",
+            "expression": "DIVIDE([YTD Billto Count Var], [PY YTD Billto Count])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Line Count in Period",
+            "expression": "COUNT([ID_DS])",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]"
+            "value": [
+              "SELECT   ",
+              "",
+              "-- \tTOP (10) ",
+              "",
+              "\tID_DS",
+              "\t,ID_DW",
+              "\t,FiscalMonth",
+              "\t,day_key",
+              "\t,SalesOrderNumber",
+              "\t,source_key",
+              "\t,LineNumber",
+              "\t,NetSalesAmt",
+              "\t,GPAmt",
+              "\t,GPExclCBAmt",
+              "\t,ExtChargebackAmt",
+              "\t,ShippedQty",
+              "\t,QuantityUnit",
+              "\t,FreeGoodsEstInd",
+              "\t,GLBU_ClassKey",
+              "\t,hfm_gl_account_sales_key",
+              "\t,hfm_gl_account_cost_key",
+              "\t,hfm_gl_account_cb_key",
+              "\t,ACCOUNT_sales_key",
+              "\t,ACCOUNT_cost_key",
+              "\t,ACCOUNT_cb_key",
+              "\t,ENTITY_sales_key",
+              "\t,ENTITY_cost_key",
+              "\t,ENTITY_cb_key",
+              "\t,AdjCodeKey",
+              "\t,ItemKey",
+              "\t,HIST_SupplierKey",
+              "\t,MinorProductClassKey",
+              "\t,global_product_class_key",
+              "\t,Excl_Key",
+              "\t,GpsKey",
+              "\t,ShipTo",
+              "\t,Billto",
+              "\t,HIST_MarketClassKey",
+              "\t,SalesDivision_key",
+              "\t,HIST_BranchKey",
+              "",
+              "FROM",
+              "",
+              "\tFact.SaleVendor"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -2393,7 +2677,52 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Fact].[SaleVendor].* FROM [Fact].[SaleVendor]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   ",
+              "",
+              "-- \tTOP (10) ",
+              "",
+              "\tID_DS",
+              "\t,ID_DW",
+              "\t,FiscalMonth",
+              "\t,day_key",
+              "\t,SalesOrderNumber",
+              "\t,source_key",
+              "\t,LineNumber",
+              "\t,NetSalesAmt",
+              "\t,GPAmt",
+              "\t,GPExclCBAmt",
+              "\t,ExtChargebackAmt",
+              "\t,ShippedQty",
+              "\t,QuantityUnit",
+              "\t,FreeGoodsEstInd",
+              "\t,GLBU_ClassKey",
+              "\t,hfm_gl_account_sales_key",
+              "\t,hfm_gl_account_cost_key",
+              "\t,hfm_gl_account_cb_key",
+              "\t,ACCOUNT_sales_key",
+              "\t,ACCOUNT_cost_key",
+              "\t,ACCOUNT_cb_key",
+              "\t,ENTITY_sales_key",
+              "\t,ENTITY_cost_key",
+              "\t,ENTITY_cb_key",
+              "\t,AdjCodeKey",
+              "\t,ItemKey",
+              "\t,HIST_SupplierKey",
+              "\t,MinorProductClassKey",
+              "\t,global_product_class_key",
+              "\t,Excl_Key",
+              "\t,GpsKey",
+              "\t,ShipTo",
+              "\t,Billto",
+              "\t,HIST_MarketClassKey",
+              "\t,SalesDivision_key",
+              "\t,HIST_BranchKey",
+              "",
+              "FROM",
+              "",
+              "\tFact.SaleVendor</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },

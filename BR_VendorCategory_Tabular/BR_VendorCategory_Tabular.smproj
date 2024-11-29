@@ -16,8 +16,8 @@
     <DeploymentServerName>cahsionnlsql1</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
-    <DeploymentServerDatabase>BR_VendorCategory_Tabular</DeploymentServerDatabase>
-    <DeploymentServerCubeName>br_vendor_category_model</DeploymentServerCubeName>
+    <DeploymentServerDatabase>DEV_BR_Financial_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>br_financial_model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Full</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
