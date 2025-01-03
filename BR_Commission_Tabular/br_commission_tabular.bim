@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -2945,6 +2945,14 @@
             "name": "QTD GP Var %",
             "expression": "DIVIDE( [QTD GP] - [PY QTD GP], [PY QTD GP])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "test_userprincipalname",
+            "expression": "userprincipalname()"
+          },
+          {
+            "name": "test_username",
+            "expression": "username()"
           }
         ],
         "annotations": [
@@ -6668,6 +6676,204 @@
             "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT calc_key, disp_comm_group_cd, comm_gm_threshold_cd, rate_level_display FROM [Dimension].[CommissionGroupThresh]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
+      },
+      {
+        "name": "RLS_Users",
+        "columns": [
+          {
+            "name": "SamAccountName",
+            "dataType": "string",
+            "sourceColumn": "SamAccountName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "LoginId",
+            "dataType": "string",
+            "sourceColumn": "LoginId",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "EmailAddress",
+            "dataType": "string",
+            "sourceColumn": "EmailAddress",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "office",
+            "dataType": "string",
+            "sourceColumn": "office",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "EmployeeKey",
+            "dataType": "int64",
+            "sourceColumn": "EmployeeKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "RLS_Users",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [pbi].[RLS_Users].* FROM [pbi].[RLS_Users] ",
+              "dataSource": "Commission SQL Source"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [pbi].[RLS_Users].* FROM [pbi].[RLS_Users] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "RLS_Users"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "pbi"
+          }
+        ]
+      },
+      {
+        "name": "RLS_Permission_Commision",
+        "columns": [
+          {
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "sourceColumn": "TerritoryCd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Permission Level",
+            "dataType": "string",
+            "sourceColumn": "Permission Level",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Rep Name",
+            "dataType": "string",
+            "sourceColumn": "Rep Name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SamAccountName",
+            "dataType": "string",
+            "sourceColumn": "SamAccountName",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "RLS_Permission_Commision",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [pbi].[RLS_Permission_Commision].* FROM [pbi].[RLS_Permission_Commision] ",
+              "dataSource": "Commission SQL Source"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [pbi].[RLS_Permission_Commision].* FROM [pbi].[RLS_Permission_Commision] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "RLS_Permission_Commision"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "pbi"
+          }
+        ]
+      },
+      {
+        "name": "RLS_TBL_Fieldsales",
+        "columns": [
+          {
+            "name": "Rep Name",
+            "dataType": "string",
+            "sourceColumn": "Rep Name",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "sourceColumn": "TerritoryCd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Filter Field",
+            "dataType": "string",
+            "sourceColumn": "Filter Field",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Permission Level",
+            "dataType": "string",
+            "sourceColumn": "Permission Level",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "order_taken_by",
+            "dataType": "string",
+            "sourceColumn": "order_taken_by",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "comm_plan_id",
+            "dataType": "string",
+            "sourceColumn": "comm_plan_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "salesperson_key_id",
+            "dataType": "string",
+            "sourceColumn": "salesperson_key_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "master_salesperson_cd",
+            "dataType": "string",
+            "sourceColumn": "master_salesperson_cd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SamAccountName",
+            "dataType": "string",
+            "sourceColumn": "SamAccountName",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "RLS_TBL_Fieldsales",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [pbi].[RLS_TBL_Fieldsales].* FROM [pbi].[RLS_TBL_Fieldsales] ",
+              "dataSource": "Commission SQL Source"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [pbi].[RLS_TBL_Fieldsales].* FROM [pbi].[RLS_TBL_Fieldsales] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "RLS_TBL_Fieldsales"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "pbi"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -6831,11 +7037,51 @@
         "fromColumn": "FSC_CalcKey",
         "toTable": "CommGroupThresh_FSC",
         "toColumn": "calc_key"
+      },
+      {
+        "name": "75e4d09a-6888-4ad4-a4c2-deb9154c0618",
+        "fromTable": "RLS_Permission_Commision",
+        "fromColumn": "SamAccountName",
+        "toTable": "RLS_Users",
+        "toColumn": "SamAccountName"
+      },
+      {
+        "name": "e161d91a-aa30-4485-b752-4789cd3bfbc5",
+        "fromTable": "CommSalesperson_FSC",
+        "fromColumn": "BranchCode",
+        "toTable": "RLS_TBL_Fieldsales",
+        "toColumn": "TerritoryCd"
+      },
+      {
+        "name": "8498fa36-0fa5-4f44-8962-dde5fb2453b3",
+        "fromTable": "RLS_Permission_Commision",
+        "fromColumn": "Permission Level",
+        "toTable": "RLS_TBL_Fieldsales",
+        "toColumn": "Permission Level",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
       {
         "name": "User Role",
+        "modelPermission": "readRefresh",
+        "members": [
+          {
+            "memberName": "CAHSI\\tcrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
+          },
+          {
+            "memberName": "CAHSI\\JLi",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          }
+        ]
+      },
+      {
+        "name": "pbi_branch_role",
         "modelPermission": "read",
         "members": [
           {
@@ -6849,6 +7095,24 @@
           {
             "memberName": "CAHSI\\JLi",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          },
+          {
+            "memberName": "USHSI\\Cassandra.Velasco",
+            "memberId": "S-1-5-21-1202660629-1677128483-725345543-98454"
+          },
+          {
+            "memberName": "CAHSI\\David.Macleod",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11196"
+          },
+          {
+            "memberName": "CAHSI\\Hannah.Le",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-18123"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "RLS_Users",
+            "filterExpression": "'RLS_Users'[LoginId]=USERNAME()"
           }
         ]
       }
