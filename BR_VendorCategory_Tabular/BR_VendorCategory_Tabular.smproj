@@ -36,6 +36,19 @@
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Prod' ">
+    <DeploymentServerName>cahsionnlsql1</DeploymentServerName>
+    <DeploymentServerEdition>Standard</DeploymentServerEdition>
+    <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
+    <DeploymentServerDatabase>BR_Financial_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>br_financial_model</DeploymentServerCubeName>
+    <DeploymentOptionProcessing>Full</DeploymentOptionProcessing>
+    <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
+    <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
+    <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
+    <OutputPath>bin\Prod\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="br_vendor_category_tabular.bim">
       <SubType>Code</SubType>

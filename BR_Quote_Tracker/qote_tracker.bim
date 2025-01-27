@@ -2424,6 +2424,31 @@
             "name": "minor_adhoc_model_code2",
             "dataType": "string",
             "sourceColumn": "minor_adhoc_model_code2"
+          },
+          {
+            "name": "tag_01_cd",
+            "dataType": "string",
+            "sourceColumn": "tag_01_cd"
+          },
+          {
+            "name": "tag_02_cd",
+            "dataType": "string",
+            "sourceColumn": "tag_02_cd"
+          },
+          {
+            "name": "tag_03_cd",
+            "dataType": "string",
+            "sourceColumn": "tag_03_cd"
+          },
+          {
+            "name": "tag_04_cd",
+            "dataType": "string",
+            "sourceColumn": "tag_04_cd"
+          },
+          {
+            "name": "tag_05_cd",
+            "dataType": "string",
+            "sourceColumn": "tag_05_cd"
           }
         ],
         "partitions": [
@@ -2471,6 +2496,11 @@
                 "\t,minor_adhoc_model_code1",
                 "\t,minor_adhoc_model_code2",
                 "",
+                "\t,tag_01_cd",
+                "\t,tag_02_cd",
+                "\t,tag_03_cd",
+                "\t,tag_04_cd",
+                "\t,tag_05_cd",
                 "",
                 "",
                 "",
@@ -2524,6 +2554,11 @@
                   "\t,minor_adhoc_model_code1",
                   "\t,minor_adhoc_model_code2",
                   "",
+                  "\t,tag_01_cd",
+                  "\t,tag_02_cd",
+                  "\t,tag_03_cd",
+                  "\t,tag_04_cd",
+                  "\t,tag_05_cd",
                   "",
                   "",
                   "",
@@ -2590,6 +2625,11 @@
               "\t,minor_adhoc_model_code1",
               "\t,minor_adhoc_model_code2",
               "",
+              "\t,tag_01_cd",
+              "\t,tag_02_cd",
+              "\t,tag_03_cd",
+              "\t,tag_04_cd",
+              "\t,tag_05_cd",
               "",
               "",
               "",
@@ -2649,6 +2689,11 @@
               "\t,minor_adhoc_model_code1",
               "\t,minor_adhoc_model_code2",
               "",
+              "\t,tag_01_cd",
+              "\t,tag_02_cd",
+              "\t,tag_03_cd",
+              "\t,tag_04_cd",
+              "\t,tag_05_cd",
               "",
               "",
               "",

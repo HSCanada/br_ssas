@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer_cahsionnlsql1_BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=cahsionnlsql1;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -471,6 +471,7 @@
           {
             "name": "Abc_MpcItem",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Abc_MpcItem",
             "sourceProviderType": "Char"
           },
@@ -507,6 +508,7 @@
           {
             "name": "Abc_SupplierItem",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Abc_SupplierItem",
             "sourceProviderType": "Char"
           },
@@ -734,6 +736,7 @@
             "name": "WheelSegment_ Legacy",
             "dataType": "string",
             "isDataTypeInferred": true,
+            "isHidden": true,
             "expression": [
               "SWITCH(TRUE(), ",
               "\t[ClassGroup]=\"MEROTH\" || [ClassGroup]=\"HANPCE\" , \"Merch Only\", ",
@@ -826,6 +829,7 @@
           {
             "name": "KeySupplierMerchInd",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "KeySupplierMerchInd"
           },
           {
@@ -841,6 +845,7 @@
           {
             "name": "comm_group_legacy_cd",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "comm_group_legacy_cd"
           },
           {
@@ -2948,6 +2953,7 @@
           {
             "name": "CategoriesServed",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "CategoriesServed"
           }
         ],
@@ -4296,6 +4302,7 @@
           {
             "name": "AdjCodeKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "AdjCodeKey",
             "sourceProviderType": "Integer"
           },
@@ -6572,6 +6579,7 @@
           {
             "name": "CostCenterKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CostCenterKey",
             "sourceProviderType": "Integer"
           },
@@ -6803,6 +6811,7 @@
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "GL_AccountGroupSales[CostCenterKey]"
           },
           {
@@ -7042,6 +7051,7 @@
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "GL_AccountGroupSales[CostCenterKey]"
           },
           {
@@ -8915,6 +8925,7 @@
           {
             "name": "EmployeeKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "EmployeeKey",
             "sourceProviderType": "Integer"
           },
@@ -8933,6 +8944,7 @@
           {
             "name": "office",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "office",
             "sourceProviderType": "WChar"
           },
@@ -8959,6 +8971,16 @@
             ]
           }
         ],
+        "measures": [
+          {
+            "name": "rlw_user_name",
+            "expression": " USERNAME()"
+          },
+          {
+            "name": "rlw_user_principal_name",
+            "expression": " USERPRINCIPALNAME()"
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -8975,6 +8997,95 @@
           {
             "name": "QueryEditorSerialization",
             "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT *  FROM [pbi].[RLS_Users]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "RLS_TBL_Fieldsales",
+        "columns": [
+          {
+            "name": "Rep Name",
+            "dataType": "string",
+            "sourceColumn": "Rep Name",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "sourceColumn": "TerritoryCd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Filter Field",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Filter Field",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Permission Level",
+            "dataType": "string",
+            "sourceColumn": "Permission Level",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "order_taken_by",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "order_taken_by",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "comm_plan_id",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "comm_plan_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "salesperson_key_id",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "salesperson_key_id",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "master_salesperson_cd",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "master_salesperson_cd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SamAccountName",
+            "dataType": "string",
+            "sourceColumn": "SamAccountName",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "RLS_TBL_Fieldsales",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [pbi].[RLS_TBL_Fieldsales].* FROM [pbi].[RLS_TBL_Fieldsales] ",
+              "dataSource": "SqlServer_cahsionnlsql1_BRSales"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [pbi].[RLS_TBL_Fieldsales].* FROM [pbi].[RLS_TBL_Fieldsales] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "RLS_TBL_Fieldsales"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "pbi"
           }
         ]
       }
@@ -9116,9 +9227,16 @@
         "toColumn": "SamAccountName"
       },
       {
-        "name": "f47a11e9-6063-42b9-bc3d-004e6078e875",
-        "fromCardinality": "one",
+        "name": "e886d95d-12d6-4e37-8935-09c2c98bb0f2",
         "fromTable": "RLS_Permission_Commision",
+        "fromColumn": "Permission Level",
+        "toTable": "RLS_TBL_Fieldsales",
+        "toColumn": "Permission Level",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "50b57795-4a8a-42ba-8f96-7052226b8fe6",
+        "fromTable": "RLS_TBL_Fieldsales",
         "fromColumn": "TerritoryCd",
         "toTable": "Branch",
         "toColumn": "Branch",
