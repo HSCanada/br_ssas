@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -258,6 +258,16 @@
             "name": "eps_branch",
             "dataType": "string",
             "sourceColumn": "eps_branch"
+          },
+          {
+            "name": "FieldSales_LastMonthEnd",
+            "dataType": "string",
+            "sourceColumn": "FieldSales_LastMonthEnd"
+          },
+          {
+            "name": "FieldSales_LastMonthEnd_Master",
+            "dataType": "string",
+            "sourceColumn": "FieldSales_LastMonthEnd_Master"
           }
         ],
         "partitions": [
@@ -313,6 +323,9 @@
                 ",adhoc_model_3_text",
                 "",
                 ",eps_branch",
+                "",
+                ",FieldSales_LastMonthEnd",
+                ",FieldSales_LastMonthEnd_Master",
                 "",
                 "",
                 "FROM",
@@ -370,6 +383,9 @@
                   ",adhoc_model_3_text",
                   "",
                   ",eps_branch",
+                  "",
+                  ",FieldSales_LastMonthEnd",
+                  ",FieldSales_LastMonthEnd_Master",
                   "",
                   "",
                   "FROM",
@@ -482,6 +498,9 @@
               "",
               ",eps_branch",
               "",
+              ",FieldSales_LastMonthEnd",
+              ",FieldSales_LastMonthEnd_Master",
+              "",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -544,6 +563,9 @@
               ",adhoc_model_3_text",
               "",
               ",eps_branch",
+              "",
+              ",FieldSales_LastMonthEnd",
+              ",FieldSales_LastMonthEnd_Master",
               "",
               "",
               "FROM",
@@ -7067,16 +7089,18 @@
         "modelPermission": "readRefresh",
         "members": [
           {
-            "memberName": "CAHSI\\tcrowley",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
-          },
-          {
             "memberName": "CAHSI\\Gary.Winslow",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
           },
           {
             "memberName": "CAHSI\\JLi",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "RLS_Users",
+            "filterExpression": "'RLS_Users'[EmailAddress]=USERPRINCIPALNAME()"
           }
         ]
       },
@@ -7107,12 +7131,6 @@
           {
             "memberName": "CAHSI\\Hannah.Le",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-18123"
-          }
-        ],
-        "tablePermissions": [
-          {
-            "name": "RLS_Users",
-            "filterExpression": "'RLS_Users'[LoginId]=USERNAME()"
           }
         ]
       }
