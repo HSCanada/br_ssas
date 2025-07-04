@@ -2796,6 +2796,185 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "MTD Units",
+            "expression": "CALCULATE([ShippedQty in Period],filter(Period_FiscalMonth, Period_FiscalMonth[FiscalMonth]=[__first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "QTD Units",
+            "expression": "CALCULATE([ShippedQty in Period],filter(all(Period_FiscalMonth), Period_FiscalMonth[MonthSeq]>=[__seq_first_month_in_quarter]&&Period_FiscalMonth[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Units",
+            "expression": "CALCULATE([ShippedQty in Period],filter(ALL(Period_FiscalMonth), Period_FiscalMonth[MonthSeq]>=[__seq_first_month_in_year]&&Period_FiscalMonth[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY MTD Units",
+            "expression": "CALCULATE([ShippedQty in Period],filter(Period_FiscalMonth, Period_FiscalMonth[MonthSeq]=[__seq_first_month_current]-(12 * [__year_factor])))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "PY QTD Units",
+            "expression": "CALCULATE([ShippedQty in Period],filter(all(Period_FiscalMonth), Period_FiscalMonth[MonthSeq]>=[__seq_first_month_in_quarter]-(12 *[__year_factor]) &&Period_FiscalMonth[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor])))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Units Var",
+            "expression": "[MTD Units]-[PY MTD Units]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MTD Units Var %",
+            "expression": "DIVIDE([MTD Units Var], [PY MTD Units] )",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "PY YTD Units",
+            "expression": "CALCULATE([ShippedQty in Period],filter(ALL(Period_FiscalMonth), Period_FiscalMonth[MonthSeq]>=[__seq_first_month_in_year]-(12 * [__year_factor])&&Period_FiscalMonth[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor]) ))",
+            "formatString": "#,0"
+          },
+          {
+            "name": "QTD Units Var",
+            "expression": "[QTD Units]-[PY QTD Units]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "YTD Units Var",
+            "expression": "[YTD Units]-[PY YTD Units]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "QTD Units Var %",
+            "expression": "DIVIDE([QTD Units Var], [PY QTD Units])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD Units Var %",
+            "expression": "DIVIDE([YTD Units Var], [PY YTD Units])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "MTD ASP",
+            "expression": "CALCULATE([Average Sell in Period],filter(Period_FiscalMonth, Period_FiscalMonth[FiscalMonth]=[__first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD ASP",
+            "expression": "CALCULATE([Average Sell in Period],filter(ALL(Period_FiscalMonth), Period_FiscalMonth[MonthSeq]>=[__seq_first_month_in_year]&&Period_FiscalMonth[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY MTD ASP",
+            "expression": "CALCULATE([Average Sell in Period],filter(Period_FiscalMonth, Period_FiscalMonth[MonthSeq]=[__seq_first_month_current]-(12 * [__year_factor])))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY QTD ASP",
+            "expression": "CALCULATE([Average Sell in Period],filter(all(Period_FiscalMonth), Period_FiscalMonth[MonthSeq]>=[__seq_first_month_in_quarter]-(12 *[__year_factor]) &&Period_FiscalMonth[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor])))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "PY YTD ASP",
+            "expression": "CALCULATE([Average Sell in Period],filter(ALL(Period_FiscalMonth), Period_FiscalMonth[MonthSeq]>=[__seq_first_month_in_year]-(12 * [__year_factor])&&Period_FiscalMonth[MonthSeq]<=[__seq_first_month_current]-(12 * [__year_factor]) ))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD ASP Var",
+            "expression": "[MTD ASP]-[PY MTD ASP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD ASP Var",
+            "expression": "[QTD ASP]-[PY QTD ASP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "YTD ASP Var",
+            "expression": "[YTD ASP]-[PY YTD ASP]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "MTD ASP Var %",
+            "expression": "DIVIDE([MTD ASP Var], [PY MTD ASP] )",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "YTD ASP Var %",
+            "expression": "DIVIDE([YTD ASP Var], [PY YTD ASP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "QTD ASP",
+            "expression": "CALCULATE([Average Sell in Period],filter(all(Period_FiscalMonth), Period_FiscalMonth[MonthSeq]>=[__seq_first_month_in_quarter]&&Period_FiscalMonth[MonthSeq]<=[__seq_first_month_current]))",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "QTD ASP Var %",
+            "expression": "DIVIDE([QTD ASP Var], [PY QTD ASP])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "ExtChargeback Share in Period",
+            "expression": "DIVIDE([ExtChargeback in Period], [Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -8977,50 +9156,10 @@
           {
             "memberName": "CAHSI\\Gary.Winslow",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
-          }
-        ]
-      },
-      {
-        "name": "Admin",
-        "modelPermission": "readRefresh",
-        "members": [
-          {
-            "memberName": "CAHSI\\JLi",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
           },
           {
-            "memberName": "CAHSI\\Gary.Winslow",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
-          },
-          {
-            "memberName": "CAHSI\\David.Macleod",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11196"
-          },
-          {
-            "memberName": "USHSI\\Cassandra.Velasco",
-            "memberId": "S-1-5-21-1202660629-1677128483-725345543-98454"
-          }
-        ]
-      },
-      {
-        "name": "pbi_branch_role",
-        "modelPermission": "read",
-        "members": [
-          {
-            "memberName": "CAHSI\\tcrowley",
+            "memberName": "CAHSI\\TCrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
-          },
-          {
-            "memberName": "CAHSI\\Gary.Winslow",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
-          },
-          {
-            "memberName": "CAHSI\\David.Macleod",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11196"
-          },
-          {
-            "memberName": "USHSI\\Cassandra.Velasco",
-            "memberId": "S-1-5-21-1202660629-1677128483-725345543-98454"
           }
         ],
         "tablePermissions": [
