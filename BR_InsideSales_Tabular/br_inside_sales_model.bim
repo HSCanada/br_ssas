@@ -798,6 +798,49 @@
             "name": "YTD QtyUnit Growth%",
             "expression": "DIVIDE([YTD QtyUnit Growth],[PY YTD QtyUnit], BLANK())",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "DR Sales in Period",
+            "expression": "CALCULATE ( [Sales in Period], 'OrderSource'[DR_Channel] = \"DR\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DR Sales Share in Period",
+            "expression": "DIVIDE([DR Sales in Period],[Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Days in Period",
+            "expression": "DISTINCTCOUNT([SalesDate])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "DR AvgSalesDay in Period",
+            "expression": "DIVIDE([DR Sales in Period],[Days in Period])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "AvgSalesDay in Period",
+            "expression": "DIVIDE([Sales in Period],[Days in Period])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ],
         "annotations": [
@@ -994,6 +1037,11 @@
             "name": "MarketClassNewCode",
             "dataType": "string",
             "sourceColumn": "MarketClassNewCode"
+          },
+          {
+            "name": "SegmentNew",
+            "dataType": "string",
+            "sourceColumn": "SegmentNew"
           }
         ],
         "partitions": [
@@ -1033,6 +1081,8 @@
                 "      ,[adhoc_model_2_text]",
                 "      ,[adhoc_model_3_text]",
                 "      ,[MarketClassNewCode]",
+                ",[SegmentNew]",
+                "",
                 "",
                 "FROM",
                 "",
@@ -1075,6 +1125,8 @@
                   "      ,[adhoc_model_2_text]",
                   "      ,[adhoc_model_3_text]",
                   "      ,[MarketClassNewCode]",
+                  ",[SegmentNew]",
+                  "",
                   "",
                   "FROM",
                   "",
@@ -1134,6 +1186,8 @@
               "      ,[adhoc_model_2_text]",
               "      ,[adhoc_model_3_text]",
               "      ,[MarketClassNewCode]",
+              ",[SegmentNew]",
+              "",
               "",
               "FROM",
               "",
@@ -1174,6 +1228,8 @@
               "      ,[adhoc_model_2_text]",
               "      ,[adhoc_model_3_text]",
               "      ,[MarketClassNewCode]",
+              ",[SegmentNew]",
+              "",
               "",
               "FROM",
               "",
@@ -1252,7 +1308,6 @@
           {
             "name": "WorkingDaysMonth",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "WorkingDaysMonth",
             "sourceProviderType": "SmallInt"
           },
@@ -2424,6 +2479,13 @@
             "dataType": "string",
             "sourceColumn": "OrderSourceRollup",
             "sourceProviderType": "Char"
+          },
+          {
+            "type": "calculated",
+            "name": "DR_Channel",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if([OrderSourceCode]=\"W\", \"DR\", \"zOther\")"
           }
         ],
         "partitions": [

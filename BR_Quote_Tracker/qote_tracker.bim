@@ -3718,6 +3718,11 @@
             "name": "SegmentCodeNew",
             "dataType": "string",
             "sourceColumn": "SegmentCodeNew"
+          },
+          {
+            "name": "ISRCommPlan",
+            "dataType": "string",
+            "sourceColumn": "ISRCommPlan"
           }
         ],
         "partitions": [
@@ -3762,6 +3767,8 @@
                 "\t,t.DSO_operatory_count",
                 "\t,c.IsrName",
                 "\t,c.SegmentCodeNEW AS SegmentCodeNew",
+                "",
+                "\t,c.ISRCommPlan",
                 "",
                 "",
                 "FROM",
@@ -3811,6 +3818,8 @@
                   "\t,t.DSO_operatory_count",
                   "\t,c.IsrName",
                   "\t,c.SegmentCodeNEW AS SegmentCodeNew",
+                  "",
+                  "\t,c.ISRCommPlan",
                   "",
                   "",
                   "FROM",
@@ -3924,6 +3933,8 @@
               "\t,c.IsrName",
               "\t,c.SegmentCodeNEW AS SegmentCodeNew",
               "",
+              "\t,c.ISRCommPlan",
+              "",
               "",
               "FROM",
               "\tDimension.Customer c",
@@ -3978,6 +3989,8 @@
               "\t,t.DSO_operatory_count",
               "\t,c.IsrName",
               "\t,c.SegmentCodeNEW AS SegmentCodeNew",
+              "",
+              "\t,c.ISRCommPlan",
               "",
               "",
               "FROM",
