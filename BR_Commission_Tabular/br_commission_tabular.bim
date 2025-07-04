@@ -2637,82 +2637,6 @@
             "isHidden": true
           },
           {
-            "name": "YTD Comm EST",
-            "expression": "CALCULATE([Comm_EST in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]&&Period[MonthSeq]<=[__seq_first_month_current]))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "MTD Comm EST",
-            "expression": "CALCULATE([Comm_EST in Period],filter(Period, Period[FiscalMonth]=[__first_month_current]))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "PY MTD Comm EST",
-            "expression": "CALCULATE([Comm_EST in Period],filter(Period, Period[MonthSeq]=[__seq_first_month_current]-(12*[__year_factor])))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "MTD Comm EST Var",
-            "expression": "[MTD Comm EST]-[PY MTD Comm EST]",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "MTD Comm EST Var %",
-            "expression": "DIVIDE( [MTD Comm EST] - [PY MTD Comm EST], [PY MTD Comm EST])",
-            "formatString": "0.0%;-0.0%;0.0%"
-          },
-          {
-            "name": "PY YTD Comm EST",
-            "expression": "CALCULATE([Comm_EST in Period],filter(ALL(Period), Period[MonthSeq]>=[__seq_first_month_in_year]-(12*[__year_factor])&&Period[MonthSeq]<=[__seq_first_month_current]-(12*[__year_factor])))",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "YTD Comm EST Var",
-            "expression": "[YTD Comm EST]-[PY YTD Comm EST]",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "YTD Comm EST Var %",
-            "expression": "DIVIDE( [YTD Comm EST] - [PY YTD Comm EST], [PY YTD Comm EST])",
-            "formatString": "0.0%;-0.0%;0.0%"
-          },
-          {
             "name": "YTD Sales Var % - Customer Count Below Threshhold",
             "expression": "CALCULATE([Count of ShipTo], FILTER('Customer',  [YTD Sales Var %] < 0.25))"
           },
@@ -2764,16 +2688,6 @@
           {
             "name": "YTD Comm Rate ISR",
             "expression": "DIVIDE([YTD Comm ISR],[YTD GP])",
-            "formatString": "0.0%;-0.0%;0.0%"
-          },
-          {
-            "name": "MTD Comm Rate EST",
-            "expression": "DIVIDE([MTD Comm EST],[MTD GP])",
-            "formatString": "0.0%;-0.0%;0.0%"
-          },
-          {
-            "name": "YTD Comm Rate EST",
-            "expression": "DIVIDE([YTD Comm EST],[YTD GP])",
             "formatString": "0.0%;-0.0%;0.0%"
           },
           {
@@ -7075,12 +6989,13 @@
         "toColumn": "TerritoryCd"
       },
       {
-        "name": "8498fa36-0fa5-4f44-8962-dde5fb2453b3",
+        "name": "231e85d3-4530-455b-9aa6-801d9a1df6ea",
         "fromTable": "RLS_Permission_Commision",
         "fromColumn": "Permission Level",
         "toTable": "RLS_TBL_Fieldsales",
         "toColumn": "Permission Level",
-        "crossFilteringBehavior": "bothDirections"
+        "crossFilteringBehavior": "bothDirections",
+        "securityFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
@@ -7101,36 +7016,6 @@
           {
             "name": "RLS_Users",
             "filterExpression": "'RLS_Users'[EmailAddress]=USERPRINCIPALNAME()"
-          }
-        ]
-      },
-      {
-        "name": "pbi_branch_role",
-        "modelPermission": "read",
-        "members": [
-          {
-            "memberName": "CAHSI\\tcrowley",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
-          },
-          {
-            "memberName": "CAHSI\\Gary.Winslow",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
-          },
-          {
-            "memberName": "CAHSI\\JLi",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
-          },
-          {
-            "memberName": "USHSI\\Cassandra.Velasco",
-            "memberId": "S-1-5-21-1202660629-1677128483-725345543-98454"
-          },
-          {
-            "memberName": "CAHSI\\David.Macleod",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11196"
-          },
-          {
-            "memberName": "CAHSI\\Hannah.Le",
-            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-18123"
           }
         ]
       }
