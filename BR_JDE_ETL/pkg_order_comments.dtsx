@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CheckpointFileName="DEV_BRSales"
@@ -8,12 +8,12 @@
   DTS:CreatorName="CAHSI\TCrowley"
   DTS:DTSID="{F6DC0BE7-D39D-45FB-8831-2FEB7FA66EFA}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_order_comments"
   DTS:PackageType="5"
   DTS:VersionBuild="202"
-  DTS:VersionGUID="{3A659D77-F1D6-4F60-A2EC-39054E824EDC}">
+  DTS:VersionGUID="{C77711D4-C98A-469F-9FCA-B4D6607F4C7E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -189,8 +189,8 @@
                   <connections>
                     <connection
                       refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -441,8 +441,8 @@ FROM
                   <connections>
                     <connection
                       refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -832,8 +832,8 @@ FROM
                   <connections>
                     <connection
                       refId="Package\seq_F5503_canned_message_file_parameters\dft_load_stage\F5503_canned_message_file_parameters.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1128,8 +1128,8 @@ FROM
                   <connections>
                     <connection
                       refId="Package\seq_F5503_canned_message_file_parameters\dft_load_stage\OLE DB Source F5503.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>

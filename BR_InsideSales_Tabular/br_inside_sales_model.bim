@@ -1,6 +1,6 @@
 {
   "name": "SemanticModel",
-  "compatibilityLevel": 1200,
+  "compatibilityLevel": 1600,
   "model": {
     "culture": "en-US",
     "dataSources": [
@@ -3379,6 +3379,12 @@
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11129"
           }
         ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
       }
     ]
   },

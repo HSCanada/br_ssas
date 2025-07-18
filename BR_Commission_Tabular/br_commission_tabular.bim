@@ -1,6 +1,6 @@
 {
   "name": "SemanticModel",
-  "compatibilityLevel": 1200,
+  "compatibilityLevel": 1600,
   "model": {
     "culture": "en-US",
     "dataSources": [
@@ -1747,7 +1747,6 @@
             "type": "calculated",
             "name": "gm_line_neg_ind",
             "dataType": "boolean",
-            "isDataTypeInferred": false,
             "expression": "IF([gm_line_rt]<0,1,0)",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           },
@@ -7023,7 +7022,7 @@
     "annotations": [
       {
         "name": "ClientCompatibilityLevel",
-        "value": "400"
+        "value": "700"
       }
     ]
   },

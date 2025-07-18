@@ -1,6 +1,6 @@
 {
   "name": "SemanticModel",
-  "compatibilityLevel": 1200,
+  "compatibilityLevel": 1600,
   "model": {
     "culture": "en-CA",
     "dataSources": [
@@ -6667,7 +6667,7 @@
     "annotations": [
       {
         "name": "ClientCompatibilityLevel",
-        "value": "400"
+        "value": "700"
       }
     ]
   },

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/22/2017 4:34:15 PM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="CAHSI\TCrowley"
   DTS:DTSID="{A2583CDC-D937-486D-9164-972F9D276038}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_com_trans"
   DTS:PackageType="5"
   DTS:VersionBuild="26"
-  DTS:VersionGUID="{EED07128-CBC4-4684-A110-3E08C2D96286}">
+  DTS:VersionGUID="{C22D7744-6712-479A-88CB-9A60AE1C4A62}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -145,8 +145,8 @@
                   <connections>
                     <connection
                       refId="Package\seq_F555115_commission_sales_extract 1\dft_load_stage\F555115_commission_sales_extract.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1458,8 +1458,8 @@ FROM
                   <connections>
                     <connection
                       refId="Package\seq_F555115_commission_sales_extract 1\dft_load_stage\OLE DB Source F555115.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
