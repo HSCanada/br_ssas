@@ -3723,6 +3723,41 @@
             "name": "ISRCommPlan",
             "dataType": "string",
             "sourceColumn": "ISRCommPlan"
+          },
+          {
+            "name": "FSA",
+            "dataType": "string",
+            "sourceColumn": "FSA"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Province",
+            "dataType": "string",
+            "sourceColumn": "Province"
+          },
+          {
+            "name": "PhoneNumber",
+            "dataType": "string",
+            "sourceColumn": "PhoneNumber"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "AddressLine3",
+            "dataType": "string",
+            "sourceColumn": "AddressLine3"
+          },
+          {
+            "name": "AddressLine4",
+            "dataType": "string",
+            "sourceColumn": "AddressLine4"
           }
         ],
         "partitions": [
@@ -3769,6 +3804,15 @@
                 "\t,c.SegmentCodeNEW AS SegmentCodeNew",
                 "",
                 "\t,c.ISRCommPlan",
+                "",
+                "",
+                "\t,c.FSA",
+                "\t,c.City",
+                "\t,c.Province",
+                "\t,c.PhoneNumber",
+                "\t,c.PostalCode",
+                "\t,c.AddressLine3",
+                "\t,c.AddressLine4",
                 "",
                 "",
                 "FROM",
@@ -3820,6 +3864,15 @@
                   "\t,c.SegmentCodeNEW AS SegmentCodeNew",
                   "",
                   "\t,c.ISRCommPlan",
+                  "",
+                  "",
+                  "\t,c.FSA",
+                  "\t,c.City",
+                  "\t,c.Province",
+                  "\t,c.PhoneNumber",
+                  "\t,c.PostalCode",
+                  "\t,c.AddressLine3",
+                  "\t,c.AddressLine4",
                   "",
                   "",
                   "FROM",
@@ -3936,6 +3989,15 @@
               "\t,c.ISRCommPlan",
               "",
               "",
+              "\t,c.FSA",
+              "\t,c.City",
+              "\t,c.Province",
+              "\t,c.PhoneNumber",
+              "\t,c.PostalCode",
+              "\t,c.AddressLine3",
+              "\t,c.AddressLine4",
+              "",
+              "",
               "FROM",
               "\tDimension.Customer c",
               "\t",
@@ -3991,6 +4053,15 @@
               "\t,c.SegmentCodeNEW AS SegmentCodeNew",
               "",
               "\t,c.ISRCommPlan",
+              "",
+              "",
+              "\t,c.FSA",
+              "\t,c.City",
+              "\t,c.Province",
+              "\t,c.PhoneNumber",
+              "\t,c.PostalCode",
+              "\t,c.AddressLine3",
+              "\t,c.AddressLine4",
               "",
               "",
               "FROM",

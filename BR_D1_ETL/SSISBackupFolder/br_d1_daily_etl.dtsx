@@ -12,7 +12,7 @@
   DTS:ObjectName="br_d1_daily_etl"
   DTS:PackageType="5"
   DTS:VersionBuild="308"
-  DTS:VersionGUID="{6E1A2E7D-3511-4F53-B966-7D4F0497A156}">
+  DTS:VersionGUID="{BEDFF62F-001F-4511-9BB7-8F3BA4D89F97}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

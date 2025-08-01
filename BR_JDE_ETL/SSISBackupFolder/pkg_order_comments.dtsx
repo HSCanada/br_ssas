@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CheckpointFileName="DEV_BRSales"
@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="pkg_order_comments"
   DTS:PackageType="5"
-  DTS:VersionBuild="203"
-  DTS:VersionGUID="{6894B34D-48E5-4BB6-AE82-8761947ED152}">
+  DTS:VersionBuild="202"
+  DTS:VersionGUID="{9A464CD8-4C94-4A57-898B-313970960A3B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -155,7 +155,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -189,8 +189,8 @@
                   <connections>
                     <connection
                       refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\F5503_canned_message_file_parameters.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -364,7 +364,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--------------------------------------------------------------------------------
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
 -- DROP TABLE Integration.F5503_canned_message_file_parameters_Staging
 --------------------------------------------------------------------------------
 
@@ -441,8 +441,8 @@ FROM
                   <connections>
                     <connection
                       refId="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -798,7 +798,7 @@ FROM
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -832,8 +832,8 @@ FROM
                   <connections>
                     <connection
                       refId="Package\seq_F5503_canned_message_file_parameters\dft_load_stage\F5503_canned_message_file_parameters.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1051,7 +1051,7 @@ FROM
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">--------------------------------------------------------------------------------
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">--------------------------------------------------------------------------------
 -- DROP TABLE Integration.F5503_canned_message_file_parameters_Staging
 --------------------------------------------------------------------------------
 
@@ -1128,8 +1128,8 @@ FROM
                   <connections>
                     <connection
                       refId="Package\seq_F5503_canned_message_file_parameters\dft_load_stage\OLE DB Source F5503.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1576,33 +1576,33 @@ FROM
         <NodeLayout
           Size="203,42"
           Id="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage\OLE DB Source D1ICMTPF"
-          TopLeft="238,65" />
+          TopLeft="237,64" />
         <EdgeLayout
           Id="Package\seq_D1ICMTPF_order_note_Stage\dft_load_stage.Paths[OLE DB Source Output]"
-          TopLeft="339.5,107">
+          TopLeft="338.5,106">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="29,107"
+              EndConnector="30,108"
               Start="0,0"
-              End="29,99.5">
+              End="30,100.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.5" />
+                    End="0,50" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,49.5"
-                    Point2="0,53.5"
-                    Point3="4,53.5" />
+                    Point1="0,50"
+                    Point2="0,54"
+                    Point3="4,54" />
                   <mssgle:LineSegment
-                    End="25,53.5" />
+                    End="26,54" />
                   <mssgle:CubicBezierSegment
-                    Point1="25,53.5"
-                    Point2="29,53.5"
-                    Point3="29,57.5" />
+                    Point1="26,54"
+                    Point2="30,54"
+                    Point3="30,58" />
                   <mssgle:LineSegment
-                    End="29,99.5" />
+                    End="30,100.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

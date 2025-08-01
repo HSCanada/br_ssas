@@ -12,7 +12,7 @@
   DTS:ObjectName="pkg_com_trans"
   DTS:PackageType="5"
   DTS:VersionBuild="26"
-  DTS:VersionGUID="{375659DB-3CA4-448E-AA41-AC9A43F10AEC}">
+  DTS:VersionGUID="{8ED709F8-F4CB-417D-9D54-DE05CE598123}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -111,7 +111,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -145,8 +145,8 @@
                   <connections>
                     <connection
                       refId="Package\seq_F555115_commission_sales_extract 1\dft_load_stage\F555115_commission_sales_extract.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1262,7 +1262,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
 
 --    Top 5 
 
@@ -1458,8 +1458,8 @@ FROM
                   <connections>
                     <connection
                       refId="Package\seq_F555115_commission_sales_extract 1\dft_load_stage\OLE DB Source F555115.Connections[OleDbConnection]"
-                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[conn_dest]"
+                      connectionManagerID="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
+                      connectionManagerRefId="{F4F4A8A0-2B21-4ADE-9DC7-13ADEC7F1948}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>

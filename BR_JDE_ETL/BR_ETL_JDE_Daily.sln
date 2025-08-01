@@ -1,8 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2036
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "BR_JDE_ETL", "BR_JDE_ETL.dtproj", "{77474F22-186C-4F14-9D36-7DB4F0F4215F}"
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "BR_JDE_ETL", "BR_JDE_ETL.dtproj", "{77474F22-186C-4F14-9D36-7DB4F0F4215F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

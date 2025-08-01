@@ -7000,7 +7000,7 @@
     "roles": [
       {
         "name": "User Role",
-        "modelPermission": "readRefresh",
+        "modelPermission": "read",
         "members": [
           {
             "memberName": "CAHSI\\Gary.Winslow",
@@ -7015,6 +7015,16 @@
           {
             "name": "RLS_Users",
             "filterExpression": "'RLS_Users'[EmailAddress]=USERPRINCIPALNAME()"
+          }
+        ]
+      },
+      {
+        "name": "Admin Role",
+        "modelPermission": "readRefresh",
+        "members": [
+          {
+            "memberName": "CAHSI\\TCrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
           }
         ]
       }
