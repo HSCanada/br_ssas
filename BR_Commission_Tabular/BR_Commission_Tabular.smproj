@@ -62,6 +62,45 @@
     <OutputPath>bin\Prod\</OutputPath>
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DEV_BRS' ">
+    <DeploymentServerName>cahsionnlsq1.ca.hsi.local</DeploymentServerName>
+    <DeploymentServerEdition>Standard</DeploymentServerEdition>
+    <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
+    <DeploymentServerDatabase>DEV_BR_Commission_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>BR_Commission_Model</DeploymentServerCubeName>
+    <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
+    <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
+    <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
+    <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
+    <OutputPath>bin\DEV_BRS\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DEV_PBI' ">
+    <DeploymentServerName>cahsionnlsqldev.ca.hsi.local</DeploymentServerName>
+    <DeploymentServerEdition>Standard</DeploymentServerEdition>
+    <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
+    <DeploymentServerDatabase>DEV_PBI_Commission_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>BR_Commission_Model</DeploymentServerCubeName>
+    <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
+    <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
+    <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
+    <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
+    <OutputPath>bin\DEV_PBI\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'PROD_PBI' ">
+    <DeploymentServerName>CAHSIONNLSQL1</DeploymentServerName>
+    <DeploymentServerEdition>Standard</DeploymentServerEdition>
+    <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
+    <DeploymentServerDatabase>PBI_Commission_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>BR_Commission_Tabular</DeploymentServerCubeName>
+    <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
+    <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
+    <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
+    <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
+    <OutputPath>bin\PROD_PBI\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="br_commission_tabular.bim">
       <SubType>Code</SubType>

@@ -1,21 +1,33 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "BR_Commission_Tabular", "BR_Commission_Tabular.smproj", "{8CE414BB-95B2-4C99-9E03-51BA72086E22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Development|x86 = Development|x86
+		DEV_BRS|x86 = DEV_BRS|x86
+		DEV_PBI|x86 = DEV_PBI|x86
+		Dev|x86 = Dev|x86
+		PROD_PBI|x86 = PROD_PBI|x86
 		Prod|x86 = Prod|x86
 		QA|x86 = QA|x86
 		Description = has RLS
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.ActiveCfg = Development|x86
-		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.Build.0 = Development|x86
-		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.Deploy.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DEV_BRS|x86.ActiveCfg = DEV_BRS|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DEV_BRS|x86.Build.0 = DEV_BRS|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DEV_BRS|x86.Deploy.0 = DEV_BRS|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DEV_PBI|x86.ActiveCfg = DEV_PBI|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DEV_PBI|x86.Build.0 = DEV_PBI|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DEV_PBI|x86.Deploy.0 = DEV_PBI|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Dev|x86.ActiveCfg = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Dev|x86.Build.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Dev|x86.Deploy.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.PROD_PBI|x86.ActiveCfg = PROD_PBI|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.PROD_PBI|x86.Build.0 = PROD_PBI|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.PROD_PBI|x86.Deploy.0 = PROD_PBI|x86
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Prod|x86.ActiveCfg = Prod|x86
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Prod|x86.Build.0 = Prod|x86
 		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Prod|x86.Deploy.0 = Prod|x86
