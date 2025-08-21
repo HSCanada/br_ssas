@@ -2070,6 +2070,11 @@
             "name": "size_unit_rate",
             "dataType": "int64",
             "sourceColumn": "size_unit_rate"
+          },
+          {
+            "name": "supplier",
+            "dataType": "string",
+            "sourceColumn": "supplier"
           }
         ],
         "partitions": [
@@ -2112,6 +2117,8 @@
                 "\t,i.minor_adhoc_model_code2",
                 "",
                 "\t,i.size_unit_rate",
+                "",
+                ",i.supplier",
                 "",
                 "",
                 "FROM ",
@@ -2169,6 +2176,8 @@
                   "\t,i.minor_adhoc_model_code2",
                   "",
                   "\t,i.size_unit_rate",
+                  "",
+                  ",i.supplier",
                   "",
                   "",
                   "FROM ",
@@ -2236,6 +2245,8 @@
               "",
               "\t,i.size_unit_rate",
               "",
+              ",i.supplier",
+              "",
               "",
               "FROM ",
               "\t[Dimension].[Item] i",
@@ -2298,6 +2309,8 @@
               "\t,i.minor_adhoc_model_code2",
               "",
               "\t,i.size_unit_rate",
+              "",
+              ",i.supplier",
               "",
               "",
               "FROM ",

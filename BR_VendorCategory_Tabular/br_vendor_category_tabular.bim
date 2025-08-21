@@ -922,6 +922,11 @@
             "name": "glob_prod_curr_descr",
             "dataType": "string",
             "sourceColumn": "glob_prod_curr_descr"
+          },
+          {
+            "name": "RebateRollup",
+            "dataType": "string",
+            "sourceColumn": "RebateRollup"
           }
         ],
         "partitions": [
@@ -1016,6 +1021,7 @@
                 "",
                 "\t",
                 "--\t,rollup_hsb_code",
+                ",RebateRollup",
                 "",
                 "",
                 "FROM",
@@ -1112,6 +1118,7 @@
                   "",
                   "\t",
                   "--\t,rollup_hsb_code",
+                  ",RebateRollup",
                   "",
                   "",
                   "FROM",
@@ -1217,6 +1224,7 @@
               "",
               "\t",
               "--\t,rollup_hsb_code",
+              ",RebateRollup",
               "",
               "",
               "FROM",
@@ -1319,6 +1327,7 @@
               "",
               "\t",
               "--\t,rollup_hsb_code",
+              ",RebateRollup",
               "",
               "",
               "FROM",
