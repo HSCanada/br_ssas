@@ -2796,6 +2796,11 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "ExtChargeback Share in Period",
+            "expression": "DIVIDE([ExtChargeback in Period], [Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
