@@ -3,10 +3,11 @@
   "compatibilityLevel": 1600,
   "model": {
     "culture": "en-US",
+    "discourageImplicitMeasures": true,
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -5595,302 +5596,6 @@
         ]
       },
       {
-        "name": "CommGroup_EST",
-        "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "CommGroupCode_EST",
-            "dataType": "string",
-            "isNameInferred": false,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[CommGroupCode_FSC]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CommGroupKey",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[CommGroupKey]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_group_scorecard_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommGroup_FSC[comm_group_scorecard_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CommGroup",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[CommGroup]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CommGroupRollup",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommGroup_FSC[CommGroupRollup]"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "CalculatedTable 1",
-            "source": {
-              "type": "calculated",
-              "expression": "CommGroup_FSC"
-            }
-          }
-        ]
-      },
-      {
-        "name": "CommSalesperson_EST",
-        "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "EmployeeNumber_EST",
-            "dataType": "int64",
-            "isNameInferred": false,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[EmployeeNumber_FSC]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CommMasterCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[CommMasterCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalespersonName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[SalespersonName]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "CommPlanCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[CommPlanCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "TerritoryStart",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[TerritoryStart]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalespersonID",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[SalespersonID]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SalespersonKey",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[SalespersonKey]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "BranchCount",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[BranchCount]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "BranchCode",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[BranchCode]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "BranchName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[BranchName]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "ZoneName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[ZoneName]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "tracker_ind",
-            "dataType": "boolean",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[tracker_ind]",
-            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_adpt_login_score",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_adpt_login_score]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_adpt_created_opps_score",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_adpt_created_opps_score]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_adpt_activity_score",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_adpt_activity_score]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_adpt_pastdue_opps_score",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_adpt_pastdue_opps_score]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_adpt_closed_opps_score",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_adpt_closed_opps_score]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_opps_equipment_technology_cnt",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_cnt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_opps_cadcam_digitial_imaging_cnt",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_cnt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_opps_merchandise_cnt",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_cnt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_opps_other_cnt",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_cnt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_opps_equipment_technology_amt",
-            "dataType": "double",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_opps_equipment_technology_amt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_opps_cadcam_digitial_imaging_amt",
-            "dataType": "double",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_opps_cadcam_digitial_imaging_amt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_opps_merchandise_amt",
-            "dataType": "double",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_opps_merchandise_amt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "sf_opps_other_amt",
-            "dataType": "double",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "CommSalesperson_FSC[sf_opps_other_amt]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Years of Service",
-            "dataType": "int64",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "CommSalesperson_FSC[Years of Service]"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "CalculatedTable 1",
-            "source": {
-              "type": "calculated",
-              "expression": "CommSalesperson_FSC"
-            }
-          }
-        ]
-      },
-      {
         "name": "Period Select YearFactor",
         "columns": [
           {
@@ -6613,7 +6318,7 @@
         ]
       },
       {
-        "name": "RLS_Users",
+        "name": "RLS_Users_FSC",
         "columns": [
           {
             "name": "SamAccountName",
@@ -6673,7 +6378,7 @@
         ]
       },
       {
-        "name": "RLS_Permission_Commision",
+        "name": "RLS_Permission_Commision_FSC",
         "columns": [
           {
             "name": "TerritoryCd",
@@ -6727,7 +6432,7 @@
         ]
       },
       {
-        "name": "RLS_TBL_Fieldsales",
+        "name": "RLS_TBL_Fieldsales_FSC",
         "columns": [
           {
             "name": "Rep Name",
@@ -6807,6 +6512,776 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "pbi"
+          }
+        ]
+      },
+      {
+        "name": "RLS_Users_ESS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[SamAccountName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "LoginId",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[LoginId]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmailAddress",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[EmailAddress]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "office",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[office]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[EmployeeKey]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_Users_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_Permission_Commision_ESS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[TerritoryCd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Permission Level",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[Permission Level]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Rep Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[Rep Name]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[SamAccountName]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_Permission_Commision_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_TBL_Fieldsales_ESS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Rep Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Rep Name]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[TerritoryCd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Filter Field",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Filter Field]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Permission Level",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Permission Level]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "order_taken_by",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[order_taken_by]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "comm_plan_id",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[comm_plan_id]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "salesperson_key_id",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[salesperson_key_id]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "master_salesperson_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[master_salesperson_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[SamAccountName]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_TBL_Fieldsales_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CalculationGroup 1",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "CalculationItem 1"
+            }
+          ]
+        },
+        "columns": [
+          {
+            "name": "CalculationItemColumn 1",
+            "dataType": "string",
+            "sourceColumn": "Name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculationGroup 1",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_Users_EPS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[SamAccountName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "LoginId",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[LoginId]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmailAddress",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[EmailAddress]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "office",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[office]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[EmployeeKey]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_Users_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_Permission_Commision_EPS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[TerritoryCd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Permission Level",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[Permission Level]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Rep Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[Rep Name]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[SamAccountName]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_Permission_Commision_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_TBL_Fieldsales_EPS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Rep Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Rep Name]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[TerritoryCd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Filter Field",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Filter Field]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Permission Level",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Permission Level]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "order_taken_by",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[order_taken_by]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "comm_plan_id",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[comm_plan_id]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "salesperson_key_id",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[salesperson_key_id]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "master_salesperson_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[master_salesperson_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[SamAccountName]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_TBL_Fieldsales_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_Users_ISR",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[SamAccountName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "LoginId",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[LoginId]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmailAddress",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[EmailAddress]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "office",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[office]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[EmployeeKey]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_Users_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_TBL_Fieldsales_ISR",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Rep Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Rep Name]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[TerritoryCd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Filter Field",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Filter Field]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Permission Level",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Permission Level]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "order_taken_by",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[order_taken_by]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "comm_plan_id",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[comm_plan_id]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "salesperson_key_id",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[salesperson_key_id]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "master_salesperson_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[master_salesperson_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[SamAccountName]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_TBL_Fieldsales_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_Permission_Commision_ISR",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[TerritoryCd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Permission Level",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[Permission Level]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Rep Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[Rep Name]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[SamAccountName]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_Permission_Commision_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_Users_CPS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[SamAccountName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "LoginId",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[LoginId]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmailAddress",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[EmailAddress]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "office",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[office]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "EmployeeKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Users_FSC[EmployeeKey]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_Users_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_TBL_Fieldsales_CPS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Rep Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Rep Name]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[TerritoryCd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Filter Field",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Filter Field]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Permission Level",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Permission Level]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "order_taken_by",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[order_taken_by]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "comm_plan_id",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[comm_plan_id]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "salesperson_key_id",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[salesperson_key_id]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "master_salesperson_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[master_salesperson_cd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_TBL_Fieldsales_FSC[SamAccountName]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_TBL_Fieldsales_FSC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "RLS_Permission_Commision_CPS",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "TerritoryCd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[TerritoryCd]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Permission Level",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[Permission Level]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Rep Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[Rep Name]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SamAccountName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "RLS_Permission_Commision_FSC[SamAccountName]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "RLS_Permission_Commision_FSC"
+            }
           }
         ]
       }
@@ -6939,20 +7414,6 @@
         "toColumn": "CommGroupKey"
       },
       {
-        "name": "07ffbbcf-126e-4405-b14b-8c157d1674ff",
-        "fromTable": "Sales",
-        "fromColumn": "EST_CommGroupKey",
-        "toTable": "CommGroup_EST",
-        "toColumn": "CommGroupKey"
-      },
-      {
-        "name": "b4456c9b-6b01-4797-a87c-370276f040b1",
-        "fromTable": "Sales",
-        "fromColumn": "EST_SalespersonKey",
-        "toTable": "CommSalesperson_EST",
-        "toColumn": "SalespersonKey"
-      },
-      {
         "name": "b237f890-cb4d-447d-a7d5-aa80a36130e1",
         "fromTable": "Sales",
         "fromColumn": "FSC_SalespersonKey_QtrGrowth",
@@ -6975,26 +7436,118 @@
       },
       {
         "name": "75e4d09a-6888-4ad4-a4c2-deb9154c0618",
-        "fromTable": "RLS_Permission_Commision",
+        "fromTable": "RLS_Permission_Commision_FSC",
         "fromColumn": "SamAccountName",
-        "toTable": "RLS_Users",
+        "toTable": "RLS_Users_FSC",
         "toColumn": "SamAccountName"
       },
       {
         "name": "e161d91a-aa30-4485-b752-4789cd3bfbc5",
         "fromTable": "CommSalesperson_FSC",
         "fromColumn": "BranchCode",
-        "toTable": "RLS_TBL_Fieldsales",
+        "toTable": "RLS_TBL_Fieldsales_FSC",
         "toColumn": "TerritoryCd"
       },
       {
         "name": "231e85d3-4530-455b-9aa6-801d9a1df6ea",
-        "fromTable": "RLS_Permission_Commision",
+        "fromTable": "RLS_Permission_Commision_FSC",
         "fromColumn": "Permission Level",
-        "toTable": "RLS_TBL_Fieldsales",
+        "toTable": "RLS_TBL_Fieldsales_FSC",
         "toColumn": "Permission Level",
         "crossFilteringBehavior": "bothDirections",
         "securityFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "38f82542-5739-4e7c-9d1c-6ec1dda8d684",
+        "fromTable": "RLS_Permission_Commision_ESS",
+        "fromColumn": "SamAccountName",
+        "toTable": "RLS_Users_ESS",
+        "toColumn": "SamAccountName"
+      },
+      {
+        "name": "4751b017-2ac2-405e-8540-6f582bfcfe7b",
+        "fromTable": "RLS_Permission_Commision_ESS",
+        "fromColumn": "Permission Level",
+        "toTable": "RLS_TBL_Fieldsales_ESS",
+        "toColumn": "Permission Level",
+        "crossFilteringBehavior": "bothDirections",
+        "securityFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "96e73cad-8be3-4802-a028-e00dc04b767b",
+        "fromTable": "CommSalesperson_ESS",
+        "fromColumn": "BranchCode",
+        "toTable": "RLS_TBL_Fieldsales_ESS",
+        "toColumn": "TerritoryCd"
+      },
+      {
+        "name": "c12b1371-3a39-46cf-acb7-94f75ffb106f",
+        "fromTable": "RLS_Permission_Commision_EPS",
+        "fromColumn": "SamAccountName",
+        "toTable": "RLS_Users_EPS",
+        "toColumn": "SamAccountName"
+      },
+      {
+        "name": "0331d149-6bd5-47ab-9607-5f635e31d475",
+        "fromTable": "RLS_Permission_Commision_EPS",
+        "fromColumn": "Permission Level",
+        "toTable": "RLS_TBL_Fieldsales_EPS",
+        "toColumn": "Permission Level",
+        "crossFilteringBehavior": "bothDirections",
+        "securityFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "40c13068-3ce2-4ec6-af0b-f0f00f99407a",
+        "fromTable": "CommSalesperson_EPS",
+        "fromColumn": "BranchCode",
+        "toTable": "RLS_TBL_Fieldsales_EPS",
+        "toColumn": "TerritoryCd"
+      },
+      {
+        "name": "b05a40ac-cd75-465c-950e-faf90f722a2b",
+        "fromTable": "RLS_Permission_Commision_ISR",
+        "fromColumn": "SamAccountName",
+        "toTable": "RLS_Users_ISR",
+        "toColumn": "SamAccountName"
+      },
+      {
+        "name": "7145d8df-ad80-4564-b541-ee9465c656bd",
+        "fromTable": "RLS_Permission_Commision_ISR",
+        "fromColumn": "Permission Level",
+        "toTable": "RLS_TBL_Fieldsales_ISR",
+        "toColumn": "Permission Level",
+        "crossFilteringBehavior": "bothDirections",
+        "securityFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "ce92db7e-be1a-4171-b842-6ff59e398db9",
+        "fromTable": "CommSalesperson_ISR",
+        "fromColumn": "BranchCode",
+        "toTable": "RLS_TBL_Fieldsales_ISR",
+        "toColumn": "TerritoryCd"
+      },
+      {
+        "name": "2656db01-1913-4cf3-b3e7-07992ecd622d",
+        "fromTable": "RLS_Permission_Commision_CPS",
+        "fromColumn": "SamAccountName",
+        "toTable": "RLS_Users_CPS",
+        "toColumn": "SamAccountName"
+      },
+      {
+        "name": "39f1225f-cbe2-491e-958f-a3933be6faa9",
+        "fromTable": "RLS_Permission_Commision_CPS",
+        "fromColumn": "Permission Level",
+        "toTable": "RLS_TBL_Fieldsales_CPS",
+        "toColumn": "Permission Level",
+        "crossFilteringBehavior": "bothDirections",
+        "securityFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "bd6d2630-6c99-41e5-81bf-27a77994e7f5",
+        "fromTable": "CommSalesperson_CPS",
+        "fromColumn": "BranchCode",
+        "toTable": "RLS_TBL_Fieldsales_CPS",
+        "toColumn": "TerritoryCd"
       }
     ],
     "roles": [
@@ -7017,8 +7570,24 @@
         ],
         "tablePermissions": [
           {
-            "name": "RLS_Users",
-            "filterExpression": "'RLS_Users'[EmailAddress]=USERPRINCIPALNAME()"
+            "name": "RLS_Users_FSC",
+            "filterExpression": "'RLS_Users_FSC'[EmailAddress]=USERPRINCIPALNAME()"
+          },
+          {
+            "name": "RLS_Users_ESS",
+            "filterExpression": "'RLS_Users_ESS'[EmailAddress]=USERPRINCIPALNAME()"
+          },
+          {
+            "name": "RLS_Users_EPS",
+            "filterExpression": "'RLS_Users_EPS'[EmailAddress]=USERPRINCIPALNAME()"
+          },
+          {
+            "name": "RLS_Users_ISR",
+            "filterExpression": "'RLS_Users_ISR'[EmailAddress]=USERPRINCIPALNAME()"
+          },
+          {
+            "name": "RLS_Users_CPS",
+            "filterExpression": "'RLS_Users_CPS'[EmailAddress]=USERPRINCIPALNAME()"
           }
         ]
       },
