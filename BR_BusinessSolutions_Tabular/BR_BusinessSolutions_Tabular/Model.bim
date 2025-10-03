@@ -828,6 +828,22 @@
             "name": "FieldSalesBranchName",
             "dataType": "string",
             "sourceColumn": "FieldSalesBranchName"
+          },
+          {
+            "type": "calculated",
+            "name": "Spend Level",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "CALCULATE ( ",
+              "\tVALUES('SpendBand'[Spend Range]),",
+              "\t\tFILTER( ",
+              "            SpendBand, ",
+              "           'sales' [Rolling 12mo Sales] >= 'SpendBand'[Spend Min]  && ",
+              "            'Sales'[Rolling 12mo Sales] < 'SpendBand'[Spend Max]",
+              "\t\t)",
+              ") "
+            ]
           }
         ],
         "partitions": [
@@ -1316,6 +1332,11 @@
             "dataType": "boolean",
             "sourceColumn": "fg_deal_ind",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "name": "GEP_Order_Flag_ind",
+            "dataType": "boolean",
+            "sourceColumn": "GEP_Order_Flag_ind"
           }
         ],
         "partitions": [
@@ -1358,6 +1379,7 @@
                 "\t,fg_deal_ind",
                 "\t,fg_deal_id",
                 "",
+                "\t,GEP_Order_Flag_ind",
                 "",
                 "",
                 "FROM",
@@ -1402,6 +1424,7 @@
                   "\t,fg_deal_ind",
                   "\t,fg_deal_id",
                   "",
+                  "\t,GEP_Order_Flag_ind",
                   "",
                   "",
                   "FROM",
@@ -2178,8 +2201,8 @@
               "\t\tFILTER ( ",
               "\t\t'Customer', ",
               "\t\t\tAND ( ",
-              "\t\t\t\t'Sales'[Rolling 12mo Sales] >= MIN ( 'SpendRange'[Spend Min]  ), ",
-              "\t\t\t\t'Sales'[Rolling 12mo Sales] < MAX ( 'SpendRange'[Spend Max] ) ",
+              "\t\t\t\t'Sales'[Rolling 12mo Sales] >= MIN ( 'SpendBand'[Spend Min]  ), ",
+              "\t\t\t\t'Sales'[Rolling 12mo Sales] < MAX ( 'SpendBand'[Spend Max] ) ",
               "\t\t\t) ",
               "\t\t) ",
               "\t)",
@@ -2236,6 +2259,31 @@
             "name": "fg_get_count",
             "expression": "SUM([fg_get_ind])",
             "formatString": "#,0"
+          },
+          {
+            "name": "Orders in Period",
+            "expression": "DISTINCTCOUNT([SalesOrderNumber])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "ShipTo in Period",
+            "expression": "DISTINCTCOUNT([ShipTo])"
+          },
+          {
+            "name": "Average Order Value in Period",
+            "expression": "DIVIDE([Sales in Period],[Orders in Period])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Orders per Week in Period",
+            "expression": "DIVIDE([Orders in Period],'Period Day'[Weeks in Period])",
+            "formatString": "#,0.00"
           }
         ],
         "annotations": [
@@ -2275,6 +2323,7 @@
               "\t,fg_deal_ind",
               "\t,fg_deal_id",
               "",
+              "\t,GEP_Order_Flag_ind",
               "",
               "",
               "FROM",
@@ -2325,6 +2374,7 @@
               "\t,fg_deal_ind",
               "\t,fg_deal_id",
               "",
+              "\t,GEP_Order_Flag_ind",
               "",
               "",
               "FROM",
@@ -2759,7 +2809,8 @@
         ]
       },
       {
-        "name": "SpendRange",
+        "name": "SpendBand",
+        "isHidden": true,
         "columns": [
           {
             "name": "Spend Min",
@@ -2793,7 +2844,8 @@
                 "      [Spend_From]\t\tAS [Spend Min]",
                 "      ,[Spend_To]\t\tAS [Spend Max]",
                 "      ,[Spend_Display]  AS [Spend Range]",
-                "  FROM [BRS_Customer_Spend_Category]"
+                "  FROM [BRS_Customer_Spend_Category]",
+                "where Spend_Category = 'S'"
               ],
               "dataSource": "SqlServer BRSales"
             },
@@ -2805,7 +2857,8 @@
                   "      [Spend_From]\t\tAS [Spend Min]",
                   "      ,[Spend_To]\t\tAS [Spend Max]",
                   "      ,[Spend_Display]  AS [Spend Range]",
-                  "  FROM [BRS_Customer_Spend_Category]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "  FROM [BRS_Customer_Spend_Category]",
+                  "where Spend_Category = 'S'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -2819,7 +2872,8 @@
               "      [Spend_From]\t\tAS [Spend Min]",
               "      ,[Spend_To]\t\tAS [Spend Max]",
               "      ,[Spend_Display]  AS [Spend Range]",
-              "  FROM [BRS_Customer_Spend_Category]"
+              "  FROM [BRS_Customer_Spend_Category]",
+              "where Spend_Category = 'S'"
             ]
           },
           {
@@ -2833,7 +2887,8 @@
               "      [Spend_From]\t\tAS [Spend Min]",
               "      ,[Spend_To]\t\tAS [Spend Max]",
               "      ,[Spend_Display]  AS [Spend Range]",
-              "  FROM [BRS_Customer_Spend_Category]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "  FROM [BRS_Customer_Spend_Category]",
+              "where Spend_Category = 'S'</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -3573,6 +3628,12 @@
                 ]
               }
             ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Weeks in Period",
+            "expression": "DISTINCTCOUNT([CalWeek])"
           }
         ],
         "annotations": [

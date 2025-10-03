@@ -48,6 +48,19 @@
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
     <OutputPath>bin\Prod\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'QA' ">
+    <DeploymentServerName>CAHSIONNLSQL1</DeploymentServerName>
+    <DeploymentServerEdition>Standard</DeploymentServerEdition>
+    <DeploymentServerVersion>Unknown</DeploymentServerVersion>
+    <DeploymentServerDatabase>QB_PBI_BusinessSolutions_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>PBI_BusinessSolutions_Tabular</DeploymentServerCubeName>
+    <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
+    <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
+    <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
+    <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Model.bim">

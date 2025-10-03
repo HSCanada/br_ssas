@@ -13,11 +13,11 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Development' ">
     <OutputPath>bin\</OutputPath>
-    <DeploymentServerName>CAHSIONNLSQLDEV</DeploymentServerName>
+    <DeploymentServerName>cahsionnlsqldev.ca.hsi.local</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
-    <DeploymentServerDatabase>BR_InsideSales_Tabular</DeploymentServerDatabase>
-    <DeploymentServerCubeName>br_inside_sales_model</DeploymentServerCubeName>
+    <DeploymentServerDatabase>DEV_PBI_InsideSales_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>PBI_InsideSales_Tabular</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
@@ -37,17 +37,30 @@
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Prod' ">
-    <DeploymentServerName>CAHSIONNLSQL1</DeploymentServerName>
+    <DeploymentServerName>localhost</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>BR_InsideSales_Tabular</DeploymentServerDatabase>
-    <DeploymentServerCubeName>br_inside_sales_model</DeploymentServerCubeName>
+    <DeploymentServerCubeName>Model</DeploymentServerCubeName>
     <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
     <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
     <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
     <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
     <OutputPath>bin\Prod\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'QA' ">
+    <DeploymentServerName>CAHSIONNLSQL1</DeploymentServerName>
+    <DeploymentServerEdition>Standard</DeploymentServerEdition>
+    <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
+    <DeploymentServerDatabase>QA_PBI_InsideSales_Tabular</DeploymentServerDatabase>
+    <DeploymentServerCubeName>PBI_InsideSales_Tabular</DeploymentServerCubeName>
+    <DeploymentOptionProcessing>Default</DeploymentOptionProcessing>
+    <DeploymentOptionTransactionalDeployment>False</DeploymentOptionTransactionalDeployment>
+    <DeploymentOptionDirectQueryMode>InMemory</DeploymentOptionDirectQueryMode>
+    <DeploymentOptionQueryImpersonation>Default</DeploymentOptionQueryImpersonation>
+    <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
+    <OutputPath>bin\QA\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="br_inside_sales_model.bim">

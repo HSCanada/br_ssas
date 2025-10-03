@@ -6339,14 +6339,9 @@
             "sourceProviderType": "WChar"
           },
           {
-            "name": "office",
-            "dataType": "string",
-            "sourceColumn": "office",
-            "sourceProviderType": "WChar"
-          },
-          {
             "name": "EmployeeKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "EmployeeKey",
             "sourceProviderType": "Integer"
           }
@@ -6357,15 +6352,30 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [pbi].[RLS_Users].* FROM [pbi].[RLS_Users] ",
+              "query": [
+                "SELECT   SamAccountName, LoginId, EmailAddress, EmployeeKey",
+                "FROM     pbi.RLS_Users"
+              ],
               "dataSource": "Commission SQL Source"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   SamAccountName, LoginId, EmailAddress, EmployeeKey",
+                  "FROM     pbi.RLS_Users</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [pbi].[RLS_Users].* FROM [pbi].[RLS_Users] "
+            "value": [
+              "SELECT   SamAccountName, LoginId, EmailAddress, EmployeeKey",
+              "FROM     pbi.RLS_Users"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -6374,6 +6384,13 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "pbi"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   SamAccountName, LoginId, EmailAddress, EmployeeKey",
+              "FROM     pbi.RLS_Users</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -6393,12 +6410,6 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "Rep Name",
-            "dataType": "string",
-            "sourceColumn": "Rep Name",
-            "sourceProviderType": "Char"
-          },
-          {
             "name": "SamAccountName",
             "dataType": "string",
             "sourceColumn": "SamAccountName",
@@ -6411,15 +6422,30 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [pbi].[RLS_Permission_Commision].* FROM [pbi].[RLS_Permission_Commision] ",
+              "query": [
+                "SELECT   TerritoryCd, [Permission Level], SamAccountName",
+                "FROM     pbi.RLS_Permission_Commision"
+              ],
               "dataSource": "Commission SQL Source"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   TerritoryCd, [Permission Level], SamAccountName",
+                  "FROM     pbi.RLS_Permission_Commision</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [pbi].[RLS_Permission_Commision].* FROM [pbi].[RLS_Permission_Commision] "
+            "value": [
+              "SELECT   TerritoryCd, [Permission Level], SamAccountName",
+              "FROM     pbi.RLS_Permission_Commision"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -6428,18 +6454,19 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "pbi"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   TerritoryCd, [Permission Level], SamAccountName",
+              "FROM     pbi.RLS_Permission_Commision</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
       {
         "name": "RLS_TBL_Fieldsales_FSC",
         "columns": [
-          {
-            "name": "Rep Name",
-            "dataType": "string",
-            "sourceColumn": "Rep Name",
-            "sourceProviderType": "WChar"
-          },
           {
             "name": "TerritoryCd",
             "dataType": "string",
@@ -6459,34 +6486,11 @@
             "sourceProviderType": "Char"
           },
           {
-            "name": "order_taken_by",
-            "dataType": "string",
-            "sourceColumn": "order_taken_by",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "comm_plan_id",
-            "dataType": "string",
-            "sourceColumn": "comm_plan_id",
-            "sourceProviderType": "Char"
-          },
-          {
             "name": "salesperson_key_id",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "salesperson_key_id",
             "sourceProviderType": "Char"
-          },
-          {
-            "name": "master_salesperson_cd",
-            "dataType": "string",
-            "sourceColumn": "master_salesperson_cd",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "SamAccountName",
-            "dataType": "string",
-            "sourceColumn": "SamAccountName",
-            "sourceProviderType": "WChar"
           }
         ],
         "partitions": [
@@ -6495,15 +6499,33 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [pbi].[RLS_TBL_Fieldsales].* FROM [pbi].[RLS_TBL_Fieldsales] ",
+              "query": [
+                "SELECT   ",
+                "TerritoryCd, [Filter Field], [Permission Level],  salesperson_key_id",
+                "FROM     pbi.RLS_TBL_Fieldsales"
+              ],
               "dataSource": "Commission SQL Source"
-            }
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   ",
+                  "TerritoryCd, [Filter Field], [Permission Level],  salesperson_key_id",
+                  "FROM     pbi.RLS_TBL_Fieldsales</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [pbi].[RLS_TBL_Fieldsales].* FROM [pbi].[RLS_TBL_Fieldsales] "
+            "value": [
+              "SELECT   ",
+              "TerritoryCd, [Filter Field], [Permission Level],  salesperson_key_id",
+              "FROM     pbi.RLS_TBL_Fieldsales"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -6512,6 +6534,14 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "pbi"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   ",
+              "TerritoryCd, [Filter Field], [Permission Level],  salesperson_key_id",
+              "FROM     pbi.RLS_TBL_Fieldsales</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -6544,18 +6574,11 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "office",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_Users_FSC[office]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "EmployeeKey",
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "RLS_Users_FSC[EmployeeKey]"
           }
         ],
@@ -6590,14 +6613,6 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "Rep Name",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_Permission_Commision_FSC[Rep Name]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "SamAccountName",
             "dataType": "string",
             "isNameInferred": true,
@@ -6618,14 +6633,6 @@
       {
         "name": "RLS_TBL_Fieldsales_ESS",
         "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "Rep Name",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Rep Name]"
-          },
           {
             "type": "calculatedTableColumn",
             "name": "TerritoryCd",
@@ -6652,43 +6659,12 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "order_taken_by",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[order_taken_by]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_plan_id",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[comm_plan_id]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "salesperson_key_id",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "RLS_TBL_Fieldsales_FSC[salesperson_key_id]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "master_salesperson_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[master_salesperson_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SamAccountName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[SamAccountName]"
           }
         ],
         "partitions": [
@@ -6756,18 +6732,11 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "office",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_Users_FSC[office]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "EmployeeKey",
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "RLS_Users_FSC[EmployeeKey]"
           }
         ],
@@ -6802,14 +6771,6 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "Rep Name",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_Permission_Commision_FSC[Rep Name]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "SamAccountName",
             "dataType": "string",
             "isNameInferred": true,
@@ -6830,14 +6791,6 @@
       {
         "name": "RLS_TBL_Fieldsales_EPS",
         "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "Rep Name",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Rep Name]"
-          },
           {
             "type": "calculatedTableColumn",
             "name": "TerritoryCd",
@@ -6864,43 +6817,12 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "order_taken_by",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[order_taken_by]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_plan_id",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[comm_plan_id]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "salesperson_key_id",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "RLS_TBL_Fieldsales_FSC[salesperson_key_id]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "master_salesperson_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[master_salesperson_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SamAccountName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[SamAccountName]"
           }
         ],
         "partitions": [
@@ -6942,18 +6864,11 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "office",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_Users_FSC[office]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "EmployeeKey",
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "RLS_Users_FSC[EmployeeKey]"
           }
         ],
@@ -6970,14 +6885,6 @@
       {
         "name": "RLS_TBL_Fieldsales_ISR",
         "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "Rep Name",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Rep Name]"
-          },
           {
             "type": "calculatedTableColumn",
             "name": "TerritoryCd",
@@ -7004,43 +6911,12 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "order_taken_by",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[order_taken_by]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_plan_id",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[comm_plan_id]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "salesperson_key_id",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "RLS_TBL_Fieldsales_FSC[salesperson_key_id]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "master_salesperson_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[master_salesperson_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SamAccountName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[SamAccountName]"
           }
         ],
         "partitions": [
@@ -7071,14 +6947,6 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "RLS_Permission_Commision_FSC[Permission Level]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Rep Name",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_Permission_Commision_FSC[Rep Name]"
           },
           {
             "type": "calculatedTableColumn",
@@ -7128,18 +6996,11 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "office",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_Users_FSC[office]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "EmployeeKey",
             "dataType": "int64",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "RLS_Users_FSC[EmployeeKey]"
           }
         ],
@@ -7156,14 +7017,6 @@
       {
         "name": "RLS_TBL_Fieldsales_CPS",
         "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "Rep Name",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[Rep Name]"
-          },
           {
             "type": "calculatedTableColumn",
             "name": "TerritoryCd",
@@ -7190,43 +7043,12 @@
           },
           {
             "type": "calculatedTableColumn",
-            "name": "order_taken_by",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[order_taken_by]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "comm_plan_id",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[comm_plan_id]"
-          },
-          {
-            "type": "calculatedTableColumn",
             "name": "salesperson_key_id",
             "dataType": "string",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isHidden": true,
             "sourceColumn": "RLS_TBL_Fieldsales_FSC[salesperson_key_id]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "master_salesperson_cd",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[master_salesperson_cd]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "SamAccountName",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_TBL_Fieldsales_FSC[SamAccountName]"
           }
         ],
         "partitions": [
@@ -7257,14 +7079,6 @@
             "isNameInferred": true,
             "isDataTypeInferred": true,
             "sourceColumn": "RLS_Permission_Commision_FSC[Permission Level]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "Rep Name",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "RLS_Permission_Commision_FSC[Rep Name]"
           },
           {
             "type": "calculatedTableColumn",

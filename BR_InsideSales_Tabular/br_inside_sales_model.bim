@@ -123,6 +123,77 @@
             "dataType": "int64",
             "isDataTypeInferred": true,
             "expression": "[Quantity] * RELATED('Item'[size_unit_rate])"
+          },
+          {
+            "name": "GEP_Order_Flag_ind",
+            "dataType": "boolean",
+            "sourceColumn": "GEP_Order_Flag_ind"
+          },
+          {
+            "name": "ExtBaseAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "ExtBaseAmt"
+          },
+          {
+            "name": "DiscountAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "DiscountAmt"
+          },
+          {
+            "name": "DiscountLineAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "DiscountLineAmt"
+          },
+          {
+            "name": "DiscountOrderAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "DiscountOrderAmt"
+          },
+          {
+            "name": "GPfinAmt",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "GPfinAmt"
+          },
+          {
+            "name": "FiscalWeek",
+            "dataType": "int64",
+            "sourceColumn": "FiscalWeek"
+          },
+          {
+            "name": "GEP_Period_Flag_ind",
+            "dataType": "boolean",
+            "sourceColumn": "GEP_Period_Flag_ind",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculated",
+            "name": "GEP_Cohort_Weeks_To_Date_sales_max",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "if('Period'[Maximum of GEP_TimePeriod_cd]=\"BF\", 12, 'gep_cohort'[_GEP_Cohort_Weeks_To_Date_max])"
+          },
+          {
+            "name": "promo_line_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "promo_line_key"
+          },
+          {
+            "name": "promo_header_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "promo_header_key"
+          },
+          {
+            "name": "promo_show_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "promo_show_key"
           }
         ],
         "partitions": [
@@ -130,13 +201,13 @@
             "name": "BRS_TS_Cube",
             "source": {
               "type": "query",
-              "query": "Exec [Fact].Sales_isr 0",
+              "query": "Exec [Fact].Sales_gep 0",
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec [Fact].Sales_isr 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec [Fact].Sales_gep 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
               }
             ]
           }
@@ -816,13 +887,13 @@
             "formatString": "0.0%;-0.0%;0.0%"
           },
           {
-            "name": "Days in Period",
+            "name": "Days (Selling) in Period",
             "expression": "DISTINCTCOUNT([SalesDate])",
             "formatString": "#,0"
           },
           {
-            "name": "DR AvgSalesDay in Period",
-            "expression": "DIVIDE([DR Sales in Period],[Days in Period])",
+            "name": "DR AvgSalesDay (Selling)  in Period",
+            "expression": "DIVIDE([DR Sales in Period],[Days (Selling) in Period])",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
@@ -832,8 +903,8 @@
             ]
           },
           {
-            "name": "AvgSalesDay in Period",
-            "expression": "DIVIDE([Sales in Period],[Days in Period])",
+            "name": "AvgSalesDay (Selling) in Period",
+            "expression": "DIVIDE([Sales in Period],[Days (Selling) in Period])",
             "formatString": "\\$#,0;(\\$#,0);\\$#,0",
             "annotations": [
               {
@@ -841,6 +912,158 @@
                 "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "Disc in Period",
+            "expression": " sum(Sales[DiscountAmt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Ext.Base in Period",
+            "expression": " sum(Sales[ExtBaseAmt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Disc% in Period",
+            "expression": " DIVIDE([Disc in Period],[Ext.Base in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "GPfin in Period",
+            "expression": " SUM([GPfinAmt])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GMfin in Period",
+            "expression": " DIVIDE([GPfin in Period],[Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Lines in Period",
+            "expression": "COUNTA([LineNumber])"
+          },
+          {
+            "name": "Distinct Count of ShipTo",
+            "expression": "DISTINCTCOUNT([ShipTo])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "AvgSalesWeek (Selling) in Period",
+            "expression": "DIVIDE([Sales in Period],[Weeks (Selling) in Period])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "AvgGPfinWeek (Selling) in Period",
+            "expression": "DIVIDE([GPfin in Period],[Weeks (Selling) in Period])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GEP OrderSales in Period",
+            "expression": "CALCULATE ( [Sales in Period], 'Sales'[GEP_Order_Flag_ind]=True)",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GEP OrderSales Share in Period",
+            "expression": "DIVIDE([GEP OrderSales in Period],[Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "Weeks (Selling) in Period",
+            "expression": "DISTINCTCOUNT([FiscalWeek])",
+            "formatString": "0"
+          },
+          {
+            "name": "GEP OrderGPfin in Period",
+            "expression": "CALCULATE ( [GPfin in Period], 'Sales'[GEP_Order_Flag_ind]=True)",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GEP OrderSales GMfin",
+            "expression": "DIVIDE([GEP OrderGPfin in Period],[GEP OrderSales in Period], BLANK())",
+            "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "GEP OrderSalesOrder in Period",
+            "expression": "CALCULATE ( [SalesOrders in Period], 'Sales'[GEP_Order_Flag_ind]=True)",
+            "formatString": "#,0"
+          },
+          {
+            "name": "GEP AvgSalesWeek (GoLive) in Period",
+            "expression": "DIVIDE([Sales in Period],[GEP_Cohort_Weeks_To_Date_sales])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GEP_Cohort_Weeks_To_Date_sales",
+            "expression": "MAX([GEP_Cohort_Weeks_To_Date_sales_max])"
+          },
+          {
+            "name": "GEP AvgGPfinWeek (GoLive) in Period",
+            "expression": "DIVIDE([GPfin in Period],[GEP_Cohort_Weeks_To_Date_sales])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "GEP AvgSalesOrder inWeek (GoLive) in Period",
+            "expression": "DIVIDE([salesorders in Period],[GEP_Cohort_Weeks_To_Date_sales])",
+            "formatString": "#,0.0"
+          },
+          {
+            "name": "GEP AvgGMfinWeek (GoLive) in Period",
+            "expression": "DIVIDE([GEP AvgGPfinWeek (GoLive) in Period],[GEP AvgSalesWeek (GoLive) in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -850,11 +1073,11 @@
           },
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "Exec [Fact].Sales_isr 0"
+            "value": "Exec [Fact].Sales_gep 0"
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec [Fact].Sales_isr 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>Exec [Fact].Sales_gep 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
           }
         ]
       },
@@ -1042,6 +1265,12 @@
             "name": "SegmentNew",
             "dataType": "string",
             "sourceColumn": "SegmentNew"
+          },
+          {
+            "name": "GEP_Cohort_Code",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "GEP_Cohort_Code"
           }
         ],
         "partitions": [
@@ -1082,6 +1311,9 @@
                 "      ,[adhoc_model_3_text]",
                 "      ,[MarketClassNewCode]",
                 ",[SegmentNew]",
+                "",
+                ",GEP_Cohort_Code",
+                "--,GEP_Chohort_Weeks_To_Date",
                 "",
                 "",
                 "FROM",
@@ -1126,6 +1358,9 @@
                   "      ,[adhoc_model_3_text]",
                   "      ,[MarketClassNewCode]",
                   ",[SegmentNew]",
+                  "",
+                  ",GEP_Cohort_Code",
+                  "--,GEP_Chohort_Weeks_To_Date",
                   "",
                   "",
                   "FROM",
@@ -1188,6 +1423,9 @@
               "      ,[MarketClassNewCode]",
               ",[SegmentNew]",
               "",
+              ",GEP_Cohort_Code",
+              "--,GEP_Chohort_Weeks_To_Date",
+              "",
               "",
               "FROM",
               "",
@@ -1229,6 +1467,9 @@
               "      ,[adhoc_model_3_text]",
               "      ,[MarketClassNewCode]",
               ",[SegmentNew]",
+              "",
+              ",GEP_Cohort_Code",
+              "--,GEP_Chohort_Weeks_To_Date",
               "",
               "",
               "FROM",
@@ -1337,6 +1578,38 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "FirstWeekSeqInDay"
+          },
+          {
+            "name": "SalesDay",
+            "dataType": "string",
+            "sourceColumn": "SalesDay"
+          },
+          {
+            "name": "SalesDate_ORG",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "SalesDate_ORG"
+          },
+          {
+            "name": "day_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "day_key"
+          },
+          {
+            "name": "CalWeek",
+            "dataType": "int64",
+            "sourceColumn": "CalWeek"
+          },
+          {
+            "name": "FiscWeekName",
+            "dataType": "string",
+            "sourceColumn": "FiscWeekName"
+          },
+          {
+            "name": "GEP_TimePeriod_cd",
+            "dataType": "string",
+            "sourceColumn": "GEP_TimePeriod_cd"
           }
         ],
         "partitions": [
@@ -1345,13 +1618,19 @@
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": "SELECT [Dimension].[Day].* FROM [Dimension].[Day]",
+              "query": [
+                "SELECT   SalesDate, SalesDay, SalesDate_ORG, day_key, DaySeq, DayNumber, DayType, FiscalMonth, MonthName, MonthNum, QuarterName, YearNum, WorkingDaysMonth, MonthSeq, FirstMonthSeqInQtr, FirstMonthSeqInYear, FirstWeekSeqInDay, CalWeek, FiscWeekName, GEP_TimePeriod_cd",
+                "FROM     Dimension.Day"
+              ],
               "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
             },
             "annotations": [
               {
                 "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Day].* FROM [Dimension].[Day]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   SalesDate, SalesDay, SalesDate_ORG, day_key, DaySeq, DayNumber, DayType, FiscalMonth, MonthName, MonthNum, QuarterName, YearNum, WorkingDaysMonth, MonthSeq, FirstMonthSeqInQtr, FirstMonthSeqInYear, FirstWeekSeqInDay, CalWeek, FiscWeekName, GEP_TimePeriod_cd",
+                  "FROM     Dimension.Day</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
               }
             ]
           }
@@ -1360,12 +1639,24 @@
           {
             "name": "_Count of Day",
             "expression": "COUNTA([SalesDate])"
+          },
+          {
+            "name": "Weeks in Period",
+            "expression": "DISTINCTCOUNT([CalWeek])"
+          },
+          {
+            "name": "Maximum of GEP_TimePeriod_cd",
+            "expression": "MAX([GEP_TimePeriod_cd])",
+            "isHidden": true
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [Dimension].[Day].* FROM [Dimension].[Day]"
+            "value": [
+              "SELECT   SalesDate, SalesDay, SalesDate_ORG, day_key, DaySeq, DayNumber, DayType, FiscalMonth, MonthName, MonthNum, QuarterName, YearNum, WorkingDaysMonth, MonthSeq, FirstMonthSeqInQtr, FirstMonthSeqInYear, FirstWeekSeqInDay, CalWeek, FiscWeekName, GEP_TimePeriod_cd",
+              "FROM     Dimension.Day"
+            ]
           },
           {
             "name": "_TM_ExtProp_DbTableName",
@@ -1377,7 +1668,10 @@
           },
           {
             "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[Day].* FROM [Dimension].[Day]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   SalesDate, SalesDay, SalesDate_ORG, day_key, DaySeq, DayNumber, DayType, FiscalMonth, MonthName, MonthNum, QuarterName, YearNum, WorkingDaysMonth, MonthSeq, FirstMonthSeqInQtr, FirstMonthSeqInYear, FirstWeekSeqInDay, CalWeek, FiscWeekName, GEP_TimePeriod_cd",
+              "FROM     Dimension.Day</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
           }
         ]
       },
@@ -1514,6 +1808,54 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "Period[FirstWeekSeqInDay]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalesDay",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Period[SalesDay]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "SalesDate_ORG",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Period[SalesDate_ORG]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "day_key",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Period[day_key]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "CalWeek",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Period[CalWeek]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "FiscWeekName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Period[FiscWeekName]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "GEP_TimePeriod_cd",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Period[GEP_TimePeriod_cd]"
           }
         ],
         "partitions": [
@@ -3230,6 +3572,417 @@
             ]
           }
         ]
+      },
+      {
+        "name": "gep_cohort",
+        "columns": [
+          {
+            "name": "GEP_Cohort_Code",
+            "dataType": "string",
+            "sourceColumn": "GEP_Cohort_Code",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "GEP_Cohort",
+            "dataType": "string",
+            "sourceColumn": "GEP_Cohort",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "GEP_StartDate",
+            "dataType": "dateTime",
+            "sourceColumn": "GEP_StartDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "GEP_StartDate_LY",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "GEP_StartDate_LY",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "SalesDateLastWeekly",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "SalesDateLastWeekly",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "GEP_Cohort_Weeks_To_Date",
+            "dataType": "int64",
+            "sourceColumn": "GEP_Cohort_Weeks_To_Date"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "gep_cohort",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": "SELECT [Dimension].[gep_cohort].[GEP_Cohort_Code],[Dimension].[gep_cohort].[GEP_Cohort],[Dimension].[gep_cohort].[GEP_StartDate],[Dimension].[gep_cohort].[GEP_StartDate_LY],[Dimension].[gep_cohort].[GEP_Cohort_Weeks_To_Date],[Dimension].[gep_cohort].[SalesDateLastWeekly]   FROM [Dimension].[gep_cohort]",
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[gep_cohort].[GEP_Cohort_Code],[Dimension].[gep_cohort].[GEP_Cohort],[Dimension].[gep_cohort].[GEP_StartDate],[Dimension].[gep_cohort].[GEP_StartDate_LY],[Dimension].[gep_cohort].[GEP_Cohort_Weeks_To_Date],[Dimension].[gep_cohort].[SalesDateLastWeekly]   FROM [Dimension].[gep_cohort]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "_GEP_Cohort_Weeks_To_Date_max",
+            "expression": "MAX([GEP_Cohort_Weeks_To_Date])",
+            "isHidden": true
+          },
+          {
+            "name": "_GEP_Cohort_Code_max",
+            "expression": "MAX([GEP_Cohort_Code])",
+            "isHidden": true
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [Dimension].[gep_cohort].[GEP_Cohort_Code],[Dimension].[gep_cohort].[GEP_Cohort],[Dimension].[gep_cohort].[GEP_StartDate],[Dimension].[gep_cohort].[GEP_StartDate_LY],[Dimension].[gep_cohort].[GEP_Cohort_Weeks_To_Date],[Dimension].[gep_cohort].[SalesDateLastWeekly]   FROM [Dimension].[gep_cohort]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "gep_cohort"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [Dimension].[gep_cohort].[GEP_Cohort_Code],[Dimension].[gep_cohort].[GEP_Cohort],[Dimension].[gep_cohort].[GEP_StartDate],[Dimension].[gep_cohort].[GEP_StartDate_LY],[Dimension].[gep_cohort].[GEP_Cohort_Weeks_To_Date],[Dimension].[gep_cohort].[SalesDateLastWeekly]   FROM [Dimension].[gep_cohort]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "Promo_Show",
+        "columns": [
+          {
+            "name": "PromotionCode",
+            "dataType": "string",
+            "sourceColumn": "PromotionCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "PromotionDescription",
+            "dataType": "string",
+            "sourceColumn": "PromotionDescription",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PromotionStartDate",
+            "dataType": "dateTime",
+            "sourceColumn": "PromotionStartDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "PromotionEndDate",
+            "dataType": "dateTime",
+            "sourceColumn": "PromotionEndDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "PromotionSalesDivision",
+            "dataType": "string",
+            "sourceColumn": "PromotionSalesDivision",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "PromotionType",
+            "dataType": "string",
+            "sourceColumn": "PromotionType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PromotionTrackingCode",
+            "dataType": "string",
+            "sourceColumn": "PromotionTrackingCode",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "promotion_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "promotion_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "PromoNameTracking",
+            "dataType": "string",
+            "sourceColumn": "PromoNameTracking",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PromotionTypeTracking",
+            "dataType": "string",
+            "sourceColumn": "PromotionTypeTracking",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "BRS_Promotion",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT   PromotionCode, PromotionDescription, PromotionStartDate, PromotionEndDate, PromotionSalesDivision, PromotionType, PromotionTrackingCode, promotion_key, PromoNameTracking, PromotionTypeTracking",
+                "FROM     BRS_Promotion"
+              ],
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   PromotionCode, PromotionDescription, PromotionStartDate, PromotionEndDate, PromotionSalesDivision, PromotionType, PromotionTrackingCode, promotion_key, PromoNameTracking, PromotionTypeTracking",
+                  "FROM     BRS_Promotion</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT   PromotionCode, PromotionDescription, PromotionStartDate, PromotionEndDate, PromotionSalesDivision, PromotionType, PromotionTrackingCode, promotion_key, PromoNameTracking, PromotionTypeTracking",
+              "FROM     BRS_Promotion"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_Promotion"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   PromotionCode, PromotionDescription, PromotionStartDate, PromotionEndDate, PromotionSalesDivision, PromotionType, PromotionTrackingCode, promotion_key, PromoNameTracking, PromotionTypeTracking",
+              "FROM     BRS_Promotion</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Promo_Header",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Promo_Show[PromotionCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionDescription",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Promo_Show[PromotionDescription]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionStartDate",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionStartDate]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionEndDate",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionEndDate]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionSalesDivision",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionSalesDivision]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionType",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionType]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionTrackingCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionTrackingCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "promotion_key",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[promotion_key]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromoNameTracking",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromoNameTracking]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionTypeTracking",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionTypeTracking]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "Promo_Show"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Promo_Detail",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Promo_Show[PromotionCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionDescription",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Promo_Show[PromotionDescription]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionStartDate",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionStartDate]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionEndDate",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionEndDate]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionSalesDivision",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionSalesDivision]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionType",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionType]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionTrackingCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionTrackingCode]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "promotion_key",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[promotion_key]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromoNameTracking",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromoNameTracking]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PromotionTypeTracking",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promo_Show[PromotionTypeTracking]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "Promo_Show"
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -3288,6 +4041,34 @@
         "fromColumn": "DocTypeKey",
         "toTable": "DocType",
         "toColumn": "DocTypeKey"
+      },
+      {
+        "name": "393ef8dc-7eee-464c-a712-383b250908d2",
+        "fromTable": "Customer",
+        "fromColumn": "GEP_Cohort_Code",
+        "toTable": "gep_cohort",
+        "toColumn": "GEP_Cohort_Code"
+      },
+      {
+        "name": "af02e654-0877-4949-8e01-55341434f6ba",
+        "fromTable": "Sales",
+        "fromColumn": "promo_show_key",
+        "toTable": "Promo_Show",
+        "toColumn": "promotion_key"
+      },
+      {
+        "name": "9b839ff2-2655-4ae9-82ef-8aeb94d6836e",
+        "fromTable": "Sales",
+        "fromColumn": "promo_header_key",
+        "toTable": "Promo_Header",
+        "toColumn": "promotion_key"
+      },
+      {
+        "name": "4e1112a8-7966-4950-8551-9a3058833abe",
+        "fromTable": "Sales",
+        "fromColumn": "promo_line_key",
+        "toTable": "Promo_Detail",
+        "toColumn": "promotion_key"
       }
     ],
     "roles": [
@@ -3322,6 +4103,22 @@
           {
             "memberName": "CAHSI\\Noah.Thompson",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11129"
+          },
+          {
+            "memberName": "CAHSI\\TCrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\JLi",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
+          },
+          {
+            "memberName": "CAHSI\\JRusso",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-6859"
           }
         ]
       }
