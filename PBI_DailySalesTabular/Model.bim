@@ -1,0 +1,518 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer CAHSIONNLSQL1 BRSales",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "impersonationMode": "impersonateAccount",
+        "account": "CAHSI\\tcrowley",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Sales",
+        "columns": [
+          {
+            "name": "ID_DS",
+            "dataType": "int64",
+            "sourceColumn": "ID_DS",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ID_DW",
+            "dataType": "int64",
+            "sourceColumn": "ID_DW",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ID_DS_xref",
+            "dataType": "int64",
+            "sourceColumn": "ID_DS_xref",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SalesOrderNumber",
+            "dataType": "int64",
+            "sourceColumn": "SalesOrderNumber",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "LineNumber",
+            "dataType": "int64",
+            "sourceColumn": "LineNumber",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "source_key",
+            "dataType": "int64",
+            "sourceColumn": "source_key",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FreeGoodsEstInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsEstInd",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "FreeGoodsInvoicedInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsInvoicedInd",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "NetSalesAmt",
+            "dataType": "double",
+            "sourceColumn": "NetSalesAmt",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "GPAmt",
+            "dataType": "double",
+            "sourceColumn": "GPAmt",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "GPExclCBAmt",
+            "dataType": "double",
+            "sourceColumn": "GPExclCBAmt",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "ExtChargebackAmt",
+            "dataType": "double",
+            "sourceColumn": "ExtChargebackAmt",
+            "sourceProviderType": "Decimal"
+          },
+          {
+            "name": "ShippedQty",
+            "dataType": "int64",
+            "sourceColumn": "ShippedQty",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "QuantityUnit",
+            "dataType": "int64",
+            "sourceColumn": "QuantityUnit",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "FiscalMonth",
+            "dataType": "int64",
+            "sourceColumn": "FiscalMonth",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "day_key",
+            "dataType": "int64",
+            "sourceColumn": "day_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ShipTo",
+            "dataType": "int64",
+            "sourceColumn": "ShipTo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Billto",
+            "dataType": "int64",
+            "sourceColumn": "Billto",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "cust_hist_key",
+            "dataType": "int64",
+            "sourceColumn": "cust_hist_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HIST_MarketClassKey",
+            "dataType": "int64",
+            "sourceColumn": "HIST_MarketClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SalesDivision_key",
+            "dataType": "int64",
+            "sourceColumn": "SalesDivision_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HIST_BranchKey",
+            "dataType": "int64",
+            "sourceColumn": "HIST_BranchKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ItemKey",
+            "dataType": "int64",
+            "sourceColumn": "ItemKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "item_hist_key",
+            "dataType": "int64",
+            "sourceColumn": "item_hist_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HIST_SupplierKey",
+            "dataType": "int64",
+            "sourceColumn": "HIST_SupplierKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MinorProductClassKey",
+            "dataType": "int64",
+            "sourceColumn": "MinorProductClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "global_product_class_key",
+            "dataType": "int64",
+            "sourceColumn": "global_product_class_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Excl_Key",
+            "dataType": "int64",
+            "sourceColumn": "Excl_Key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "GpsKey",
+            "dataType": "int64",
+            "sourceColumn": "GpsKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AdjCodeKey",
+            "dataType": "int64",
+            "sourceColumn": "AdjCodeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "GLBU_ClassKey",
+            "dataType": "int64",
+            "sourceColumn": "GLBU_ClassKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "promoline_promotion_key",
+            "dataType": "int64",
+            "sourceColumn": "promoline_promotion_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "hfm_gl_account_sales_key",
+            "dataType": "int64",
+            "sourceColumn": "hfm_gl_account_sales_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "hfm_gl_account_cost_key",
+            "dataType": "int64",
+            "sourceColumn": "hfm_gl_account_cost_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "hfm_gl_account_cb_key",
+            "dataType": "int64",
+            "sourceColumn": "hfm_gl_account_cb_key",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sales",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT   ",
+                "top 10 ",
+                "",
+                "\tID_DS",
+                "\t,ID_DW",
+                "\t,ID_DS_xref",
+                "",
+                "\t,SalesOrderNumber",
+                "\t,LineNumber",
+                "\t,source_key",
+                "",
+                "\t,FreeGoodsEstInd",
+                "\t,FreeGoodsInvoicedInd",
+                "",
+                "\t,NetSalesAmt",
+                "\t,GPAmt",
+                "\t,GPExclCBAmt",
+                "\t,ExtChargebackAmt",
+                "\t,ShippedQty",
+                "\t,QuantityUnit",
+                "",
+                "\t,FiscalMonth",
+                "\t,day_key",
+                "",
+                "\t,ShipTo",
+                "\t,Billto",
+                "\t,cust_hist_key",
+                "\t\t,HIST_MarketClassKey",
+                "\t\t,SalesDivision_key",
+                "\t\t,HIST_BranchKey",
+                "",
+                "",
+                "\t,ItemKey",
+                "\t,item_hist_key",
+                "\t\t,HIST_SupplierKey",
+                "\t\t,MinorProductClassKey",
+                "\t,global_product_class_key",
+                "\t,Excl_Key",
+                "\t,GpsKey",
+                "",
+                "\t,AdjCodeKey",
+                "",
+                "\t,GLBU_ClassKey",
+                "",
+                "\t,promoline_promotion_key",
+                "",
+                "\t-- phase 2 (9 new dim)",
+                "\t,hfm_gl_account_sales_key",
+                "\t,hfm_gl_account_cost_key",
+                "\t,hfm_gl_account_cb_key",
+                "",
+                "",
+                "FROM",
+                "\tFact.SaleVendor"
+              ],
+              "dataSource": "SqlServer CAHSIONNLSQL1 BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   ",
+                  "top 10 ",
+                  "",
+                  "\tID_DS",
+                  "\t,ID_DW",
+                  "\t,ID_DS_xref",
+                  "",
+                  "\t,SalesOrderNumber",
+                  "\t,LineNumber",
+                  "\t,source_key",
+                  "",
+                  "\t,FreeGoodsEstInd",
+                  "\t,FreeGoodsInvoicedInd",
+                  "",
+                  "\t,NetSalesAmt",
+                  "\t,GPAmt",
+                  "\t,GPExclCBAmt",
+                  "\t,ExtChargebackAmt",
+                  "\t,ShippedQty",
+                  "\t,QuantityUnit",
+                  "",
+                  "\t,FiscalMonth",
+                  "\t,day_key",
+                  "",
+                  "\t,ShipTo",
+                  "\t,Billto",
+                  "\t,cust_hist_key",
+                  "\t\t,HIST_MarketClassKey",
+                  "\t\t,SalesDivision_key",
+                  "\t\t,HIST_BranchKey",
+                  "",
+                  "",
+                  "\t,ItemKey",
+                  "\t,item_hist_key",
+                  "\t\t,HIST_SupplierKey",
+                  "\t\t,MinorProductClassKey",
+                  "\t,global_product_class_key",
+                  "\t,Excl_Key",
+                  "\t,GpsKey",
+                  "",
+                  "\t,AdjCodeKey",
+                  "",
+                  "\t,GLBU_ClassKey",
+                  "",
+                  "\t,promoline_promotion_key",
+                  "",
+                  "\t-- phase 2 (9 new dim)",
+                  "\t,hfm_gl_account_sales_key",
+                  "\t,hfm_gl_account_cost_key",
+                  "\t,hfm_gl_account_cb_key",
+                  "",
+                  "",
+                  "FROM",
+                  "\tFact.SaleVendor</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT   ",
+              "top 10 ",
+              "",
+              "\tID_DS",
+              "\t,ID_DW",
+              "\t,ID_DS_xref",
+              "",
+              "\t,SalesOrderNumber",
+              "\t,LineNumber",
+              "\t,source_key",
+              "",
+              "\t,FreeGoodsEstInd",
+              "\t,FreeGoodsInvoicedInd",
+              "",
+              "\t,NetSalesAmt",
+              "\t,GPAmt",
+              "\t,GPExclCBAmt",
+              "\t,ExtChargebackAmt",
+              "\t,ShippedQty",
+              "\t,QuantityUnit",
+              "",
+              "\t,FiscalMonth",
+              "\t,day_key",
+              "",
+              "\t,ShipTo",
+              "\t,Billto",
+              "\t,cust_hist_key",
+              "\t\t,HIST_MarketClassKey",
+              "\t\t,SalesDivision_key",
+              "\t\t,HIST_BranchKey",
+              "",
+              "",
+              "\t,ItemKey",
+              "\t,item_hist_key",
+              "\t\t,HIST_SupplierKey",
+              "\t\t,MinorProductClassKey",
+              "\t,global_product_class_key",
+              "\t,Excl_Key",
+              "\t,GpsKey",
+              "",
+              "\t,AdjCodeKey",
+              "",
+              "\t,GLBU_ClassKey",
+              "",
+              "\t,promoline_promotion_key",
+              "",
+              "\t-- phase 2 (9 new dim)",
+              "\t,hfm_gl_account_sales_key",
+              "\t,hfm_gl_account_cost_key",
+              "\t,hfm_gl_account_cb_key",
+              "",
+              "",
+              "FROM",
+              "\tFact.SaleVendor"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Sales"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT   ",
+              "top 10 ",
+              "",
+              "\tID_DS",
+              "\t,ID_DW",
+              "\t,ID_DS_xref",
+              "",
+              "\t,SalesOrderNumber",
+              "\t,LineNumber",
+              "\t,source_key",
+              "",
+              "\t,FreeGoodsEstInd",
+              "\t,FreeGoodsInvoicedInd",
+              "",
+              "\t,NetSalesAmt",
+              "\t,GPAmt",
+              "\t,GPExclCBAmt",
+              "\t,ExtChargebackAmt",
+              "\t,ShippedQty",
+              "\t,QuantityUnit",
+              "",
+              "\t,FiscalMonth",
+              "\t,day_key",
+              "",
+              "\t,ShipTo",
+              "\t,Billto",
+              "\t,cust_hist_key",
+              "\t\t,HIST_MarketClassKey",
+              "\t\t,SalesDivision_key",
+              "\t\t,HIST_BranchKey",
+              "",
+              "",
+              "\t,ItemKey",
+              "\t,item_hist_key",
+              "\t\t,HIST_SupplierKey",
+              "\t\t,MinorProductClassKey",
+              "\t,global_product_class_key",
+              "\t,Excl_Key",
+              "\t,GpsKey",
+              "",
+              "\t,AdjCodeKey",
+              "",
+              "\t,GLBU_ClassKey",
+              "",
+              "\t,promoline_promotion_key",
+              "",
+              "\t-- phase 2 (9 new dim)",
+              "\t,hfm_gl_account_sales_key",
+              "\t,hfm_gl_account_cost_key",
+              "\t,hfm_gl_account_cb_key",
+              "",
+              "",
+              "FROM",
+              "\tFact.SaleVendor</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "name": "UserRole",
+        "modelPermission": "readRefresh",
+        "members": [
+          {
+            "memberName": "CAHSI\\TCrowley",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
+          },
+          {
+            "memberName": "CAHSI\\JLi",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-2414"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
