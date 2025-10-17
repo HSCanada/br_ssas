@@ -2014,12 +2014,16 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "promoline_promotion_key"
+          },
+          {
+            "name": "GEP_Order_Flag_ind",
+            "dataType": "boolean",
+            "sourceColumn": "GEP_Order_Flag_ind"
           }
         ],
         "partitions": [
           {
             "name": "SaleVendor",
-            "dataView": "full",
             "source": {
               "type": "query",
               "query": [
@@ -2072,6 +2076,8 @@
                 "\t,hfm_gl_account_sales_key",
                 "\t,hfm_gl_account_cost_key",
                 "\t,hfm_gl_account_cb_key",
+                "",
+                "\t,GEP_Order_Flag_ind",
                 "",
                 "",
                 "FROM",
@@ -2132,6 +2138,8 @@
                   "\t,hfm_gl_account_sales_key",
                   "\t,hfm_gl_account_cost_key",
                   "\t,hfm_gl_account_cb_key",
+                  "",
+                  "\t,GEP_Order_Flag_ind",
                   "",
                   "",
                   "FROM",
@@ -3096,6 +3104,8 @@
               "\t,hfm_gl_account_sales_key",
               "\t,hfm_gl_account_cost_key",
               "\t,hfm_gl_account_cb_key",
+              "",
+              "\t,GEP_Order_Flag_ind",
               "",
               "",
               "FROM",
