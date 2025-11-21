@@ -194,6 +194,12 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "promo_show_key"
+          },
+          {
+            "name": "WEB_Order_Flag_ind",
+            "dataType": "boolean",
+            "sourceColumn": "WEB_Order_Flag_ind",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           }
         ],
         "partitions": [
@@ -1064,6 +1070,22 @@
             "name": "GEP AvgGMfinWeek (GoLive) in Period",
             "expression": "DIVIDE([GEP AvgGPfinWeek (GoLive) in Period],[GEP AvgSalesWeek (GoLive) in Period])",
             "formatString": "0.0%;-0.0%;0.0%"
+          },
+          {
+            "name": "WEB OrderSales in Period",
+            "expression": "CALCULATE ( [Sales in Period], 'Sales'[WEB_Order_Flag_ind]=True)",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "WEB OrderSales Share in Period",
+            "expression": "DIVIDE([WEB OrderSales in Period],[Sales in Period])",
+            "formatString": "0.0%;-0.0%;0.0%"
           }
         ],
         "annotations": [
@@ -1271,6 +1293,16 @@
             "dataType": "string",
             "isHidden": true,
             "sourceColumn": "GEP_Cohort_Code"
+          },
+          {
+            "name": "FscTerritoryCd",
+            "dataType": "string",
+            "sourceColumn": "FscTerritoryCd"
+          },
+          {
+            "name": "IsrTerritoryCd",
+            "dataType": "string",
+            "sourceColumn": "IsrTerritoryCd"
           }
         ],
         "partitions": [
@@ -1314,6 +1346,9 @@
                 "",
                 ",GEP_Cohort_Code",
                 "--,GEP_Chohort_Weeks_To_Date",
+                "",
+                ",FscTerritoryCd",
+                ",IsrTerritoryCd",
                 "",
                 "",
                 "FROM",
@@ -1361,6 +1396,9 @@
                   "",
                   ",GEP_Cohort_Code",
                   "--,GEP_Chohort_Weeks_To_Date",
+                  "",
+                  ",FscTerritoryCd",
+                  ",IsrTerritoryCd",
                   "",
                   "",
                   "FROM",
@@ -1426,6 +1464,9 @@
               ",GEP_Cohort_Code",
               "--,GEP_Chohort_Weeks_To_Date",
               "",
+              ",FscTerritoryCd",
+              ",IsrTerritoryCd",
+              "",
               "",
               "FROM",
               "",
@@ -1470,6 +1511,9 @@
               "",
               ",GEP_Cohort_Code",
               "--,GEP_Chohort_Weeks_To_Date",
+              "",
+              ",FscTerritoryCd",
+              ",IsrTerritoryCd",
               "",
               "",
               "FROM",
