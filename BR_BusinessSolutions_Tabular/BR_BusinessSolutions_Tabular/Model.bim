@@ -1337,6 +1337,11 @@
             "name": "GEP_Order_Flag_ind",
             "dataType": "boolean",
             "sourceColumn": "GEP_Order_Flag_ind"
+          },
+          {
+            "name": "FreeGoodsEstInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsEstInd"
           }
         ],
         "partitions": [
@@ -1380,6 +1385,7 @@
                 "\t,fg_deal_id",
                 "",
                 "\t,GEP_Order_Flag_ind",
+                "\t,FreeGoodsEstInd",
                 "",
                 "",
                 "FROM",
@@ -1425,6 +1431,7 @@
                   "\t,fg_deal_id",
                   "",
                   "\t,GEP_Order_Flag_ind",
+                  "\t,FreeGoodsEstInd",
                   "",
                   "",
                   "FROM",
@@ -2324,6 +2331,7 @@
               "\t,fg_deal_id",
               "",
               "\t,GEP_Order_Flag_ind",
+              "\t,FreeGoodsEstInd",
               "",
               "",
               "FROM",
@@ -2375,6 +2383,7 @@
               "\t,fg_deal_id",
               "",
               "\t,GEP_Order_Flag_ind",
+              "\t,FreeGoodsEstInd",
               "",
               "",
               "FROM",
