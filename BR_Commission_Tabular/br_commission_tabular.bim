@@ -7,7 +7,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -6678,32 +6678,6 @@
         ]
       },
       {
-        "name": "CalculationGroup 1",
-        "calculationGroup": {
-          "calculationItems": [
-            {
-              "name": "CalculationItem 1"
-            }
-          ]
-        },
-        "columns": [
-          {
-            "name": "CalculationItemColumn 1",
-            "dataType": "string",
-            "sourceColumn": "Name"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "CalculationGroup 1",
-            "mode": "import",
-            "source": {
-              "type": "calculationGroup"
-            }
-          }
-        ]
-      },
-      {
         "name": "RLS_Users_EPS",
         "columns": [
           {
@@ -7098,6 +7072,61 @@
             }
           }
         ]
+      },
+      {
+        "name": "CommGroupTier_FSC",
+        "columns": [
+          {
+            "name": "calc_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "calc_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "disp_comm_group_cd",
+            "dataType": "string",
+            "sourceColumn": "disp_comm_group_cd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "comm_tier_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_tier_cd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "rate_level_display",
+            "dataType": "string",
+            "sourceColumn": "rate_level_display",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CommissionGroupTier",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [Dimension].[CommissionGroupTier].*   FROM [Dimension].[CommissionGroupTier] ",
+              "dataSource": "Commission SQL Source"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [Dimension].[CommissionGroupTier].*   FROM [Dimension].[CommissionGroupTier] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "CommissionGroupTier"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Dimension"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -7362,6 +7391,13 @@
         "fromColumn": "BranchCode",
         "toTable": "RLS_TBL_Fieldsales_CPS",
         "toColumn": "TerritoryCd"
+      },
+      {
+        "name": "46931cfe-48e6-4054-abd8-ef701bb4a303",
+        "fromTable": "Sales",
+        "fromColumn": "FSC_CalcKey",
+        "toTable": "CommGroupTier_FSC",
+        "toColumn": "calc_key"
       }
     ],
     "roles": [
@@ -7412,6 +7448,18 @@
           {
             "memberName": "CAHSI\\TCrowley",
             "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1815"
+          },
+          {
+            "memberName": "CAHSI\\David.Macleod",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-11196"
+          },
+          {
+            "memberName": "CAHSI\\Gary.Winslow",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-1322"
+          },
+          {
+            "memberName": "CAHSI\\JRusso",
+            "memberId": "S-1-5-21-2722441861-2609703027-3449782368-6859"
           }
         ]
       }

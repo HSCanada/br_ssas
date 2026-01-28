@@ -63,7 +63,7 @@
     <DeploymentOptionADALCache>Default</DeploymentOptionADALCache>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DEV_BRS' ">
-    <DeploymentServerName>cahsionnlsq1.ca.hsi.local</DeploymentServerName>
+    <DeploymentServerName>cahsionnlsql1.ca.hsi.local</DeploymentServerName>
     <DeploymentServerEdition>Standard</DeploymentServerEdition>
     <DeploymentServerVersion>Version_13_0</DeploymentServerVersion>
     <DeploymentServerDatabase>DEV_BR_Commission_Tabular</DeploymentServerDatabase>
