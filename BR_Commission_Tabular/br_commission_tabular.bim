@@ -7,7 +7,7 @@
     "dataSources": [
       {
         "name": "Commission SQL Source",
-        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=DEV_BRSales",
+        "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -269,6 +269,11 @@
             "name": "FieldSales_LastMonthEnd_Master",
             "dataType": "string",
             "sourceColumn": "FieldSales_LastMonthEnd_Master"
+          },
+          {
+            "name": "comm_group_tier_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_group_tier_cd"
           }
         ],
         "partitions": [
@@ -327,6 +332,7 @@
                 "",
                 ",FieldSales_LastMonthEnd",
                 ",FieldSales_LastMonthEnd_Master",
+                ",comm_group_tier_cd",
                 "",
                 "",
                 "FROM",
@@ -387,6 +393,7 @@
                   "",
                   ",FieldSales_LastMonthEnd",
                   ",FieldSales_LastMonthEnd_Master",
+                  ",comm_group_tier_cd",
                   "",
                   "",
                   "FROM",
@@ -501,6 +508,7 @@
               "",
               ",FieldSales_LastMonthEnd",
               ",FieldSales_LastMonthEnd_Master",
+              ",comm_group_tier_cd",
               "",
               "",
               "FROM",
@@ -567,6 +575,7 @@
               "",
               ",FieldSales_LastMonthEnd",
               ",FieldSales_LastMonthEnd_Master",
+              ",comm_group_tier_cd",
               "",
               "",
               "FROM",

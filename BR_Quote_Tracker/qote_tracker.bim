@@ -429,9 +429,14 @@
             ]
           },
           {
+            "name": "FreeGoodsEstInd",
+            "dataType": "boolean",
+            "sourceColumn": "FreeGoodsEstInd",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
             "name": "PromotionKey",
             "dataType": "int64",
-            "isHidden": true,
             "sourceColumn": "PromotionKey"
           }
         ],
@@ -478,11 +483,10 @@
                 "",
                 "\t,PromotionKey",
                 "",
+                "\t,FreeGoodsEstInd",
+                "",
                 "FROM",
-                "\tFact.Sale_qt",
-                "--WHERE ",
-                "--\tSalesCategory in( 'MERCH', 'SMEQU', 'TEETH') AND",
-                "--\tFreeGoodsInvoicedInd = 0"
+                "\tFact.Sale_qt"
               ],
               "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
             },
@@ -526,11 +530,10 @@
                   "",
                   "\t,PromotionKey",
                   "",
+                  "\t,FreeGoodsEstInd",
+                  "",
                   "FROM",
-                  "\tFact.Sale_qt",
-                  "--WHERE ",
-                  "--\tSalesCategory in( 'MERCH', 'SMEQU', 'TEETH') AND",
-                  "--\tFreeGoodsInvoicedInd = 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                  "\tFact.Sale_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
             ]
@@ -2159,11 +2162,10 @@
               "",
               "\t,PromotionKey",
               "",
+              "\t,FreeGoodsEstInd",
+              "",
               "FROM",
-              "\tFact.Sale_qt",
-              "--WHERE ",
-              "--\tSalesCategory in( 'MERCH', 'SMEQU', 'TEETH') AND",
-              "--\tFreeGoodsInvoicedInd = 0"
+              "\tFact.Sale_qt"
             ]
           },
           {
@@ -2213,11 +2215,10 @@
               "",
               "\t,PromotionKey",
               "",
+              "\t,FreeGoodsEstInd",
+              "",
               "FROM",
-              "\tFact.Sale_qt",
-              "--WHERE ",
-              "--\tSalesCategory in( 'MERCH', 'SMEQU', 'TEETH') AND",
-              "--\tFreeGoodsInvoicedInd = 0</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              "\tFact.Sale_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
           }
         ]
@@ -3758,6 +3759,16 @@
             "name": "AddressLine4",
             "dataType": "string",
             "sourceColumn": "AddressLine4"
+          },
+          {
+            "name": "GEP_Cohort_Code",
+            "dataType": "string",
+            "sourceColumn": "GEP_Cohort_Code"
+          },
+          {
+            "name": "comm_group_tier_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_group_tier_cd"
           }
         ],
         "partitions": [
@@ -3813,6 +3824,9 @@
                 "\t,c.PostalCode",
                 "\t,c.AddressLine3",
                 "\t,c.AddressLine4",
+                "",
+                "\t,c.GEP_Cohort_Code",
+                "\t,c.comm_group_tier_cd",
                 "",
                 "",
                 "FROM",
@@ -3873,6 +3887,9 @@
                   "\t,c.PostalCode",
                   "\t,c.AddressLine3",
                   "\t,c.AddressLine4",
+                  "",
+                  "\t,c.GEP_Cohort_Code",
+                  "\t,c.comm_group_tier_cd",
                   "",
                   "",
                   "FROM",
@@ -3997,6 +4014,9 @@
               "\t,c.AddressLine3",
               "\t,c.AddressLine4",
               "",
+              "\t,c.GEP_Cohort_Code",
+              "\t,c.comm_group_tier_cd",
+              "",
               "",
               "FROM",
               "\tDimension.Customer c",
@@ -4062,6 +4082,9 @@
               "\t,c.PostalCode",
               "\t,c.AddressLine3",
               "\t,c.AddressLine4",
+              "",
+              "\t,c.GEP_Cohort_Code",
+              "\t,c.comm_group_tier_cd",
               "",
               "",
               "FROM",
@@ -6706,13 +6729,6 @@
         "fromColumn": "BadGMLine",
         "toTable": "GMBand",
         "toColumn": "GM Flag"
-      },
-      {
-        "name": "809b016d-74d6-472d-8b10-2ce128daca52",
-        "fromTable": "Sales",
-        "fromColumn": "PromotionKey",
-        "toTable": "Promotion",
-        "toColumn": "promotion_key"
       }
     ],
     "roles": [
