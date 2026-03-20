@@ -9,7 +9,7 @@
         "name": "Commission SQL Source",
         "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
-        "account": "CAHSI\\tcrowley",
+        "account": "CAHSI\\PowerBI_Read",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -279,6 +279,21 @@
             "name": "eps_name",
             "dataType": "string",
             "sourceColumn": "eps_name"
+          },
+          {
+            "name": "ISRCommPlan",
+            "dataType": "string",
+            "sourceColumn": "ISRCommPlan"
+          },
+          {
+            "name": "IsrTerritoryCd",
+            "dataType": "string",
+            "sourceColumn": "IsrTerritoryCd"
+          },
+          {
+            "name": "IsrName",
+            "dataType": "string",
+            "sourceColumn": "IsrName"
           }
         ],
         "partitions": [
@@ -340,7 +355,9 @@
                 ",FieldSales_LastMonthEnd_Master",
                 ",comm_group_tier_cd",
                 "",
-                "",
+                ",ISRCommPlan",
+                ",IsrTerritoryCd",
+                ",IsrName",
                 "",
                 "FROM",
                 "  Dimension.Customer"
@@ -403,7 +420,9 @@
                   ",FieldSales_LastMonthEnd_Master",
                   ",comm_group_tier_cd",
                   "",
-                  "",
+                  ",ISRCommPlan",
+                  ",IsrTerritoryCd",
+                  ",IsrName",
                   "",
                   "FROM",
                   "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -520,7 +539,9 @@
               ",FieldSales_LastMonthEnd_Master",
               ",comm_group_tier_cd",
               "",
-              "",
+              ",ISRCommPlan",
+              ",IsrTerritoryCd",
+              ",IsrName",
               "",
               "FROM",
               "  Dimension.Customer"
@@ -589,7 +610,9 @@
               ",FieldSales_LastMonthEnd_Master",
               ",comm_group_tier_cd",
               "",
-              "",
+              ",ISRCommPlan",
+              ",IsrTerritoryCd",
+              ",IsrName",
               "",
               "FROM",
               "  Dimension.Customer</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"ShipTo\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Billto\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Customer\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerGroup\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlan\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesPlanType\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"FieldSales\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"Branch\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivision\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClass\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CustomerStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"SalesDivisionCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"BranchCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"MarketClassCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Customer\" ColumnName=\"CommStatusNote\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -812,6 +835,11 @@
             "name": "comm_group_eps_cd",
             "dataType": "string",
             "sourceColumn": "comm_group_eps_cd"
+          },
+          {
+            "name": "BrandCode",
+            "dataType": "string",
+            "sourceColumn": "BrandCode"
           }
         ],
         "partitions": [
@@ -867,6 +895,7 @@
                 ",minor_adhoc_model_code2",
                 "",
                 ",comm_group_eps_cd",
+                ",BrandCode",
                 "",
                 "FROM",
                 "  Dimension.Item"
@@ -924,6 +953,7 @@
                   ",minor_adhoc_model_code2",
                   "",
                   ",comm_group_eps_cd",
+                  ",BrandCode",
                   "",
                   "FROM",
                   "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -990,6 +1020,7 @@
               ",minor_adhoc_model_code2",
               "",
               ",comm_group_eps_cd",
+              ",BrandCode",
               "",
               "FROM",
               "  Dimension.Item"
@@ -1053,6 +1084,7 @@
               ",minor_adhoc_model_code2",
               "",
               ",comm_group_eps_cd",
+              ",BrandCode",
               "",
               "FROM",
               "  Dimension.Item</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemKey\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Item\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SalesCategory\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Major\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"SubMajor\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Supplier\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"ItemStatus\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Label\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupNote\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"Current_BasePrice\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CommGroupCpsCode\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Item\" ColumnName=\"CustomCommGroup1Code\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
