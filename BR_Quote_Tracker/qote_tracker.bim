@@ -2450,6 +2450,11 @@
             "name": "tag_05_cd",
             "dataType": "string",
             "sourceColumn": "tag_05_cd"
+          },
+          {
+            "name": "comm_bonus2_cd",
+            "dataType": "string",
+            "sourceColumn": "comm_bonus2_cd"
           }
         ],
         "partitions": [
@@ -2502,6 +2507,8 @@
                 "\t,tag_03_cd",
                 "\t,tag_04_cd",
                 "\t,tag_05_cd",
+                "",
+                "\t,comm_bonus2_cd",
                 "",
                 "",
                 "",
@@ -2560,6 +2567,8 @@
                   "\t,tag_03_cd",
                   "\t,tag_04_cd",
                   "\t,tag_05_cd",
+                  "",
+                  "\t,comm_bonus2_cd",
                   "",
                   "",
                   "",
@@ -2632,6 +2641,8 @@
               "\t,tag_04_cd",
               "\t,tag_05_cd",
               "",
+              "\t,comm_bonus2_cd",
+              "",
               "",
               "",
               "",
@@ -2695,6 +2706,8 @@
               "\t,tag_03_cd",
               "\t,tag_04_cd",
               "\t,tag_05_cd",
+              "",
+              "\t,comm_bonus2_cd",
               "",
               "",
               "",
@@ -3769,6 +3782,11 @@
             "name": "comm_group_tier_cd",
             "dataType": "string",
             "sourceColumn": "comm_group_tier_cd"
+          },
+          {
+            "name": "IsrTerritoryCd",
+            "dataType": "string",
+            "sourceColumn": "IsrTerritoryCd"
           }
         ],
         "partitions": [
@@ -3827,6 +3845,8 @@
                 "",
                 "\t,c.GEP_Cohort_Code",
                 "\t,c.comm_group_tier_cd",
+                "",
+                "\t,c.IsrTerritoryCd",
                 "",
                 "",
                 "FROM",
@@ -3890,6 +3910,8 @@
                   "",
                   "\t,c.GEP_Cohort_Code",
                   "\t,c.comm_group_tier_cd",
+                  "",
+                  "\t,c.IsrTerritoryCd",
                   "",
                   "",
                   "FROM",
@@ -4017,6 +4039,8 @@
               "\t,c.GEP_Cohort_Code",
               "\t,c.comm_group_tier_cd",
               "",
+              "\t,c.IsrTerritoryCd",
+              "",
               "",
               "FROM",
               "\tDimension.Customer c",
@@ -4085,6 +4109,8 @@
               "",
               "\t,c.GEP_Cohort_Code",
               "\t,c.comm_group_tier_cd",
+              "",
+              "\t,c.IsrTerritoryCd",
               "",
               "",
               "FROM",
