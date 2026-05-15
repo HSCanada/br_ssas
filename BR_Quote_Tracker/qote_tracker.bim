@@ -6,7 +6,7 @@
     "dataSources": [
       {
         "name": "SqlServer CAHSIONNLSQL1BRSales",
-        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=BRSales;Integrated Security=SSPI;Persist Security Info=false",
+        "connectionString": "Provider=SQLNCLI11;Data Source=CAHSIONNLSQL1;Initial Catalog=DEV_BRSales;Integrated Security=SSPI;Persist Security Info=false",
         "impersonationMode": "impersonateAccount",
         "account": "CAHSI\\tcrowley",
         "annotations": [
@@ -84,6 +84,11 @@
             "dataType": "dateTime",
             "isHidden": true,
             "sourceColumn": "LastWorkingDay"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter"
           }
         ],
         "partitions": [
@@ -104,6 +109,8 @@
                 "  ,Dimension.Period.FirstMonthSeqInQtr",
                 "  ,Dimension.Period.FirstMonthSeqInYear",
                 " , LastWorkingDay",
+                "",
+                "  , RTRIM(YearNum) + RTRIM(QuarterName) AS Quarter",
                 "FROM",
                 "  Dimension.Period"
               ],
@@ -124,6 +131,8 @@
                   "  ,Dimension.Period.FirstMonthSeqInQtr",
                   "  ,Dimension.Period.FirstMonthSeqInYear",
                   " , LastWorkingDay",
+                  "",
+                  "  , RTRIM(YearNum) + RTRIM(QuarterName) AS Quarter",
                   "FROM",
                   "  Dimension.Period</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthNum\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"QuarterName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"YearNum\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"WorkingDaysMonth\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthSeq\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FirstMonthSeqInQtr\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FirstMonthSeqInYear\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -146,6 +155,8 @@
               "  ,Dimension.Period.FirstMonthSeqInQtr",
               "  ,Dimension.Period.FirstMonthSeqInYear",
               " , LastWorkingDay",
+              "",
+              "  , RTRIM(YearNum) + RTRIM(QuarterName) AS Quarter",
               "FROM",
               "  Dimension.Period"
             ]
@@ -172,6 +183,8 @@
               "  ,Dimension.Period.FirstMonthSeqInQtr",
               "  ,Dimension.Period.FirstMonthSeqInYear",
               " , LastWorkingDay",
+              "",
+              "  , RTRIM(YearNum) + RTRIM(QuarterName) AS Quarter",
               "FROM",
               "  Dimension.Period</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState><DesignerState><UseGenericDesigner>false</UseGenericDesigner><InternalDesignerState><QueryDefinition xmlns=\"http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational\"><SelectedColumns><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FiscalMonth\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthNum\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"QuarterName\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"YearNum\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"WorkingDaysMonth\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"MonthSeq\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FirstMonthSeqInQtr\" /><ColumnExpression Schema=\"Dimension\" ColumnOwner=\"Period\" ColumnName=\"FirstMonthSeqInYear\" /></SelectedColumns></QueryDefinition></InternalDesignerState></DesignerState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -437,7 +450,31 @@
           {
             "name": "PromotionKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "PromotionKey"
+          },
+          {
+            "name": "MarketClassSegmentKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MarketClassSegmentKey"
+          },
+          {
+            "name": "GEP_Order_Flag_ind",
+            "dataType": "boolean",
+            "sourceColumn": "GEP_Order_Flag_ind"
+          },
+          {
+            "name": "GEP_PromotionCode_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GEP_PromotionCode_key"
+          },
+          {
+            "name": "GEP_OrderPromotionCode_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GEP_OrderPromotionCode_key"
           }
         ],
         "partitions": [
@@ -485,6 +522,11 @@
                 "",
                 "\t,FreeGoodsEstInd",
                 "",
+                "\t,MarketClassSegmentKey",
+                "\t,GEP_Order_Flag_ind",
+                "\t,GEP_PromotionCode_key",
+                "\t,GEP_OrderPromotionCode_key",
+                "",
                 "FROM",
                 "\tFact.Sale_qt"
               ],
@@ -531,6 +573,11 @@
                   "\t,PromotionKey",
                   "",
                   "\t,FreeGoodsEstInd",
+                  "",
+                  "\t,MarketClassSegmentKey",
+                  "\t,GEP_Order_Flag_ind",
+                  "\t,GEP_PromotionCode_key",
+                  "\t,GEP_OrderPromotionCode_key",
                   "",
                   "FROM",
                   "\tFact.Sale_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2164,6 +2211,11 @@
               "",
               "\t,FreeGoodsEstInd",
               "",
+              "\t,MarketClassSegmentKey",
+              "\t,GEP_Order_Flag_ind",
+              "\t,GEP_PromotionCode_key",
+              "\t,GEP_OrderPromotionCode_key",
+              "",
               "FROM",
               "\tFact.Sale_qt"
             ]
@@ -2216,6 +2268,11 @@
               "\t,PromotionKey",
               "",
               "\t,FreeGoodsEstInd",
+              "",
+              "\t,MarketClassSegmentKey",
+              "\t,GEP_Order_Flag_ind",
+              "\t,GEP_PromotionCode_key",
+              "\t,GEP_OrderPromotionCode_key",
               "",
               "FROM",
               "\tFact.Sale_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
@@ -2283,6 +2340,7 @@
           {
             "name": "StrengthInd",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "StrengthInd"
           },
           {
@@ -2293,6 +2351,7 @@
           {
             "name": "PrivateLabelScope_Item",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "PrivateLabelScope_Item"
           },
           {
@@ -2349,11 +2408,13 @@
           {
             "name": "PrivateLabelScopeInd",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "PrivateLabelScopeInd"
           },
           {
             "name": "RebateExcludeInd",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "RebateExcludeInd"
           },
           {
@@ -2369,26 +2430,31 @@
           {
             "name": "pchg_active_ind",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "pchg_active_ind"
           },
           {
             "name": "pchg_active_dt",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "pchg_active_dt"
           },
           {
             "name": "pchg_price_old",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "pchg_price_old"
           },
           {
             "name": "pchg_price_new",
             "dataType": "double",
+            "isHidden": true,
             "sourceColumn": "pchg_price_new"
           },
           {
             "name": "pchg_note",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "pchg_note"
           },
           {
@@ -2409,6 +2475,7 @@
           {
             "name": "pchg_mpc_active_ind",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "pchg_mpc_active_ind"
           },
           {
@@ -2455,6 +2522,11 @@
             "name": "comm_bonus2_cd",
             "dataType": "string",
             "sourceColumn": "comm_bonus2_cd"
+          },
+          {
+            "name": "SalesCategoryCode",
+            "dataType": "string",
+            "sourceColumn": "SalesCategoryCode"
           }
         ],
         "partitions": [
@@ -2509,6 +2581,7 @@
                 "\t,tag_05_cd",
                 "",
                 "\t,comm_bonus2_cd",
+                "\t,SalesCategoryCode ",
                 "",
                 "",
                 "",
@@ -2569,6 +2642,7 @@
                   "\t,tag_05_cd",
                   "",
                   "\t,comm_bonus2_cd",
+                  "\t,SalesCategoryCode ",
                   "",
                   "",
                   "",
@@ -2642,6 +2716,7 @@
               "\t,tag_05_cd",
               "",
               "\t,comm_bonus2_cd",
+              "\t,SalesCategoryCode ",
               "",
               "",
               "",
@@ -2708,6 +2783,7 @@
               "\t,tag_05_cd",
               "",
               "\t,comm_bonus2_cd",
+              "\t,SalesCategoryCode ",
               "",
               "",
               "",
@@ -2848,38 +2924,6 @@
             "name": "SalesplanType",
             "dataType": "string",
             "sourceColumn": "SalesplanType"
-          },
-          {
-            "type": "calculated",
-            "name": "YTD Growth Level",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": [
-              "CALCULATE ( ",
-              "\tVALUES('GrowthBand'[Band]),",
-              "\t\tFILTER( ",
-              "            GrowthBand, ",
-              "           'sales' [YTD Sales Var %] >= 'GrowthBand'[Spend_From]  && ",
-              "            'Sales'[YTD Sales Var %] < 'GrowthBand'[Spend_To]",
-              "\t\t)",
-              ") "
-            ]
-          },
-          {
-            "type": "calculated",
-            "name": "YTD Quote Share Level",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": [
-              "CALCULATE ( ",
-              "\tVALUES('QuoteShareBand'[Band]),",
-              "\t\tFILTER( ",
-              "            QuoteShareBand, ",
-              "           'sales' [Quote YTD Sales Share] >= 'QuoteShareBand'[Spend_From]  && ",
-              "            'Sales'[Quote YTD Sales Share] < 'QuoteShareBand'[Spend_To]",
-              "\t\t)",
-              ") "
-            ]
           },
           {
             "type": "calculated",
@@ -3158,6 +3202,15 @@
             "isDataTypeInferred": true,
             "isHidden": true,
             "sourceColumn": "Period[LastWorkingDay]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Quarter",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Period[Quarter]"
           }
         ],
         "partitions": [
@@ -3710,20 +3763,6 @@
             "sourceColumn": "DSO_operatory_count"
           },
           {
-            "type": "calculated",
-            "name": "DSO_operatory_spend_12mo",
-            "dataType": "decimal",
-            "isDataTypeInferred": true,
-            "expression": "[DSO_operatory_count]*[spend per op]",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
             "name": "IsrName",
             "dataType": "string",
             "sourceColumn": "IsrName"
@@ -3787,6 +3826,16 @@
             "name": "IsrTerritoryCd",
             "dataType": "string",
             "sourceColumn": "IsrTerritoryCd"
+          },
+          {
+            "name": "BranchCode",
+            "dataType": "string",
+            "sourceColumn": "BranchCode"
+          },
+          {
+            "name": "SalesDivisionCode",
+            "dataType": "string",
+            "sourceColumn": "SalesDivisionCode"
           }
         ],
         "partitions": [
@@ -3847,6 +3896,8 @@
                 "\t,c.comm_group_tier_cd",
                 "",
                 "\t,c.IsrTerritoryCd",
+                "\t,BranchCode",
+                "\t,c.SalesDivisionCode",
                 "",
                 "",
                 "FROM",
@@ -3912,6 +3963,8 @@
                   "\t,c.comm_group_tier_cd",
                   "",
                   "\t,c.IsrTerritoryCd",
+                  "\t,BranchCode",
+                  "\t,c.SalesDivisionCode",
                   "",
                   "",
                   "FROM",
@@ -3928,60 +3981,6 @@
           {
             "name": "Count of ShipTo",
             "expression": "COUNTA([ShipTo])",
-            "formatString": "#,0"
-          },
-          {
-            "name": "DSO 12mo Opp",
-            "expression": "CALCULATE(sum([DSO_operatory_spend_12mo]), FILTER('Customer Shipto', [DSO_TrackingShipTo] = 'Customer Shipto'[ShipTo]))",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Count of Parent",
-            "expression": "DISTINCTCOUNT([DSO_TrackingShipTo])",
-            "formatString": "#,0"
-          },
-          {
-            "name": "DSO Quarter Opp",
-            "expression": "[DSO 12mo Opp]/4",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "DSO 12mo Opp Gap",
-            "expression": "[Rolling 12mo Sales]-[DSO 12mo Opp]",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "DSO Quarter Opp Gap",
-            "expression": "[QTD Sales] - [DSO Quarter Opp]",
-            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "DSO operatory count",
-            "expression": "CALCULATE(sum('Customer Shipto'[DSO_operatory_count]), FILTER('Customer Shipto', [DSO_TrackingShipTo] = 'Customer Shipto'[ShipTo]))",
             "formatString": "#,0"
           }
         ],
@@ -4040,6 +4039,8 @@
               "\t,c.comm_group_tier_cd",
               "",
               "\t,c.IsrTerritoryCd",
+              "\t,BranchCode",
+              "\t,c.SalesDivisionCode",
               "",
               "",
               "FROM",
@@ -4111,6 +4112,8 @@
               "\t,c.comm_group_tier_cd",
               "",
               "\t,c.IsrTerritoryCd",
+              "\t,BranchCode",
+              "\t,c.SalesDivisionCode",
               "",
               "",
               "FROM",
@@ -4171,6 +4174,7 @@
           {
             "name": "ReturnValidInd",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "ReturnValidInd",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
           },
@@ -4190,23 +4194,6 @@
             "sourceColumn": "ReturnRange"
           },
           {
-            "type": "calculated",
-            "name": "OrderBand",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": [
-              "CALCULATE(",
-              "",
-              "       VALUES (CreditBand[Band]),    ",
-              "       FILTER (",
-              "               CreditBand,    ",
-              "              abs([Order Sales in Period]) >= CreditBand[Spend_From]      &&  ",
-              "              abs([Order Sales in Period])  < CreditBand[Spend_To]",
-              "       )  ",
-              ")"
-            ]
-          },
-          {
             "name": "CustomerPOText1",
             "dataType": "string",
             "sourceColumn": "CustomerPOText1"
@@ -4217,6 +4204,11 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": "LEFT(Salesorder[CustomerPOText1],4)"
+          },
+          {
+            "name": "OrderSourceCode",
+            "dataType": "string",
+            "sourceColumn": "OrderSourceCode"
           }
         ],
         "partitions": [
@@ -4239,6 +4231,7 @@
                 "\t,PromotionConvention",
                 "\t,DocType",
                 "\t,[CustomerPOText1]",
+                "\t,OrderSourceCode",
                 "FROM",
                 "\tDimension.Salesorder_qt"
               ],
@@ -4261,6 +4254,7 @@
                   "\t,PromotionConvention",
                   "\t,DocType",
                   "\t,[CustomerPOText1]",
+                  "\t,OrderSourceCode",
                   "FROM",
                   "\tDimension.Salesorder_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
@@ -4285,6 +4279,7 @@
               "\t,PromotionConvention",
               "\t,DocType",
               "\t,[CustomerPOText1]",
+              "\t,OrderSourceCode",
               "FROM",
               "\tDimension.Salesorder_qt"
             ]
@@ -4313,6 +4308,7 @@
               "\t,PromotionConvention",
               "\t,DocType",
               "\t,[CustomerPOText1]",
+              "\t,OrderSourceCode",
               "FROM",
               "\tDimension.Salesorder_qt</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
             ]
@@ -4337,6 +4333,7 @@
           {
             "name": "MarketClassParent",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "MarketRollup_L1",
             "sourceProviderType": "Char"
           },
@@ -4899,688 +4896,6 @@
         ]
       },
       {
-        "name": "CreditBand",
-        "isHidden": true,
-        "columns": [
-          {
-            "name": "Spend_From",
-            "dataType": "decimal",
-            "isHidden": true,
-            "sourceColumn": "Spend_From",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "sourceProviderType": "Currency",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Spend_To",
-            "dataType": "decimal",
-            "isHidden": true,
-            "sourceColumn": "Spend_To",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "sourceProviderType": "Currency",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          },
-          {
-            "name": "Band",
-            "dataType": "string",
-            "sourceColumn": "Spend_Display",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Spend_Rank",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Spend_Rank",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "SpendKey",
-            "dataType": "int64",
-            "isHidden": true,
-            "isUnique": true,
-            "sourceColumn": "SpendKey",
-            "sourceProviderType": "Integer"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "CreditBand",
-            "dataView": "full",
-            "source": {
-              "type": "query",
-              "query": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'C') ",
-              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
-            },
-            "annotations": [
-              {
-                "name": "TableWidgetSerialization",
-                "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
-                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
-                  "  <ColumnSuggestedType />",
-                  "  <ColumnFormat />",
-                  "  <ColumnAccuracy />",
-                  "  <ColumnCurrencySymbol />",
-                  "  <ColumnPositivePattern />",
-                  "  <ColumnNegativePattern />",
-                  "  <ColumnWidths>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>SalesDivision</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>91</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_From</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>90</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_To</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>78</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Display</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>100</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Rank</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>90</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Discount_Rate</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>136</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Category</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>111</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>SpendKey</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>78</int>",
-                  "      </value>",
-                  "    </item>",
-                  "  </ColumnWidths>",
-                  "  <ColumnDisplayIndex>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>SalesDivision</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>0</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_From</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>1</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_To</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>2</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Display</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>3</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Rank</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>4</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Discount_Rate</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>5</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Category</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>6</int>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>SpendKey</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <int>7</int>",
-                  "      </value>",
-                  "    </item>",
-                  "  </ColumnDisplayIndex>",
-                  "  <ColumnFrozen />",
-                  "  <ColumnChecked>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>SalesDivision</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>false</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Discount_Rate</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>false</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Category</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <boolean>false</boolean>",
-                  "      </value>",
-                  "    </item>",
-                  "  </ColumnChecked>",
-                  "  <ColumnFilter>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Category</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <FilterExpression xsi:type=\"ConditionalExpression\">",
-                  "          <Operator>EqualTo</Operator>",
-                  "          <Value xsi:type=\"xsd:string\">C</Value>",
-                  "        </FilterExpression>",
-                  "      </value>",
-                  "    </item>",
-                  "  </ColumnFilter>",
-                  "  <SelectionFilter>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Category</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <SelectionFilter xsi:nil=\"true\" />",
-                  "      </value>",
-                  "    </item>",
-                  "  </SelectionFilter>",
-                  "  <FilterParameters>",
-                  "    <item>",
-                  "      <key>",
-                  "        <string>Spend_Category</string>",
-                  "      </key>",
-                  "      <value>",
-                  "        <CommandParameters />",
-                  "      </value>",
-                  "    </item>",
-                  "  </FilterParameters>",
-                  "  <SortByColumn>Spend_Rank</SortByColumn>",
-                  "  <IsSortDescending>false</IsSortDescending>",
-                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
-                ]
-              }
-            ]
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'C') "
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "BRS_Customer_Spend_Category"
-          },
-          {
-            "name": "_TM_ExtProp_DbSchemaName",
-            "value": "dbo"
-          },
-          {
-            "name": "TableWidgetSerialization",
-            "value": [
-              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
-              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
-              "  <ColumnSuggestedType />",
-              "  <ColumnFormat />",
-              "  <ColumnAccuracy />",
-              "  <ColumnCurrencySymbol />",
-              "  <ColumnPositivePattern />",
-              "  <ColumnNegativePattern />",
-              "  <ColumnWidths>",
-              "    <item>",
-              "      <key>",
-              "        <string>SalesDivision</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>91</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_From</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>90</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_To</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>78</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Display</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>100</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Rank</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>90</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Discount_Rate</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>136</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Category</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>111</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>SpendKey</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>78</int>",
-              "      </value>",
-              "    </item>",
-              "  </ColumnWidths>",
-              "  <ColumnDisplayIndex>",
-              "    <item>",
-              "      <key>",
-              "        <string>SalesDivision</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>0</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_From</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>1</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_To</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>2</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Display</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>3</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Rank</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>4</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Discount_Rate</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>5</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Category</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>6</int>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>SpendKey</string>",
-              "      </key>",
-              "      <value>",
-              "        <int>7</int>",
-              "      </value>",
-              "    </item>",
-              "  </ColumnDisplayIndex>",
-              "  <ColumnFrozen />",
-              "  <ColumnChecked>",
-              "    <item>",
-              "      <key>",
-              "        <string>SalesDivision</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>false</boolean>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Discount_Rate</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>false</boolean>",
-              "      </value>",
-              "    </item>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Category</string>",
-              "      </key>",
-              "      <value>",
-              "        <boolean>false</boolean>",
-              "      </value>",
-              "    </item>",
-              "  </ColumnChecked>",
-              "  <ColumnFilter>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Category</string>",
-              "      </key>",
-              "      <value>",
-              "        <FilterExpression xsi:type=\"ConditionalExpression\">",
-              "          <Operator>EqualTo</Operator>",
-              "          <Value xsi:type=\"xsd:string\">C</Value>",
-              "        </FilterExpression>",
-              "      </value>",
-              "    </item>",
-              "  </ColumnFilter>",
-              "  <SelectionFilter>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Category</string>",
-              "      </key>",
-              "      <value>",
-              "        <SelectionFilter xsi:nil=\"true\" />",
-              "      </value>",
-              "    </item>",
-              "  </SelectionFilter>",
-              "  <FilterParameters>",
-              "    <item>",
-              "      <key>",
-              "        <string>Spend_Category</string>",
-              "      </key>",
-              "      <value>",
-              "        <CommandParameters />",
-              "      </value>",
-              "    </item>",
-              "  </FilterParameters>",
-              "  <SortByColumn>Spend_Rank</SortByColumn>",
-              "  <IsSortDescending>false</IsSortDescending>",
-              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
-            ]
-          }
-        ]
-      },
-      {
-        "name": "GrowthBand",
-        "isHidden": true,
-        "columns": [
-          {
-            "name": "Spend_From",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "Spend_From",
-            "sourceProviderType": "Decimal"
-          },
-          {
-            "name": "Spend_To",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "Spend_To",
-            "sourceProviderType": "Decimal"
-          },
-          {
-            "name": "Band",
-            "dataType": "string",
-            "sourceColumn": "Spend_Display",
-            "sourceProviderType": "VarChar"
-          },
-          {
-            "name": "Spend_Rank",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Spend_Rank",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "SpendKey",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "SpendKey",
-            "sourceProviderType": "Integer"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "GrowthBand",
-            "dataView": "full",
-            "source": {
-              "type": "query",
-              "query": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'G')",
-              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
-            },
-            "annotations": [
-              {
-                "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'G')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
-              }
-            ]
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'G')"
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "GrowthBand"
-          },
-          {
-            "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'G')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
-          }
-        ]
-      },
-      {
-        "name": "QuoteShareBand",
-        "isHidden": true,
-        "columns": [
-          {
-            "name": "Spend_From",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "Spend_From",
-            "sourceProviderType": "Decimal"
-          },
-          {
-            "name": "Spend_To",
-            "dataType": "double",
-            "isHidden": true,
-            "sourceColumn": "Spend_To",
-            "sourceProviderType": "Decimal"
-          },
-          {
-            "name": "Band",
-            "dataType": "string",
-            "sourceColumn": "Spend_Display",
-            "sourceProviderType": "VarChar"
-          },
-          {
-            "name": "Spend_Rank",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Spend_Rank",
-            "sourceProviderType": "SmallInt"
-          },
-          {
-            "name": "SpendKey",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "SpendKey",
-            "sourceProviderType": "Integer"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "QuoteShareBand",
-            "dataView": "full",
-            "source": {
-              "type": "query",
-              "query": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')",
-              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
-            },
-            "annotations": [
-              {
-                "name": "QueryEditorSerialization",
-                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
-              }
-            ]
-          }
-        ],
-        "annotations": [
-          {
-            "name": "_TM_ExtProp_QueryDefinition",
-            "value": "SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')"
-          },
-          {
-            "name": "_TM_ExtProp_DbTableName",
-            "value": "QuoteShareBand"
-          },
-          {
-            "name": "QueryEditorSerialization",
-            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[BRS_Customer_Spend_Category].[Spend_From],[dbo].[BRS_Customer_Spend_Category].[Spend_To],[dbo].[BRS_Customer_Spend_Category].[Spend_Display],[dbo].[BRS_Customer_Spend_Category].[Spend_Rank],[dbo].[BRS_Customer_Spend_Category].[SpendKey] FROM [dbo].[BRS_Customer_Spend_Category]  WHERE ([Spend_Category] = N'Q')</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
-          }
-        ]
-      },
-      {
-        "name": "GMBand",
-        "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "GM Segment",
-            "dataType": "string",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "[GM Segment]"
-          },
-          {
-            "type": "calculatedTableColumn",
-            "name": "GM Flag",
-            "dataType": "boolean",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "isHidden": true,
-            "sourceColumn": "[GM Flag]",
-            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
-          }
-        ],
-        "partitions": [
-          {
-            "name": "CalculatedTable 1",
-            "source": {
-              "type": "calculated",
-              "expression": [
-                " ",
-                "DATATABLE (",
-                "    \"GM Segment\", STRING, ",
-                "    \"GM Flag\", BOOLEAN, ",
-                "    { ",
-                "        { \"Bad GM Line\", 1 }, ",
-                "        { \"Good GM Line\", 0 }",
-                "    } ",
-                ")"
-              ]
-            }
-          }
-        ]
-      },
-      {
         "name": "Exclusive",
         "columns": [
           {
@@ -5761,51 +5076,6 @@
           {
             "name": "_TM_ExtProp_DbSchemaName",
             "value": "dbo"
-          }
-        ]
-      },
-      {
-        "name": "Operatory",
-        "isHidden": true,
-        "columns": [
-          {
-            "type": "calculatedTableColumn",
-            "name": "spend_per_operatory",
-            "dataType": "decimal",
-            "isNameInferred": true,
-            "isDataTypeInferred": true,
-            "sourceColumn": "[spend_per_operatory]",
-            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
-              }
-            ]
-          }
-        ],
-        "partitions": [
-          {
-            "name": "CalculatedTable 1",
-            "source": {
-              "type": "calculated",
-              "expression": [
-                "",
-                "DATATABLE (",
-                "    \"spend_per_operatory\", CURRENCY,",
-                "        {{ 10000}, ",
-                "        { 11000 },",
-                "        { 12000}}",
-                ")"
-              ]
-            }
-          }
-        ],
-        "measures": [
-          {
-            "name": "spend per op",
-            "expression": "Min('Operatory'[spend_per_operatory])",
-            "isHidden": true
           }
         ]
       },
@@ -6676,6 +5946,472 @@
             ]
           }
         ]
+      },
+      {
+        "name": "CustomerMarketSegment",
+        "columns": [
+          {
+            "name": "SegCd",
+            "dataType": "string",
+            "sourceColumn": "SegCd",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "SegName",
+            "dataType": "string",
+            "sourceColumn": "SegName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SegKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SegKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CustomerMarketSegment",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " \t\t\t\tSELECT [dbo].[BRS_CustomerSegment].[SegCd],[dbo].[BRS_CustomerSegment].[SegName],[dbo].[BRS_CustomerSegment].[SegKey]   FROM [dbo].[BRS_CustomerSegment] ",
+              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegCd</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>168</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>106</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>NoteTxt</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>95</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegKey</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>90</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MarketClass_map</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>162</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegCd_map</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>124</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegCd</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>NoteTxt</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegKey</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MarketClass_map</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegCd_map</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>NoteTxt</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MarketClass_map</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>SegCd_map</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " \t\t\t\tSELECT [dbo].[BRS_CustomerSegment].[SegCd],[dbo].[BRS_CustomerSegment].[SegName],[dbo].[BRS_CustomerSegment].[SegKey]   FROM [dbo].[BRS_CustomerSegment] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_CustomerSegment"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegCd</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>168</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>106</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>NoteTxt</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>95</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegKey</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>90</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MarketClass_map</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>162</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegCd_map</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>124</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegCd</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>NoteTxt</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegKey</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MarketClass_map</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegCd_map</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>NoteTxt</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MarketClass_map</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>SegCd_map</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Promotion_GEP",
+        "columns": [
+          {
+            "name": "Promo_Code_GEP",
+            "dataType": "string",
+            "sourceColumn": "Promo_Code_GEP",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Line_Promo_Description_GEP",
+            "dataType": "string",
+            "sourceColumn": "Line_Promo_Description_GEP",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Promo_Code_GEP_key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Promo_Code_GEP_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Order_Level_Promo_Description_GEP",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Order_Level_Promo_Description_GEP"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Promotion_GEP",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": [
+                "SELECT        Promo_Code_GEP_key, Promo_Code_GEP, Line_Promo_Description_GEP, Order_Level_Promo_Description_GEP",
+                "FROM            BRS_Promotion_GEP"
+              ],
+              "dataSource": "SqlServer CAHSIONNLSQL1BRSales"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        Promo_Code_GEP_key, Promo_Code_GEP, Line_Promo_Description_GEP, Order_Level_Promo_Description_GEP",
+                  "FROM            BRS_Promotion_GEP</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": [
+              "SELECT        Promo_Code_GEP_key, Promo_Code_GEP, Line_Promo_Description_GEP, Order_Level_Promo_Description_GEP",
+              "FROM            BRS_Promotion_GEP"
+            ]
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "BRS_Promotion_GEP"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT        Promo_Code_GEP_key, Promo_Code_GEP, Line_Promo_Description_GEP, Order_Level_Promo_Description_GEP",
+              "FROM            BRS_Promotion_GEP</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "PromotionOrder_GEP",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Promo_Code_GEP",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Promotion_GEP[Promo_Code_GEP]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Line_Promo_Description_GEP",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promotion_GEP[Line_Promo_Description_GEP]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Promo_Code_GEP_key",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "Promotion_GEP[Promo_Code_GEP_key]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Order_Level_Promo_Description_GEP",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Promotion_GEP[Order_Level_Promo_Description_GEP]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "Promotion_GEP"
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -6750,11 +6486,32 @@
         "toColumn": "eps_key"
       },
       {
-        "name": "23e88095-a22b-437b-a090-8f605576b14d",
+        "name": "b41f80cd-ffcb-4927-9a64-c8752b3e6426",
         "fromTable": "Sales",
-        "fromColumn": "BadGMLine",
-        "toTable": "GMBand",
-        "toColumn": "GM Flag"
+        "fromColumn": "PromotionKey",
+        "toTable": "Promotion",
+        "toColumn": "promotion_key"
+      },
+      {
+        "name": "4d161b4e-3665-4bd0-bd38-a9956258f4d7",
+        "fromTable": "Sales",
+        "fromColumn": "GEP_PromotionCode_key",
+        "toTable": "Promotion_GEP",
+        "toColumn": "Promo_Code_GEP_key"
+      },
+      {
+        "name": "3109265a-4b44-44a1-8e38-fa86222cb678",
+        "fromTable": "Sales",
+        "fromColumn": "MarketClassSegmentKey",
+        "toTable": "CustomerMarketSegment",
+        "toColumn": "SegKey"
+      },
+      {
+        "name": "bd3e8d24-023a-4f82-9056-22888f430369",
+        "fromTable": "Sales",
+        "fromColumn": "GEP_OrderPromotionCode_key",
+        "toTable": "PromotionOrder_GEP",
+        "toColumn": "Promo_Code_GEP_key"
       }
     ],
     "roles": [
