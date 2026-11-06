@@ -9,7 +9,7 @@
         "name": "Commission SQL Source",
         "connectionString": "Provider=SQLOLEDB;Data Source=CAHSIONNLSQL1;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=BRSales",
         "impersonationMode": "impersonateAccount",
-        "account": "CAHSI\\PowerBI_Read",
+        "account": "CAHSI\\tcrowley",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -481,6 +481,10 @@
           {
             "name": "Distinct Count of Billto",
             "expression": "DISTINCTCOUNT([Billto])"
+          },
+          {
+            "name": "Maximum of comm_group_tier_cd",
+            "expression": "MAX([comm_group_tier_cd])"
           }
         ],
         "annotations": [
@@ -2943,6 +2947,10 @@
           {
             "name": "test_username",
             "expression": "username()"
+          },
+          {
+            "name": "Distinct Count of ShipTo",
+            "expression": "DISTINCTCOUNT([ShipTo])"
           }
         ],
         "annotations": [
